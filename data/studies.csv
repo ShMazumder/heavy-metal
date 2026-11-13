@@ -1,0 +1,65 @@
+Study_ID,DOI,Journal_Name,Author_Year,Detection_Method,Total_Records,River_List,Sample_Types
+P01,https://doi.org/10.1080/10807039.2017.1397499,Human and Ecological Risk Assessment: An International Journal,"Islam et al., 2017","inductively coupled plasma mass spectrometry (ICP MS, Agilent 7700 series)",30,Buriganga,Sediment
+P02,https://doi.org/10.1007/s10661-014-4075-0,Environmental Monitoring and Assessment,"Bhuiyan et al., 2015","PerkinElmer atomic absorption spectrophotometer
+(AAS; model 3110)",30,Buriganga,"Sediment, Water"
+P03,https://doi.org/10.1080/02757540.2022.2152015,Chemistry and Ecology,"Islam et al., 2022"," inductively
+coupled plasma mass spectrometer (ICP-MS, Agilent7500i, USA)",5,Old Brahmaputra,Sediment
+P04,https://doi.org/10.1007/s42452-021-04464-0,SN Applied Sciences,"Hossain et al., 2021"," atomic 
+absorption spectroscopy (Model-Perkin Elmer PinAAcle 
+900H)",40,"Buriganga, Turag","Sediment, Water"
+P05,https://doi.org/10.1007/s13762-018-1822-8,International Journal of Environmental Science and Technology,"Nargis et al., 2019","Inductively coupled plasma-mass spectrometer (ICP-MS 
+Spectro, Germany)",14,Buriganga,Sediment
+P06,https://doi.org/10.1007/s10653-019-00386-4,Environ Geochem Health,"Baki et al., 2019", atomic absorption spectrophotometer (AAS),6,"Buriganga, Turag",Water
+P07,https://doi.org/10.3390/w14010017,Water,"Kadir et al., 2022",,12,Surma,Water
+P08,https://doi.org/10.22059/poll.2024.368080.2137,Pollution,"Hasan et al., 2024",flame atomic absorption spectroscopy (Perkin Elmer PinAAcle 900H version),15,"Buriganga, Karnaphuli, Meghna, Padma, Shitalakhya",Water
+P09,https://doi.org/10.1016/j.enmm.2016.01.002,"Environmental Nanotechnology, Monitoring & Management","Ali et al., 2016","atomic
+absorption 
+spectrophotometer 
+(Model 
+ZEEnit 
+700P# 
+150Z7P0110,
+AnalytikJena, 
+Germany) 
+using 
+GF-AAS 
+and 
+Hydride 
+Generator 
+sys
+tem",40,Karnaphuli,"Sediment, Water"
+P10,https://doi.org/10.3390/su14095033,Sustainability,"Nur-E-Alam et al., 2022",AAS,15,Karnaphuli,Sediment
+P11,https://doi.org/10.1007/s13530-021-00101-w,Toxicology and Environmental Health Sciences,"Khatun et al., 2021",NR,6,Karnaphuli,Water
+P12,https://doi.org/10.1016/j.jtemin.2025.100220,Journal of Trace Elements and Minerals,"Ahmed et al., 2025","atomic absorption spectrophotometer (AAS, PerkinElmer Analyst 700, USA)",6,Karnaphuli,Sediment
+P13,https://doi.org/10.1007/s12665-014-3538-5,Environmental Earth Sciences,"Islam et al., 2015","inductively coupled plasma mass spectrometry (ICP-MS, Agilent 7700)",16,Paira,Sediment
+P14,https://doi.org/10.3934/environsci.2017.2.310,AIMS Environmental Science,"Islam et al., 2017",Inductively Coupled Plasma Mass Spectrometry (ICP-MS),24,Paira,Sediment
+P15,http://dx.doi.org/10.22207/JPAM.11.4.10,Journal of Pure and Applied Microbiology,"Dey et al., 2017",,12,Karnaphuli,Water
+P16,https://doi.org/10.1080/11104929.2020.1803662,Water Science,"Uddin et al., 2020",,60,Karnaphuli,Water
+P17,https://doi.org/10.3390/w14020180,Water,"Acharjee et al., 2022","AAS (Model Shimadzu
+AA7000 series, Shimadzu corporation, Kyoto, Japan)",15,Surma,Sediment
+P18,https://doi.org/10.1080/15569543.2021.2001829,Toxin Reviews,"Ali et al., 2021"," atomic absorption
+spectrophotometers (Model ZEEnit700P# 150Z7P0110,
+Analytikjena, Germany) using the GFAAS and Hydride
+Generator system",60,Kirtankhola,"Sediment, Water"
+P19,https://doi.org/10.1080/15569543.2018.1564143,Toxin Reviews,"Proshad et al., 2019","inductively coupled plasma mass spectrometry (ICPMS,
+Agilent 7700 series)",42,Rupsa,Sediment
+P20,https://doi.org/10.1007/s11356-021-13077-4,Environmental Science and Pollution Research,"Proshad et al., 2021","inductively coupled plasma mass spectrometry
+(ICP-MS, Agilent 7700 series, Santa Clara, USA)",5,Rupsa,Water
+P21,https://doi.org/10.1080/15569543.2020.1780615,Toxin Reviews,"Proshad et al., 2020","inductively coupled plasma
+mass spectrometry (ICPMS, Agilent 7700 series)",2,Rupsa,Water
+P22,https://doi.org/10.1007/s11356-021-12541-5,Environmental Science and Pollution Research," Islam, 2021",,20,Korotoa,Water
+P23,https://doi.org/10.1080/03067319.2022.2071613,"International Journal of Environmental Analytical
+Chemistry","Islam et al., 2022",,10,Korotoa,Water
+P24,https://doi.org/10.3389/fenvs.2022.778544,Frontiers in Environmental Science,"Kubra et al., 2022"," atomic absorption spectrophotometer (Model
+ZEEnit700P# 150Z7P0110, Analytikjena, Germany)",4,Rupsa,Sediment
+P25,http://dx.doi.org/10.1080/19338244.2016.1152946,Archives of Environmental & Occupational Health,"Islam et al., 2017",atomic absorption spectrometer (Perkin Elmer Analyst 300),10,Korotoa,Sediment
+P26,https://doi.org/10.1007/s13201-018-0885-5,Applied Water Science,"Haque et al., 2018",,12,Padma,Water
+P27,https://doi.org/10.47853/FAS.2024.e8,Fisheries and Aquatic Sciences,"Mortuza, 2024"," flame atomic absorption 
+spectrophotometer (AAS)",6,Padma,"Sediment, Water"
+P28,http://dx.doi.org/10.1016/j.ecolind.2014.08.016,Ecological Indicators,"Islam et al., 2015"," 
+inductively
+coupled 
+plasma 
+mass 
+spectrometry 
+(ICP-MS)",40,Korotoa,"Sediment, Water"
