@@ -182,13 +182,18 @@ This study delivers the first nationwide regulatory compliance audit, multi-meta
 
 ## References
 - Ahmad, M.K., Islam, S., Rahman, S., Haque, M.R., Islam, M.M., 2010. Heavy metals in water, sediment and some fishes of Buriganga River, Bangladesh. *Int. J. Environ. Res.* 4, 321–332.
-- Ali, M.M., Ali, M.L., Rakib, M.R.J., Islam, M.S., Habib, A., Hossen, S., Ibrahim, K.A., Idris, A.M., Phoungthong, K., 2021. Contamination and ecological risk assessment of heavy metals in water and sediment from hubs of fish resource river in a developing country. *Toxin Rev.* 41, 1283–1295.
-- Islam, M.S., Ahmed, M.K., Raknuzzaman, M., Habibullah-Al-Mamun, M., Islam, M.K., 2015. Heavy metal pollution in surface water and sediment: a preliminary assessment of an urban river in a developing country. *Ecol. Indic.* 48, 282–291.
-- Järup, L., 2003. Hazards of heavy metal contamination. *Br. Med. Bull.* 68, 167–182.
-- Lehner, B., Grill, G., 2013. Global river hydrography and network routing: baseline data and new approaches to study the world's large river systems. *Hydrol. Process.* 27, 2171–2186.
+- Ali, M.M., Ali, M.L., Islam, M.S., Rahman, M.Z., 2016. Preliminary assessment of heavy metals in water and sediment of Karnaphuli River, Bangladesh. *Environ. Nanotechnol. Monit. Manage.* 5, 27–35. https://doi.org/10.1016/j.enmm.2016.01.002
+- Ali, M.M., Ali, M.L., Rakib, M.R.J., Islam, M.S., Habib, A., Hossen, S., Ibrahim, K.A., Idris, A.M., Phoungthong, K., 2021. Contamination and ecological risk assessment of heavy metals in water and sediment from hubs of fish resource river in a developing country. *Toxin Rev.* 41, 1283–1295. https://doi.org/10.1080/15569543.2021.2001829
+- Bhuiyan, M.A.H., Dampare, S.B., Islam, M.A., Suzuki, S., 2015. Source apportionment and pollution evaluation of heavy metals in water and sediments of Buriganga River, Bangladesh, using multivariate analysis and pollution evaluation indices. *Environ. Monit. Assess.* 187, 4075. https://doi.org/10.1007/s10661-014-4075-0
+- Edet, A.E., Offiong, O.E., 2002. Evaluation of water quality pollution indices for heavy metal contamination monitoring. A study case from Akpabuyo-Odukpani area, Lower Cross River Basin (southeastern Nigeria). *GeoJournal* 57, 295–304. https://doi.org/10.1023/B:GEJO.0000007250.92458.de
+- Islam, M.S., Ahmed, M.K., Raknuzzaman, M., Habibullah-Al-Mamun, M., Islam, M.K., 2015. Heavy metal pollution in surface water and sediment: a preliminary assessment of an urban river in a developing country. *Ecol. Indic.* 48, 282–291. https://doi.org/10.1016/j.ecolind.2014.08.016
+- Järup, L., 2003. Hazards of heavy metal contamination. *Br. Med. Bull.* 68, 167–182. https://doi.org/10.1093/bmb/ldg032
+- Kadir, A., Ahmed, Z., Uddin, M.M., Xie, Z., Kumar, P., 2022. Integrated approach to quantify the impact of land use and land cover changes on water quality of Surma River, Sylhet, Bangladesh. *Water* 14, 17. https://doi.org/10.3390/w14010017
+- Lehner, B., Grill, G., 2013. Global river hydrography and network routing: baseline data and new approaches to study the world's large river systems. *Hydrol. Process.* 27, 2171–2186. https://doi.org/10.1002/hyp.9740
 - Ministry of Environment, Forest and Climate Change, 2023. Environmental Conservation Rules (ECR 2023). Government of the People's Republic of Bangladesh, Dhaka.
-- Mohan, S.V., Nithila, P., Reddy, S.J., 1996. Estimation of heavy metal in drinking water and development of heavy metal pollution index. *J. Environ. Sci. Health A* 31, 283–289.
-- Needleman, H., 2004. Lead poisoning. *Annu. Rev. Med.* 55, 209–222.
-- Prasad, B., Bose, J.M., 2001. Evaluation of the heavy metal pollution index for municipal solid waste disposal sites. *Environ. Geol.* 41, 961–966.
-- Tchounwou, P.B., Yedjou, C.G., Patlolla, A.K., Sutton, D.J., 2012. Heavy metal toxicity and the environment. *Mol. Clin. Environ. Toxicol.* 101, 133–164.
+- Mohan, S.V., Nithila, P., Reddy, S.J., 1996. Estimation of heavy metal in drinking water and development of heavy metal pollution index. *J. Environ. Sci. Health A* 31, 283–289. https://doi.org/10.1080/10934529609376357
+- Needleman, H., 2004. Lead poisoning. *Annu. Rev. Med.* 55, 209–222. https://doi.org/10.1146/annurev.med.55.091902.103653
+- Prasad, B., Bose, J.M., 2001. Evaluation of the heavy metal pollution index for surface and spring water near a limestone mining area of the lower Himalayas. *Environ. Geol.* 41, 183–188. https://doi.org/10.1007/s002540100380
+- Tamasi, G., Cini, R., 2004. Heavy metals in drinking waters from Mount Amiata (Tuscany, Italy). Possible risks from arsenic for public health in the Province of Siena. *Sci. Total Environ.* 327, 41–51. https://doi.org/10.1016/j.scitotenv.2003.10.011
+- Tchounwou, P.B., Yedjou, C.G., Patlolla, A.K., Sutton, D.J., 2012. Heavy metal toxicity and the environment. *Mol. Clin. Environ. Toxicol.* 101, 133–164. https://doi.org/10.1007/978-3-7643-8340-4_6
 - WHO, 2017. Guidelines for Drinking-water Quality, 4th ed., incorporating the first addendum. World Health Organization, Geneva.

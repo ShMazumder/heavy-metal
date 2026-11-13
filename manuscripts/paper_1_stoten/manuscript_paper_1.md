@@ -234,19 +234,26 @@ The harmonized multi-study database, HydroRIVERS topological reach layers, spati
 ---
 
 ## References
+- Acharjee, A., Ahmed, Z., Kumar, P., Alam, R., Rahman, M.S., Simal-Gandara, J., 2022. Assessment of the ecological risk from heavy metals in the surface sediment of River Surma, Bangladesh: Coupled approach of Monte Carlo simulation and multi-component statistical analysis. *Water* 14, 180. https://doi.org/10.3390/w14020180
 - Ahmad, M.K., Islam, S., Rahman, S., Haque, M.R., Islam, M.M., 2010. Heavy metals in water, sediment and some fishes of Buriganga River, Bangladesh. *Int. J. Environ. Res.* 4, 321–332.
-- Ali, M.M., Ali, M.L., Rakib, M.R.J., Islam, M.S., Habib, A., Hossen, S., Ibrahim, K.A., Idris, A.M., Phoungthong, K., 2021. Contamination and ecological risk assessment of heavy metals in water and sediment from hubs of fish resource river in a developing country. *Toxin Rev.* 41, 1283–1295.
-- BGS, DPHE, 2001. Arsenic contamination of groundwater in Bangladesh. British Geological Survey Technical Report WC/00/19.
-- Breiman, L., 2001. Random forests. *Mach. Learn.* 45, 5–32.
-- Chen, T., Guestrin, C., 2016. XGBoost: A scalable tree boosting system. In: *Proc. 22nd ACM SIGKDD Int. Conf. Knowl. Discov. Data Min.*, pp. 785–794.
-- Hakanson, L., 1980. An ecological risk index for aquatic pollution control: a sedimentological approach. *Water Res.* 14, 975–1001.
-- Islam, M.S., Ahmed, M.K., Raknuzzaman, M., Habibullah-Al-Mamun, M., Islam, M.K., 2015. Heavy metal pollution in surface water and sediment: a preliminary assessment of an urban river in a developing country. *Ecol. Indic.* 48, 282–291.
-- Islam, M.S., Habibullah-Al-Mamun, M., 2017. Accumulation of trace elements in sediment and fish species of Paira River, Bangladesh. *AIMS Environ. Sci.* 4, 310–322.
-- Islam, M.S., Nakagawa, K., Abdullah-Al-Mamun, M., 2018. Trace elements in sediments of the industrial river Buriganga, Bangladesh: Spatial distribution and potential ecological risk. *Hum. Ecol. Risk Assess.* 24, 1858–1876.
-- Kadir, A., Ahmed, Z., Alam, R., Rahman, M.S., Simal-Gandara, J., 2022. Evaluation of water quality index and spatial risk mapping in the Surma River basin. *Water* 14, 180.
-- Lehner, B., Grill, G., 2013. Global river hydrography and network routing: baseline data and new approaches to study the world’s large river systems. *Hydrol. Process.* 27, 2171–2186.
-- Lundberg, S.M., Erion, G., Chen, H., DeGrave, A., Prutkin, J.M., Nair, B., Katz, R., Himmelfarb, J., Bansal, N., Lee, S.I., 2020. From local explanations to global understanding with explainable AI for trees. *Nat. Mach. Intell.* 2, 56–67.
+- Ali, M.M., Ali, M.L., Islam, M.S., Rahman, M.Z., 2016. Preliminary assessment of heavy metals in water and sediment of Karnaphuli River, Bangladesh. *Environ. Nanotechnol. Monit. Manage.* 5, 27–35. https://doi.org/10.1016/j.enmm.2016.01.002
+- Ali, M.M., Ali, M.L., Rakib, M.R.J., Islam, M.S., Habib, A., Hossen, S., Ibrahim, K.A., Idris, A.M., Phoungthong, K., 2021. Contamination and ecological risk assessment of heavy metals in water and sediment from hubs of fish resource river in a developing country. *Toxin Rev.* 41, 1283–1295. https://doi.org/10.1080/15569543.2021.2001829
+- BGS, DPHE, 2001. Arsenic contamination of groundwater in Bangladesh. British Geological Survey Technical Report WC/00/19, Keyworth, UK.
+- Bhuiyan, M.A.H., Dampare, S.B., Islam, M.A., Suzuki, S., 2015. Source apportionment and pollution evaluation of heavy metals in water and sediments of Buriganga River, Bangladesh, using multivariate analysis and pollution evaluation indices. *Environ. Monit. Assess.* 187, 4075. https://doi.org/10.1007/s10661-014-4075-0
+- Breiman, L., 2001. Random forests. *Mach. Learn.* 45, 5–32. https://doi.org/10.1023/A:1010933404324
+- Chen, T., Guestrin, C., 2016. XGBoost: A scalable tree boosting system. In: *Proc. 22nd ACM SIGKDD Int. Conf. Knowl. Discov. Data Min.*, pp. 785–794. https://doi.org/10.1145/2939672.2939785
+- Cressie, N., 1993. Statistics for Spatial Data. John Wiley & Sons, New York.
+- Hakanson, L., 1980. An ecological risk index for aquatic pollution control: a sedimentological approach. *Water Res.* 14, 975–1001. https://doi.org/10.1016/0043-1354(80)90143-8
+- Hengl, T., Heuvelink, G.B.M., Stein, A., 2004. A generic framework for spatial prediction based on regression-kriging. *Geoderma* 120, 75–93. https://doi.org/10.1016/j.geoderma.2003.08.018
+- Islam, M.S., Ahmed, M.K., Raknuzzaman, M., Habibullah-Al-Mamun, M., Islam, M.K., 2015. Heavy metal pollution in surface water and sediment: a preliminary assessment of an urban river in a developing country. *Ecol. Indic.* 48, 282–291. https://doi.org/10.1016/j.ecolind.2014.08.016
+- Islam, M.S., Habibullah-Al-Mamun, M., 2017. Accumulation of trace elements in sediment and fish species of Paira River, Bangladesh. *AIMS Environ. Sci.* 4, 310–322. https://doi.org/10.3934/environsci.2017.2.310
+- Islam, M.S., Proshad, R., Ahmed, S., 2018. Ecological risk of heavy metals in sediment of an urban river in Bangladesh. *Hum. Ecol. Risk Assess.* 24, 699–720. https://doi.org/10.1080/10807039.2017.1397499
+- Ke, G., Meng, Q., Finley, T., Wang, T., Chen, W., Ma, W., Ye, Q., Liu, T.Y., 2017. LightGBM: A highly efficient gradient boosting decision tree. In: *Adv. Neural Inf. Process. Syst.* 30, pp. 3146–3154.
+- Lehner, B., Grill, G., 2013. Global river hydrography and network routing: baseline data and new approaches to study the world’s large river systems. *Hydrol. Process.* 27, 2171–2186. https://doi.org/10.1002/hyp.9740
+- Lundberg, S.M., Erion, G., Chen, H., DeGrave, A., Prutkin, J.M., Nair, B., Katz, R., Himmelfarb, J., Bansal, N., Lee, S.I., 2020. From local explanations to global understanding with explainable AI for trees. *Nat. Mach. Intell.* 2, 56–67. https://doi.org/10.1038/s42256-019-0138-9
+- Moran, P.A.P., 1950. Notes on continuous stochastic phenomena. *Biometrika* 37, 17–23. https://doi.org/10.1093/biomet/37.1-2.17
 - Müller, G., 1969. Index of geoaccumulation in sediments of the Rhine River. *GeoJournal* 2, 108–118.
 - Prokhorenkova, L., Gusev, G., Vorobev, A., Dorogush, A.V., Gulin, A., 2018. CatBoost: unbiased boosting with categorical features. In: *Adv. Neural Inf. Process. Syst.* 31, pp. 6638–6648.
-- Tessier, A., Campbell, P.G., Bisson, M., 1979. Sequential extraction procedure for the speciation of particulate trace metals. *Anal. Chem.* 51, 844–851.
-- Wedepohl, K.H., 1995. The composition of the continental crust. *Geochim. Cosmochim. Acta* 59, 1217–1232.
+- Tessier, A., Campbell, P.G., Bisson, M., 1979. Sequential extraction procedure for the speciation of particulate trace metals. *Anal. Chem.* 51, 844–851. https://doi.org/10.1021/ac50043a017
+- Tomlinson, D.L., Wilson, J.G., Harris, C.R., Jeffrey, D.W., 1980. Problems in the assessment of heavy-metal levels in estuaries and the formation of a pollution index. *Helgol. Meeresunters.* 33, 566–575. https://doi.org/10.1007/BF02414780
+- Wedepohl, K.H., 1995. The composition of the continental crust. *Geochim. Cosmochim. Acta* 59, 1217–1232. https://doi.org/10.1016/0016-7037(95)00038-2
