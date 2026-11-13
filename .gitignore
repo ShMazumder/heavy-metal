@@ -1,5 +1,6 @@
 
 catboost_info/
+.vscode/
 
 # LaTeX build artifacts
 *.aux
