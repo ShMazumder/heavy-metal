@@ -1,0 +1,8 @@
+Element,N_Dry,Median_Dry_mg_L,N_Wet,Median_Wet_mg_L,Dry_to_Wet_Ratio,p_value,Significant_Dilution
+As,58,0.0073,23,0.0042,1.74,0.0021,"Yes (Dry > Rainy, p<0.05)"
+Cr,74,0.0705,28,0.0354,1.99,0.0191,"Yes (Dry > Rainy, p<0.05)"
+Cd,60,0.0015,27,0.0008,1.81,0.0204,"Yes (Dry > Rainy, p<0.05)"
+Pb,68,0.0245,25,0.0287,0.85,0.4637,No (Not Significant)
+Cu,41,0.0843,16,0.0571,1.48,0.1223,No (Not Significant)
+Zn,27,0.53,17,0.0725,7.31,0.0458,"Yes (Dry > Rainy, p<0.05)"
+Ni,41,0.066,18,0.0945,0.7,0.4346,No (Not Significant)
