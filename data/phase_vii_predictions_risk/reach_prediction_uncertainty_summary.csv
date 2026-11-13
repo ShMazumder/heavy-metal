@@ -1,0 +1,4 @@
+Metal,Mean_Predicted,Mean_Uncertainty_Std,Median_Uncertainty_Std,Mean_CV,High_Uncertainty_Reaches_pct (CV > 0.5)
+Lead_Pb,29.99,9.48,8.5,0.364,19.34
+Chromium_Cr,67.29,29.11,21.09,0.438,38.42
+Cadmium_Cd,1.18,0.46,0.28,0.385,23.49
