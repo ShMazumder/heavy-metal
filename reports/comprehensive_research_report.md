@@ -111,15 +111,15 @@ This topological matching generated two enriched modeling views in the database:
 
 To determine whether sediment contamination is spatially structured or randomly distributed, Global Moran's $I$ was evaluated using a row-standardized 5-Nearest Neighbors ($k=5$) spatial weight matrix across 999 Monte Carlo permutations on $\log_{10}$-transformed concentrations.
 
-**Table 1:** Global Moran's $I$ spatial autocorrelation results for sediment heavy metals.
+**Table 1:** Global Moran's $I$ spatial autocorrelation results for sediment heavy metals (evaluated across 133 unique station centroids aggregated from 289 assays).
 | Heavy Metal | Sample Size ($N$) | Mean (mg/kg) | Median (mg/kg) | Moran's $I$ ($\log_{10}$) | $z$-score | Permutation $p$-value | Spatial Clustering Verdict |
 |---|---|---|---|---|---|---|---|
-| **Arsenic (As)** | 127 | 10.95 | 6.69 | **+0.8171** | +18.290 | $9.97 \times 10^{-75}$ | Extremely Clustered |
-| **Nickel (Ni)** | 82 | 44.20 | 37.00 | **+0.6552** | +12.254 | $1.60 \times 10^{-34}$ | Very Strongly Clustered |
-| **Lead (Pb)** | 132 | 96.79 | 25.52 | **+0.5099** | +11.736 | $8.31 \times 10^{-32}$ | Strongly Clustered |
-| **Copper (Cu)** | 82 | 34.50 | 24.50 | **+0.4536** | +8.555 | $1.18 \times 10^{-17}$ | Strongly Clustered |
-| **Chromium (Cr)** | 131 | 82.74 | 42.07 | **+0.4282** | +9.840 | $7.56 \times 10^{-23}$ | Strongly Clustered |
-| **Cadmium (Cd)** | 132 | 1.83 | 0.86 | **+0.2438** | +5.702 | $1.18 \times 10^{-08}$ | Clustered ($p < 0.001$) |
+| **Arsenic (As)** | 127 | 11.90 | 6.69 | **+0.8171** | +18.290 | $9.97 \times 10^{-75}$ | Extremely Clustered |
+| **Nickel (Ni)** | 82 | 45.66 | 37.00 | **+0.6552** | +12.254 | $1.60 \times 10^{-34}$ | Very Strongly Clustered |
+| **Lead (Pb)** | 132 | 30.05 | 25.52 | **+0.5099** | +11.736 | $8.31 \times 10^{-32}$ | Strongly Clustered |
+| **Copper (Cu)** | 82 | 36.58 | 24.50 | **+0.4536** | +8.555 | $1.18 \times 10^{-17}$ | Strongly Clustered |
+| **Chromium (Cr)** | 131 | 55.83 | 42.07 | **+0.4282** | +9.840 | $7.56 \times 10^{-23}$ | Strongly Clustered |
+| **Cadmium (Cd)** | 132 | 1.12 | 0.86 | **+0.2438** | +5.702 | $1.18 \times 10^{-08}$ | Clustered ($p < 0.001$) |
 
 ### Scientific Significance:
 All six target metals exhibited positive Moran's $I$ coefficients with infinitesimal $p$-values ($p < 10^{-7}$). This formally disproves spatial randomness and establishes that sediment metals in Bangladesh are organized into pronounced regional contamination hotspots, validating the core rationale for geospatial machine learning.
@@ -242,10 +242,10 @@ Cartography figure: [national_ecological_risk_map.png](file:///c:/xampp/htdocs/h
 **Table 4:** National distribution of Potential Ecological Risk Index ($RI$) across 55,668 river reach segments.
 | Ecological Risk Tier | $RI$ Criteria | Segment Count | Network Share (%) | Mean $PLI$ | Primary Impacted River Systems |
 |---|---|---|---|---|---|
-| **Very High Risk** | $RI \ge 600$ | **31,039** | **55.76%** | 4.82 | Buriganga, Turag, Shitalakhya, Dhaleshwari, lower Karnaphuli, urban Korotoa |
-| **Considerable Risk** | $300 \le RI < 600$ | **18,453** | **33.15%** | 2.14 | Surma-Kushiyara basin, Rupsa-Passur estuarine channels, Paira reach |
-| **Moderate Risk** | $150 \le RI < 300$ | **6,046** | **10.86%** | 1.35 | Middle reaches of Padma, Jamuna, Old Brahmaputra |
-| **Low Risk** | $RI < 150$ | **130** | **0.23%** | 0.81 | Unpolluted forested headwaters along southeastern/northeastern frontiers |
+| **Very High Risk** | $RI \ge 600$ | **31,039** | **55.76%** | 3.05 | Buriganga, Turag, Shitalakhya, Dhaleshwari, lower Karnaphuli, urban Korotoa |
+| **Considerable Risk** | $300 \le RI < 600$ | **18,453** | **33.15%** | 2.79 | Surma-Kushiyara basin, Rupsa-Passur estuarine channels, Paira reach |
+| **Moderate Risk** | $150 \le RI < 300$ | **6,046** | **10.86%** | 2.14 | Middle reaches of Padma, Jamuna, Old Brahmaputra |
+| **Low Risk** | $RI < 150$ | **130** | **0.23%** | 1.00 | Unpolluted forested headwaters along southeastern/northeastern frontiers |
 
 ```
                [National River Reach Risk Classification (RI)]
@@ -340,16 +340,16 @@ To optimize government resources, the top 10 priority candidate stations were ra
 **Table 7:** Top 10 prioritized candidate coordinates for national water quality network expansion.
 | Priority Rank | Station Identifier | Latitude (°N) | Longitude (°E) | Stream Order | Upstream Area ($km^2$) | Discharge ($m^3/s$) | Distance to Nearest Study (km) | Target River System |
 |---|---|---|---|---|---|---|---|---|
-| **1** | `GAP_STN_01` | **23.227083** | **90.631250** | 9 | 1,574,223 | 36,412.0 | **46.0 km** | Lower Meghna Mainstem (Chandpur Confluence) |
-| **2** | `GAP_STN_02` | **23.233333** | **90.631250** | 9 | 1,574,097 | 36,408.0 | **45.5 km** | Lower Meghna Mainstem |
-| **3** | `GAP_STN_03` | **23.237500** | **90.631250** | 9 | 1,574,094 | 36,408.0 | **45.0 km** | Lower Meghna Channel |
-| **4** | `GAP_STN_04` | **23.256744** | **90.619942** | 9 | 1,574,068 | 36,405.0 | **40.9 km** | Upper Meghna-Padma Confluence |
-| **5** | `GAP_STN_05` | **23.281250** | **90.597917** | 9 | 1,488,647 | 34,210.0 | **39.0 km** | Padma-Meghna Convergence Reach |
-| **6** | `GAP_STN_06` | **23.291667** | **90.587500** | 9 | 1,488,632 | 34,208.0 | **38.5 km** | Padma-Meghna Transition Channel |
-| **7** | `GAP_STN_07` | **23.309330** | **90.579490** | 9 | 1,488,629 | 34,205.0 | **35.2 km** | Upper Chandpur Estuarine Reach |
-| **8** | `GAP_STN_08` | **23.325863** | **90.564941** | 9 | 1,488,617 | 34,200.0 | **34.8 km** | Lower Padma Main Channel |
-| **9** | `GAP_STN_09` | **23.327083** | **90.558333** | 9 | 1,488,607 | 34,195.0 | **34.9 km** | Lower Padma Estuary Reach |
-| **10** | `GAP_STN_10` | **23.329167** | **90.550000** | 9 | 1,488,602 | 34,190.0 | **34.6 km** | Lower Padma Confluence |
+| **1** | `GAP_STN_01` | **23.227083** | **90.631250** | 9 | 1,574,223 | 40,393.0 | **46.0 km** | Lower Meghna Mainstem (Chandpur Confluence) |
+| **2** | `GAP_STN_02` | **23.233333** | **90.631250** | 9 | 1,574,097 | 40,392.3 | **45.5 km** | Lower Meghna Mainstem |
+| **3** | `GAP_STN_03` | **23.237500** | **90.631250** | 9 | 1,574,094 | 40,395.2 | **45.0 km** | Lower Meghna Channel |
+| **4** | `GAP_STN_04` | **23.256744** | **90.619942** | 9 | 1,574,068 | 40,397.0 | **40.9 km** | Upper Meghna-Padma Confluence |
+| **5** | `GAP_STN_05` | **23.281250** | **90.597917** | 9 | 1,488,647 | 34,820.8 | **39.0 km** | Padma-Meghna Convergence Reach |
+| **6** | `GAP_STN_06` | **23.291667** | **90.587500** | 9 | 1,488,632 | 34,830.8 | **38.5 km** | Padma-Meghna Transition Channel |
+| **7** | `GAP_STN_07` | **23.309330** | **90.579490** | 9 | 1,488,629 | 34,833.3 | **35.2 km** | Upper Chandpur Estuarine Reach |
+| **8** | `GAP_STN_08` | **23.325863** | **90.564941** | 9 | 1,488,617 | 34,851.4 | **34.8 km** | Lower Padma Main Channel |
+| **9** | `GAP_STN_09` | **23.327083** | **90.558333** | 9 | 1,488,607 | 34,856.3 | **34.9 km** | Lower Padma Estuary Reach |
+| **10** | `GAP_STN_10` | **23.329167** | **90.550000** | 9 | 1,488,602 | 34,858.7 | **34.6 km** | Lower Padma Confluence |
 
 *(Full priority list: [priority_future_monitoring_stations.csv](file:///c:/xampp/htdocs/heavy-metal/data/paper_2_water_results/priority_future_monitoring_stations.csv))*
 

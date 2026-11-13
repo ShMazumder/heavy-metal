@@ -52,7 +52,7 @@ A systematic literature extraction protocol was conducted across academic databa
 Raw spreadsheet records ($N=557$) were audited against original PDF source texts. Several critical historical compilation discrepancies were resolved:
 1. **Missing River Imputation:** 149 records lacking river names in historical compilations were traced to typographical fill-down omissions in source tables and fully mapped to verified river systems: Paira (P14), Kirtankhola (P18), and Korotoa (P22, P23, P28).
 2. **Medium Separation:** Water and sediment records were segregated into distinct analytical pipelines. Sediment records ($N=289$) were standardized strictly to milligrams per kilogram dry weight ($\text{mg/kg dw}$).
-3. **Target Element Screening:** Target metals were selected based on sample size feasibility gates ($N \ge 80$, $\ge 5$ distinct river systems, non-detect rate $< 35\%$). Six primary metals met all criteria: Lead (Pb, $N=289$), Chromium (Cr, $N=274$), Cadmium (Cd, $N=269$), Copper (Cu, $N=235$), Nickel (Ni, $N=235$), and Arsenic (As, $N=228$). Secondary metals (Zn, Fe, Mn, Co) were relegated to descriptive status due to geogenic baseline controls or sparse observations.
+3. **Target Element Screening:** Target metals were selected based on sample size feasibility gates ($N \ge 80$, $\ge 5$ distinct river systems, non-detect rate $< 35\%$). Six primary metals met all criteria: Lead (Pb, $N=289$), Chromium (Cr, $N=274$), Cadmium (Cd, $N=269$), Copper (Cu, $N=235$), Nickel (Ni, $N=235$), and Arsenic (As, $N=228$). Because multiple sampling depths and seasons occurred at identical sites, these 289 sediment assays map to 133 unique georeferenced station centroids across the 12 river systems. For spatial modeling and autocorrelation, co-located temporal replicates were summarized by their station spatial centroids (yielding $N=132$ unique stations for Pb, $131$ for Cr, $132$ for Cd, $82$ for Cu, $82$ for Ni, and $127$ for As). Secondary metals (Zn, Fe, Mn, Co) were relegated to descriptive status due to geogenic baseline controls or sparse observations.
 
 ### 2.2 River Network Topology Extraction and Station Snapping
 To account for fluvial connectivity, river reaches were derived from the HydroSHEDS HydroRIVERS v1.0 dataset (Lehner and Grill, 2013). The regional network was clipped to the geographic and transboundary extent of Bangladesh ($87.5^\circ\text{E}\text{--}93.0^\circ\text{E}$, $20.0^\circ\text{N}\text{--}27.0^\circ\text{N}$), yielding 55,668 distinct river reach segments. 
@@ -128,12 +128,12 @@ Global Moran's $I$ confirmed that sediment contamination across Bangladesh river
 **Table 1:** Global Moran's $I$ spatial autocorrelation metrics for sediment heavy metals in Bangladesh river systems ($N=133$, 999 permutations).
 | Metal | Sample Size ($N$) | Mean (mg/kg) | Median (mg/kg) | Moran's $I$ ($\log_{10}$) | Standardized $z$-score | Permutation $p$-value | Spatial Pattern |
 |---|---|---|---|---|---|---|---|
-| **Arsenic (As)** | 127 | 10.95 | 6.69 | **+0.8171** | +18.290 | $9.97 \times 10^{-75}$ | Extremely Clustered |
-| **Nickel (Ni)** | 82 | 44.20 | 37.00 | **+0.6552** | +12.254 | $1.60 \times 10^{-34}$ | Very Strongly Clustered |
-| **Lead (Pb)** | 132 | 96.79 | 25.52 | **+0.5099** | +11.736 | $8.31 \times 10^{-32}$ | Strongly Clustered |
-| **Copper (Cu)** | 82 | 34.50 | 24.50 | **+0.4536** | +8.555 | $1.18 \times 10^{-17}$ | Strongly Clustered |
-| **Chromium (Cr)** | 131 | 82.74 | 42.07 | **+0.4282** | +9.840 | $7.56 \times 10^{-23}$ | Strongly Clustered |
-| **Cadmium (Cd)** | 132 | 1.83 | 0.86 | **+0.2438** | +5.702 | $1.18 \times 10^{-08}$ | Clustered ($p < 0.001$) |
+| **Arsenic (As)** | 127 | 11.90 | 6.69 | **+0.8171** | +18.290 | $9.97 \times 10^{-75}$ | Extremely Clustered |
+| **Nickel (Ni)** | 82 | 45.66 | 37.00 | **+0.6552** | +12.254 | $1.60 \times 10^{-34}$ | Very Strongly Clustered |
+| **Lead (Pb)** | 132 | 30.05 | 25.52 | **+0.5099** | +11.736 | $8.31 \times 10^{-32}$ | Strongly Clustered |
+| **Copper (Cu)** | 82 | 36.58 | 24.50 | **+0.4536** | +8.555 | $1.18 \times 10^{-17}$ | Strongly Clustered |
+| **Chromium (Cr)** | 131 | 55.83 | 42.07 | **+0.4282** | +9.840 | $7.56 \times 10^{-23}$ | Strongly Clustered |
+| **Cadmium (Cd)** | 132 | 1.12 | 0.86 | **+0.2438** | +5.702 | $1.18 \times 10^{-08}$ | Clustered ($p < 0.001$) |
 
 Arsenic exhibited the highest degree of spatial clustering ($I = +0.8171, z = +18.29$), reflecting regional geochemical sediment lithology in the delta. Nickel ($I = +0.6552$) and Lead ($I = +0.5099$) showed pronounced regional autocorrelation centered in municipal and industrial centers. All metals displayed $p$-values $< 10^{-7}$, formally justifying the development of spatially explicit machine learning models.
 
@@ -179,10 +179,10 @@ Applying the champion models across all 55,668 HydroRIVERS reach segments enable
 **Table 3:** National distribution of Potential Ecological Risk Index ($RI$) across 55,668 HydroRIVERS river reaches in Bangladesh.
 | Risk Tier | $RI$ Threshold | Reach Count | National Coverage (%) | Typical Mean $PLI$ | Major Impacted River Corridors |
 |---|---|---|---|---|---|
-| **Very High Risk** | $RI \ge 600$ | **31,039** | **55.76%** | 4.82 | Buriganga, Turag, Shitalakhya, Dhaleshwari, lower Karnaphuli, urban Korotoa |
-| **Considerable Risk** | $300 \le RI < 600$ | **18,453** | **33.15%** | 2.14 | Surma-Kushiyara basin, Rupsa-Passur estuarine network, Paira reach |
-| **Moderate Risk** | $150 \le RI < 300$ | **6,046** | **10.86%** | 1.35 | Middle reaches of Padma, Jamuna, and Old Brahmaputra channels |
-| **Low Risk** | $RI < 150$ | **130** | **0.23%** | 0.81 | Pristine forested headwaters near southeastern and northeastern borders |
+| **Very High Risk** | $RI \ge 600$ | **31,039** | **55.76%** | 3.05 | Buriganga, Turag, Shitalakhya, Dhaleshwari, lower Karnaphuli, urban Korotoa |
+| **Considerable Risk** | $300 \le RI < 600$ | **18,453** | **33.15%** | 2.79 | Surma-Kushiyara basin, Rupsa-Passur estuarine network, Paira reach |
+| **Moderate Risk** | $150 \le RI < 300$ | **6,046** | **10.86%** | 2.14 | Middle reaches of Padma, Jamuna, and Old Brahmaputra channels |
+| **Low Risk** | $RI < 150$ | **130** | **0.23%** | 1.00 | Pristine forested headwaters near southeastern and northeastern borders |
 
 Over half of all river reach segments in Bangladesh (**55.76%**) exhibit **Very High Ecological Risk ($RI \ge 600$)**, driven predominantly by extreme enrichment factors for Cadmium ($E_r > 300$) and Lead ($E_r > 160$). Significant contamination hotspots ($PLI > 5.0$) are concentrated along the peripheral river systems surrounding Dhaka (Buriganga, Turag, Balu, Shitalakhya), the industrialized reaches of the Karnaphuli in Chattogram, and the urban Korotoa channel in Bogra. Conversely, low-risk river segments ($RI < 150$) represent less than 0.3% of the total river network, restricted entirely to high-elevation headwaters along international borders.
 

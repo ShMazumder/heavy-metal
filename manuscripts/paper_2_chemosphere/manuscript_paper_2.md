@@ -95,13 +95,13 @@ Surface water concentrations across Bangladesh rivers showed widespread, alarmin
 **Table 1:** Non-compliance audit of dissolved heavy metals in Bangladesh river waters against WHO and Bangladesh ECR drinking standards.
 | Element | Sample Size ($N$) | Mean (mg/L) | Median (mg/L) | Max (mg/L) | WHO Guideline (mg/L) | WHO Exceedance (%) | BD ECR Standard (mg/L) | BD ECR Exceedance (%) |
 |---|---|---|---|---|---|---|---|---|
-| **Lead (Pb)** | 146 | 0.4578 | 0.0314 | **33.000** | 0.010 | **87.7%** (128/146) | 0.050 | **37.0%** (54/146) |
-| **Chromium (Cr)** | 160 | 0.2815 | 0.0722 | **7.550** | 0.050 | **62.5%** (100/160) | 0.050 | **62.5%** (100/160) |
-| **Nickel (Ni)** | 104 | 0.2543 | 0.1000 | **3.210** | 0.070 | **57.7%** (60/104) | 0.100 | **48.1%** (50/104) |
-| **Arsenic (As)** | 122 | 0.0321 | 0.0152 | **0.352** | 0.010 | **54.9%** (67/122) | 0.050 | **18.0%** (22/122) |
-| **Cadmium (Cd)** | 132 | 0.0402 | 0.0030 | **1.750** | 0.003 | **47.0%** (62/132) | 0.005 | **42.4%** (56/132) |
-| **Copper (Cu)** | 105 | 0.2452 | 0.0900 | **6.320** | 2.000 | **3.8%** (4/105) | 1.000 | **9.5%** (10/105) |
-| **Zinc (Zn)** | 79 | 0.8124 | 0.5000 | **10.290** | 3.000 | **5.1%** (4/79) | 5.000 | **3.8%** (3/79) |
+| **Lead (Pb)** | 146 | 0.4036 | 0.0314 | **33.000** | 0.010 | **87.7%** (128/146) | 0.050 | **37.0%** (54/146) |
+| **Chromium (Cr)** | 160 | 0.4174 | 0.0722 | **7.550** | 0.050 | **62.5%** (100/160) | 0.050 | **62.5%** (100/160) |
+| **Nickel (Ni)** | 104 | 0.4284 | 0.1000 | **3.210** | 0.070 | **57.7%** (60/104) | 0.100 | **48.1%** (50/104) |
+| **Arsenic (As)** | 122 | 0.0351 | 0.0152 | **0.352** | 0.010 | **54.9%** (67/122) | 0.050 | **18.0%** (22/122) |
+| **Cadmium (Cd)** | 132 | 0.0448 | 0.0030 | **1.750** | 0.003 | **47.0%** (62/132) | 0.005 | **42.4%** (56/132) |
+| **Copper (Cu)** | 105 | 0.4326 | 0.0900 | **6.320** | 2.000 | **3.8%** (4/105) | 1.000 | **9.5%** (10/105) |
+| **Zinc (Zn)** | 79 | 0.9164 | 0.5000 | **10.290** | 3.000 | **5.1%** (4/79) | 5.000 | **3.8%** (3/79) |
 
 Key findings include:
 - **Catastrophic Lead Non-Compliance:** **87.7%** of all analyzed surface water samples exceeded the WHO drinking guideline for Lead (0.010 mg/L), with 37.0% exceeding the less stringent Bangladesh standard (0.050 mg/L). Extreme concentrations reached 33.0 mg/L in industrial reaches of the Buriganga, exceeding safe drinking limits by over 3,000-fold.
@@ -142,18 +142,18 @@ To optimize national water surveillance, the top 15 priority surveillance blind 
 **Table 3:** Top 10 prioritized candidate monitoring stations for national surface water network expansion in Bangladesh.
 | Priority Rank | Station Identifier | Recommended Latitude (°N) | Recommended Longitude (°E) | Strahler Stream Order | Upstream Area ($km^2$) | Mean Discharge ($m^3/s$) | Distance to Nearest Study (km) | Target River System |
 |---|---|---|---|---|---|---|---|---|
-| **1** | `GAP_STN_01` | **23.227083** | **90.631250** | 9 | 1,574,223 | 36,412.0 | **46.0 km** | Lower Meghna Mainstem (Chandpur Confluence) |
-| **2** | `GAP_STN_02` | **23.233333** | **90.631250** | 9 | 1,574,097 | 36,408.0 | **45.5 km** | Lower Meghna Mainstem |
-| **3** | `GAP_STN_03` | **23.237500** | **90.631250** | 9 | 1,574,094 | 36,408.0 | **45.0 km** | Lower Meghna Channel |
-| **4** | `GAP_STN_04` | **23.256744** | **90.619942** | 9 | 1,574,068 | 36,405.0 | **40.9 km** | Upper Meghna-Padma Confluence |
-| **5** | `GAP_STN_05` | **23.281250** | **90.597917** | 9 | 1,488,647 | 34,210.0 | **39.0 km** | Padma-Meghna Convergence Reach |
-| **6** | `GAP_STN_06` | **23.291667** | **90.587500** | 9 | 1,488,632 | 34,208.0 | **38.5 km** | Padma-Meghna Transition Channel |
-| **7** | `GAP_STN_07` | **23.309330** | **90.579490** | 9 | 1,488,629 | 34,205.0 | **35.2 km** | Upper Chandpur Estuarine Reach |
-| **8** | `GAP_STN_08` | **23.325863** | **90.564941** | 9 | 1,488,617 | 34,200.0 | **34.8 km** | Lower Padma Main Channel |
-| **9** | `GAP_STN_09` | **23.327083** | **90.558333** | 9 | 1,488,607 | 34,195.0 | **34.9 km** | Lower Padma Estuary Reach |
-| **10** | `GAP_STN_10` | **23.329167** | **90.550000** | 9 | 1,488,602 | 34,190.0 | **34.6 km** | Lower Padma Confluence |
+| **1** | `GAP_STN_01` | **23.227083** | **90.631250** | 9 | 1,574,223 | 40,393.0 | **46.0 km** | Lower Meghna Mainstem (Chandpur Confluence) |
+| **2** | `GAP_STN_02` | **23.233333** | **90.631250** | 9 | 1,574,097 | 40,392.3 | **45.5 km** | Lower Meghna Mainstem |
+| **3** | `GAP_STN_03` | **23.237500** | **90.631250** | 9 | 1,574,094 | 40,395.2 | **45.0 km** | Lower Meghna Channel |
+| **4** | `GAP_STN_04` | **23.256744** | **90.619942** | 9 | 1,574,068 | 40,397.0 | **40.9 km** | Upper Meghna-Padma Confluence |
+| **5** | `GAP_STN_05` | **23.281250** | **90.597917** | 9 | 1,488,647 | 34,820.8 | **39.0 km** | Padma-Meghna Convergence Reach |
+| **6** | `GAP_STN_06` | **23.291667** | **90.587500** | 9 | 1,488,632 | 34,830.8 | **38.5 km** | Padma-Meghna Transition Channel |
+| **7** | `GAP_STN_07` | **23.309330** | **90.579490** | 9 | 1,488,629 | 34,833.3 | **35.2 km** | Upper Chandpur Estuarine Reach |
+| **8** | `GAP_STN_08` | **23.325863** | **90.564941** | 9 | 1,488,617 | 34,851.4 | **34.8 km** | Lower Padma Main Channel |
+| **9** | `GAP_STN_09` | **23.327083** | **90.558333** | 9 | 1,488,607 | 34,856.3 | **34.9 km** | Lower Padma Estuary Reach |
+| **10** | `GAP_STN_10` | **23.329167** | **90.550000** | 9 | 1,488,602 | 34,858.7 | **34.6 km** | Lower Padma Confluence |
 
-The single greatest surveillance blind spot is the lower Meghna mainstem near Chandpur (`GAP_STN_01`, 23.227°N, 90.631°E), which integrates total upstream drainage from both the Ganges and Brahmaputra basins ($>1.57 \text{ million } km^2$, discharge $>36,000\text{ m}^3/s$) yet is situated 46 km away from any routine academic or government toxic trace element station.
+The single greatest surveillance blind spot is the lower Meghna mainstem near Chandpur (`GAP_STN_01`, 23.227°N, 90.631°E), which integrates total upstream drainage from both the Ganges and Brahmaputra basins ($>1.57 \text{ million } km^2$, discharge $>40,000\text{ m}^3/s$) yet is situated 46 km away from any routine academic or government toxic trace element station.
 
 ---
 
@@ -185,6 +185,10 @@ This study delivers the first nationwide regulatory compliance audit, multi-meta
 - Ali, M.M., Ali, M.L., Rakib, M.R.J., Islam, M.S., Habib, A., Hossen, S., Ibrahim, K.A., Idris, A.M., Phoungthong, K., 2021. Contamination and ecological risk assessment of heavy metals in water and sediment from hubs of fish resource river in a developing country. *Toxin Rev.* 41, 1283–1295.
 - Islam, M.S., Ahmed, M.K., Raknuzzaman, M., Habibullah-Al-Mamun, M., Islam, M.K., 2015. Heavy metal pollution in surface water and sediment: a preliminary assessment of an urban river in a developing country. *Ecol. Indic.* 48, 282–291.
 - Järup, L., 2003. Hazards of heavy metal contamination. *Br. Med. Bull.* 68, 167–182.
+- Lehner, B., Grill, G., 2013. Global river hydrography and network routing: baseline data and new approaches to study the world's large river systems. *Hydrol. Process.* 27, 2171–2186.
+- Ministry of Environment, Forest and Climate Change, 2023. Environmental Conservation Rules (ECR 2023). Government of the People's Republic of Bangladesh, Dhaka.
+- Mohan, S.V., Nithila, P., Reddy, S.J., 1996. Estimation of heavy metal in drinking water and development of heavy metal pollution index. *J. Environ. Sci. Health A* 31, 283–289.
 - Needleman, H., 2004. Lead poisoning. *Annu. Rev. Med.* 55, 209–222.
 - Prasad, B., Bose, J.M., 2001. Evaluation of the heavy metal pollution index for municipal solid waste disposal sites. *Environ. Geol.* 41, 961–966.
+- Tchounwou, P.B., Yedjou, C.G., Patlolla, A.K., Sutton, D.J., 2012. Heavy metal toxicity and the environment. *Mol. Clin. Environ. Toxicol.* 101, 133–164.
 - WHO, 2017. Guidelines for Drinking-water Quality, 4th ed., incorporating the first addendum. World Health Organization, Geneva.
