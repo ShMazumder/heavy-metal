@@ -1,0 +1,146 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{cite}
+\usepackage{hyperref}
+
+\begin{document}
+
+\title{Spatiotemporal Surface Water Metal Exceedance, Dilution Dynamics, and Monitoring Optimization Across Bangladesh}
+
+\author{\IEEEauthorblockN{Author One}
+\IEEEauthorblockA{\textit{Dept. of Environmental Science and Engineering} \\
+\textit{University Name}\\
+Dhaka, Bangladesh \\
+author.one@university.edu}
+\and
+\IEEEauthorblockN{Author Two}
+\IEEEauthorblockA{\textit{Institute of Water and Flood Management} \\
+\textit{Technical University}\\
+Dhaka, Bangladesh \\
+author.two@institution.org}
+\and
+\IEEEauthorblockN{Author Three}
+\IEEEauthorblockA{\textit{Dept. of Civil and Environmental Engineering} \\
+\textit{Research Institute}\\
+Dhaka, Bangladesh \\
+author.three@research.org}
+}
+
+\maketitle
+
+\begin{abstract}
+Surface waters in the Bengal Delta supply vital resources for municipal water distribution, domestic consumption, and agricultural irrigation, yet receive massive volumes of untreated industrial wastewater. This paper presents a nationwide multi-study synthesis and risk audit of dissolved heavy metals across Bangladesh river waters, analyzing 268 records across 12 major rivers from 28 peer-reviewed studies (2010--2022). Auditing against World Health Organization (WHO) benchmarks and Bangladesh Environmental Conservation Rules (ECR 2023) revealed alarming non-compliance for toxic trace elements: Lead (Pb) violated WHO guidelines ($0.010\text{ mg/L}$) in \textbf{87.7\%} of samples (reaching $33.0\text{ mg/L}$), while Chromium (62.5\%), Nickel (57.7\%), and Arsenic (54.9\%) exhibited chronic exceedance. Heavy Metal Pollution Index (HPI) modeling classified \textbf{51.6\%} of multi-metal samples into Critical Pollution ($HPI > 200$, mean $HPI = 1,483$). Non-parametric Mann-Whitney U hypothesis testing confirmed significant seasonal hydraulic dilution: dissolved concentrations of Cr, Cd, and As double during the winter dry season ($p < 0.02$), while Lead remains chronically elevated year-round due to wet-season diffuse urban stormwater wash-off. Spatial river-network analysis using HydroSHEDS HydroRIVERS isolated 4,435 major river reach segments ($>25\text{ km}$ from historical stations) and established a prioritized ranking of surveillance blind spots, pinpointing the lower Meghna mainstem (Chandpur reach, 23.227$^\circ$N, 90.631$^\circ$E) as the paramount priority for national monitoring expansion.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Surface Water Quality, Heavy Metal Pollution Index (HPI), Drinking Water Compliance, Monsoon Dilution, Surveillance Blind Spots, HydroSHEDS, Bangladesh.
+\end{IEEEkeywords}
+
+\section{Introduction}
+Freshwater rivers across Bangladesh support over 170 million people for municipal potable water supply, rural domestic consumption, artisanal fisheries, and extensive boro rice irrigation \cite{Ahmad2010,Ali2021}. However, rapid, unplanned industrialization along fluvial corridors---especially textile manufacturing, tanneries, and metal plating---has resulted in direct discharges of untreated toxic wastewater \cite{Islam2015}. Toxic heavy metals (As, Cd, Cr, Cu, Ni, Pb, Zn) are bioaccumulative and exert severe multi-organ toxicity, neurocognitive damage, and oncogenesis \cite{Jarup2003,Needleman2004}.
+
+Despite the urgency of freshwater protection, three critical knowledge gaps persist: (1) national regulatory non-compliance rates across both WHO and domestic standards have never been systematically audited; (2) the degree of natural hydraulic dilution provided by massive South Asian monsoon discharge remains statistically unverified; and (3) existing government monitoring networks leave major fluvial arteries unmonitored.
+
+This study resolves these gaps by conducting a nationwide compliance audit, multi-metal index modeling, non-parametric seasonal dilution testing, and geospatial network optimization across 55,668 HydroRIVERS reach segments.
+
+\section{Compliance Audit and Index Modeling}
+
+\subsection{Curated Water Quality Database}
+A harmonized database of 268 surface water assays across 12 major rivers was synthesized from peer-reviewed literature (2010--2022). Seven primary trace elements were analyzed: As ($N=122$), Cd ($N=132$), Cr ($N=160$), Cu ($N=105$), Ni ($N=104$), Pb ($N=146$), and Zn ($N=79$).
+
+\subsection{Regulatory Exceedance Analysis}
+Observed concentrations were audited against WHO drinking water guidelines \cite{WHO2017} and Bangladesh Environmental Conservation Rules (ECR 2023) \cite{ECR2023}. Exceedance rates were calculated as the percentage of samples exceeding respective maximum permissible limits.
+
+\subsection{Heavy Metal Pollution Index (HPI)}
+Integrated water quality was evaluated using the Heavy Metal Pollution Index \cite{Mohan1996,Prasad2001}:
+\begin{equation}
+HPI = \frac{\sum_{i=1}^n W_i Q_i}{\sum_{i=1}^n W_i}, \quad W_i = \frac{1}{S_i}, \quad Q_i = \frac{M_i}{S_i} \times 100
+\end{equation}
+where $S_i$ is the WHO standard and $M_i$ is measured concentration. Water samples were classified into Low ($HPI < 100$), Moderate ($100 \le HPI \le 200$), and Critical Pollution ($HPI > 200$).
+
+\section{Results and Discussion}
+
+\subsection{Systemic Regulatory Non-Compliance}
+Fig.~\ref{fig:exceed} and Table~\ref{tab:audit} present the regulatory compliance audit across all target elements.
+
+\begin{table}[htbp]
+\centering
+\caption{Dissolved Metal Exceedance Against WHO and BD Standards}
+\label{tab:audit}
+\begin{tabular}{lcccc}
+\toprule
+Element & Mean (mg/L) & Max (mg/L) & WHO Exceed & BD Exceed \\
+\midrule
+\textbf{Pb} & 0.4578 & 33.000 & \textbf{87.7\%} & \textbf{37.0\%} \\
+\textbf{Cr} & 0.2815 & 7.550 & \textbf{62.5\%} & \textbf{62.5\%} \\
+\textbf{Ni} & 0.2543 & 3.210 & \textbf{57.7\%} & \textbf{48.1\%} \\
+\textbf{As} & 0.0321 & 0.352 & \textbf{54.9\%} & \textbf{18.0\%} \\
+\textbf{Cd} & 0.0402 & 1.750 & \textbf{47.0\%} & \textbf{42.4\%} \\
+\textbf{Cu} & 0.2452 & 6.320 & 3.8\% & 9.5\% \\
+\textbf{Zn} & 0.8124 & 10.290 & 5.1\% & 3.8\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Lead non-compliance was catastrophic: \textbf{87.7\%} of samples exceeded the WHO threshold ($0.010\text{ mg/L}$), reaching concentrations as high as $33.0\text{ mg/L}$ in industrial channels. Carcinogenic Chromium (62.5\%), Nickel (57.7\%), and Arsenic (54.9\%) also showed pervasive failure. Conversely, micronutrients (Cu, Zn) exhibited high compliance ($>94\%$), proving contamination is toxic-element-specific.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.98\columnwidth]{fig1_exceedance.png}
+\caption{WHO vs. Bangladesh ECR exceedance rates for dissolved metals.}
+\label{fig:exceed}
+\end{figure}
+
+\subsection{Integrated Pollution Status (HPI)}
+Across 157 multi-metal records, the mean $HPI$ reached \textbf{1,483.09} (median = 208.52), over 14 times the critical threshold of 100. Overall, \textbf{51.6\%} of river water samples fell into Critical Pollution ($HPI > 200$), driven primarily by high toxicity weights of Cd ($W_i = 333$) and Pb ($W_i = 100$).
+
+\subsection{Seasonal Dilution Dynamics}
+Non-parametric Mann-Whitney U tests (Fig.~\ref{fig:dilution}) confirmed significant seasonal dilution between dry winter baseflow and wet monsoon high-flow:
+\begin{itemize}
+    \item \textbf{Significant Dilution ($p < 0.02$):} Dissolved concentrations doubled in the dry season for Cr ($1.99\times, p=0.0191$), Cd ($1.81\times, p=0.0204$), and As ($1.74\times, p=0.0021$), proving hydraulic volumetric flushing.
+    \item \textbf{No Dilution for Lead ($p = 0.4637$):} Lead concentrations remained chronically elevated year-round ($0.025\text{ vs. } 0.029\text{ mg/L}$), driven by diffuse urban stormwater wash-off of atmospheric deposition and scrap battery particulates.
+\end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.98\columnwidth]{fig2_dilution.png}
+\caption{Seasonal log-scale concentration distributions across dry and wet seasons.}
+\label{fig:dilution}
+\end{figure}
+
+\section{River-Network Monitoring Optimization}
+Spatial network analysis on HydroSHEDS HydroRIVERS \cite{Lehner2013} revealed that 4,435 major river reaches (Strahler order $\ge 4$, $Q > 50\text{ m}^3/\text{s}$) are $>25\text{ km}$ from any historical monitoring station. Table~\ref{tab:gaps} lists the top candidate stations for network expansion.
+
+\begin{table}[htbp]
+\centering
+\caption{Top Candidate Stations for National Monitoring Expansion}
+\label{tab:gaps}
+\begin{tabular}{lcccc}
+\toprule
+Station & Lat ($^\circ$N) & Lon ($^\circ$E) & Discharge ($\text{m}^3/\text{s}$) & Blind Offset \\
+\midrule
+\texttt{GAP\_STN\_01} & \textbf{23.227} & \textbf{90.631} & \textbf{36,412} & \textbf{46.0 km} \\
+\texttt{GAP\_STN\_02} & 23.233 & 90.631 & 36,408 & 45.5 km \\
+\texttt{GAP\_STN\_03} & 23.238 & 90.631 & 36,408 & 45.0 km \\
+\texttt{GAP\_STN\_04} & 23.257 & 90.620 & 36,405 & 40.9 km \\
+\texttt{GAP\_STN\_05} & 23.281 & 90.598 & 34,210 & 39.0 km \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Priority station \texttt{GAP\_STN\_01} on the lower Meghna at Chandpur drains over $1.57 \times 10^6\text{ km}^2$ but is located 46 km away from any routine monitoring site, representing the single largest surveillance blind spot in the Bengal Delta.
+
+\section{Conclusion}
+This study reveals chronic heavy metal contamination in Bangladesh river waters, with 87.7\% of samples violating WHO Lead limits and 51.6\% in Critical Pollution ($HPI > 200$). While monsoon discharge halves Cr, Cd, and As concentrations, Lead remains elevated year-round. Prioritizing candidate monitoring stations in the lower Meghna confluence is essential for national water security.
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

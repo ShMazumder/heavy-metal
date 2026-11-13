@@ -1,2 +1,10 @@
 
 catboost_info/
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.spl
+*.blg
+*.bbl
