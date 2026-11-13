@@ -1,0 +1,7 @@
+Metal,N,Mean_mg_kg,Median_mg_kg,Std_mg_kg,Moran_I_Native,Z_Score_Native,p_value_Native,Moran_I_Log10,Z_Score_Log10,p_value_Log10,Spatial_Pattern
+Lead (Pb),132,30.05,25.52,19.69,0.5173,11.903,1.1420289806683984e-32,0.5099,11.736,8.313163416458155e-32,Statistically Significant Clustering (Hotspots)
+Chromium (Cr),131,55.83,42.07,36.86,0.5098,11.681,1.596705109592454e-31,0.4282,9.84,7.563237063801448e-23,Statistically Significant Clustering (Hotspots)
+Cadmium (Cd),132,1.12,0.86,1.03,0.483,11.125,9.480792859349029e-29,0.2438,5.702,1.1831645213840082e-08,Statistically Significant Clustering (Hotspots)
+Copper (Cu),82,36.58,24.5,29.7,0.568,10.653,1.680014603526599e-26,0.4536,8.555,1.181270724360684e-17,Statistically Significant Clustering (Hotspots)
+Nickel (Ni),82,45.66,37.0,37.27,0.6238,11.679,1.6269402565704167e-31,0.6552,12.254,1.5963926213352996e-34,Statistically Significant Clustering (Hotspots)
+Arsenic (As),127,11.9,6.69,11.48,0.5226,11.759,6.316143904730582e-32,0.8171,18.29,9.972890127526054e-75,Statistically Significant Clustering (Hotspots)

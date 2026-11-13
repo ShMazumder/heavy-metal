@@ -1,0 +1,7 @@
+Metal,N_Samples,OK_RMSE,OK_MAE,OK_R2,OK_R2_log,RF_RMSE,RF_MAE,RF_R2,RF_R2_log,Best_Baseline,RF_R2_Advantage
+Lead (Pb),132,13.74,10.1,0.513,0.385,13.41,10.61,0.537,0.47,Random Forest (Hydrological ML),0.024
+Chromium (Cr),131,296.49,195.41,-63.712,-118.943,27.96,18.45,0.424,0.371,Random Forest (Hydrological ML),64.136
+Cadmium (Cd),132,0.9,0.63,0.248,0.222,0.71,0.52,0.522,0.225,Random Forest (Hydrological ML),0.274
+Copper (Cu),82,20.43,14.62,0.527,0.339,21.6,16.43,0.471,0.329,Ordinary Kriging (Spatial),-0.056
+Nickel (Ni),82,23.22,15.37,0.612,0.718,25.67,16.0,0.525,0.615,Ordinary Kriging (Spatial),-0.086
+Arsenic (As),127,71.12,41.47,-37.395,-26.115,10.1,5.67,0.226,0.561,Random Forest (Hydrological ML),37.621
