@@ -1,0 +1,5 @@
+Panel,Metals,N_Records,Median_HPI,IQR_HPI,Mean_HPI,Max_HPI,Pct_gt_100,Pct_gt_200
+Core4,"As, Cd, Cr, Pb",112,156.99,280.55,395.21,2682.05,58.9,42.9
+Core5,"As, Cd, Cr, Ni, Pb",62,231.75,493.32,590.56,2619.19,74.2,56.5
+All7,"As, Cd, Cr, Cu, Ni, Pb, Zn",35,253.02,1732.92,846.52,2615.37,85.7,65.7
+Variable (>=3),Inconsistent subsets,157,202.3,714.89,718.74,5920.11,63.1,50.3

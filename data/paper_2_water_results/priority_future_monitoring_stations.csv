@@ -1,16 +1,16 @@
-Priority_Rank,Candidate_Station_ID,Recommended_Latitude,Recommended_Longitude,Strahler_Stream_Order,Upstream_Catchment_km2,Mean_Discharge_m3_s,Distance_to_Nearest_Study_km,Target_River_Reach,HYRIV_ID
-1,GAP_STN_01,23.227083,90.63125,9.0,1574223.0,40393.0,42.6,Lower Meghna Mainstem (Chandpur Confluence),41067217.0
-2,GAP_STN_02,23.394792,90.394792,9.0,1488391.0,34905.9,29.3,Padma-Meghna Convergence (Munshiganj Reach),41059091.0
-3,GAP_STN_03,23.535417,90.14375,9.0,1485761.0,34854.3,30.9,Lower Padma Main Channel (Madaripur),41051206.0
-4,GAP_STN_04,23.717824,89.91875,9.0,1485272.0,34838.2,48.2,Upper Padma Mainstem (Goalundo Reach),41042174.0
-5,GAP_STN_05,23.802083,89.608333,8.0,944490.4,13494.1,65.6,Ganges-Jamuna Convergence Reach (Rajbari),41037460.0
-6,GAP_STN_06,23.91875,89.308523,8.0,943785.9,13478.7,32.6,Upper Ganges Mainstem (Kushtia),41032647.0
-7,GAP_STN_07,24.2,88.75,8.0,942748.9,13506.5,32.2,Central Ganges Channel (Pabna-Natore Reach),41017553.0
-8,GAP_STN_08,24.35625,88.491667,8.0,941812.2,13497.9,42.3,North-West Padma Reach (Rajshahi Upstream),41008767.0
-9,GAP_STN_09,24.452083,88.210417,8.0,929833.9,13279.1,27.9,Upper Border Ganges Reach (Chapai Nawabganj),41003640.0
-10,GAP_STN_10,24.08912,89.694676,8.0,521877.5,20698.2,67.2,Lower Jamuna (Brahmaputra) Reach (Sirajganj),41024596.0
-11,GAP_STN_11,24.35125,89.790417,8.0,520951.3,20660.0,69.6,Central Jamuna Mainstem (Bogra Reach),41009938.0
-12,GAP_STN_12,24.624306,89.804861,8.0,520682.0,20666.4,50.3,Upper Jamuna Channel (Jamalpur-Bogra Reach),40994509.0
-13,GAP_STN_13,24.871528,89.624306,8.0,514663.2,20483.8,25.5,Brahmaputra Confluence Reach (Gaibandha),40980151.0
-14,GAP_STN_14,25.145833,89.69375,8.0,514278.1,20833.0,46.2,Upper Brahmaputra Channel (Kurigram),40964192.0
-15,GAP_STN_15,25.42125,89.697917,8.0,500939.0,21061.2,71.5,Northern Brahmaputra Entry Reach (Chilmari),40947865.0
+Priority_Rank,Candidate_Station_ID,Recommended_Latitude,Recommended_Longitude,Strahler_Stream_Order,Upstream_Catchment_km2,Modeled_Discharge_m3_s,Distance_to_Nearest_Study_km,Target_River_Reach,HYRIV_ID
+1,GAP_STN_01,23.227083,90.63125,9,1574223.0,40393.0,42.6,Lower Meghna Mainstem (Chandpur–Haimchar Confluence Reach),41067217
+2,GAP_STN_02,23.394792,90.394792,9,1488391.0,34905.9,29.3,Padma–Meghna Estuarine Convergence (Munshiganj Reach),41059091
+3,GAP_STN_03,23.535417,90.14375,9,1485761.0,34854.3,30.9,"Lower Padma Main Channel (Jazira–Louhajang Reach, Shariatpur/Munshiganj)",41051206
+4,GAP_STN_04,23.717824,89.91875,9,1485272.0,34838.2,48.2,"Upper Padma Mainstem (Goalundo Reach, Rajbari)",41042174
+5,GAP_STN_05,23.802083,89.608333,8,944490.4,13494.1,65.6,"Ganges–Jamuna Convergence Reach (Pangsha–Sujanagar, Rajbari/Pabna)",41037460
+6,GAP_STN_06,23.91875,89.308523,8,943785.9,13478.7,32.6,"Upper Ganges Mainstem (Kumarkhali–Ishwardi Reach, Kushtia/Pabna)",41032647
+7,GAP_STN_07,24.2,88.75,8,942748.9,13506.5,32.2,"Central Ganges Channel (Charghat–Bagha Reach, Rajshahi/Natore)",41017553
+8,GAP_STN_08,24.35625,88.491667,8,941812.2,13497.9,42.3,North-West Padma Reach (Rajshahi Sadar Upstream),41008767
+9,GAP_STN_09,24.452083,88.210417,8,929833.9,13279.1,27.9,"Upper Border Ganges Reach (Shibganj, Chapai Nawabganj)",41003640
+10,GAP_STN_10,24.08912,89.694676,8,521877.5,20698.2,67.2,"Lower Jamuna Channel (Chauhali–Tangail Reach, Sirajganj/Tangail)",41024596
+11,GAP_STN_11,24.35125,89.790417,8,520951.3,20660.0,69.6,"Central Jamuna Mainstem (Belkuchi Reach, Sirajganj–Tangail)",41009938
+12,GAP_STN_12,24.624306,89.804861,8,520682.0,20666.4,50.3,Upper Jamuna Channel (Bhuapur–Sirajganj Reach),40994509
+13,GAP_STN_13,24.871528,89.624306,8,514663.2,20483.8,25.5,"Jamuna Confluence (Kazipur–Sariakandi Reach, Bogura)",40980151
+14,GAP_STN_14,25.145833,89.69375,8,514278.1,20833.0,46.2,"Brahmaputra Mainstem (Fulchhari–Dewanganj Reach, Gaibandha/Jamalpur)",40964192
+15,GAP_STN_15,25.42125,89.697917,8,500939.0,21061.2,71.5,"Upper Brahmaputra Entry Reach (Chilmari, Kurigram)",40947865

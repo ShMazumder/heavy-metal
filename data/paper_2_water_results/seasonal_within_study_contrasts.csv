@@ -1,0 +1,8 @@
+Element,K_Paired_Studies,Within_Mean_Ratio,Within_Median_Ratio,Wilcoxon_p
+As,4,1.21,1.21,0.375
+Cd,5,1.39,1.19,0.875
+Cr,5,1.24,1.23,0.1875
+Cu,4,0.86,1.06,1.0
+Ni,4,1.1,1.12,0.875
+Pb,4,1.24,1.25,0.125
+Zn,3,1.05,1.14,0.5

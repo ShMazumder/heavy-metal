@@ -1,0 +1,7 @@
+Metric,Unsampled_Reaches,Pct_Reaches,Unsampled_Length_km,Pct_Length
+Straight-Line (Haversine) > 10 km,3757,96.5,8088.5,96.6
+Straight-Line (Haversine) > 25 km,3407,87.5,7369.3,88.0
+Straight-Line (Haversine) > 50 km,2564,65.8,5593.9,66.8
+Along-Network Distance > 10 km,3807,97.8,8181.6,97.8
+Along-Network Distance > 25 km,3682,94.6,7919.9,94.6
+Along-Network Distance > 50 km,3445,88.5,7431.4,88.8
