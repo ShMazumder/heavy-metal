@@ -276,68 +276,66 @@ Full reach uncertainty dataset: [reach_prediction_uncertainty_summary.csv](file:
 
 ---
 
-## 8. Surface Water Quality Synthesis & Drinking Benchmark Exceedances (Paper 2)
+## 8. Surface Water Quality Synthesis & Regulatory Benchmark Discordance (Paper 2)
 
-An audited literature compilation of 268 surface water records across 17 peer-reviewed studies (2010–2024) was rigorously evaluated. Exactly 162 records from 12 studies measured toxic heavy metals, while 106 records from 5 studies measured bulk physicochemical parameters (documented in [supplement_s1_studies.csv](file:///Users/rohansmac/Documents/projects/heavy-metal/data/paper_2_water_results/supplement_s1_studies.csv)). A comprehensive pre- vs. post-audit diff revealed 19 historical transcription and unit-scaling errors (1 transcription typo in P04, 18 unit-scaling errors in P27), fully documented in the audit log ([audit_log.csv](file:///Users/rohansmac/Documents/projects/heavy-metal/data/paper_2_water_results/audit_log.csv)).
+An audited literature compilation of 268 surface water records across 17 peer-reviewed studies (2010–2024) was rigorously evaluated. Exactly 162 records from 12 studies measured toxic heavy metals, while 106 records from 5 studies measured bulk physicochemical parameters (documented in [supplement_s0_study_reconciliation.csv](file:///Users/rohansmac/Documents/projects/heavy-metal/data/paper_2_water_results/supplement_s0_study_reconciliation.csv)). A comprehensive pre- vs. post-audit diff revealed 19 historical transcription and unit-scaling errors (1 transcription typo in P04, 18 unit-scaling errors in P27), fully documented in the audit log ([audit_log.csv](file:///Users/rohansmac/Documents/projects/heavy-metal/data/paper_2_water_results/audit_log.csv)).
 
-Water metal concentrations were screened against World Health Organization drinking-water quality guidelines (WHO, 4th ed., incorporating 2022 addenda), Bangladesh Environmental Conservation Rules (ECR potable schedule), and FAO irrigation criteria (Ayers & Westcot, 1985). Both unadjusted Wilson score confidence intervals and study-level cluster bootstrap 95% confidence intervals ($B=5,000$ resamples) were calculated to reflect clustering within primary studies.
+Water metal concentrations were screened against World Health Organization drinking-water quality guidelines (WHO, 4th ed., incorporating 2022 addenda), historical Bangladesh Environmental Conservation Rules (ECR 1997 Schedule 3), contemporary statutory standards (ECR 2023 Schedule 2; S.R.O. 53-Law/2023), and FAO irrigation criteria (Ayers & Westcot, 1985). Both unadjusted Wilson score confidence intervals and study-level cluster bootstrap 95% confidence intervals ($B=5,000$ resamples) were calculated to reflect clustering within primary studies.
 
 **Table 5:** Heavy metal benchmark exceedance audit in published Bangladesh river waters with 95% Wilson score and study-level cluster bootstrap confidence intervals.
-| Heavy Metal | $N$ | Studies ($K$) | Median (mg/L) | Max (mg/L) | WHO Limit (mg/L) | **WHO Exceedance [Cluster CI] (Wilson CI)** | BD ECR Limit (mg/L) | **BD ECR Exceedance [Cluster CI] (Wilson CI)** | FAO Irrig. Limit (mg/L) | **FAO Exceedance [Cluster CI]** |
-|---|---|---|---|---|---|---|---|---|---|---|
-| **Lead (Pb)** | 146 | 10 | 0.0286 | **0.700** | 0.010 | **85.6%** [70.6–94.1%] (79.0–90.4%) | 0.050 | **34.9%** [11.4–64.3%] (27.7–43.0%) | 5.000 | **0.0%** [0.0–0.0%] |
-| **Chromium (Cr)** | 160 | 12 | 0.0710 | **7.550** | 0.050 | **60.6%** [32.3–82.9%] (52.9–67.9%) | 0.050 | **60.6%** [32.0–82.9%] (52.9–67.9%) | 0.100 | **27.5%** [10.8–44.8%] |
-| **Arsenic (As)** | 122 | 9 | 0.0152 | **0.352** | 0.010 | **54.9%** [18.1–84.9%] (46.1–63.5%) | 0.050 | **18.0%** [1.6–42.9%] (12.2–25.8%) | 0.100 | **9.0%** [0.0–28.2%] |
-| **Nickel (Ni)** | 104 | 9 | 0.0888 | **2.888** | 0.070 | **54.8%** [22.4–79.1%] (45.2–64.0%) | 0.100 | **45.2%** [14.9–67.5%] (36.0–54.8%) | 0.200 | **25.0%** [0.0–52.8%] |
-| **Cadmium (Cd)** | 132 | 10 | 0.0028 | **0.123** | 0.003 | **44.7%** [13.5–77.1%] (36.5–53.2%) | 0.005 | **40.2%** [12.2–69.5%] (32.2–48.7%) | 0.010 | **26.5%** [8.2–47.0%] |
-| **Zinc (Zn)** | 79 | 6 | 0.4000 | 3.200 | 3.000$^*$ | **1.3%** [0.0–3.4%] (0.2–6.8%) | 5.000 | **0.0%** [0.0–0.0%] (0.0–4.6%) | 2.000 | **6.3%** [0.0–17.2%] |
-| **Copper (Cu)** | 105 | 10 | 0.0888 | 2.179 | 2.000 | **1.0%** [0.0–3.2%] (0.2–5.2%) | 1.000 | **6.7%** [0.0–14.8%] (3.3–13.1%) | 0.200 | **26.7%** [0.0–53.7%] |
+| Heavy Metal | $N$ | Studies ($K$) | Median (mg/L) | Max (mg/L) | WHO Limit (mg/L) | **WHO Exceedance [Cluster CI]** | ECR 1997 Limit (mg/L) | **ECR 1997 Exceedance [Cluster CI]** | ECR 2023 Limit (mg/L) | **ECR 2023 Exceedance [Cluster CI]** | FAO Irrig. Limit (mg/L) | **FAO Exceedance [Cluster CI]** |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| **Lead (Pb)** | 146 | 10 | 0.0286 | **0.700** | 0.010 | **85.6%** [71.1–94.3%] | 0.050 | **34.9%** [11.4–63.8%] | 0.010 | **85.6%** [69.2–94.3%] | 5.000 | **0.0%** [0.0–2.6%] |
+| **Chromium (Cr)** | 160 | 12 | 0.0710 | **7.550** | 0.050 | **60.6%** [32.4–82.8%] | 0.050 | **60.6%** [32.2–82.8%] | 0.050 | **60.6%** [32.7–82.9%] | 0.100 | **27.5%** [11.3–45.3%] |
+| **Nickel (Ni)** | 104 | 9 | 0.0888 | **2.888** | 0.070 | **54.8%** [21.7–79.1%] | 0.100 | **45.2%** [15.7–67.6%] | 0.050 | **61.5%** [34.4–80.6%] | 0.200 | **25.0%** [0.0–52.4%] |
+| **Arsenic (As)** | 122 | 9 | 0.0152 | **0.352** | 0.010 | **54.9%** [18.1–84.9%] | 0.050 | **18.0%** [1.7–43.4%] | 0.050 | **18.0%** [1.7–42.7%] | 0.100 | **9.0%** [0.0–29.1%] |
+| **Cadmium (Cd)** | 132 | 10 | 0.0028 | **0.123** | 0.003 | **44.7%** [13.1–77.4%] | 0.005 | **40.2%** [12.2–70.4%] | 0.003 | **44.7%** [13.6–78.0%] | 0.010 | **26.5%** [9.0–46.8%] |
+| **Copper (Cu)** | 105 | 10 | 0.0888 | 2.179 | 2.000 | **1.0%** [0.0–3.2%] | 1.000 | **6.7%** [0.0–14.5%] | 1.500 | **1.9%** [0.0–4.3%] | 0.200 | **26.7%** [0.0–53.9%] |
+| **Zinc (Zn)** | 79 | 6 | 0.4000 | 3.200 | 3.000$^*$ | **1.3%** [0.0–3.4%] | 5.000 | **0.0%** [0.0–4.6%] | 5.000 | **0.0%** [0.0–4.6%] | 2.000 | **6.3%** [0.0–17.2%] |
 
 $^*$*WHO guideline for Zinc (3.0 mg/L) is an aesthetic/acceptability threshold rather than health-derived limit.*
 
-- **Non-Urban Sensitivity:** Restricting analysis to non-urban reaches (excluding Greater Dhaka: Buriganga, Turag, Shitalakhya) reduces national BD ECR exceedance for Lead from 34.9% to **18.3%** and for Arsenic from 18.0% to **8.9%**, demonstrating pronounced industrial concentration in the capital's waterways.
+- **ECR 2023 Statutory Tightening:** By lowering statutory potable limits, ECR 2023 raises Lead non-compliance from 34.9% to **85.6%** (matching WHO), Cadmium from 40.2% to **44.7%**, and Nickel from 45.2% to **61.5%**.
+- **Confirmed Dissolved Sensitivity (0.45 $\mu$m):** Restricting evaluation strictly to confirmed dissolved records ($k=10$ studies, $N=131$--$139$) retained high exceedances: **84.0%** for Pb, **55.4%** for Cr, **52.4%** for As, **47.2%** for Ni, and **37.6%** for Cd, refuting that benchmark exceedances stem from suspended sediment digestion artifacts.
+- **Non-Urban Sensitivity:** Restricting analysis to non-urban reaches (excluding Greater Dhaka: Buriganga, Turag, Shitalakhya) reduces national ECR 1997 exceedance for Lead from 34.9% to **18.3%** and for Arsenic from 18.0% to **8.9%**, demonstrating pronounced industrial concentration in the capital's waterways.
 
 *(See exceedance figure: [guidelines_exceedance_rates.png](file:///Users/rohansmac/Documents/projects/heavy-metal/data/paper_2_water_results/guidelines_exceedance_rates.png))*
 
-### 8.1 Multi-Metal Water Pollution Indices (Standardized Fixed-Panel HPI)
-To prevent mathematical inflation and spurious cross-site variance caused by variable metal panels (which previously led to denominator shrinkage and inflated HPI values up to 5,920), HPI was standardized on a fixed **Core-4 panel (As, Cd, Cr, Pb; $N=112$)** following the authoritative formulation and critical threshold ($HPI > 100$) of Prasad & Bose (2001).
+### 8.1 Multi-Metal Water Pollution Indices (Standardized Fixed-Panel HPI & Mathematical Critique)
+To prevent mathematical inflation and spurious cross-site variance caused by variable metal panels, HPI was standardized on a fixed **Core-4 panel (As, Cd, Cr, Pb; $N=112$)** following Prasad & Bose (2001).
 
-- **Core-4 HPI Summary ($N=112$):** Median $HPI = \mathbf{156.99}$ (IQR: 280.55, mean = 395.21, range: 17.58–2,682.05).
+- **Core-4 HPI Summary ($N=112$):** Median $HPI = \mathbf{156.99}$ (IQR: 280.55, mean = 395.21, range: 24.62–2,682.05).
 - **Critical Threshold Exceedance:** **58.9%** of records exceed the Prasad & Bose (2001) critical limit of 100, and **42.9%** exceed 200.
-- **Index Sensitivity:** Core-5 (adding Ni; $N=79$) yields median 231.75 and max 2,619.19; All-7 (adding Cu, Zn; $N=64$) yields median 253.02 and max 2,615.37, confirming index stability when panels are harmonized.
-- **Correlation & Weight Dominance:** Core-4 HPI exhibits near-perfect rank correlation with unweighted Heavy Metal Evaluation Index (HEI) ($\rho = 0.976$, $p < 10^{-15}$). HPI numerator variance is driven predominantly by Cd (41.3%), Pb (35.8%), and As (19.9%) due to inverse-guideline weighting ($W_{\text{Cd}} = 333.3$, $W_{\text{Pb}} = 100.0$, $W_{\text{As}} = 100.0$).
+- **Weight Dominance Artifact:** Inverse-guideline weighting ($W_i \propto 1/S_i$) assigns **78.3% of total index weight** to Cd (60.2%) and Pb (18.1%). Adding Cu (0.09% weight) or Zn (0.06% weight) produces negligible mathematical shift on common subsets ($N=35$: Core-4 254.1, All-7 253.0). Unweighted indices confirm high multi-element pressure: median $\mathrm{HEI} = 6.70$, yielding a median mean hazard quotient ($\text{HQ}_{\text{mean}} = \mathrm{HEI}/4$) of **1.68**.
 
 **Table 5b:** Standardized Core-4 multi-metal pollution indices ($HPI$, $HEI$, $MI$) across Bangladesh river systems.
-| River System | Analyzed Assays ($N$) | Studies ($K$) | Mean $HPI$ | Median $HPI$ | IQR $HPI$ | $\% HPI > 100$ | Median $HEI$ | Median $MI$ | River Quality Status |
+| River System | Analyzed Assays ($N$) | Studies ($K$) | Mean $HPI$ | Median $HPI$ | IQR $HPI$ | $\% HPI > 100$ | Median $HEI$ | $\text{HQ}_{\text{mean}}$ | River Quality Status |
 |---|---|---|---|---|---|---|---|---|---|
-| **Buriganga** | 15 | 1 | 1,607.66 | 1,977.43 | 1,358.59 | 100.0% | 51.60 | 23.20 | **Severe Industrial Pollution** |
-| **Karnaphuli** | 20 | 1 | 253.70 | 230.58 | 133.47 | 100.0% | 7.94 | 3.77 | Moderate Industrial / Port Impact |
-| **Korotoa** | 40 | 2 | 323.25 | 195.00 | 336.28 | 77.5% | 10.20 | 4.14 | Moderate / Tannery Impact |
-| **Kirtankhola** | 30 | 1 | 60.21 | 57.06 | 42.05 | 0.0% | 3.22 | 1.31 | **Acceptable Baseline** |
-| **Rupsa** | 7 | 2 | 48.36 | 52.51 | 9.65 | 0.0% | 1.97 | 0.72 | **Acceptable Baseline** |
+| **Buriganga** | 15 | 1 | 1,607.66 | 1,977.43 | 1,358.59 | 100.0% | 51.60 | 12.90 | **Severe Industrial Pollution** |
+| **Karnaphuli** | 20 | 1 | 253.70 | 230.58 | 133.47 | 100.0% | 7.94 | 1.99 | Moderate Industrial / Port Impact |
+| **Korotoa** | 40 | 2 | 323.25 | 195.00 | 336.28 | 77.5% | 10.20 | 2.55 | Moderate / Tannery Impact |
+| **Kirtankhola** | 30 | 1 | 60.21 | 57.06 | 42.05 | 0.0% | 3.22 | 0.80 | **Acceptable Baseline** |
+| **Rupsa** | 7 | 2 | 48.36 | 52.51 | 9.65 | 0.0% | 1.97 | 0.49 | **Acceptable Baseline** |
+| **All Core-4 Records** | 112 | 7 | **395.21** | **156.99** | **280.55** | **58.9%** | **6.70** | **1.68** |
 
 Full river-wise water indices dataset: [water_indices_summary_by_river.csv](file:///Users/rohansmac/Documents/projects/heavy-metal/data/paper_2_water_results/water_indices_summary_by_river.csv) and sensitivity table: [hpi_panels_sensitivity.csv](file:///Users/rohansmac/Documents/projects/heavy-metal/data/paper_2_water_results/hpi_panels_sensitivity.csv)
 
-### 8.2 Evaluation of Seasonal Contrasts (Dilution vs. Baseflow/Return-Flow)
-Seasonal evaluation accounted for data availability across 162 metal records: 72 dry-season assays, 62 wet-season assays, and 28 records excluded due to aggregated or unstated seasonality.
+### 8.2 Seasonal Contrasts, Tripartite Arsenic Dynamics, and HKSJ Meta-Analysis
+Seasonal evaluation accounted for 73 dry-season assays (winter), 28 wet-season assays (monsoon), and 61 excluded records (41 pre-monsoon summer, 20 unclassified/annual).
 
-Two complementary statistical analyses were performed:
-1. **Pooled Unpaired Contrasts (Mann-Whitney U with Holm-Bonferroni correction):** Arsenic was significantly elevated in the dry season (dry median 0.0073 mg/L vs wet 0.0042 mg/L, ratio **1.74×**, $U = 927.5$, $p = 0.0039$, $p_{\text{adj}} = 0.0273$).
-2. **Within-Study Paired Contrasts ($k=4$ studies with matched dry/wet sites):** Paired analysis across matched stations revealed a median dry/wet ratio of **1.21×** with paired Wilcoxon signed-rank $p = 0.3750$ (not significant).
+1. **Simpson's Paradox in Pooled vs. Paired Contrasts:** In pooled multi-study data, Lead appeared higher in wet season (ratio 0.88×) due to wet sampling in hyper-polluted industrial reaches. Within-study meta-analysis across matched stations ($k=4$) restored a dry/wet ratio of **1.28×** (HKSJ 95% CI: [0.56–2.95]).
+2. **Tripartite Arsenic Dynamics:** Pooled dry winter median (0.0073 mg/L) was **1.74×** higher than wet monsoon (0.0042 mg/L; $p_{\text{adj}} = 0.0273$). Both are lower than the overall median (0.0152 mg/L, $N=122$) because the pre-monsoon summer season ($N=41$, median **0.0304 mg/L**, mean 0.0632 mg/L) represents the annual concentration maximum, driven by intensive shallow aquifer pumping for boro rice irrigation return flows and minimum baseflow.
 
-This contrast highlights that cross-study pooled tests can be confounded by study-level geographic composition. Rather than an uncritical "monsoonal dilution" narrative, findings support competing hydrochemical hypotheses:
-- In urbanized reaches (Pb, Ni), wet-season stormwater runoff and industrial wash-off offset volumetric dilution.
-- In geogenic arsenic reaches, dry-season baseflow dominance and shallow groundwater irrigation return flows contribute to elevated concentrations.
-
-**Table 6:** Seasonal contrast dynamics of heavy metals in river waters (Dry/Winter vs. Wet/Rainy).
-| Metal | Dry Median (mg/L) | Wet Median (mg/L) | Ratio (Dry / Wet) | Mann-Whitney $U$ | Two-Sided $p$ | Holm $p_{\mathrm{adj}}$ | Significant Dilution? |
-|---|---|---|---|---|---|---|---|
-| **Arsenic (As)** | 0.0073 | 0.0042 | **1.74×** | 927.5 | **$0.0039$** | **$0.0273$** | **Yes ($p_{\mathrm{adj}} < 0.05$)** |
-| **Chromium (Cr)** | 0.0710 | 0.0354 | 2.01× | 1,312.0 | $0.0281$ | $0.1684$ | No ($p_{\mathrm{adj}} = 0.168$) |
-| **Cadmium (Cd)** | 0.0015 | 0.0008 | 1.88× | 1,014.5 | $0.0429$ | $0.2147$ | No ($p_{\mathrm{adj}} = 0.215$) |
-| **Zinc (Zn)** | 0.5300 | 0.0725 | 7.31× | 300.0 | $0.0915$ | $0.3661$ | No ($p_{\mathrm{adj}} = 0.366$) |
-| **Copper (Cu)** | 0.0866 | 0.0571 | 1.52× | 391.0 | $0.2009$ | $0.6027$ | No ($p_{\mathrm{adj}} = 0.603$) |
-| **Nickel (Ni)** | 0.0685 | 0.0945 | 0.73× | 376.5 | $0.7880$ | $1.0000$ | No ($p = 0.788$) |
+**Table 6:** Seasonal contrast dynamics of heavy metals in river waters (Dry/Winter vs. Wet/Rainy) with Hartung-Knapp-Sidik-Jonkman (HKSJ) adjustment.
+| Metal | Dry Median (mg/L) | Wet Median (mg/L) | Pooled Ratio (Dry / Wet) | Two-Sided $p$ | Holm $p_{\mathrm{adj}}$ | $k_{\mathrm{pair}}$ | Paired Ratio | HKSJ 95% CI |
+|---|---|---|---|---|---|---|---|---|
+| **Arsenic (As)** | 0.0073 | 0.0042 | **1.74×** | **$0.0039$** | **$0.0273$** | 4 | **1.43×** | [0.60–3.41] |
+| **Cadmium (Cd)** | 0.0015 | 0.0008 | 1.88× | $0.0429$ | $0.2147$ | 5 | 1.41× | [0.58–3.47] |
+| **Chromium (Cr)** | 0.0710 | 0.0354 | 2.01× | $0.0281$ | $0.1684$ | 5 | 1.26× | [0.63–2.54] |
+| **Lead (Pb)** | 0.0253 | 0.0287 | 0.88× | $0.8538$ | $1.0000$ | 4 | **1.28×** | [0.56–2.95] |
+| **Zinc (Zn)** | 0.5300 | 0.0725 | 7.31× | $0.0915$ | $0.3661$ | 3 | 1.12× | [0.26–4.88] |
+| **Nickel (Ni)** | 0.0685 | 0.0945 | 0.73× | $0.7880$ | $1.0000$ | 4 | 1.00× | [0.35–2.86] |
+| **Copper (Cu)** | 0.0866 | 0.0571 | 1.52× | $0.2009$ | $0.6027$ | 4 | 0.54× | [0.04–6.53] |
 | **Lead (Pb)** | 0.0253 | 0.0287 | 0.88× | 859.0 | $0.8538$ | $1.0000$ | No ($p = 0.854$) |
 
 *(See seasonal boxplot: [seasonal_dilution_boxplots.png](file:///Users/rohansmac/Documents/projects/heavy-metal/data/paper_2_water_results/seasonal_dilution_boxplots.png))*

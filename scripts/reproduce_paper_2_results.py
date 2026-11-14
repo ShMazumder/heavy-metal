@@ -49,16 +49,18 @@ print("=" * 75)
 df_water = pd.read_csv('data/water_data.csv')
 print(f"Loaded water_data.csv: {len(df_water)} records across {df_water['Study_ID'].nunique()} studies.")
 
-# Benchmarks: WHO Drinking (2022 addenda), Bangladesh ECR Drinking (1997 Schedule 3), FAO Irrigation (1985)
+# Benchmarks: WHO Drinking (2022 addenda), Bangladesh ECR Drinking (1997 Schedule 3 & 2023 Schedule 2), FAO Irrigation (1985)
 benchmarks = {
-    'As': {'who': 0.010, 'bd': 0.050, 'fao': 0.100, 'name': 'Arsenic'},
-    'Cd': {'who': 0.003, 'bd': 0.005, 'fao': 0.010, 'name': 'Cadmium'},
-    'Cr': {'who': 0.050, 'bd': 0.050, 'fao': 0.100, 'name': 'Chromium'},
-    'Cu': {'who': 2.000, 'bd': 1.000, 'fao': 0.200, 'name': 'Copper'},
-    'Ni': {'who': 0.070, 'bd': 0.100, 'fao': 0.200, 'name': 'Nickel'},
-    'Pb': {'who': 0.010, 'bd': 0.050, 'fao': 5.000, 'name': 'Lead'},
-    'Zn': {'who': 3.000, 'bd': 5.000, 'fao': 2.000, 'name': 'Zinc'}
+    'As': {'who': 0.010, 'bd_1997': 0.050, 'bd_2023': 0.050, 'fao': 0.100, 'name': 'Arsenic'},
+    'Cd': {'who': 0.003, 'bd_1997': 0.005, 'bd_2023': 0.003, 'fao': 0.010, 'name': 'Cadmium'},
+    'Cr': {'who': 0.050, 'bd_1997': 0.050, 'bd_2023': 0.050, 'fao': 0.100, 'name': 'Chromium'},
+    'Cu': {'who': 2.000, 'bd_1997': 1.000, 'bd_2023': 1.500, 'fao': 0.200, 'name': 'Copper'},
+    'Ni': {'who': 0.070, 'bd_1997': 0.100, 'bd_2023': 0.050, 'fao': 0.200, 'name': 'Nickel'},
+    'Pb': {'who': 0.010, 'bd_1997': 0.050, 'bd_2023': 0.010, 'fao': 5.000, 'name': 'Lead'},
+    'Zn': {'who': 3.000, 'bd_1997': 5.000, 'bd_2023': 5.000, 'fao': 2.000, 'name': 'Zinc'}
 }
+for el in benchmarks:
+    benchmarks[el]['bd'] = benchmarks[el]['bd_1997']
 elements = ['As', 'Cd', 'Cr', 'Cu', 'Ni', 'Pb', 'Zn']
 metal_cols = [f"{el}_mg_L" for el in elements]
 
@@ -166,6 +168,8 @@ def rma_proportions_logit(df, col, thresh):
 print("\n--- 3. Computing Benchmark Exceedance Rates & Sensitivity Analysis ---")
 peri_urban = ['Buriganga', 'Turag', 'Shitalakhya']
 df_non_urban = df_water[~df_water['River'].isin(peri_urban)]
+# Confirmed dissolved fraction: 10 studies explicitly reported filtration through 0.45 um membranes
+df_confirmed_dissolved = df_water[~df_water['Study_ID'].isin(['P02', 'P11'])]
 
 exceed_records = []
 sensitivity_master = []
@@ -188,7 +192,7 @@ for el in elements:
         'Max_Study_Share_Pct': round(max_share, 1)
     }
     
-    for bm_key in ['who', 'bd', 'fao']:
+    for bm_key in ['who', 'bd_1997', 'bd_2023', 'fao']:
         thresh = benchmarks[el][bm_key]
         n_exc = int((valid[col] > thresh).sum())
         pct_exc = (n_exc / n_rec * 100.0) if n_rec > 0 else 0.0
@@ -197,7 +201,7 @@ for el in elements:
         c_lo, c_hi = cluster_bootstrap_ci(valid, col, thresh)
         rma_p, (rma_ci_lo, rma_ci_hi), (pi_lo, pi_hi), tau2 = rma_proportions_logit(valid, col, thresh)
         
-        prefix = bm_key.upper()
+        prefix = bm_key.upper().replace('_', '')
         row_data[f"{prefix}_Threshold_mg_L"] = thresh
         row_data[f"{prefix}_Exceed_Count"] = n_exc
         row_data[f"{prefix}_Exceed_Pct"] = round(pct_exc, 1)
@@ -207,47 +211,80 @@ for el in elements:
         row_data[f"{prefix}_RE_Meta_CI"] = f"[{rma_ci_lo*100:.1f}–{rma_ci_hi*100:.1f}%]"
         row_data[f"{prefix}_Pred_Interval"] = f"[{pi_lo*100:.1f}–{pi_hi*100:.1f}%]"
         
+        # Backward compatibility for BD (defaults to BD1997)
+        if bm_key == 'bd_1997':
+            row_data["BD_Threshold_mg_L"] = thresh
+            row_data["BD_Exceed_Count"] = n_exc
+            row_data["BD_Exceed_Pct"] = round(pct_exc, 1)
+            row_data["BD_Wilson_CI"] = f"[{w_lo*100:.1f}–{w_hi*100:.1f}%]"
+            row_data["BD_Cluster_CI"] = f"[{c_lo*100:.1f}–{c_hi*100:.1f}%]"
+            row_data["BD_RE_Meta_Pct"] = round(rma_p * 100.0, 1)
+            row_data["BD_RE_Meta_CI"] = f"[{rma_ci_lo*100:.1f}–{rma_ci_hi*100:.1f}%]"
+            row_data["BD_Pred_Interval"] = f"[{pi_lo*100:.1f}–{pi_hi*100:.1f}%]"
+        
         # Add to sensitivity master
-        # 1. Pooled
-        sensitivity_master.append({
-            'Element': el, 'Benchmark': prefix, 'Threshold_mg_L': thresh,
-            'Subset': 'All Reaches (Pooled)', 'N': n_rec, 'K_Studies': k_stu,
-            'Exceed_Count': n_exc, 'Exceed_Pct': round(pct_exc, 1),
-            'Wilson_CI': f"[{w_lo*100:.1f}–{w_hi*100:.1f}%]",
-            'Cluster_CI': f"[{c_lo*100:.1f}–{c_hi*100:.1f}%]"
-        })
-        
-        # 2. Non-Dhaka subset
-        sub_nu = df_non_urban.dropna(subset=[col])
-        n_nu = len(sub_nu)
-        k_nu = sub_nu['Study_ID'].nunique()
-        exc_nu = int((sub_nu[col] > thresh).sum())
-        pct_nu = (exc_nu / n_nu * 100.0) if n_nu > 0 else 0.0
-        w_nu_lo, w_nu_hi = wilson_ci(exc_nu, n_nu)
-        c_nu_lo, c_nu_hi = cluster_bootstrap_ci(sub_nu, col, thresh)
-        
-        sensitivity_master.append({
-            'Element': el, 'Benchmark': prefix, 'Threshold_mg_L': thresh,
-            'Subset': 'Non-Dhaka Reaches', 'N': n_nu, 'K_Studies': k_nu,
-            'Exceed_Count': exc_nu, 'Exceed_Pct': round(pct_nu, 1),
-            'Wilson_CI': f"[{w_nu_lo*100:.1f}–{w_nu_hi*100:.1f}%]",
-            'Cluster_CI': f"[{c_nu_lo*100:.1f}–{c_nu_hi*100:.1f}%]"
-        })
-        
-        # 3. Leave-one-river-out bounds
-        loro_rates = []
-        for riv in valid['River'].unique():
-            sub_loro = valid[valid['River'] != riv]
-            if len(sub_loro) > 0:
-                loro_rates.append((sub_loro[col] > thresh).mean() * 100.0)
-        
-        sensitivity_master.append({
-            'Element': el, 'Benchmark': prefix, 'Threshold_mg_L': thresh,
-            'Subset': 'Leave-One-River-Out Range', 'N': n_rec, 'K_Studies': k_stu,
-            'Exceed_Count': n_exc, 'Exceed_Pct': round(pct_exc, 1),
-            'Wilson_CI': f"[{min(loro_rates):.1f}–{max(loro_rates):.1f}%]",
-            'Cluster_CI': 'N/A'
-        })
+        prefixes_to_record = [prefix]
+        if bm_key == 'bd_1997':
+            prefixes_to_record.append('BD')
+            
+        for pfx in prefixes_to_record:
+            # 1. Pooled
+            sensitivity_master.append({
+                'Element': el, 'Benchmark': pfx, 'Threshold_mg_L': thresh,
+                'Subset': 'All Reaches (Pooled)', 'N': n_rec, 'K_Studies': k_stu,
+                'Exceed_Count': n_exc, 'Exceed_Pct': round(pct_exc, 1),
+                'Wilson_CI': f"[{w_lo*100:.1f}–{w_hi*100:.1f}%]",
+                'Cluster_CI': f"[{c_lo*100:.1f}–{c_hi*100:.1f}%]"
+            })
+            
+            # 2. Non-Dhaka subset
+            sub_nu = df_non_urban.dropna(subset=[col])
+            n_nu = len(sub_nu)
+            k_nu = sub_nu['Study_ID'].nunique()
+            exc_nu = int((sub_nu[col] > thresh).sum())
+            pct_nu = (exc_nu / n_nu * 100.0) if n_nu > 0 else 0.0
+            w_nu_lo, w_nu_hi = wilson_ci(exc_nu, n_nu)
+            c_nu_lo, c_nu_hi = cluster_bootstrap_ci(sub_nu, col, thresh)
+            
+            sensitivity_master.append({
+                'Element': el, 'Benchmark': pfx, 'Threshold_mg_L': thresh,
+                'Subset': 'Non-Dhaka Reaches', 'N': n_nu, 'K_Studies': k_nu,
+                'Exceed_Count': exc_nu, 'Exceed_Pct': round(pct_nu, 1),
+                'Wilson_CI': f"[{w_nu_lo*100:.1f}–{w_nu_hi*100:.1f}%]",
+                'Cluster_CI': f"[{c_nu_lo*100:.1f}–{c_nu_hi*100:.1f}%]"
+            })
+
+            # 3. Confirmed Dissolved Only (0.45um)
+            sub_cd = df_confirmed_dissolved.dropna(subset=[col])
+            n_cd = len(sub_cd)
+            k_cd = sub_cd['Study_ID'].nunique()
+            exc_cd = int((sub_cd[col] > thresh).sum())
+            pct_cd = (exc_cd / n_cd * 100.0) if n_cd > 0 else 0.0
+            w_cd_lo, w_cd_hi = wilson_ci(exc_cd, n_cd)
+            c_cd_lo, c_cd_hi = cluster_bootstrap_ci(sub_cd, col, thresh)
+            
+            sensitivity_master.append({
+                'Element': el, 'Benchmark': pfx, 'Threshold_mg_L': thresh,
+                'Subset': 'Confirmed Dissolved Only (0.45um)', 'N': n_cd, 'K_Studies': k_cd,
+                'Exceed_Count': exc_cd, 'Exceed_Pct': round(pct_cd, 1),
+                'Wilson_CI': f"[{w_cd_lo*100:.1f}–{w_cd_hi*100:.1f}%]",
+                'Cluster_CI': f"[{c_cd_lo*100:.1f}–{c_cd_hi*100:.1f}%]"
+            })
+            
+            # 4. Leave-one-river-out bounds
+            loro_rates = []
+            for riv in valid['River'].unique():
+                sub_loro = valid[valid['River'] != riv]
+                if len(sub_loro) > 0:
+                    loro_rates.append((sub_loro[col] > thresh).mean() * 100.0)
+            
+            sensitivity_master.append({
+                'Element': el, 'Benchmark': pfx, 'Threshold_mg_L': thresh,
+                'Subset': 'Leave-One-River-Out Range', 'N': n_rec, 'K_Studies': k_stu,
+                'Exceed_Count': n_exc, 'Exceed_Pct': round(pct_exc, 1),
+                'Wilson_CI': f"[{min(loro_rates):.1f}–{max(loro_rates):.1f}%]",
+                'Cluster_CI': 'N/A'
+            })
         
     exceed_records.append(row_data)
 
@@ -317,6 +354,14 @@ print(f"Core-4 (N={len(df_c4)}): Median={hpi_med:.2f} (Q1={hpi_q25:.2f}, Q3={hpi
 print(f"Core-4 Exceedance: {hpi_pct_gt_100:.1f}% > 100 (Prasad & Bose critical limit), {hpi_pct_gt_200:.1f}% > 200")
 print(f"HEI: Median={hei_med:.2f}, Mean Hazard Quotient (HEI/4) Median={hq_mean_med:.2f}")
 print(f"HPI vs HEI Spearman rho = {spearman_rho:.3f} (p = {spearman_p:.2e})")
+
+# Prasad & Bose structural weights for Core-4 (critique of weighting artifact)
+w_c4_raw = {c.replace('_mg_L', ''): 1.0 / benchmarks[c.replace('_mg_L', '')]['who'] for c in c4_cols}
+sum_w_c4 = sum(w_c4_raw.values())
+w_c4_pct = {k: (v / sum_w_c4) * 100.0 for k, v in w_c4_raw.items()}
+cd_pb_weight_share = w_c4_pct['Cd'] + w_c4_pct['Pb']
+print(f"Prasad & Bose Core-4 Weights: Cd={w_c4_pct['Cd']:.1f}%, Pb={w_c4_pct['Pb']:.1f}%, As={w_c4_pct['As']:.1f}%, Cr={w_c4_pct['Cr']:.1f}%")
+print(f"Cadmium + Lead combined share: {cd_pb_weight_share:.1f}% of total Core-4 index weight")
 
 # SAME-SUBSET PANEL EVALUATION (Resolving Sample Confounding)
 hpi_c4_on_35 = compute_hpi_vector(df_water.loc[idx_35], c4_cols)
@@ -444,6 +489,17 @@ df_season_accounting = pd.DataFrame([
 ])
 df_season_accounting.to_csv('data/paper_2_water_results/seasonal_sample_accounting.csv', index=False)
 
+# Pre-monsoon Arsenic analysis (resolving Table 1 vs Table 3 median discrepancy)
+sub_pre = df_metal[df_metal['Season_Clean'] == 'pre_monsoon']
+as_pre_vals = sub_pre['As_mg_L'].dropna().values
+as_pre_med = float(np.median(as_pre_vals)) if len(as_pre_vals) > 0 else np.nan
+as_pre_mean = float(np.mean(as_pre_vals)) if len(as_pre_vals) > 0 else np.nan
+as_pre_n = len(as_pre_vals)
+as_all_vals = df_metal['As_mg_L'].dropna().values
+as_all_med = float(np.median(as_all_vals))
+as_all_n = len(as_all_vals)
+print(f"Arsenic Hydrological Tripartite Breakdown: Pre-monsoon Med={as_pre_med:.4f} (N={as_pre_n}), Dry Med={np.median(df_metal[df_metal['Season_Clean']=='dry']['As_mg_L'].dropna()):.4f}, Wet Med={np.median(df_metal[df_metal['Season_Clean']=='wet']['As_mg_L'].dropna()):.4f}, Overall Med={as_all_med:.4f} (N={as_all_n})")
+
 # 1. Pooled Mann-Whitney tests with Holm-Bonferroni correction
 sub_dry = df_metal[df_metal['Season_Clean'] == 'dry']
 sub_wet = df_metal[df_metal['Season_Clean'] == 'wet']
@@ -512,8 +568,17 @@ for el in elements:
         pooled_ratio = 10.0**y_re
         ratio_lo = 10.0**ci_lo
         ratio_hi = 10.0**ci_hi
+        
+        # Hartung-Knapp-Sidik-Jonkman (HKSJ) adjustment for small k
+        q_hksj = np.sum(wi_star * (yi - y_re)**2) / (k_pairs - 1)
+        q_adj = max(1.0, q_hksj)
+        se_hksj = np.sqrt(q_adj / sum_w_star)
+        t_crit = student_t.ppf(0.975, df=k_pairs - 1)
+        hksj_lo = 10.0**(y_re - t_crit * se_hksj)
+        hksj_hi = 10.0**(y_re + t_crit * se_hksj)
     else:
         pooled_ratio, ratio_lo, ratio_hi, tau2 = np.nan, np.nan, np.nan, np.nan
+        hksj_lo, hksj_hi = np.nan, np.nan
         
     study_logratios.append({
         'Element': el, 'Name': benchmarks[el]['name'],
@@ -521,6 +586,7 @@ for el in elements:
         'Paired_Studies_List': ', '.join(study_names),
         'Pooled_Dry_Wet_Ratio': round(pooled_ratio, 2) if not np.isnan(pooled_ratio) else np.nan,
         'Ratio_95_CI': f"[{ratio_lo:.2f}–{ratio_hi:.2f}]" if not np.isnan(ratio_lo) else 'N/A',
+        'HKSJ_95_CI': f"[{hksj_lo:.2f}–{hksj_hi:.2f}]" if not np.isnan(hksj_lo) else 'N/A',
         'Tau2_Log10': round(tau2, 4) if not np.isnan(tau2) else np.nan
     })
 
@@ -689,38 +755,43 @@ df_spatial_summary.to_csv('data/paper_2_water_results/spatial_coverage_summary.c
 # 7. GENERATE PUBLICATION FIGURES (PHASE 5)
 # -----------------------------------------------------------------------------
 print("\n--- 7. Generating Publication Figures (300 DPI) ---")
-# FIGURE 1: Benchmark Exceedances (Repositioned Legend outside axes, ylim=110)
-fig, ax = plt.subplots(figsize=(10, 6.5), dpi=300)
+# FIGURE 1: Benchmark Exceedances (4 bars: WHO, ECR 2023, ECR 1997, FAO)
+fig, ax = plt.subplots(figsize=(11, 6.8), dpi=300)
 x = np.arange(len(elements))
-width = 0.26
+width = 0.19
 
 who_pcts = [df_exceed[df_exceed['Element']==el]['WHO_Exceed_Pct'].values[0] for el in elements]
-bd_pcts = [df_exceed[df_exceed['Element']==el]['BD_Exceed_Pct'].values[0] for el in elements]
+bd23_pcts = [df_exceed[df_exceed['Element']==el]['BD2023_Exceed_Pct'].values[0] for el in elements]
+bd97_pcts = [df_exceed[df_exceed['Element']==el]['BD1997_Exceed_Pct'].values[0] for el in elements]
 fao_pcts = [df_exceed[df_exceed['Element']==el]['FAO_Exceed_Pct'].values[0] for el in elements]
 
 # Errors from cluster bootstrap
 who_err_lo = [who_pcts[i] - float(df_exceed[df_exceed['Element']==el]['WHO_Cluster_CI'].values[0].strip('[]%').split('–')[0]) for i, el in enumerate(elements)]
 who_err_hi = [float(df_exceed[df_exceed['Element']==el]['WHO_Cluster_CI'].values[0].strip('[]%').split('–')[1]) - who_pcts[i] for i, el in enumerate(elements)]
 
-bd_err_lo = [bd_pcts[i] - float(df_exceed[df_exceed['Element']==el]['BD_Cluster_CI'].values[0].strip('[]%').split('–')[0]) for i, el in enumerate(elements)]
-bd_err_hi = [float(df_exceed[df_exceed['Element']==el]['BD_Cluster_CI'].values[0].strip('[]%').split('–')[1]) - bd_pcts[i] for i, el in enumerate(elements)]
+bd23_err_lo = [bd23_pcts[i] - float(df_exceed[df_exceed['Element']==el]['BD2023_Cluster_CI'].values[0].strip('[]%').split('–')[0]) for i, el in enumerate(elements)]
+bd23_err_hi = [float(df_exceed[df_exceed['Element']==el]['BD2023_Cluster_CI'].values[0].strip('[]%').split('–')[1]) - bd23_pcts[i] for i, el in enumerate(elements)]
+
+bd97_err_lo = [bd97_pcts[i] - float(df_exceed[df_exceed['Element']==el]['BD1997_Cluster_CI'].values[0].strip('[]%').split('–')[0]) for i, el in enumerate(elements)]
+bd97_err_hi = [float(df_exceed[df_exceed['Element']==el]['BD1997_Cluster_CI'].values[0].strip('[]%').split('–')[1]) - bd97_pcts[i] for i, el in enumerate(elements)]
 
 fao_err_lo = [fao_pcts[i] - float(df_exceed[df_exceed['Element']==el]['FAO_Cluster_CI'].values[0].strip('[]%').split('–')[0]) for i, el in enumerate(elements)]
 fao_err_hi = [float(df_exceed[df_exceed['Element']==el]['FAO_Cluster_CI'].values[0].strip('[]%').split('–')[1]) - fao_pcts[i] for i, el in enumerate(elements)]
 
-rects1 = ax.bar(x - width, who_pcts, width, yerr=[who_err_lo, who_err_hi], capsize=4, label='WHO Drinking Guideline (2022)', color='#d95f02', edgecolor='black', alpha=0.9)
-rects2 = ax.bar(x, bd_pcts, width, yerr=[bd_err_lo, bd_err_hi], capsize=4, label='Bangladesh ECR Standard (1997 Sch. 3)', color='#1b9e77', edgecolor='black', alpha=0.9)
-rects3 = ax.bar(x + width, fao_pcts, width, yerr=[fao_err_lo, fao_err_hi], capsize=4, label='FAO Irrigation Guideline (1985)', color='#7570b3', edgecolor='black', alpha=0.9)
+rects1 = ax.bar(x - 1.5*width, who_pcts, width, yerr=[who_err_lo, who_err_hi], capsize=3, label='WHO Drinking Guideline (2022)', color='#d95f02', edgecolor='black', alpha=0.9)
+rects2 = ax.bar(x - 0.5*width, bd23_pcts, width, yerr=[bd23_err_lo, bd23_err_hi], capsize=3, label='Bangladesh ECR 2023 (Schedule 2)', color='#1b9e77', edgecolor='black', alpha=0.9)
+rects3 = ax.bar(x + 0.5*width, bd97_pcts, width, yerr=[bd97_err_lo, bd97_err_hi], capsize=3, label='Bangladesh ECR 1997 (Schedule 3)', color='#66c2a5', edgecolor='black', alpha=0.9)
+rects4 = ax.bar(x + 1.5*width, fao_pcts, width, yerr=[fao_err_lo, fao_err_hi], capsize=3, label='FAO Irrigation Guideline (1985)', color='#7570b3', edgecolor='black', alpha=0.9)
 
 ax.set_ylabel('Benchmark Exceedance Rate (% of Assayed Records)', fontsize=11, fontweight='bold')
-ax.set_title('Heavy Metal Benchmark Exceedances in Bangladesh River Waters\n(Study-Level Cluster Bootstrap 95% Confidence Intervals)', fontsize=12, fontweight='bold', pad=12)
+ax.set_title('Heavy Metal Benchmark Exceedances in Monitored Bangladesh River Corridors\n(Study-Level Cluster Bootstrap 95% Confidence Intervals)', fontsize=12, fontweight='bold', pad=12)
 ax.set_xticks(x)
 ax.set_xticklabels([f"{benchmarks[el]['name']}\n({el})" for el in elements], fontsize=10, fontweight='bold')
 ax.set_ylim(0, 110)
 ax.grid(axis='y', linestyle='--', alpha=0.5)
 
 # Place legend cleanly below plot
-ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.14), ncol=3, frameon=True, fontsize=9.5)
+ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15), ncol=2, frameon=True, fontsize=9.5)
 plt.tight_layout()
 
 fig.savefig('data/paper_2_water_results/guidelines_exceedance_rates.png', dpi=300, bbox_inches='tight')
@@ -860,6 +931,36 @@ res_dict = {
     'ChromiumWhoNonUrbanPct': str(df_sens[(df_sens['Element']=='Cr') & (df_sens['Benchmark']=='WHO') & (df_sens['Subset']=='Non-Dhaka Reaches')]['Exceed_Pct'].values[0]),
     'NickelWhoNonUrbanPct': str(df_sens[(df_sens['Element']=='Ni') & (df_sens['Benchmark']=='WHO') & (df_sens['Subset']=='Non-Dhaka Reaches')]['Exceed_Pct'].values[0]),
     
+    # ECR 2023 vs ECR 1997 Statutory Comparisons
+    'LeadBdNineteenNinetySevenExceedPct': str(df_exceed[df_exceed['Element']=='Pb']['BD1997_Exceed_Pct'].values[0]),
+    'LeadBdTwentyTwentyThreeExceedPct': str(df_exceed[df_exceed['Element']=='Pb']['BD2023_Exceed_Pct'].values[0]),
+    'CadmiumBdNineteenNinetySevenExceedPct': str(df_exceed[df_exceed['Element']=='Cd']['BD1997_Exceed_Pct'].values[0]),
+    'CadmiumBdTwentyTwentyThreeExceedPct': str(df_exceed[df_exceed['Element']=='Cd']['BD2023_Exceed_Pct'].values[0]),
+    'NickelBdNineteenNinetySevenExceedPct': str(df_exceed[df_exceed['Element']=='Ni']['BD1997_Exceed_Pct'].values[0]),
+    'NickelBdTwentyTwentyThreeExceedPct': str(df_exceed[df_exceed['Element']=='Ni']['BD2023_Exceed_Pct'].values[0]),
+    'ArsenicBdNineteenNinetySevenExceedPct': str(df_exceed[df_exceed['Element']=='As']['BD1997_Exceed_Pct'].values[0]),
+    'ArsenicBdTwentyTwentyThreeExceedPct': str(df_exceed[df_exceed['Element']=='As']['BD2023_Exceed_Pct'].values[0]),
+    'ChromiumBdNineteenNinetySevenExceedPct': str(df_exceed[df_exceed['Element']=='Cr']['BD1997_Exceed_Pct'].values[0]),
+    'ChromiumBdTwentyTwentyThreeExceedPct': str(df_exceed[df_exceed['Element']=='Cr']['BD2023_Exceed_Pct'].values[0]),
+    'CopperBdNineteenNinetySevenExceedPct': str(df_exceed[df_exceed['Element']=='Cu']['BD1997_Exceed_Pct'].values[0]),
+    'CopperBdTwentyTwentyThreeExceedPct': str(df_exceed[df_exceed['Element']=='Cu']['BD2023_Exceed_Pct'].values[0]),
+    'ZincBdNineteenNinetySevenExceedPct': str(df_exceed[df_exceed['Element']=='Zn']['BD1997_Exceed_Pct'].values[0]),
+    'ZincBdTwentyTwentyThreeExceedPct': str(df_exceed[df_exceed['Element']=='Zn']['BD2023_Exceed_Pct'].values[0]),
+    
+    # Confirmed Dissolved Sensitivity (0.45um Filtered Only)
+    'LeadConfirmedDissolvedWhoPct': str(df_sens[(df_sens['Element']=='Pb') & (df_sens['Benchmark']=='WHO') & (df_sens['Subset']=='Confirmed Dissolved Only (0.45um)')]['Exceed_Pct'].values[0]),
+    'ArsenicConfirmedDissolvedWhoPct': str(df_sens[(df_sens['Element']=='As') & (df_sens['Benchmark']=='WHO') & (df_sens['Subset']=='Confirmed Dissolved Only (0.45um)')]['Exceed_Pct'].values[0]),
+    'ChromiumConfirmedDissolvedWhoPct': str(df_sens[(df_sens['Element']=='Cr') & (df_sens['Benchmark']=='WHO') & (df_sens['Subset']=='Confirmed Dissolved Only (0.45um)')]['Exceed_Pct'].values[0]),
+    'CadmiumConfirmedDissolvedWhoPct': str(df_sens[(df_sens['Element']=='Cd') & (df_sens['Benchmark']=='WHO') & (df_sens['Subset']=='Confirmed Dissolved Only (0.45um)')]['Exceed_Pct'].values[0]),
+    'NickelConfirmedDissolvedWhoPct': str(df_sens[(df_sens['Element']=='Ni') & (df_sens['Benchmark']=='WHO') & (df_sens['Subset']=='Confirmed Dissolved Only (0.45um)')]['Exceed_Pct'].values[0]),
+
+    # HPI Weighting Artifact
+    'HpiCdWeightSharePct': f"{w_c4_pct['Cd']:.1f}",
+    'HpiPbWeightSharePct': f"{w_c4_pct['Pb']:.1f}",
+    'HpiAsWeightSharePct': f"{w_c4_pct['As']:.1f}",
+    'HpiCrWeightSharePct': f"{w_c4_pct['Cr']:.1f}",
+    'HpiCdPbWeightSharePct': f"{cd_pb_weight_share:.1f}",
+    
     # Standardized Fixed-Panel HPI
     'HpiCoreFourN': str(len(df_c4)),
     'HpiCoreFourMedian': f"{hpi_med:.2f}",
@@ -884,9 +985,16 @@ res_dict = {
     'ArsenicDryWetRatio': f"{df_seasonal[df_seasonal['Element']=='As']['Ratio_Dry_Wet'].values[0]:.2f}",
     'ArsenicTwoSidedP': f"{df_seasonal[df_seasonal['Element']=='As']['P_Val'].values[0]:.4f}",
     'ArsenicHolmP': f"{df_seasonal[df_seasonal['Element']=='As']['Holm_P'].values[0]:.4f}",
+    'ArsenicPremonsoonMedian': f"{as_pre_med:.4f}",
+    'ArsenicPremonsoonMean': f"{as_pre_mean:.4f}",
+    'ArsenicPremonsoonN': str(as_pre_n),
+    'ArsenicOverallMedian': f"{as_all_med:.4f}",
+    'ArsenicOverallN': str(as_all_n),
     'ArsenicWithinStudyK': str(df_within[df_within['Element']=='As']['K_Paired_Studies'].values[0]),
     'ArsenicWithinStudyRatio': f"{df_within[df_within['Element']=='As']['Pooled_Dry_Wet_Ratio'].values[0]:.2f}",
+    'ArsenicWithinStudyHksjCi': df_within[df_within['Element']=='As']['HKSJ_95_CI'].values[0],
     'LeadWithinStudyRatio': f"{df_within[df_within['Element']=='Pb']['Pooled_Dry_Wet_Ratio'].values[0]:.2f}",
+    'LeadWithinStudyHksjCi': df_within[df_within['Element']=='Pb']['HKSJ_95_CI'].values[0],
     
     # Spatial Coverage on Strictly Clipped Network
     'TotalMajorReachesCount': str(tot_major_reaches),

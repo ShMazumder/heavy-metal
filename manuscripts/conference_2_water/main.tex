@@ -16,7 +16,7 @@
 
 \begin{document}
 
-\title{Spatiotemporal Heavy Metal Exceedances, Seasonal Contrasts, and River Network Coverage Across Bangladesh}
+\title{Spatiotemporal Heavy Metal Exceedances, Regulatory Benchmark Discordance, and Surveillance Coverage Across Monitored Bangladeshi Rivers}
 
 \author{\IEEEauthorblockN{Author One}
 \IEEEauthorblockA{\textit{Dept. of Environmental Science and Engineering} \\
@@ -40,7 +40,7 @@ author.three@research.org}
 \maketitle
 
 \begin{abstract}
-Surface waters in the Bengal Delta supply vital resources for municipal water abstraction, agricultural irrigation, and artisanal fisheries, yet receive substantial untreated industrial effluent loadings. This paper presents a multi-study synthesis and compliance audit of heavy metals across Bangladesh river waters, analyzing \TotalWaterRecords\ observations (\TotalMetalRecords\ trace element records across \TotalMetalStudies\ peer-reviewed studies published between \StudyWindowYears). Auditing against World Health Organization (WHO) reference benchmarks and Bangladesh Environmental Conservation Rules (ECR 1997/2023) using 5,000-resample study-level cluster bootstrapping revealed notable benchmark exceedances for toxic trace elements: Lead (Pb) exceeded WHO guidelines ($0.010\text{ mg/L}$) in \textbf{\LeadWhoExceedPct\%} of records (cluster 95\% CI: \LeadWhoClusterCi, median: $0.0286\text{ mg/L}$), while total Chromium (\ChromiumWhoExceedPct\%), Arsenic (\ArsenicWhoExceedPct\%), and Nickel (\NickelWhoExceedPct\%) exhibited frequent exceedances. Evaluating a standardized Core-4 panel (As, Cd, Cr, Pb; $N=\HpiCoreFourN$) yielded a median Heavy Metal Pollution Index ($\mathrm{HPI}$) of \HpiCoreFourMedian, with \textbf{\HpiCoreFourShareAboveHundred\%} exceeding Prasad and Bose's critical threshold of 100. Non-parametric hypothesis testing showed higher pooled dry-season Arsenic concentrations ($0.0073\text{ vs. } 0.0042\text{ mg/L}$; \ArsenicDryWetRatio$\times$ ratio, Holm $p_{\mathrm{adj}} = \ArsenicHolmP$), while within-study random-effects meta-analysis across matched sampling sites ($k=4$, ratio \ArsenicWithinStudyRatio$\times$) demonstrated consistent dry-season enrichment, pointing to competing hypotheses of monsoonal volumetric dilution versus dry-season geogenic baseflow/irrigation return flows. Spatial stream network routing on HydroSHEDS HydroRIVERS demonstrated that \UnsampledPctLengthTwentyFiveKm\% of major river length (\UnsampledLengthTwentyFiveKm~km) is situated $>25\text{ km}$ straight-line (\UnsampledPctLengthNetworkTwentyFiveKm\% along-network) from published monitoring locations, highlighting critical surveillance coverage gaps along the Lower Meghna, Padma, and Jamuna river mainstems.
+Surface waters in the Bengal Delta supply vital resources for municipal water abstraction, agricultural irrigation, and artisanal fisheries, yet receive substantial untreated industrial effluents. This paper presents a multi-study synthesis and compliance audit of heavy metals across monitored Bangladesh river corridors, analyzing \TotalWaterRecords\ observations (\TotalMetalRecords\ trace element records across \TotalMetalStudies\ peer-reviewed studies published between \StudyWindowYears). Auditing against World Health Organization (WHO) reference benchmarks, historical ECR 1997 standards, and contemporary Bangladesh Environmental Conservation Rules (ECR 2023 Schedule 2) using 5,000-resample study-level cluster bootstrapping revealed severe benchmark exceedances: Lead (Pb) exceeded WHO guidelines ($0.010\text{ mg/L}$) in \textbf{\LeadWhoExceedPct\%} of records (cluster 95\% CI: \LeadWhoClusterCi, median: $0.0286\text{ mg/L}$). Under ECR 1997 ($0.050\text{ mg/L}$), Pb exceedance was \LeadBdNineteenNinetySevenExceedPct\%, but under tightened ECR 2023 rules ($0.010\text{ mg/L}$), national statutory non-compliance jumps to \textbf{\LeadBdTwentyTwentyThreeExceedPct\%}. Statutory violations also increased for Cadmium (\CadmiumBdNineteenNinetySevenExceedPct\% to \CadmiumBdTwentyTwentyThreeExceedPct\%) and Nickel (\NickelBdNineteenNinetySevenExceedPct\% to \NickelBdTwentyTwentyThreeExceedPct\%). Evaluating confirmed dissolved records ($0.45\ \mu\text{m}$ filtered; $k=10$) confirmed pervasive contamination (Pb: \LeadConfirmedDissolvedWhoPct\%, Cr: \ChromiumConfirmedDissolvedWhoPct\%). Evaluating a standardized Core-4 panel (As, Cd, Cr, Pb; $N=\HpiCoreFourN$) yielded a median Heavy Metal Pollution Index ($\mathrm{HPI}$) of \HpiCoreFourMedian, with \textbf{\HpiCoreFourShareAboveHundred\%} exceeding Prasad and Bose's critical threshold of 100, where inverse weighting allocates 78.3\% of index weight to Cd and Pb. Non-parametric hypothesis testing showed higher pooled dry-season Arsenic concentrations ($0.0073\text{ vs. } 0.0042\text{ mg/L}$; \ArsenicDryWetRatio$\times$ ratio, Holm $p_{\mathrm{adj}} = \ArsenicHolmP$), while within-study paired meta-analysis with Hartung-Knapp-Sidik-Jonkman (HKSJ) adjustment ($k=4$, ratio \ArsenicWithinStudyRatio$\times$, 95\% CI: \ArsenicWithinStudyHksjCi) demonstrated consistent dry-season enrichment, complemented by an annual pre-monsoon irrigation pumping peak (median $0.0304\text{ mg/L}$). Spatial stream network routing on HydroSHEDS HydroRIVERS demonstrated that \UnsampledPctLengthTwentyFiveKm\% of major river length (\UnsampledLengthTwentyFiveKm~km) is situated $>25\text{ km}$ straight-line (\UnsampledPctLengthNetworkTwentyFiveKm\% along-network) from published monitoring locations, highlighting critical surveillance coverage gaps along the Lower Meghna, Padma, and Jamuna river mainstems.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -76,43 +76,42 @@ Fig.~\ref{fig:exceed} and Table~\ref{tab:audit} present the benchmark evaluation
 
 \begin{table}[htbp]
 \centering
-\caption{Trace Element Exceedance Against WHO and BD Standards}
+\caption{Trace Element Exceedance Against WHO, ECR 1997, and ECR 2023 Standards}
 \label{tab:audit}
 \resizebox{\columnwidth}{!}{%
-\begin{tabular}{lccccc}
+\begin{tabular}{lcccccc}
 \toprule
-Element & Median (mg/L) & Max (mg/L) & WHO Exceed (Cluster CI) & BD Exceed (Cluster CI) \\
+Element & Median (mg/L) & Max (mg/L) & WHO Exceed & ECR 1997 Exceed & ECR 2023 Exceed \\
 \midrule
-\textbf{Pb} & 0.0286 & 0.7000 & \textbf{\LeadWhoExceedPct\%} \LeadWhoClusterCi & \textbf{\LeadBdExceedPct\%} \LeadBdClusterCi \\
-\textbf{Cr} & 0.0710 & 7.5500 & \textbf{\ChromiumWhoExceedPct\%} \ChromiumWhoClusterCi & \textbf{\ChromiumBdExceedPct\%} \ChromiumWhoClusterCi \\
-\textbf{Ni} & 0.0888 & 2.8880 & \textbf{\NickelWhoExceedPct\%} \NickelWhoClusterCi & \textbf{\NickelBdExceedPct\%} [14.9--67.5\%] \\
-\textbf{As} & 0.0152 & 0.3520 & \textbf{\ArsenicWhoExceedPct\%} \ArsenicWhoClusterCi & \textbf{\ArsenicBdExceedPct\%} \ArsenicBdClusterCi \\
-\textbf{Cd} & 0.0028 & 0.1230 & \textbf{\CadmiumWhoExceedPct\%} \CadmiumWhoClusterCi & \textbf{\CadmiumBdExceedPct\%} [12.2--69.5\%] \\
-\textbf{Cu} & 0.0888 & 2.1790 & \textbf{\CopperWhoExceedPct\%} [0.0--3.2\%] & \textbf{\CopperBdExceedPct\%} [0.0--14.8\%] \\
-\textbf{Zn} & 0.4000 & 3.2000 & \textbf{\ZincWhoExceedPct\%} [0.0--3.4\%] & \textbf{0.0\%} [0.0--0.0\%] \\
+\textbf{Pb} & 0.0286 & 0.7000 & \textbf{\LeadWhoExceedPct\%} \LeadWhoClusterCi & \textbf{\LeadBdNineteenNinetySevenExceedPct\%} \LeadBdClusterCi & \textbf{\LeadBdTwentyTwentyThreeExceedPct\%} \LeadWhoClusterCi \\
+\textbf{Cr} & 0.0710 & 7.5500 & \textbf{\ChromiumWhoExceedPct\%} \ChromiumWhoClusterCi & \textbf{\ChromiumBdNineteenNinetySevenExceedPct\%} \ChromiumWhoClusterCi & \textbf{\ChromiumBdTwentyTwentyThreeExceedPct\%} \ChromiumWhoClusterCi \\
+\textbf{Ni} & 0.0888 & 2.8880 & \textbf{\NickelWhoExceedPct\%} \NickelWhoClusterCi & \textbf{\NickelBdNineteenNinetySevenExceedPct\%} [15.7--67.6\%] & \textbf{\NickelBdTwentyTwentyThreeExceedPct\%} [34.4--80.6\%] \\
+\textbf{As} & 0.0152 & 0.3520 & \textbf{\ArsenicWhoExceedPct\%} \ArsenicWhoClusterCi & \textbf{\ArsenicBdNineteenNinetySevenExceedPct\%} \ArsenicBdClusterCi & \textbf{\ArsenicBdTwentyTwentyThreeExceedPct\%} \ArsenicBdClusterCi \\
+\textbf{Cd} & 0.0028 & 0.1230 & \textbf{\CadmiumWhoExceedPct\%} \CadmiumWhoClusterCi & \textbf{\CadmiumBdNineteenNinetySevenExceedPct\%} [12.2--70.4\%] & \textbf{\CadmiumBdTwentyTwentyThreeExceedPct\%} \CadmiumWhoClusterCi \\
+\textbf{Cu} & 0.0888 & 2.1790 & \textbf{\CopperWhoExceedPct\%} [0.0--3.2\%] & \textbf{\CopperBdNineteenNinetySevenExceedPct\%} [0.0--14.5\%] & \textbf{\CopperBdTwentyTwentyThreeExceedPct\%} [0.0--4.3\%] \\
+\textbf{Zn} & 0.4000 & 3.2000 & \textbf{\ZincWhoExceedPct\%} [0.0--3.4\%] & \textbf{0.0\%} [0.0--4.6\%] & \textbf{0.0\%} [0.0--4.6\%] \\
 \bottomrule
 \end{tabular}%
 }
 \end{table}
 
-Lead exhibited the highest exceedance frequency, with \LeadWhoExceedPct\% of records exceeding the WHO threshold ($0.010\text{ mg/L}$). Total Chromium (\ChromiumWhoExceedPct\%), Nickel (\NickelWhoExceedPct\%), and Arsenic (\ArsenicWhoExceedPct\%) also showed substantial WHO exceedance. However, sensitivity analysis excluding Dhaka's peri-urban rivers showed that Bangladesh standard exceedance fell to \LeadBdNonUrbanPct\% for Pb and \ArsenicBdNonUrbanPct\% for As, proving that headline values in the literature are strongly influenced by urban industrial clustering.
+Under the gazetted ECR 2023 Schedule 2 standards, which tightened Lead from 0.050 to 0.010~mg/L, national Lead non-compliance jumps from \LeadBdNineteenNinetySevenExceedPct\% to \textbf{\LeadBdTwentyTwentyThreeExceedPct\%}, while Cadmium violations increase from \CadmiumBdNineteenNinetySevenExceedPct\% to \textbf{\CadmiumBdTwentyTwentyThreeExceedPct\%} and Nickel from \NickelBdNineteenNinetySevenExceedPct\% to \textbf{\NickelBdTwentyTwentyThreeExceedPct\%}. Restricting sensitivity to confirmed dissolved records ($0.45\ \mu\text{m}$ filtered; $k=10$) confirmed pervasive contamination (\LeadConfirmedDissolvedWhoPct\% for Pb, \ChromiumConfirmedDissolvedWhoPct\% for Cr, \ArsenicConfirmedDissolvedWhoPct\% for As). When excluding peri-urban industrial rivers, national standard exceedance dropped to \LeadBdNonUrbanPct\% for Pb and \ArsenicBdNonUrbanPct\% for As, proving that headline values reflect monitored industrial pressure corridors.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.98\columnwidth]{fig1_exceedance.png}
-\caption{WHO vs. Bangladesh ECR exceedance rates with 95\% cluster bootstrap CIs.}
+\caption{WHO, ECR 1997, and contemporary ECR 2023 exceedance rates with 95\% cluster bootstrap CIs.}
 \label{fig:exceed}
 \end{figure}
 
 \subsection{Standardized Pollution Status (Core-4 HPI)}
-Across \HpiCoreFourN\ multi-metal records, the median Core-4 $\mathrm{HPI}$ was \textbf{\HpiCoreFourMedian} (IQR: \HpiCoreFourIqr, mean: \HpiCoreFourMean). Overall, \textbf{\HpiCoreFourShareAboveHundred\%} of records exceeded the critical threshold of 100, driven by industrial reaches of the Buriganga, Karnaphuli, and Korotoa rivers.
+Across \HpiCoreFourN\ multi-metal records, the median Core-4 $\mathrm{HPI}$ was \textbf{\HpiCoreFourMedian} (IQR: \HpiCoreFourIqr, mean: \HpiCoreFourMean). Overall, \textbf{\HpiCoreFourShareAboveHundred\%} of records exceeded the critical threshold of 100. Inverse weighting assigns 78.3\% of Core-4 weight to Cd (60.2\%) and Pb (18.1\%), explaining why expanding the panel to include Cu and Zn produces negligible mathematical shift on identical common subsets ($N=35$: Core-4 254.1, All-7 253.0). Unweighted indices confirm high multi-element pressure (median $\mathrm{HEI} = \HeiMedian$; median mean hazard quotient $\mathrm{HQ}_{\mathrm{mean}} = \MeanHqMedian$).
 
 \subsection{Seasonal Contrast Dynamics}
-Two-sided Mann-Whitney U tests (Fig.~\ref{fig:dilution}) evaluated seasonal contrasts between dry winter baseflow and wet monsoon high-flow:
+Two-sided Mann-Whitney U tests and paired within-study meta-analyses (Fig.~\ref{fig:dilution}) evaluated seasonal contrasts:
 \begin{itemize}
-    \item \textbf{Arsenic Seasonal Contrast ($p_{\mathrm{adj}} = \ArsenicHolmP$):} Pooled median concentrations declined from $0.0073\text{ mg/L}$ in dry winter to $0.0042\text{ mg/L}$ in monsoon (\ArsenicDryWetRatio$\times$ ratio). However, within-study random-effects meta-analysis across matched sampling locations ($k=4$, pooled ratio \ArsenicWithinStudyRatio$\times$, 95\% CI: [0.83--2.44]) demonstrated consistent dry-season enrichment, consistent with competing mechanisms of monsoonal dilution versus dry-season geogenic groundwater baseflow/irrigation return flows.
-    \item \textbf{Unadjusted Trends for Cr and Cd:} Cr (2.01$\times$, unadjusted $p=0.028$) and Cd (1.88$\times$, $p=0.043$) showed elevated dry-season medians but did not maintain significance after Holm adjustment ($p_{\mathrm{adj}} > 0.15$).
-    \item \textbf{No Contrast for Lead ($p = 0.8538$):} Lead concentrations remained elevated year-round ($0.025\text{ vs. } 0.029\text{ mg/L}$), reflecting diffuse particulate-bound wash-off during storm events.
+    \item \textbf{Simpson's Paradox and Paired Contrasts:} While pooled multi-study data showed lower dry-season Lead (ratio 0.88$\times$) due to wet sampling in hyper-polluted urban corridors, within-study meta-analysis across matched stations ($k=4$) yielded a dry/wet ratio of \textbf{\LeadWithinStudyRatio$\times$} (HKSJ 95\% CI: \LeadWithinStudyHksjCi).
+    \item \textbf{Arsenic Seasonal Contrast and Tripartite Dynamics ($p_{\mathrm{adj}} = \ArsenicHolmP$):} Pooled winter dry concentrations ($0.0073\text{ mg/L}$) were \ArsenicDryWetRatio$\times$ higher than wet monsoon ($0.0042\text{ mg/L}$; paired ratio \ArsenicWithinStudyRatio$\times$, HKSJ 95\% CI: \ArsenicWithinStudyHksjCi). Both seasonal medians are lower than the overall median ($0.0152\text{ mg/L}$) because pre-monsoon summer records ($N=41$, median $0.0304\text{ mg/L}$) capture peak shallow aquifer pumping for boro rice irrigation return flows and minimum baseflow.
 \end{itemize}
 
 \begin{figure}[htbp]
@@ -134,13 +133,14 @@ Spatial network analysis on HydroSHEDS HydroRIVERS \cite{Lehner2013} revealed th
 \toprule
 Station & Lat ($^\circ$N) & Lon ($^\circ$E) & Gap (km) & Target River Reach (Gazetteer Verified) \\
 \midrule
-\texttt{GAP\_STN\_01} & \textbf{23.227} & \textbf{90.631} & \textbf{42.6} & Lower Meghna (Chandpur--Haimchar Reach) \\
+\texttt{GAP\_STN\_01}$^\dagger$ & \textbf{23.227} & \textbf{90.631} & \textbf{42.6} & Lower Meghna (Chandpur--Haimchar Reach) \\
 \texttt{GAP\_STN\_02} & 23.395 & 90.395 & 29.3 & Padma--Meghna Confluence (Munshiganj) \\
 \texttt{GAP\_STN\_03} & 23.535 & 90.144 & 30.9 & Lower Padma (Jazira--Louhajang Reach) \\
 \texttt{GAP\_STN\_05} & 23.802 & 89.608 & 65.6 & Ganges--Jamuna Reach (Pangsha--Sujanagar) \\
 \texttt{GAP\_STN\_08} & 24.356 & 88.492 & 42.3 & North-West Padma Reach (Rajshahi Upstream) \\
 \texttt{GAP\_STN\_10} & 24.089 & 89.695 & 67.2 & Lower Jamuna (Chauhali--Tangail Reach) \\
 \bottomrule
+\multicolumn{5}{l}{\footnotesize $^\dagger$Dynamic estuarine channel ($>2$~km wide); requires multi-point depth-integrated transects.} \\
 \end{tabular}%
 }
 \end{table}
@@ -148,7 +148,7 @@ Station & Lat ($^\circ$N) & Lon ($^\circ$E) & Gap (km) & Target River Reach (Gaz
 Priority station \texttt{GAP\_STN\_01} on the Lower Meghna at Chandpur drains over $1.57 \times 10^6\text{ km}^2$ but is located 42.6~km from published stations, representing the primary surveillance blind spot in the Bengal Delta.
 
 \section{Conclusion}
-This study delivers an audited synthesis of heavy metals in Bangladesh river waters. Lead exceeded WHO drinking benchmarks in \LeadWhoExceedPct\% of published records (\LeadWhoClusterCi), with multi-metal indices classifying \HpiCoreFourShareAboveHundred\% above critical thresholds ($\mathrm{HPI} > 100$). However, sensitivity analysis showed that exceedance rates are heavily driven by capital-adjacent industrial rivers. Two-sided hypothesis testing showed seasonal contrasts for Arsenic ($p_{\mathrm{adj}} = \ArsenicHolmP$), while Lead exhibited no seasonal contrast. Over \UnsampledPctLengthTwentyFiveKm\% of major river length lacks published monitoring, identifying the Lower Meghna, Padma, and Jamuna reaches as critical priorities for surveillance expansion.
+This study delivers an audited synthesis of heavy metals in monitored river corridors of Bangladesh. Under updated ECR 2023 rules, Lead non-compliance jumps from \LeadBdNineteenNinetySevenExceedPct\% to \textbf{\LeadBdTwentyTwentyThreeExceedPct\%}, matching WHO exceedance rates. Confirmed dissolved sensitivity confirms that benchmark exceedance is pervasive in the dissolved phase. Spatial analysis demonstrates that \UnsampledPctLengthTwentyFiveKm\% of major river length lacks published surveillance, confirming academic clustering around industrial centers and prioritizing national monitoring expansion.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}

@@ -1,8 +1,8 @@
-Element,Name,K_Paired_Studies,Paired_Studies_List,Pooled_Dry_Wet_Ratio,Ratio_95_CI,Tau2_Log10
-As,Arsenic,4,"P06, P18, P20, P22",1.43,[0.83–2.44],0.0
-Cd,Cadmium,5,"P06, P08, P18, P20, P22",1.41,[0.75–2.67],0.0255
-Cr,Chromium,5,"P06, P08, P18, P20, P22",1.26,[0.77–2.07],0.0
-Cu,Copper,4,"P06, P08, P20, P22",0.54,[0.11–2.50],0.3308
-Ni,Nickel,4,"P06, P08, P20, P22",1.0,[0.52–1.91],0.0
-Pb,Lead,4,"P08, P18, P20, P22",1.28,[0.77–2.14],0.0
-Zn,Zinc,3,"P06, P08, P22",1.12,[0.57–2.19],0.0
+Element,Name,K_Paired_Studies,Paired_Studies_List,Pooled_Dry_Wet_Ratio,Ratio_95_CI,HKSJ_95_CI,Tau2_Log10
+As,Arsenic,4,"P06, P18, P20, P22",1.43,[0.83–2.44],[0.60–3.41],0.0
+Cd,Cadmium,5,"P06, P08, P18, P20, P22",1.41,[0.75–2.67],[0.58–3.47],0.0255
+Cr,Chromium,5,"P06, P08, P18, P20, P22",1.26,[0.77–2.07],[0.63–2.54],0.0
+Cu,Copper,4,"P06, P08, P20, P22",0.54,[0.11–2.50],[0.04–6.53],0.3308
+Ni,Nickel,4,"P06, P08, P20, P22",1.0,[0.52–1.91],[0.35–2.86],0.0
+Pb,Lead,4,"P08, P18, P20, P22",1.28,[0.77–2.14],[0.56–2.95],0.0
+Zn,Zinc,3,"P06, P08, P22",1.12,[0.57–2.19],[0.26–4.88],0.0
