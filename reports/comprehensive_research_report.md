@@ -346,10 +346,11 @@ This contrast highlights that cross-study pooled tests can be confounded by stud
 
 ## 9. Spatial Surveillance Gaps & Prioritized Coverage Expansion
 
-Spatial network analysis across the HydroSHEDS HydroRIVERS river network (comprising 3,894 major river reach segments totaling 8,369.5 km in Bangladesh) revealed critical surveillance deficits:
-- **Straight-Line Distance:** **3,407 major river reaches (87.5% by count, 7,369.3 km / 88.0% by stream length)** are situated $>25\text{ km}$ straight-line (Haversine) from any published water quality sampling site.
-- **Topological Along-Network Stream Distance:** Routing along the actual hydrographic stream network using Dijkstra's algorithm demonstrates that **3,682 reaches (94.6% of river network length, totaling 7,919.9 km)** are $>25\text{ km}$ from published stations, establishing that hydrologic isolation is even more severe than Euclidean metrics suggest.
-- **Sensitivity:** Reaches $>10\text{ km}$ comprise 96.6% of river length; reaches $>50\text{ km}$ comprise 66.8% of river length.
+Spatial network analysis across the HydroSHEDS HydroRIVERS river network strictly clipped to Bangladesh administrative borders (2,224 major river reach segments totaling 4,599.1 km) revealed critical surveillance deficits:
+- **Straight-Line Distance:** Published sampling sites cover only **16.5% of major river length (757.2 km; 334 reaches, 15.0% by count)** at 25 km. Unsampled reaches comprise **1,890 segments (85.0% by count) totaling 3,841.9 km (83.5% by stream length)** situated $>25\text{ km}$ straight-line (Haversine) from any published water quality sampling site.
+- **Topological Along-Network Stream Distance:** Routing along the actual hydrographic stream network using Dijkstra's algorithm demonstrates that **1,988 reaches (89.4% by count, 89.0% of river network length, totaling 4,094.5 km)** are $>25\text{ km}$ from published stations, establishing that hydrologic isolation is even more severe than Euclidean metrics suggest.
+- **Spatial Monte Carlo Null Model:** A 1,000-iteration spatial Monte Carlo null model distributing 23 random stations across the clipped network established an expected coverage of **38.1% (95% CI: 31.6--44.0%)**. Observed academic coverage (16.5%) falls far below random ($p < 0.0001$), quantitatively proving extreme geographic clustering in published academic literature.
+- **Sensitivity:** At 10 km straight-line, 94.0% of river length (4,321.5 km) is unsampled; at 50 km, 58.8% (2,704.7 km) remains unsampled.
 
 To guide future surveillance deployments without redundant clustering along a single channel, candidate reaches distributed across primary national river basins were selected with a minimum spatial separation of $\ge 30\text{ km}$, with administrative gazetteer verification:
 

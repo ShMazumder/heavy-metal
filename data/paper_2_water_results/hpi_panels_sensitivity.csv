@@ -1,5 +1,7 @@
-Panel,Metals,N_Records,Median_HPI,IQR_HPI,Mean_HPI,Max_HPI,Pct_gt_100,Pct_gt_200
-Core4,"As, Cd, Cr, Pb",112,156.99,280.55,395.21,2682.05,58.9,42.9
-Core5,"As, Cd, Cr, Ni, Pb",62,231.75,493.32,590.56,2619.19,74.2,56.5
-All7,"As, Cd, Cr, Cu, Ni, Pb, Zn",35,253.02,1732.92,846.52,2615.37,85.7,65.7
-Variable (>=3),Inconsistent subsets,157,202.3,714.89,718.74,5920.11,63.1,50.3
+Evaluation_Subset,Panel_Name,N_Records,Median_HPI,Q1_HPI,Q3_HPI,Mean_HPI,Max_HPI,Pct_Above_100
+Common N=35 Subset,"Core-4 (As, Cd, Cr, Pb)",35,254.13,132.37,1905.86,865.39,2682.05,85.7
+Common N=35 Subset,Core-5 (+Ni),35,253.38,131.97,1867.42,847.76,2619.19,85.7
+Common N=35 Subset,"All-7 (+Cu, Zn)",35,253.02,131.78,1864.7,846.52,2615.37,85.7
+Common N=62 Subset,"Core-4 (As, Cd, Cr, Pb)",62,234.37,98.55,605.14,602.96,2682.05,74.2
+Common N=62 Subset,Core-5 (+Ni),62,231.75,99.04,592.36,590.56,2619.19,74.2
+All Available Records,"Core-4 (As, Cd, Cr, Pb)",112,156.99,69.55,350.1,395.21,2682.05,58.9
