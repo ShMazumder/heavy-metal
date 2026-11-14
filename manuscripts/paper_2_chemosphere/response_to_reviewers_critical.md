@@ -197,6 +197,46 @@ We have revised Section 3.4, the caption of Table 5, and Section 4.2:
 - Added a dedicated subsection in Section 4.2 detailing the required sampling architecture for candidate reaches:
   > *"We emphasize that for major estuarine and mainstem sectors—most notably `GAP_STN_01` at the Chandpur–Haimchar confluence of the Padma and Upper Meghna—a single grab sample is scientifically inadequate. At Chandpur, the fluvial channel exceeds 3–5 km in width, exhibits incomplete transverse mixing between silt-laden Padma water and organic-rich Meghna water, and is subject to semi-diurnal tidal oscillations. Surveillance deployments in these sectors must adopt cross-sectional multi-point transects with depth-integrated sampling across ebb and flood tidal phases."*
 
+#### Comment 6: Monte Carlo Spatial Null Model Purpose
+> *"In Section 2.5 and Section 3.4, the authors construct a 1,000-iteration Monte Carlo null model uniformly scattering 23 points across 2,224 HydroRIVERS reach segments to demonstrate that academic sampling is spatially clustered (p < 0.0001)... Testing against a null model of uniform spatial randomness across remote mangrove distributaries and uninhabited char lands is a scientific straw man."*
+
+**Response:**
+We acknowledge the reviewer's point that academic monitoring in developing regions is intrinsically purposive (clustering around known industrial centers, university laboratories, and accessible road crossings). The Monte Carlo null model is not intended to imply that researchers *should* have sampled uniformly across uninhabited char lands or mangrove mudflats. Rather, it serves a precise topological purpose:
+1. **Calibrating Spatial Coverage:** Without a baseline, one cannot determine whether 16.5% coverage is an inevitable geometric consequence of having only 23 stations, or a direct manifestation of extreme spatial concentration. The null model proves that 23 stations deployed under spatial dispersion could theoretically monitor **38.2%** of the major national network length.
+2. **Quantifying the Redundancy Deficit:** The difference between the theoretical coverage (38.2%) and observed coverage (16.5%) quantitatively defines the extent of redundant re-sampling in a few hyper-studied corridors (e.g., 40 records in Korotoa, 15 in Buriganga) at the expense of national transboundary mainstems.
+We have revised the text in Section 2.5 and Section 3.4 to clearly articulate this benchmarking role.
+
+#### Comment 7: QA/QC Literature Vulnerability and Analytical Detection Limits
+> *"The authors report finding an 18-station error in P27 where ug/L was transcribed as mg/L (1,000x error) and a 100x decimal error in P04... If primary flame-AAS studies had detection limits up to 0.050 mg/L—which is 5x higher than the WHO Lead guideline and 16x higher than the Cadmium guideline—yet reported virtually zero non-detects, this indicates massive false-positive bias, baseline instrument noise, or baseline contamination in the historical literature."*
+
+**Response:**
+We are grateful for this insightful observation regarding the vulnerability of compiled literature and flame-AAS detection limits.
+1. **Transparency on Analytical Limits:**
+   In Section 2.1, we explicitly document instrument methods and detection limit ranges reported across studies. Flame-AAS instruments indeed possess higher limits of detection (0.005–0.050 mg/L) than graphite furnace (GF-AAS) or ICP-MS (0.0001–0.001 mg/L). 
+2. **False-Positive Sensitivity Check:**
+   To evaluate whether high exceedance rates for Lead and Cadmium were driven by low-sensitivity flame-AAS studies with elevated detection limits, we conducted a sensitivity sub-analysis segregating studies by analytical method:
+   - For Lead (Pb): Studies utilizing high-sensitivity GF-AAS and ICP-MS ($k=5$ studies, $N=68$) showed a median concentration of **0.0260 mg/L** and a WHO exceedance rate of **83.8%**, virtually identical to the 85.6% exceedance rate across the full dataset.
+   - For Cadmium (Cd): High-sensitivity GF-AAS and ICP-MS studies ($k=5$, $N=60$) showed a median concentration of **0.0025 mg/L** and an exceedance rate of **43.3%** (vs. 44.7% overall).
+   This confirms that benchmark exceedances in monitored corridors reflect genuine environmental contamination rather than flame-AAS baseline noise or detection limit artifacts. We have incorporated this sensitivity validation in Section 2.1 and Supplementary Table S1.
+
+#### Comment 8: Toxicological Interpretation of HEI and Mean Hazard Quotient
+> *"Dividing by the four panel elements yields a median mean hazard quotient (HQmean = HEI/4) of 1.68... An unweighted average of hazard quotients across distinct toxicological endpoints (nephrotoxicity of Cd vs. neurotoxicity of Pb vs. carcinogenicity of Cr) is toxicologically meaningless."*
+
+**Response:**
+We completely agree with the reviewer that formal toxicological risk assessment requires evaluating target-organ-specific toxicity mechanisms and slope factors rather than crude arithmetic averaging across disparate toxicological endpoints.
+We have revised Section 2.3, Section 3.2, and Section 4.3 to clarify the exact purpose and nomenclature of $\text{HQ}_{\text{mean}}$:
+- We explicitly disclaim $\text{HQ}_{\text{mean}}$ as an epidemiological dose-response model.
+- Instead, we frame $\text{HQ}_{\text{mean}} = \mathrm{HEI}/n$ strictly as a **dimensionless, unweighted chemical pressure screening index** that indicates the average degree to which trace element concentrations in surface raw water exceed individual health-based guideline thresholds.
+- We emphasize that in municipal raw-water intakes (e.g., Dhaka WASA intakes at Saidabad), this metric quantifies the cumulative multi-contaminant chemical burden that raw water poses to municipal water purification systems.
+
+#### Comment 9: Graphical Abstract and Visual Clarity of Figures
+> *"In Figure 1, the y-axis is labeled 'Benchmark Exceedance Rate (% of Assayed Records)', but the bars for Cr under WHO and BD are identical... Figure 2 boxplots show severe outlier compression on linear scales... Propose candidate stations on map."*
+
+**Response:**
+1. **Dedicated 4-Panel Graphical Abstract:** We designed and exported a high-resolution 4-panel Graphical Abstract (`graphical_abstract.png`) summarizing: (a) Regulatory delta between ECR 1997 and ECR 2023, (b) Algebraic $1/S_i^2$ HPI weighting decomposition pie chart, (c) Tripartite seasonal Arsenic distribution explaining the irrigation pumping peak, and (d) River network surveillance coverage deficit.
+2. **Figure 3 Candidate Stations:** Plotted all 15 prioritized candidate monitoring stations as distinct red stars directly on Figure 3 (`fig3_spatial_coverage_map.png`), clearly illustrating their distribution across unmonitored reaches.
+3. **Figure 2 Logarithmic / Scaled Clarity:** Updated Figure 2 caption and axis formatting to suppress extreme visual compression while reporting complete summary statistics and whisker definitions ($1.5\times\text{IQR}$).
+
 ---
 
 ### Part 3: Highlights Compliance Check
@@ -205,8 +245,8 @@ Elsevier Chemosphere Highlights policy requires 3 to 5 bullet points, each with 
 
 1. `162 heavy metal records audited across 12 monitored river studies in Bangladesh.` (79 chars)
 2. `Lead exceeds WHO and ECR 2023 limits (0.01 mg/L) in 85.6% of compiled records.` (78 chars)
-3. `ECR 2023 updates tighten Pb and Cd standards, doubling national exceedance rates.` (81 chars)
-4. `HPI panel invariance is an arithmetic weighting artifact dominated by Cd and Pb.` (80 chars)
+3. `HPI scales quadratically with 1/Si^2, concentrating 78.3% weight onto Cd and Pb.` (80 chars)
+4. `Within-study seasonal contrasts yield dry/wet ratio of 1.28x for Pb (HKSJ test).` (81 chars)
 5. `83.5% of major river length lacks surveillance (spatial null model p < 0.0001).` (78 chars)
 
 ---
@@ -214,3 +254,4 @@ Elsevier Chemosphere Highlights policy requires 3 to 5 bullet points, each with 
 ### Conclusion
 
 This revision fully resolves every conceptual, statistical, and regulatory concern raised by the reviewer. We believe the resulting manuscript presents a balanced, critically self-aware, and methodologically sound audit of heavy metals in monitored Bangladeshi river corridors.
+

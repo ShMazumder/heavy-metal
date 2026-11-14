@@ -100,3 +100,147 @@ To make this manuscript scientifically defensible, the authors must:
 4. **Re-integrate the Pre-Monsoon Season:** Stop discarding $38\%$ of the seasonal dataset. The pre-monsoon (March–May) must be analyzed as a distinct hydrological period (the true baseflow/evaporative minimum) rather than swept under the rug.
 5. **Acknowledge HPI Mathematics Honestly:** Rewrite Section 3.2 to remove the absurd claim that index stability across metal additions is an empirical breakthrough; explicitly state that HPI is mathematically dominated by Cadmium due to its $1/S_i$ weighting.
 6. **Reframe the Paper's Scope:** Change the title and conclusions to reflect what this dataset actually is: *“A Synthesis of Heavy Metal Records in Urban and Industrial River Reaches of Bangladesh...”* It is not, and never was, a representative assessment of the country's national river network.
+
+
+
+This manuscript has strong bones—the cluster-bootstrapping, HKSJ meta-analytic adjustments, mathematical critique of the Heavy Metal Pollution Index (HPI), and HydroSHEDS topological gap analysis are genuinely rigorous. However, as a Desk Editor or Reviewer 2 at a top-tier journal (*Water Research*, *Environmental Science & Technology*, or *Science of the Total Environment*), I would recommend **Major Revisions (bordering on Reject & Resubmit)** due to severe literature starvation, a self-defeating regulatory comparison, and several glaring internal inconsistencies between the text, tables, and figures.
+
+---
+
+### 1. Major / Fatal Flaws
+
+**A. Catastrophic Literature Under-Sampling (12 Studies in 15 Years?)**
+
+* **The Issue:** You claim a "systematic literature compilation" across Web of Science, Scopus, and Google Scholar from 2010 to 2024, yet your entire quantitative trace metal synthesis rests on just **$k = 12$ studies ($N = 162$ records)** across a 15-year window. Even more alarming, your Reference list contains **only 6 primary field studies** on Bangladeshi river water (Ahmad 2010, Bhuiyan 2015, Islam 2015, Islam 2018, Hossain 2021, Mortuza 2024; plus Ali 2021 if counted). Where are the citations for the other 6 trace-metal studies, the 5 bulk physicochemical studies, and the 11 sediment studies from your "28-study master database"? Relegating primary data sources exclusively to Supplementary Table S0 without citing them in the main bibliography violates citation standards and denies original authors credit.
+
+
+* **The Reality Check:** Dozens of peer-reviewed papers measuring heavy metals in the Buriganga, Turag, Shitalakhya, Karnaphuli, Meghna, Padma, Halda, Dhaleshwari, and Old Brahmaputra have been published between 2010 and 2024. Furthermore, there is no **PRISMA flow diagram**, no exact Boolean search string, no search date, and no record of how many ratusan/thousands of initial hits were screened and excluded. Without a PRISMA workflow, your claim that "83.5% of major river length is unmonitored by academia" is vulnerable to a fatal critique: *Is the river network actually unmonitored, or did your search just miss 70% of the literature?*
+
+
+
+**B. The Regulatory Strawman: Drinking Standards vs. Inland Surface Water Standards**
+
+* **The Issue:** A central thesis of your paper is the "regulatory benchmark discordance" caused by Bangladesh's ECR 2023 (Schedule 2) tightening Lead from 0.050 to 0.010 mg/L. However, **you are applying Drinking Water standards to untreated, raw industrial river water**.
+
+
+* **The Reality Check:** While you add a brief caveat in Section 1 and Section 4.6 that raw river water is not tap water, framing raw river water exceedances of potable tap-water limits as *"statutory non-compliance"* and *"national regulatory violations"* (Abstract, Lines 28, 229, 346, 353) is legally and scientifically inaccurate. Both ECR 1997 and ECR 2023 explicitly distinguish between **Standards for Drinking Water** and **Standards for Inland Surface Water** (which in ECR 2023 are categorized by usage: source of drinking water after conventional treatment, recreational, pisciculture, irrigation, etc.). A river only violates statutory surface water law if it exceeds the *Inland Surface Water* criteria or if an effluent exceeds *Industrial Effluent* standards. You must clearly separate "exceedance of potable reference benchmarks (treatment burden)" from actual "statutory violation of inland surface water law."
+
+
+
+**C. The "268 Observations" Padding (106 Orphaned Physicochemical Records)**
+
+* **The Issue:** In the Abstract (Line 6) and Methods (Line 69), you boast an evaluation of **268 surface water observations across 17 investigations**, noting that 5 studies ($N = 106$ records) reported *exclusively* bulk physicochemical parameters (pH, EC, DO, BOD, COD, TDS, TSS).
+
+
+* **The Reality Check:** Those 106 records **never appear again in the entire paper**. There is zero analysis of pH, EC, DO, or TDS in the Results, Tables, or Figures. You didn't even use pH or TDS/EC to model metal bioavailability, partitioning, or speciation. Including 5 studies and 106 records in your abstract's headline sample size when they are completely excluded from every single analysis in the paper is blatant sample-size inflation. Either integrate physicochemical controls (e.g., metal-pH regressions) or drop the 106 records from your headline numbers.
+
+**D. Table 5 Violates its Own Methodological Rules**
+
+* **The Issue:** In Section 2.5 (Line 206), Section 3.4 (Line 334), and the caption of Table 5, you explicitly state that your 15 candidate monitoring reaches were selected from unsampled sectors ($>25\text{ km}$ from published sites) while **"enforcing $\ge 30\text{ km}$ spatial separation"** between candidate stations.
+
+
+* **The Reality Check:** Look at the coordinates in Table 5:
+
+
+* `GAP_STN_01` ($23.227^\circ\text{N}, 90.631^\circ\text{E}$) to `GAP_STN_02` ($23.395^\circ\text{N}, 90.395^\circ\text{E}$) is **$\sim 30.5\text{ km}$**, and `GAP_STN_02` to `GAP_STN_03` ($23.535^\circ\text{N}, 90.144^\circ\text{E}$) is **$\sim 29.9\text{ km}$**.
+* Worse, look at `GAP_STN_07` ($24.200^\circ\text{N}, 88.750^\circ\text{E}$) and `GAP_STN_08` ($24.356^\circ\text{N}, 88.492^\circ\text{E}$) — they are **$\sim 31.4\text{ km}$** apart, while `GAP_STN_08` and `GAP_STN_09` ($24.452^\circ\text{N}, 88.210^\circ\text{E}$) are only **$\sim 30.5\text{ km}$** apart.
+* Even more glaringly, look at the **"Nearest Gap (km)"** column in Table 5: `GAP_STN_02` is **29.3 km**, `GAP_STN_09` is **27.9 km**, and `GAP_STN_13` is **25.5 km**. If "Nearest Gap" means distance to the nearest published site, it barely clears 25 km; if it means distance to the nearest candidate station, it directly violates your $\ge 30\text{ km}$ rule! Clarify what "Nearest Gap (km)" measures and verify your spatial buffer script.
+
+
+* Additionally, **Figure 3 does not show the 15 candidate reaches!** The caption of Figure 3 explicitly states: *"showing published sampling sites and 15 geographically diverse candidate monitoring reaches"*. Yet the map and legend only plot the 23 blue dots for Published Water Quality Sites. The 15 candidate stations were left off the map entirely.
+
+
+
+
+
+---
+
+### 2. Statistical & Methodological Critiques
+
+**A. Cluster Bootstrap Resampling with $k = 6$ to $12$ Clusters**
+
+* Non-parametric cluster bootstrapping (resampling studies with replacement 5,000 times) works well asymptotically, but with only $k = 6$ (Zn) to $k = 12$ (Cr) clusters, the bootstrap distribution is highly discrete and known to suffer from under-coverage or erratic tail behavior, especially when study sample sizes ($N_j$) are severely unbalanced (e.g., Korotoa has $N = 40$ across 2 studies, while Rupsa has $N = 7$ across 2 studies).
+
+
+* Furthermore, in Table 1, your header says *"reporting 95% unadjusted Wilson score and 5,000-resample study-level cluster bootstrap confidence intervals"*, and your footnote says *"Non-zero upper bounds reported for zero cells via Wilson score"*. That means you are **mixing two completely different statistical estimators in the same column** without marking which is which, or you omitted the Wilson intervals for non-zero cells despite promising them in the caption and Section 2.2 (Line 126). Also, for Cu WHO Exceedance ($1.0\%, N = 105$), the cell is *not* a zero-exceedance cell ($1/105$ is non-zero), yet the interval is `[0.0-3.2%]`. Clean this up and report your random-effects meta-analytic proportions ($79.9\%$ for Pb) in Table 1 alongside the raw pooled proportions, rather than hiding the meta-analytic estimate in the prose.
+
+
+
+**B. What is $N = 162$? (Granularity Confounding)**
+
+* You never define what constitutes a single "record" or "observation" in your database. In environmental literature, Paper A might publish raw individual station-season measurements ($N = 30$), whereas Paper B might publish only river-wide seasonal means ($N = 2$) or annual station means ($N = 5$).
+
+
+* If you pool individual grab samples alongside multi-sample means as equal "records" in an unweighted percentage ($125/146 = 85.6\%$) or Mann-Whitney U test, studies that report disaggregated station data completely dominate studies that report summary means. You must explicitly state the aggregation level of each of the 12 studies and weight or structure your synthesis accordingly.
+
+
+
+**C. The HPI "Damping Artifact" Critique Overshoots**
+
+* Your mathematical decomposition of Prasad & Bose's HPI ($W_i = 1/S_i$) is spot-on: Cd ($60.2\%$) and Pb ($18.1\%$) command $78.3\%$ of the Core-4 weight.
+
+
+* However, your claim that adding Cu ($W = 0.5$) and Zn ($W = 0.33$) proves that HPI is "an ill-conditioned proxy" and an "arithmetic damping artifact" misses *why* $W_i = 1/S_i$ was designed that way. Cu ($2.0\text{ mg/L}$) and Zn ($3.0\text{ mg/L}$) have guidelines 200 to 1,000 times higher than Cd ($0.003\text{ mg/L}$) and Pb ($0.010\text{ mg/L}$) precisely because they are orders of magnitude less toxic. In hazard indexing, *even in unweighted HEI*, a metal's contribution is $M_i / S_i$. What HPI actually does is weight by $1/S_i$ *twice*: once in the sub-index $Q_i = (M_i / S_i) \times 100$, and a second time in the weight $W_i = 1/S_i$, making each metal's numerator contribution proportional to **$M_i / S_i^2$**! Pointing out that **HPI scales quadratically with inverse guideline limits ($1/S_i^2$) whereas HEI scales linearly ($1/S_i$)** is a much sharper, more mathematically devastating critique than simply complaining that $W_i \propto 1/S_i$.
+
+
+
+**D. Table 3: Copper's Pooled vs. Meta-Analytic Reversal Goes Unexplained**
+
+* In Table 3, you highlight Pb and Ni as examples of Simpson's Paradox where pooled dry/wet ratios are $<1.0$ ($0.88\times$ and $0.73\times$), but within-study paired ratios are $\ge 1.0$ ($1.28\times$ and $1.00\times$).
+
+
+* Yet you completely ignore **Copper (Cu)** in the exact same table: Cu has a pooled dry/wet ratio of **$1.52\times$** (dry enrichment), which flips to **$0.54\times$** (strong wet-season enrichment) in the within-study paired meta-analysis! Why does Copper do the exact opposite of Lead and Arsenic when controlling for station geography? You cannot cherry-pick the paradoxes that fit your dry-season concentration narrative and ignore the analyte that reverses it.
+
+
+
+---
+
+### 3. Internal Contradictions, Figure Flaws & Sloppiness
+
+1. **Duplicate Figure:** Your **Graphical Abstract** (Page 1) and **Figure 1** (Page 9) are the exact same image file, down to the title. A Graphical Abstract should synthesize the whole paper (exceedances + HPI $1/S_i$ weighting + seasonal As peak + 83.5% network gap), not just copy-paste Figure 1.
+
+
+2. **Figure 2 Caption vs. Plot Mismatch:** The caption for Figure 2 (Page 12) reads: *"Seasonal concentration distributions (Dry/Winter vs. Wet/Rainy) for Arsenic, Chromium, and Cadmium in Bangladesh river waters"*. Yet Figure 2 actually displays **7 boxplots** (As, Cd, Cr, Cu, Ni, Pb, and Zn)! Furthermore, the boxplots appear to omit outliers (or clip the whiskers at $1.5\times\text{IQR}$) without stating this in the caption—for instance, Cr max is $7.55\text{ mg/L}$ in Table 1, but the y-axis in Figure 2 stops at $0.175\text{ mg/L}$.
+
+
+3. **Core-4 HPI Median Discrepancy ($254.13$ vs. $156.99$):**
+* In the Abstract (Line 23), Section 2.3 (Line 154), and Conclusions (Line 505), you imply that Core-4 (156.99) is compared directly against expanded panels: *"explaining observed panel invariance across Core-4 (156.99) and expanded panels"* (Line 23) and *"across Core-4 (156.99), Core-5 (253.4), and All-7 (253.0) panels on identical common subsets ($N = 35$)"* (Line 154).
+
+
+* That is false according to your own Results (Line 260 & Line 378): $156.99$ is the median for $N = 112$, whereas on the $N = 35$ subset, the Core-4 median is **$254.13$** (compared to $253.38$ for Core-5 and $253.02$ for All-7)! Saying "invariance across Core-4 (156.99), Core-5 (253.4), and All-7 (253.0)" in Line 154 actively contradicts your thesis by quoting numbers that differ by 100 points! Fix Line 23, Line 154, and Line 505 immediately.
+
+
+
+
+4. **Missing Metal Index ($MI$) in Table 2:** Section 3.2's heading and Table 2's caption both promise **"Multi-metal pollution indices (HPI, HEI, MI)"**, yet Table 2 only lists HPI, HEI, and **Mean HQ**. If by MI you meant Metal Index (Tamasi & Cini, 2004, which is identical in formula to HEI), harmonize your terminology instead of using MI in the title and HQ in the columns.
+
+
+5. **Broken LaTeX Bracket Rendering in Tables 1 & 3:** Look closely at Table 1 and Table 3. Almost every confidence interval has mangled delimiter placement from a botched regex or script output:
+
+
+* Table 1: `85.6% 71.1-94.3%`, `54.8 % 21.7-79.1%)`, `44.7% 13.1-77.4[%`, `0.0% (0.0-2.6%]`.
+
+
+* Table 3: `0.60-3.41[]`, `0.77-2.07[]`, `[0.11-2.50`.
+
+
+* In Section 2.2 (Line 120), "Ni" and "Zn" lost their first letters in the LaTeX compile: `Ni i(0.200 mg/L)` and `n(2.000 mg/L)`.
+
+
+
+
+6. **Table 2 Mean vs. Median Anomaly (Buriganga):** In Table 2, Buriganga ($N = 15, k = 1$) has a **Mean HPI of 1,607.66** and a **Median HPI of 1,977.43**. While negatively skewed data exist, environmental concentration data are almost universally right-skewed (as seen in every other row of Table 2). Double-check whether Mean and Median were transposed for Buriganga.
+
+
+
+---
+
+### 4. Concrete Action Plan for Revision
+
+1. **Expand the Literature Search & Add a PRISMA Diagram:** Conduct a comprehensive search to capture the missing 2010–2024 Bangladeshi river metal studies (which should easily yield 30–50+ surface water studies), or explicitly justify why your inclusion criteria filtered out the rest of the literature. Cite all included studies in the main Reference list.
+2. **Add ECR 2023 Inland Surface Water Benchmarks:** Add a column or parallel analysis comparing river concentrations against ECR 2023 Schedule 2 *Inland Surface Water* limits (or industrial effluent limits), and reframe the potable WHO/ECR drinking water comparison strictly as "raw-water potability / treatment burden screening" rather than "statutory non-compliance."
+3. **Clean Up the 106 Physicochemical Records:** Either remove the 5 bulk-physicochemical-only studies ($N = 106$) from the Abstract/Methods counts, or include an analysis showing how pH, EC, and DO correlate with dissolved metal exceedances.
+4. **Sharpen the HPI Critique to $1/S_i^2$:** Explicitly show algebraically that because $Q_i \propto 1/S_i$ and $W_i \propto 1/S_i$, HPI weights concentrations by $1/S_i^2$, squaring the regulatory disparity compared to linear hazard quotients (HEI).
+5. **Fix All Table/Figure Errors:** Replace the duplicate Graphical Abstract, plot the 15 candidate stations on Figure 3, update Figure 2's caption to reflect all 7 metals and explain the whisker/outlier truncation, fix the $156.99$ vs. $254.13$ text error on Line 154, explain Copper's seasonal reversal in Section 3.3, and fix all broken brackets in Tables 1 and 3.
+
+Would you like help rewriting the mathematical derivation of the $1/S_i^2$ HPI artifact or restructuring the Abstract and Discussion to reframe the ECR 2023 regulatory comparison?

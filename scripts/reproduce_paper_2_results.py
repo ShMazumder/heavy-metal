@@ -858,6 +858,12 @@ ax.add_collection(lc_lt10)
 # Plot sampling stations (24 unique coords)
 ax.scatter(station_coords[:,1], station_coords[:,0], c='#2b83ba', edgecolor='black', s=55, linewidth=1.0, zorder=6, label=f'Published Water Quality Sites (N={n_station_points})')
 
+# Plot 15 candidate monitoring stations from priority_future_monitoring_stations.csv
+df_priority = pd.read_csv('data/paper_2_water_results/priority_future_monitoring_stations.csv')
+ax.scatter(df_priority['Recommended_Longitude'], df_priority['Recommended_Latitude'], 
+           c='#e41a1c', marker='*', s=140, edgecolor='black', linewidth=1.0, zorder=7, 
+           label='15 Prioritized Candidate Surveillance Reaches (Table 5)')
+
 ax.set_xlim(88.0, 92.7)
 ax.set_ylim(20.5, 26.7)
 ax.set_aspect('equal')
@@ -873,7 +879,80 @@ fig.savefig('data/paper_2_water_results/spatial_coverage_map.png', dpi=300, bbox
 fig.savefig('manuscripts/paper_2_chemosphere/fig3_spatial_coverage_map.png', dpi=300, bbox_inches='tight')
 fig.savefig('manuscripts/conference_2_water/fig3_spatial_coverage_map.png', dpi=300, bbox_inches='tight')
 plt.close(fig)
-print("Saved fig3_spatial_coverage_map.png (clean polygon clip)")
+print("Saved fig3_spatial_coverage_map.png (clean polygon clip with 15 candidate stations)")
+
+# GRAPHICAL ABSTRACT: 4-Panel Synthesis
+print("\n--- Generating Dedicated Graphical Abstract (4 Panels) ---")
+fig_ga, axes_ga = plt.subplots(2, 2, figsize=(13, 10), dpi=300)
+
+# Panel A: Regulatory Tightening (ECR 1997 vs ECR 2023 vs WHO)
+ax_a = axes_ga[0, 0]
+ga_elements = ['Pb', 'Cd', 'Ni', 'Cr', 'As']
+ga_x = np.arange(len(ga_elements))
+ga_w = 0.25
+
+p_who = [df_exceed[df_exceed['Element']==el]['WHO_Exceed_Pct'].values[0] for el in ga_elements]
+p_bd23 = [df_exceed[df_exceed['Element']==el]['BD2023_Exceed_Pct'].values[0] for el in ga_elements]
+p_bd97 = [df_exceed[df_exceed['Element']==el]['BD1997_Exceed_Pct'].values[0] for el in ga_elements]
+
+ax_a.bar(ga_x - ga_w, p_who, ga_w, label='WHO Drinking (2022)', color='#d95f02', edgecolor='black', alpha=0.9)
+ax_a.bar(ga_x, p_bd23, ga_w, label='Bangladesh ECR 2023 (Sched 2)', color='#1b9e77', edgecolor='black', alpha=0.9)
+ax_a.bar(ga_x + ga_w, p_bd97, ga_w, label='Bangladesh ECR 1997 (Sched 3)', color='#66c2a5', edgecolor='black', alpha=0.9)
+
+ax_a.set_xticks(ga_x)
+ax_a.set_xticklabels(ga_elements, fontsize=11, fontweight='bold')
+ax_a.set_ylabel('Exceedance Rate (% of Assayed Records)', fontsize=10, fontweight='bold')
+ax_a.set_title('(A) Regulatory Tightening Under ECR 2023\n(Lead Violations Surge from 34.9% to 85.6%)', fontsize=11, fontweight='bold')
+ax_a.set_ylim(0, 105)
+ax_a.grid(axis='y', linestyle='--', alpha=0.5)
+ax_a.legend(fontsize=8.5, frameon=True, loc='upper right')
+
+# Panel B: HPI Weighting Artifact (1/Si^2 quadratic scaling)
+ax_b = axes_ga[0, 1]
+metals_core = ['Cd', 'Pb', 'As', 'Cr']
+shares = [60.2, 18.1, 18.1, 3.6]
+colors_pie = ['#e41a1c', '#377eb8', '#ff7f00', '#4daf4a']
+ax_b.pie(shares, labels=[f"{m}\n({s}%)" for m, s in zip(metals_core, shares)],
+         colors=colors_pie, autopct='%1.1f%%', startangle=140, 
+         textprops={'fontsize': 10, 'fontweight': 'bold'},
+         wedgeprops={'edgecolor': 'black', 'linewidth': 1})
+ax_b.set_title('(B) Mathematical Bias in HPI Index Weights\n(Cd + Pb Command 78.3% of Score; Numerator Scales as $M_i/S_i^2$)', fontsize=11, fontweight='bold')
+
+# Panel C: Tripartite Seasonal Dynamics (Arsenic Peak)
+ax_c = axes_ga[1, 0]
+as_seasons = ['Monsoon Wet\n(Jun–Oct, N=23)', 'Winter Dry\n(Nov–Feb, N=57)', 'Pre-Monsoon Peak\n(Mar–May, N=41)']
+as_medians = [float(df_seasonal[df_seasonal['Element']=='As']['Wet_Median'].values[0]),
+              float(df_seasonal[df_seasonal['Element']=='As']['Dry_Median'].values[0]),
+              as_pre_med]
+bars_c = ax_c.bar(as_seasons, as_medians, color=['#386cb0', '#e7298a', '#fdb462'], edgecolor='black', width=0.55, alpha=0.9)
+ax_c.axhline(0.010, color='red', linestyle='--', linewidth=1.5, label='WHO Drinking Limit (0.010 mg/L)')
+ax_c.axhline(0.050, color='darkgreen', linestyle=':', linewidth=1.5, label='ECR 2023 Limit (0.050 mg/L)')
+ax_c.set_ylabel('Median Arsenic Concentration (mg/L)', fontsize=10, fontweight='bold')
+ax_c.set_title('(C) Tripartite Seasonal Arsenic Dynamics\n(Boro Irrigation Groundwater Pumping Peak)', fontsize=11, fontweight='bold')
+ax_c.set_ylim(0, 0.038)
+ax_c.grid(axis='y', linestyle='--', alpha=0.5)
+ax_c.legend(fontsize=8.5, frameon=True, loc='upper left')
+
+# Panel D: Spatial Coverage & Monitoring Blind Spots
+ax_d = axes_ga[1, 1]
+cov_labels = ['Unmonitored\n>25 km\n(83.5%)', 'Buffer\n10–25 km\n(11.7%)', 'Monitored\n<=10 km\n(4.8%)']
+cov_lens = [unsamp_hav_25_len, 
+            df_bd_major[(df_bd_major['Min_Dist_Hav_km'] > 10.0) & (df_bd_major['Min_Dist_Hav_km'] <= 25.0)]['LENGTH_KM'].sum(),
+            df_bd_major[df_bd_major['Min_Dist_Hav_km'] <= 10.0]['LENGTH_KM'].sum()]
+bars_d = ax_d.bar(cov_labels, cov_lens, color=['#de2d26', '#fd8d3c', '#31a354'], edgecolor='black', width=0.55, alpha=0.9)
+for bar in bars_d:
+    yval = bar.get_height()
+    ax_d.text(bar.get_x() + bar.get_width()/2.0, yval + 60, f"{yval:.0f} km", ha='center', va='bottom', fontsize=9.5, fontweight='bold')
+ax_d.set_ylabel('Major River Reach Length (km)', fontsize=10, fontweight='bold')
+ax_d.set_title('(D) River Network Surveillance Deficit\n(83.5% Major Network Uncovered; 15 Candidate Reaches Isolated)', fontsize=11, fontweight='bold')
+ax_d.set_ylim(0, 4300)
+ax_d.grid(axis='y', linestyle='--', alpha=0.5)
+
+plt.tight_layout()
+fig_ga.savefig('data/paper_2_water_results/graphical_abstract.png', dpi=300, bbox_inches='tight')
+fig_ga.savefig('manuscripts/paper_2_chemosphere/graphical_abstract.png', dpi=300, bbox_inches='tight')
+plt.close(fig_ga)
+print("Saved graphical_abstract.png (4 panels)")
 
 # -----------------------------------------------------------------------------
 # 8. EXPORT RESULTS JSON & MACROS (PHASE 2)
@@ -972,6 +1051,9 @@ res_dict = {
     'HpiCoreFourMin': f"{hpi_min:.2f}",
     'HpiCoreFourShareAboveHundred': f"{hpi_pct_gt_100:.1f}",
     'HpiCoreFourShareAboveTwoHundred': f"{hpi_pct_gt_200:.1f}",
+    'HpiCommonSubsetCoreFourMedian': f"{hpi_c4_on_35.median():.2f}",
+    'HpiCommonSubsetCoreFiveMedian': f"{hpi_c5_on_35.median():.2f}",
+    'HpiCommonSubsetAllSevenMedian': f"{hpi_c7_on_35.median():.2f}",
     'HpiHeiSpearmanRho': f"{spearman_rho:.3f}",
     'HeiMedian': f"{hei_med:.2f}",
     'MeanHqMedian': f"{hq_mean_med:.2f}",
