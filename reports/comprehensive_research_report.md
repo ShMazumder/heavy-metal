@@ -276,80 +276,89 @@ Full reach uncertainty dataset: [reach_prediction_uncertainty_summary.csv](file:
 
 ---
 
-## 8. Surface Water Quality Synthesis & Acute Drinking Hazards (Paper 2)
+## 8. Surface Water Quality Synthesis & Drinking Benchmark Exceedances (Paper 2)
 
-Auditing 268 surface water samples against the World Health Organization (WHO, 4th ed.) and Bangladesh Environmental Conservation Rules (ECR 2023) drinking water standards revealed an acute public health emergency.
+An audited literature compilation of 268 surface water records across 12 major rivers from 28 peer-reviewed studies (2010–2022) was screened against World Health Organization drinking-water quality guidelines (WHO, 4th ed., incorporating 2022 addenda) and Bangladesh Environmental Conservation Rules (ECR 2023 potable schedule).
 
-**Table 5:** Drinking water compliance audit of dissolved heavy metals in Bangladesh river waters.
-| Heavy Metal | $N$ | Median (mg/L) | Max (mg/L) | WHO Limit (mg/L) | **WHO Exceedance Rate** | BD ECR Limit (mg/L) | **BD ECR Exceedance Rate** |
+**Table 5:** Heavy metal benchmark exceedance audit in published Bangladesh river waters with 95% Wilson score confidence intervals.
+| Heavy Metal | $N$ | Median (mg/L) | Max (mg/L) | WHO Limit (mg/L) | **WHO Exceedance Rate (95% CI)** | BD ECR Limit (mg/L) | **BD ECR Exceedance Rate (95% CI)** |
 |---|---|---|---|---|---|---|---|
-| **Lead (Pb)** | 146 | 0.0314 | **33.000** | 0.010 mg/L (10 $\mu\text{g/L}$) | **87.7%** (128 / 146) | 0.050 mg/L | **37.0%** (54 / 146) |
-| **Chromium (Cr)** | 160 | 0.0722 | **7.550** | 0.050 mg/L (50 $\mu\text{g/L}$) | **62.5%** (100 / 160) | 0.050 mg/L | **62.5%** (100 / 160) |
-| **Nickel (Ni)** | 104 | 0.1000 | **3.210** | 0.070 mg/L (70 $\mu\text{g/L}$) | **57.7%** (60 / 104) | 0.100 mg/L | **48.1%** (50 / 104) |
-| **Arsenic (As)** | 122 | 0.0152 | **0.352** | 0.010 mg/L (10 $\mu\text{g/L}$) | **54.9%** (67 / 122) | 0.050 mg/L | **18.0%** (22 / 122) |
-| **Cadmium (Cd)** | 132 | 0.0030 | **1.750** | 0.003 mg/L (3 $\mu\text{g/L}$) | **47.0%** (62 / 132) | 0.005 mg/L | **42.4%** (56 / 132) |
-| **Copper (Cu)** | 105 | 0.0900 | 6.320 | 2.000 mg/L | **3.8%** (4 / 105) | 1.000 mg/L | **9.5%** (10 / 105) |
-| **Zinc (Zn)** | 79 | 0.5000 | 10.290 | 3.000 mg/L | **5.1%** (4 / 79) | 5.000 mg/L | **3.8%** (3 / 79) |
+| **Lead (Pb)** | 146 | 0.0286 | **0.700** | 0.010 mg/L | **85.6%** [79.0–90.4%] (125 / 146) | 0.050 mg/L | **34.9%** [27.7–43.0%] (51 / 146) |
+| **Chromium (Cr)** | 160 | 0.0710 | **7.550** | 0.050 mg/L | **60.6%** [52.9–67.9%] (97 / 160) | 0.050 mg/L | **60.6%** [52.9–67.9%] (97 / 160) |
+| **Arsenic (As)** | 122 | 0.0152 | **0.352** | 0.010 mg/L | **54.9%** [46.1–63.5%] (67 / 122) | 0.050 mg/L | **18.0%** [12.2–25.8%] (22 / 122) |
+| **Nickel (Ni)** | 104 | 0.0888 | **2.888** | 0.070 mg/L | **54.8%** [45.2–64.0%] (57 / 104) | 0.100 mg/L | **45.2%** [36.0–54.8%] (47 / 104) |
+| **Cadmium (Cd)** | 132 | 0.0028 | **0.123** | 0.003 mg/L | **44.7%** [36.5–53.2%] (59 / 132) | 0.005 mg/L | **40.2%** [32.2–48.7%] (53 / 132) |
+| **Zinc (Zn)** | 79 | 0.4000 | 3.200 | 3.000 mg/L$^*$ | **1.3%** [0.2–6.8%] (1 / 79) | 5.000 mg/L | **0.0%** [0.0–4.6%] (0 / 79) |
+| **Copper (Cu)** | 105 | 0.0888 | 2.179 | 2.000 mg/L | **1.0%** [0.2–5.2%] (1 / 105) | 1.000 mg/L | **6.7%** [3.3–13.1%] (7 / 105) |
+
+$^*$*WHO guideline for Zinc (3.0 mg/L) is an aesthetic/acceptability threshold rather than health-derived limit.*
 
 *(See exceedance figure: [guidelines_exceedance_rates.png](file:///c:/xampp/htdocs/heavy-metal/data/paper_2_water_results/guidelines_exceedance_rates.png))*
 
-### 8.1 Multi-Metal Water Pollution Indices
-- **Heavy Metal Pollution Index (HPI):** Mean $HPI = \mathbf{1,483.09}$ (median = 208.52, max = 58,134.96), dramatically exceeding the critical pollution threshold ($HPI = 100$).
-- **51.6% of water samples** fell into the **Critical Pollution category ($HPI > 200$)**, driven by extreme lead and cadmium weights.
+### 8.1 Multi-Metal Water Pollution Indices (HPI, HEI, MI)
+- **Heavy Metal Pollution Index (HPI):** Median $HPI = \mathbf{202.30}$ (IQR: 79.01–793.90, mean = 718.74, max = 5,920.11).
+- **Classification:** **63.1%** of multi-metal records exceeded the critical threshold ($HPI > 100$), and **50.3%** fell into the high pollution tier ($HPI > 200$). Median $HEI = 8.21$ (mean = 23.77), and median $MI = 3.83$ (mean = 13.11).
 
 **Table 5b:** Multi-metal pollution indices ($HPI$, $HEI$, $MI$) synthesized across Bangladesh river systems.
-| River System | Analyzed Assays ($N$) | Mean $HPI$ | Median $HPI$ | Critical $HPI$ ($>200$) | Mean $HEI$ | High $HEI$ ($>20$) | Mean $MI$ | River Quality Status |
-|---|---|---|---|---|---|---|---|---|
-| **Padma** | 6 | 18,371.39 | 13,033.64 | 33.3% | 564.71 | 33.3% | 264.80 | Extreme Point Contamination |
-| **Buriganga** | 31 | 2,895.71 | 873.89 | **90.3%** | 169.43 | 83.9% | 61.68 | **Chronic Critical Pollution** |
-| **Meghna** | 3 | 1,743.79 | 1,772.71 | **100.0%** | 53.25 | 100.0% | 24.54 | Critical Pollution |
-| **Shitalakhya** | 3 | 481.37 | 460.56 | **100.0%** | 38.15 | 100.0% | 19.60 | Critical Pollution |
-| **Turag** | 13 | 412.85 | 73.58 | 46.2% | 37.72 | 46.2% | 19.41 | Highly Polluted |
-| **Korotoa** | 40 | 316.67 | 194.52 | 40.0% | 13.58 | 10.0% | 5.81 | Moderately Polluted |
-| **Karnaphuli** | 24 | 252.19 | 222.85 | 14.9% | 10.06 | 1.0% | 4.96 | Moderate / Local Hotspots |
-| **Kirtankhola** | 30 | 58.56 | 55.50 | **0.0%** | 3.32 | 0.0% | 1.25 | **Acceptable Drinking Baseline** |
-| **Rupsa** | 7 | 47.21 | 51.27 | **0.0%** | 1.94 | 0.0% | 0.72 | **Acceptable Drinking Baseline** |
+| River System | Analyzed Assays ($N$) | Mean $HPI$ | Median $HPI$ | IQR $HPI$ | $\% HPI > 100$ | $\% HPI > 200$ | Median $HEI$ | Median $MI$ | River Quality Status |
+|---|---|---|---|---|---|---|---|---|---|
+| **Meghna** | 3 | 2,118.62 | 2,155.33 | 432.01 | 100.0% | 100.0% | 47.53 | 22.13 | Severe Point Contamination |
+| **Buriganga** | 31 | 1,797.74 | 1,839.81 | 1,302.34 | 90.3% | 90.3% | 53.87 | 25.62 | **Chronic Industrial Pollution** |
+| **Shitalakhya** | 3 | 1,080.80 | 793.90 | 714.94 | 100.0% | 100.0% | 44.79 | 20.32 | Heavy Industrial Stress |
+| **Padma** | 6 | 679.34 | 524.86 | 1,304.99 | 50.0% | 50.0% | 11.00 | 2.66 | Moderate/Localized Inputs |
+| **Karnaphuli** | 24 | 269.43 | 232.14 | 133.47 | 95.8% | 66.7% | 8.15 | 4.00 | Moderate / Port Runoff |
+| **Korotoa** | 40 | 317.04 | 194.68 | 327.31 | 77.5% | 50.0% | 11.08 | 4.79 | Moderate / Tannery Impact |
+| **Turag** | 13 | 1,704.05 | 172.36 | 3,337.68 | 61.5% | 46.2% | 4.99 | 4.29 | Highly Variable Industrial Flow |
+| **Kirtankhola** | 30 | 60.21 | 57.06 | 42.05 | 0.0% | 0.0% | 3.22 | 1.31 | **Acceptable Baseline** |
+| **Rupsa** | 7 | 47.28 | 51.35 | 9.47 | 0.0% | 0.0% | 2.06 | 0.78 | **Acceptable Baseline** |
 
 Full river-wise water indices dataset: [water_indices_summary_by_river.csv](file:///c:/xampp/htdocs/heavy-metal/data/paper_2_water_results/water_indices_summary_by_river.csv)
 
-### 8.2 Statistical Proof of Monsoon Hydraulic Dilution
-Non-parametric Mann-Whitney U testing confirmed significant seasonal dilution between the winter dry season and the monsoon wet season:
+### 8.2 Evaluation of Seasonal Contrasts
+Two-sided Mann-Whitney U hypothesis testing with Holm-Bonferroni family-wise adjustment evaluated seasonal contrasts between winter dry season and monsoon wet season:
 
-**Table 6:** Seasonal dilution dynamics of dissolved metals (Dry/Winter vs. Wet/Rainy).
-| Metal | Dry Median (mg/L) | Wet Median (mg/L) | Dilution Ratio (Dry / Wet) | Mann-Whitney $U$ | $p$-value | Significant Dilution? |
-|---|---|---|---|---|---|---|
-| **Chromium (Cr)** | 0.0705 | 0.0354 | **1.99×** | 1,291.5 | **$0.0191$** | **Yes ($p < 0.05$)** |
-| **Cadmium (Cd)** | 0.0015 | 0.0008 | **1.81×** | 1,027.0 | **$0.0204$** | **Yes ($p < 0.05$)** |
-| **Arsenic (As)** | 0.0073 | 0.0042 | **1.74×** | 913.0 | **$0.0021$** | **Yes ($p < 0.01$)** |
-| **Zinc (Zn)** | 0.5300 | 0.0725 | **7.31×** | 308.0 | **$0.0458$** | **Yes ($p < 0.05$)** |
-| **Lead (Pb)** | 0.0245 | 0.0287 | 0.85× | 808.0 | $0.4637$ | No (Persistent wet-season urban wash-off) |
+**Table 6:** Seasonal dilution dynamics of heavy metals in river waters (Dry/Winter vs. Wet/Rainy).
+| Metal | Dry Median (mg/L) | Wet Median (mg/L) | Ratio (Dry / Wet) | Mann-Whitney $U$ | Two-Sided $p$ | Holm $p_{\mathrm{adj}}$ | Significant Dilution? |
+|---|---|---|---|---|---|---|---|
+| **Arsenic (As)** | 0.0073 | 0.0042 | **1.74×** | 927.5 | **$0.0039$** | **$0.0273$** | **Yes ($p_{\mathrm{adj}} < 0.05$)** |
+| **Chromium (Cr)** | 0.0710 | 0.0354 | 2.01× | 1,312.0 | $0.0281$ | $0.1684$ | No ($p_{\mathrm{adj}} = 0.168$) |
+| **Cadmium (Cd)** | 0.0015 | 0.0008 | 1.88× | 1,014.5 | $0.0429$ | $0.2147$ | No ($p_{\mathrm{adj}} = 0.215$) |
+| **Zinc (Zn)** | 0.5300 | 0.0725 | 7.31× | 300.0 | $0.0915$ | $0.3661$ | No ($p_{\mathrm{adj}} = 0.366$) |
+| **Copper (Cu)** | 0.0866 | 0.0571 | 1.52× | 391.0 | $0.2009$ | $0.6027$ | No ($p_{\mathrm{adj}} = 0.603$) |
+| **Nickel (Ni)** | 0.0685 | 0.0945 | 0.73× | 376.5 | $0.7880$ | $1.0000$ | No ($p = 0.788$) |
+| **Lead (Pb)** | 0.0253 | 0.0287 | 0.88× | 859.0 | $0.8538$ | $1.0000$ | No ($p = 0.854$) |
 
 *(See seasonal boxplot: [seasonal_dilution_boxplots.png](file:///c:/xampp/htdocs/heavy-metal/data/paper_2_water_results/seasonal_dilution_boxplots.png))*
 
-- **The Hydraulic Dilution Mechanism:** Peak monsoon discharge provides ~50% natural volumetric dilution for industrial point-source effluents (Cr, Cd, As).
-- **The Lead Anomaly:** Lead concentrations do not drop during monsoon flows ($p=0.4637$), proving that wet-season stormwater runoff washes substantial diffuse atmospheric deposition and battery scrap dust from urban surfaces, counterbalancing volumetric dilution.
+- **Arsenic Seasonal Dilution:** Statistically confirmed ($p_{\mathrm{adj}} = 0.0273$), with winter baseflow medians 1.74 times higher than wet monsoon medians.
+- **Lead and Nickel Non-Dilution:** Lead and Nickel show no dilution effect ($p > 0.78$), suggesting that increased wet-season non-point diffuse stormwater wash-off from urban road surfaces and industrial scrap offsets volumetric hydraulic dilution.
 
 ---
 
-## 9. National Surveillance Blind Spots & Prioritized Monitoring Network
+## 9. Spatial Surveillance Gaps & Prioritized Coverage Expansion
 
-Using HydroSHEDS river routing, we identified **4,435 major river reach segments (Strahler order $\ge 4$, discharge $>50\text{ m}^3/s$) situated $>25\text{ km}$ away from any historical monitoring point**. 
+Geodesic reach routing across HydroSHEDS HydroRIVERS established that **3,408 major river reach segments (87.5% of major reaches, totaling 7,372.3 km)** strictly within Bangladesh territory are situated $>25\text{ km}$ away from any published sampling point.
 
-To optimize government resources, the top 10 priority candidate stations were ranked by upstream catchment area and discharge:
+To guide future surveillance deployments without redundant clustering along a single channel, candidate reaches distributed across primary national river basins were selected with a minimum spatial separation of $\ge 30\text{ km}$:
 
-**Table 7:** Top 10 prioritized candidate coordinates for national water quality network expansion.
-| Priority Rank | Station Identifier | Latitude (°N) | Longitude (°E) | Stream Order | Upstream Area ($km^2$) | Discharge ($m^3/s$) | Distance to Nearest Study (km) | Target River System |
-|---|---|---|---|---|---|---|---|---|
-| **1** | `GAP_STN_01` | **23.227083** | **90.631250** | 9 | 1,574,223 | 40,393.0 | **46.0 km** | Lower Meghna Mainstem (Chandpur Confluence) |
-| **2** | `GAP_STN_02` | **23.233333** | **90.631250** | 9 | 1,574,097 | 40,392.3 | **45.5 km** | Lower Meghna Mainstem |
-| **3** | `GAP_STN_03` | **23.237500** | **90.631250** | 9 | 1,574,094 | 40,395.2 | **45.0 km** | Lower Meghna Channel |
-| **4** | `GAP_STN_04` | **23.256744** | **90.619942** | 9 | 1,574,068 | 40,397.0 | **40.9 km** | Upper Meghna-Padma Confluence |
-| **5** | `GAP_STN_05` | **23.281250** | **90.597917** | 9 | 1,488,647 | 34,820.8 | **39.0 km** | Padma-Meghna Convergence Reach |
-| **6** | `GAP_STN_06` | **23.291667** | **90.587500** | 9 | 1,488,632 | 34,830.8 | **38.5 km** | Padma-Meghna Transition Channel |
-| **7** | `GAP_STN_07` | **23.309330** | **90.579490** | 9 | 1,488,629 | 34,833.3 | **35.2 km** | Upper Chandpur Estuarine Reach |
-| **8** | `GAP_STN_08` | **23.325863** | **90.564941** | 9 | 1,488,617 | 34,851.4 | **34.8 km** | Lower Padma Main Channel |
-| **9** | `GAP_STN_09` | **23.327083** | **90.558333** | 9 | 1,488,607 | 34,856.3 | **34.9 km** | Lower Padma Estuary Reach |
-| **10** | `GAP_STN_10` | **23.329167** | **90.550000** | 9 | 1,488,602 | 34,858.7 | **34.6 km** | Lower Padma Confluence |
+**Table 7:** Prioritized candidate surveillance coordinates across major Bangladesh river systems.
+| Priority Rank | Station Identifier | Latitude (°N) | Longitude (°E) | Stream Order | Upstream Area ($km^2$) | Discharge ($m^3/s$) | Target River Reach |
+|---|---|---|---|---|---|---|---|
+| **1** | `GAP_STN_01` | **23.227** | **90.631** | 9 | 1,574,223 | 40,393.0 | Lower Meghna Mainstem (Chandpur Confluence) |
+| **2** | `GAP_STN_02` | **23.395** | **90.395** | 9 | 1,488,391 | 34,905.9 | Padma-Meghna Convergence (Munshiganj Reach) |
+| **3** | `GAP_STN_03` | **23.535** | **90.144** | 9 | 1,485,761 | 34,854.3 | Lower Padma Main Channel (Madaripur) |
+| **4** | `GAP_STN_04` | **23.718** | **89.919** | 9 | 1,485,272 | 34,838.2 | Upper Padma Mainstem (Goalundo Reach) |
+| **5** | `GAP_STN_05` | **23.802** | **89.608** | 8 | 944,490 | 13,494.1 | Ganges-Jamuna Convergence Reach (Rajbari) |
+| **6** | `GAP_STN_06` | **23.919** | **89.309** | 8 | 943,786 | 13,478.7 | Upper Ganges Mainstem (Kushtia) |
+| **7** | `GAP_STN_07` | **24.200** | **88.750** | 8 | 942,749 | 13,506.5 | Central Ganges Channel (Pabna-Natore Reach) |
+| **8** | `GAP_STN_08` | **24.356** | **88.492** | 8 | 941,812 | 13,497.9 | North-West Padma Reach (Rajshahi Upstream) |
+| **9** | `GAP_STN_09` | **24.452** | **88.210** | 8 | 929,834 | 13,279.1 | Upper Border Ganges Reach (Chapai Nawabganj) |
+| **10** | `GAP_STN_10` | **24.089** | **89.695** | 8 | 521,878 | 20,698.2 | Lower Jamuna (Brahmaputra) Reach (Sirajganj) |
+| **11** | `GAP_STN_11` | **24.351** | **89.790** | 8 | 520,951 | 20,660.0 | Central Jamuna Mainstem (Bogra Reach) |
+| **12** | `GAP_STN_12` | **24.624** | **89.805** | 8 | 520,682 | 20,666.4 | Upper Jamuna Channel (Jamalpur-Bogra Reach) |
+| **13** | `GAP_STN_13` | **24.872** | **89.624** | 8 | 514,663 | 20,483.8 | Brahmaputra Confluence Reach (Gaibandha) |
+| **14** | `GAP_STN_14` | **25.146** | **89.694** | 8 | 514,278 | 20,833.0 | Upper Brahmaputra Channel (Kurigram) |
+| **15** | `GAP_STN_15` | **25.421** | **89.698** | 8 | 500,939 | 21,061.2 | Northern Brahmaputra Entry Reach (Chilmari) |
 
 *(Full priority list: [priority_future_monitoring_stations.csv](file:///c:/xampp/htdocs/heavy-metal/data/paper_2_water_results/priority_future_monitoring_stations.csv))*
 

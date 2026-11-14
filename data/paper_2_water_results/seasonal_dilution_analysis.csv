@@ -1,8 +1,8 @@
-Element,N_Dry,Median_Dry_mg_L,N_Wet,Median_Wet_mg_L,Dry_to_Wet_Ratio,p_value,Significant_Dilution
-As,58,0.0073,23,0.0042,1.74,0.0021,"Yes (Dry > Rainy, p<0.05)"
-Cr,74,0.0705,28,0.0354,1.99,0.0191,"Yes (Dry > Rainy, p<0.05)"
-Cd,60,0.0015,27,0.0008,1.81,0.0204,"Yes (Dry > Rainy, p<0.05)"
-Pb,68,0.0245,25,0.0287,0.85,0.4637,No (Not Significant)
-Cu,41,0.0843,16,0.0571,1.48,0.1223,No (Not Significant)
-Zn,27,0.53,17,0.0725,7.31,0.0458,"Yes (Dry > Rainy, p<0.05)"
-Ni,41,0.066,18,0.0945,0.7,0.4346,No (Not Significant)
+Element,Name,N_Dry,Median_Dry_mg_L,N_Wet,Median_Wet_mg_L,Dry_to_Wet_Ratio,Mann_Whitney_U,p_value_twosided,p_adj_holm,Significant_Dilution
+As,Arsenic,57,0.0073,23,0.0042,1.74,927.5,0.003894813646102008,0.0273,Yes (p_adj < 0.05)
+Cr,Chromium,73,0.071,28,0.0354,2.01,1312.0,0.028058797926700726,0.1684,No (Not Significant)
+Cd,Cadmium,59,0.0015,27,0.0008,1.88,1014.5,0.04293550616747712,0.2147,No (Not Significant)
+Zn,Zinc,27,0.53,17,0.0725,7.31,300.0,0.09153495551918003,0.3661,No (Not Significant)
+Cu,Copper,40,0.0866,16,0.0571,1.52,391.0,0.2009041818889593,0.6027,No (Not Significant)
+Ni,Nickel,40,0.0685,18,0.0945,0.73,376.5,0.7879744099043337,1.0,No (Not Significant)
+Pb,Lead,67,0.0253,25,0.0287,0.88,859.0,0.853755085022605,1.0,No (Not Significant)
