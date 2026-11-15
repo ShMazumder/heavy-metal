@@ -53,6 +53,15 @@
   "ChromiumConfirmedDissolvedWhoPct": "55.4",
   "CadmiumConfirmedDissolvedWhoPct": "37.6",
   "NickelConfirmedDissolvedWhoPct": "47.2",
+  "LeadConfirmedDissolvedMedian": "0.0250",
+  "ChromiumConfirmedDissolvedMedian": "0.0630",
+  "NickelConfirmedDissolvedMedian": "0.0560",
+  "ArsenicConfirmedDissolvedMedian": "0.0133",
+  "CadmiumConfirmedDissolvedMedian": "0.0016",
+  "LeadHighSensN": "77",
+  "LeadHighSensK": "5",
+  "LeadHighSensExceedPct": "79.2",
+  "LeadHighSensMedian": "0.0171",
   "HpiCdWeightSharePct": "60.2",
   "HpiPbWeightSharePct": "18.1",
   "HpiAsWeightSharePct": "18.1",
@@ -107,5 +116,6 @@
   "NullModelMeanCoveragePct": "38.2",
   "NullModelCiLoPct": "32.1",
   "NullModelCiHiPct": "44.5",
-  "NullModelPval": "0.0000"
+  "NullModelPval": "0.0000",
+  "NullModelPvalFormatted": "\\le 0.001"
 }

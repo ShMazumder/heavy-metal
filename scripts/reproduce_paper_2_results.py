@@ -43,6 +43,9 @@ print("=" * 75)
 print("STARTING PAPER 2 MASTER REPRODUCIBILITY PIPELINE (ROUND 3 AUDIT & SYNTHESIS)")
 print("=" * 75)
 
+# Set deterministic random seed for 100% reproducible bootstrapping and Monte Carlo
+np.random.seed(42)
+
 # -----------------------------------------------------------------------------
 # 1. LOAD AUDITED DATA & BENCHMARKS
 # -----------------------------------------------------------------------------
@@ -293,6 +296,53 @@ df_exceed.to_csv('data/paper_2_water_results/who_ecr_exceedance_summary.csv', in
 df_sens = pd.DataFrame(sensitivity_master)
 df_sens.to_csv('data/paper_2_water_results/sensitivity_full_table.csv', index=False)
 print("Saved who_ecr_exceedance_summary.csv and sensitivity_full_table.csv")
+
+# Compute true confirmed dissolved medians
+confirmed_dissolved_medians = {}
+for el in elements:
+    col = f"{el}_mg_L"
+    sub_cd = df_confirmed_dissolved.dropna(subset=[col])
+    confirmed_dissolved_medians[el] = float(sub_cd[col].median()) if len(sub_cd) > 0 else np.nan
+
+# Stratification by analytical spectrometry instrumentation
+# High sensitivity: GF-AAS / HG-AAS / ICP-MS (DL < 0.001 mg/L)
+# Flame-AAS: FAAS / AAS (DL 0.005–0.050 mg/L)
+df_meta = pd.read_csv('data/paper_2_water_results/supplement_s1_studies.csv')
+merged_inst = pd.merge(df_water, df_meta[['Study_ID', 'Analytical_Method', 'Fraction']], on='Study_ID')
+high_sens_methods = ['GF-AAS / HG-AAS (Analytik Jena ZEEnit 700P)', 'ICP-MS', 'ICP-MS (Agilent 7700 series)']
+df_high_sens = merged_inst[merged_inst['Analytical_Method'].isin(high_sens_methods)]
+df_flame_aas = merged_inst[merged_inst['Analytical_Method'].str.contains('AAS|FAAS', na=False) & ~merged_inst['Analytical_Method'].isin(high_sens_methods)]
+
+instrument_strat_records = []
+for el in elements:
+    col = f"{el}_mg_L"
+    sub_hs = df_high_sens.dropna(subset=[col])
+    n_hs = len(sub_hs)
+    k_hs = sub_hs['Study_ID'].nunique()
+    exc_hs = int((sub_hs[col] > benchmarks[el]['who']).sum()) if n_hs > 0 else 0
+    pct_hs = (exc_hs / n_hs * 100.0) if n_hs > 0 else np.nan
+    med_hs = float(sub_hs[col].median()) if n_hs > 0 else np.nan
+    
+    sub_fa = df_flame_aas.dropna(subset=[col])
+    n_fa = len(sub_fa)
+    k_fa = sub_fa['Study_ID'].nunique()
+    exc_fa = int((sub_fa[col] > benchmarks[el]['who']).sum()) if n_fa > 0 else 0
+    pct_fa = (exc_fa / n_fa * 100.0) if n_fa > 0 else np.nan
+    med_fa = float(sub_fa[col].median()) if n_fa > 0 else np.nan
+    
+    instrument_strat_records.append({
+        'Element': el, 'Name': benchmarks[el]['name'],
+        'HighSens_N': n_hs, 'HighSens_K': k_hs, 'HighSens_Exceed_Count': exc_hs,
+        'HighSens_Exceed_Pct': round(pct_hs, 1) if not np.isnan(pct_hs) else 0.0,
+        'HighSens_Median_mg_L': round(med_hs, 4) if not np.isnan(med_hs) else np.nan,
+        'FlameAAS_N': n_fa, 'FlameAAS_K': k_fa, 'FlameAAS_Exceed_Count': exc_fa,
+        'FlameAAS_Exceed_Pct': round(pct_fa, 1) if not np.isnan(pct_fa) else 0.0,
+        'FlameAAS_Median_mg_L': round(med_fa, 4) if not np.isnan(med_fa) else np.nan
+    })
+
+df_inst = pd.DataFrame(instrument_strat_records)
+df_inst.to_csv('data/paper_2_water_results/instrument_stratification_summary.csv', index=False)
+print("Saved instrument_stratification_summary.csv")
 
 # -----------------------------------------------------------------------------
 # 4. FIXED-PANEL HPI & SAME-SUBSET EVALUATION (M2, M3, M4)
@@ -902,7 +952,7 @@ ax_a.bar(ga_x + ga_w, p_bd97, ga_w, label='Bangladesh ECR 1997 (Sched 3)', color
 ax_a.set_xticks(ga_x)
 ax_a.set_xticklabels(ga_elements, fontsize=11, fontweight='bold')
 ax_a.set_ylabel('Exceedance Rate (% of Assayed Records)', fontsize=10, fontweight='bold')
-ax_a.set_title('(A) Regulatory Tightening Under ECR 2023\n(Lead Violations Surge from 34.9% to 85.6%)', fontsize=11, fontweight='bold')
+ax_a.set_title('(A) Health Benchmark Exceedances in Monitored Corridors\n(Lead Benchmark Exceedance Matches WHO Guideline at 85.6%)', fontsize=11, fontweight='bold')
 ax_a.set_ylim(0, 105)
 ax_a.grid(axis='y', linestyle='--', alpha=0.5)
 ax_a.legend(fontsize=8.5, frameon=True, loc='upper right')
@@ -916,7 +966,7 @@ ax_b.pie(shares, labels=[f"{m}\n({s}%)" for m, s in zip(metals_core, shares)],
          colors=colors_pie, autopct='%1.1f%%', startangle=140, 
          textprops={'fontsize': 10, 'fontweight': 'bold'},
          wedgeprops={'edgecolor': 'black', 'linewidth': 1})
-ax_b.set_title('(B) Mathematical Bias in HPI Index Weights\n(Cd + Pb Command 78.3% of Score; Numerator Scales as $M_i/S_i^2$)', fontsize=11, fontweight='bold')
+ax_b.set_title('(B) Linear Weights vs Realized Contributions in HPI\n(Core-4 Weights: Cd+Pb = 78.3%; Median Score Share: 77.1%)', fontsize=11, fontweight='bold')
 
 # Panel C: Tripartite Seasonal Dynamics (Arsenic Peak)
 ax_c = axes_ga[1, 0]
@@ -928,7 +978,7 @@ bars_c = ax_c.bar(as_seasons, as_medians, color=['#386cb0', '#e7298a', '#fdb462'
 ax_c.axhline(0.010, color='red', linestyle='--', linewidth=1.5, label='WHO Drinking Limit (0.010 mg/L)')
 ax_c.axhline(0.050, color='darkgreen', linestyle=':', linewidth=1.5, label='ECR 2023 Limit (0.050 mg/L)')
 ax_c.set_ylabel('Median Arsenic Concentration (mg/L)', fontsize=10, fontweight='bold')
-ax_c.set_title('(C) Tripartite Seasonal Arsenic Dynamics\n(Boro Irrigation Groundwater Pumping Peak)', fontsize=11, fontweight='bold')
+ax_c.set_title('(C) Tripartite Seasonal Arsenic Dynamics\n(Pre-Monsoon March–May Annual Concentration Peak)', fontsize=11, fontweight='bold')
 ax_c.set_ylim(0, 0.038)
 ax_c.grid(axis='y', linestyle='--', alpha=0.5)
 ax_c.legend(fontsize=8.5, frameon=True, loc='upper left')
@@ -944,7 +994,7 @@ for bar in bars_d:
     yval = bar.get_height()
     ax_d.text(bar.get_x() + bar.get_width()/2.0, yval + 60, f"{yval:.0f} km", ha='center', va='bottom', fontsize=9.5, fontweight='bold')
 ax_d.set_ylabel('Major River Reach Length (km)', fontsize=10, fontweight='bold')
-ax_d.set_title('(D) River Network Surveillance Deficit\n(83.5% Major Network Uncovered; 15 Candidate Reaches Isolated)', fontsize=11, fontweight='bold')
+ax_d.set_title('(D) Compiled River Network Surveillance Deficit\n(83.5% Major Network Uncovered; 15 Candidate Sectors Plotted)', fontsize=11, fontweight='bold')
 ax_d.set_ylim(0, 4300)
 ax_d.grid(axis='y', linestyle='--', alpha=0.5)
 
@@ -1032,6 +1082,17 @@ res_dict = {
     'ChromiumConfirmedDissolvedWhoPct': str(df_sens[(df_sens['Element']=='Cr') & (df_sens['Benchmark']=='WHO') & (df_sens['Subset']=='Confirmed Dissolved Only (0.45um)')]['Exceed_Pct'].values[0]),
     'CadmiumConfirmedDissolvedWhoPct': str(df_sens[(df_sens['Element']=='Cd') & (df_sens['Benchmark']=='WHO') & (df_sens['Subset']=='Confirmed Dissolved Only (0.45um)')]['Exceed_Pct'].values[0]),
     'NickelConfirmedDissolvedWhoPct': str(df_sens[(df_sens['Element']=='Ni') & (df_sens['Benchmark']=='WHO') & (df_sens['Subset']=='Confirmed Dissolved Only (0.45um)')]['Exceed_Pct'].values[0]),
+    'LeadConfirmedDissolvedMedian': f"{confirmed_dissolved_medians['Pb']:.4f}",
+    'ChromiumConfirmedDissolvedMedian': f"{confirmed_dissolved_medians['Cr']:.4f}",
+    'NickelConfirmedDissolvedMedian': f"{confirmed_dissolved_medians['Ni']:.4f}",
+    'ArsenicConfirmedDissolvedMedian': f"{confirmed_dissolved_medians['As']:.4f}",
+    'CadmiumConfirmedDissolvedMedian': f"{confirmed_dissolved_medians['Cd']:.4f}",
+    
+    # High-Sensitivity Instrument Stratification (GF-AAS / ICP-MS)
+    'LeadHighSensN': str(df_inst[df_inst['Element']=='Pb']['HighSens_N'].values[0]),
+    'LeadHighSensK': str(df_inst[df_inst['Element']=='Pb']['HighSens_K'].values[0]),
+    'LeadHighSensExceedPct': f"{df_inst[df_inst['Element']=='Pb']['HighSens_Exceed_Pct'].values[0]:.1f}",
+    'LeadHighSensMedian': f"{df_inst[df_inst['Element']=='Pb']['HighSens_Median_mg_L'].values[0]:.4f}",
 
     # HPI Weighting Artifact
     'HpiCdWeightSharePct': f"{w_c4_pct['Cd']:.1f}",
@@ -1094,7 +1155,8 @@ res_dict = {
     'NullModelMeanCoveragePct': f"{null_mean:.1f}",
     'NullModelCiLoPct': f"{null_ci_lo:.1f}",
     'NullModelCiHiPct': f"{null_ci_hi:.1f}",
-    'NullModelPval': f"{null_pval:.4f}"
+    'NullModelPval': f"{null_pval:.4f}",
+    'NullModelPvalFormatted': r"\le 0.001" if null_pval < 0.001 else f"= {null_pval:.3f}"
 }
 
 # Save results.json
