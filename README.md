@@ -9,7 +9,7 @@ A multi-publication research repository consolidating, modeling, and synthesizin
 | Package | Venue / Target | Description | Status | Build |
 |---|---|---|:---:|:---:|
 | **Paper 1** | *Science of The Total Environment* (STOTEN) | Spatial modeling & ecological risk assessment of river sediments using CatBoost & HydroSHEDS reach topology ($N=289$) | **Ready** (17 pp) | `cd manuscripts/paper_1_stoten && ./build.sh` |
-| **Paper 2** | *Chemosphere* | Surface water synthesis, ECR 2023 statutory screening, HPI mathematical critique, and hydrographic surveillance gaps ($N=162$) | **Post-R6 Ready** (26 pp) | `cd manuscripts/paper_2_chemosphere && ./build.sh` |
+| **Paper 2** | *Environmental Pollution* | Surface water synthesis, ECR 2023 statutory screening, HPI mathematical critique, and hydrographic surveillance gaps ($N=162$) | **Ready** (26 pp) | `cd manuscripts/paper_2_chemosphere && ./build.sh` |
 | **Paper 3** | *Environment International* | PRISMA 2020 systematic review, multivariable meta-regression & multi-matrix risk synthesis ($N=557$) | **Ready** (16 pp) | `cd manuscripts/paper_3_systematic_review && ./build.sh` |
 | **Paper 4** | Nature *Scientific Data* | A curated and snapped geospatial database of heavy metal concentrations in Bangladesh rivers | **Ready** (8 pp) | `cd manuscripts/paper_4_data_descriptor && ./build.sh` |
 | **Conference 1** | IEEE IGARSS | River-network ML vs. geostatistical collapse across disconnected basins | **Ready** (3 pp) | `cd manuscripts/conference_1_igarss && ./build.sh` |
@@ -57,7 +57,8 @@ heavy-metal/
 │   │   └── submission_and_venue_guide.md              # Editorial & portal roadmap
 │   ├── submissions/                   # Self-contained submission ZIP archives
 │   │   ├── stoten_paper_1_submission.zip
-│   │   ├── chemosphere_paper_2_revision_r6.zip
+│   │   ├── env_poll_paper_2_submission.zip
+│   │   ├── chemosphere_paper_2_submission.zip
 │   │   ├── env_intl_paper_3_submission.zip
 │   │   └── scientific_data_paper_4_submission.zip
 │   ├── paper_1_stoten/                # STOTEN LaTeX package (17 pp PDF, build.sh)

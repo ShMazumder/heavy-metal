@@ -47,6 +47,6 @@
       {"term": "Environmental Chemistry", "identifier": "http://id.loc.gov/authorities/subjects/sh85044203", "scheme": "url"},
       {"term": "Hydrology", "identifier": "http://id.loc.gov/authorities/subjects/sh85063471", "scheme": "url"}
     ],
-    "notes": "Companion dataset for: (1) 'Spatial Modeling and Ecological Risk Assessment of Heavy Metal Contamination in River Sediments Across Bangladesh' (submitted to Science of The Total Environment); (2) 'Heavy Metals in Monitored River Corridors of Bangladesh: A Critical Synthesis' (submitted to Chemosphere); (3) 'Heavy Metal Contamination in Bangladesh River Systems: A Systematic Review and Meta-Analysis' (submitted to Environment International); (4) 'A Curated and Snapped Geospatial Database of Heavy Metal Concentrations in River Sediments and Waters Across Bangladesh' (submitted to Nature Scientific Data)."
+    "notes": "Companion dataset for: (1) 'Spatial Modeling and Ecological Risk Assessment of Heavy Metal Contamination in River Sediments Across Bangladesh' (submitted to Science of The Total Environment); (2) 'Heavy Metals in Monitored River Corridors of Bangladesh: A Critical Synthesis' (submitted to Environmental Pollution); (3) 'Heavy Metal Contamination in Bangladesh River Systems: A Systematic Review and Meta-Analysis' (submitted to Environment International); (4) 'A Curated and Snapped Geospatial Database of Heavy Metal Concentrations in River Sediments and Waters Across Bangladesh' (submitted to Nature Scientific Data)."
   }
 }

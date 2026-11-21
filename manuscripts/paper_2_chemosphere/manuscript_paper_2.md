@@ -1,6 +1,6 @@
 # Heavy Metals in Monitored River Corridors of Bangladesh: A Critical Synthesis of Published Records (2010--2024), Regulatory Benchmark Discordance, and Hydrographic Surveillance Deficits
 
-**Target Journal:** *Chemosphere* (Elsevier)  
+**Target Journal:** *Environmental Pollution* (Elsevier, IF 8.9, Q1)  
 **Article Type:** Original Research Paper  
 **Status:** Post-Round 6 Peer Review Audit Revision  
 

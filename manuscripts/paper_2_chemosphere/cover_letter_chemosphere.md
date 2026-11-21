@@ -1,17 +1,17 @@
-# Cover Letter for Submission to Chemosphere
+# Cover Letter for Submission to Environmental Pollution
 
-**Date:** November 15, 2026  
+**Date:** November 21, 2026  
 
 **To:**  
 The Editors-in-Chief  
-*Chemosphere*  
+*Environmental Pollution*  
 Elsevier  
 
 **Subject:** Submission of Original Research Article: *"Heavy Metals in Monitored River Corridors of Bangladesh: A Critical Synthesis of Published Records (2010--2024), Regulatory Benchmark Discordance, and Hydrographic Surveillance Deficits"*
 
 Dear Editors-in-Chief,
 
-We are pleased to submit our original research article titled **"Heavy Metals in Monitored River Corridors of Bangladesh: A Critical Synthesis of Published Records (2010--2024), Regulatory Benchmark Discordance, and Hydrographic Surveillance Deficits"** for consideration for publication as a Regular Research Paper in *Chemosphere*.
+We are pleased to submit our original research article titled **"Heavy Metals in Monitored River Corridors of Bangladesh: A Critical Synthesis of Published Records (2010--2024), Regulatory Benchmark Discordance, and Hydrographic Surveillance Deficits"** for consideration for publication as a Regular Research Paper in *Environmental Pollution*.
 
 ### Overview and Key Contributions
 Surface freshwater networks across the Bengal Delta provide vital resources for regional agriculture, capture fisheries, and municipal water abstraction. Although numerous localized field studies have examined trace elements in Bangladeshi rivers, comprehensive synthesis of benchmark exceedances, rigorous evaluation of seasonal contrasts, and quantification of spatial surveillance coverage have remained fragmented.
@@ -26,23 +26,23 @@ In this work, we present an audited, forensic synthesis incorporating extensive 
 7. **Spatial Surveillance Deficits and Deltaic Scope:** Scoped spatial reach analysis to the compiled audit corpus, noting that 23 published coordinate locations cover only **16.5% of major river length (83.5% uncovered at 25 km straight-line; 89.0% along-network)**. Monte Carlo spatial null modeling with $B=1,000$ iterations confirms significant clustering ($p \le 0.001$), driven in part by study-level clustering across approximately 10 distinct study reaches. Candidate reaches are framed as indicative spatial surveillance sectors for future national monitoring.
 8. **PRISMA Literature Transparency and Dedicated Graphical Abstract:** Formally reconciled PRISMA screening (1,420 hits $\to$ 74 full text $\to$ 28 eligible; 11 bed sediment allocated to companion audit, 5 bulk physicochemical cataloged in Table S0, and exactly 12 surface water heavy metal studies cited). Updated the 4-panel Graphical Abstract with calibrated panel titles and factual labels.
 
-### Relevance to Chemosphere
-This manuscript falls directly within the scope of *Chemosphere* (Environmental Chemistry and Aquatic Environment section), providing a calibrated, evidence-based synthesis of trace element distributions, benchmark exceedance rates, and seasonal hydrochemical dynamics in a major deltaic river system.
+### Relevance to Environmental Pollution
+This manuscript falls directly within the scope of *Environmental Pollution* (Aquatic Environment, Chemical Speciation, Ecotoxicology, and Environmental Governance section), providing a calibrated, evidence-based synthesis of trace element distributions, statutory benchmark exceedance rates, and seasonal hydrochemical dynamics in a major deltaic river system.
 
 ### Author Confirmations
 - The manuscript is original, has not been published previously, and is not under consideration elsewhere.
 - All authors have reviewed and approved the manuscript for submission.
 - There are no conflicts of interest.
-- All data, analysis scripts, and GIS layers are openly archived in the anonymized repository: `https://anonymous.4open.science/r/bangladesh-river-metals-audit`.
+- All data, analysis scripts, and GIS layers are openly archived in the Zenodo repository (`10.5281/zenodo.24414976`) and GitHub (`https://github.com/ShMazumder/heavy-metal.git`).
 
 ### Suggested Reviewers
 1. **Prof. Dr. Mohammad Lokman Ali** — Faculty of Fisheries, Patuakhali Science and Technology University, Bangladesh. Email: `lokman.ali@pstu.ac.bd`
 2. **Prof. Dr. Ji-Dong Gu** — Guangdong Technion-Israel Institute of Technology / School of Life Sciences, Shantou University, China. Email: `jidong.gu@gtiit.edu.cn`
 3. **Dr. Bhabananda Biswas** — Future Industries Institute, University of South Australia, Australia. Email: `bhabananda.biswas@unisa.edu.au`
+4. **Prof. Dr. Md. Safiqul Islam** — Patuakhali Science and Technology University, Bangladesh. Email: `msaifulpstu@yahoo.com`
 
 Thank you very much for your consideration.
 
-Sincerely,
-
+Sincerely,  
 **The Authors**  
 Corresponding Author: `author.one@university.edu`
