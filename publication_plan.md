@@ -4,7 +4,7 @@
 *Spatial Modeling and Ecological Risk Assessment of Heavy Metal Contamination in River Sediments across Bangladesh Using River-Network Machine Learning and Geostatistics*
 
 **Working Title (Paper 2):**  
-*Dissolved Heavy Metals in Bangladesh River Waters: Multi-Study Synthesis, Health Hazard Indices, and Geospatial Monitoring Gap Analysis*
+*Heavy Metals in Monitored River Corridors of Bangladesh: A Critical Synthesis of Published Records (2010--2024), Regulatory Benchmark Discordance, and Hydrographic Surveillance Deficits*
 
 ---
 

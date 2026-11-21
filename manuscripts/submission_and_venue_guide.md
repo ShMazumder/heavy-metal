@@ -8,10 +8,10 @@ This document provides a comprehensive operational roadmap for submitting the fo
 
 | Package | Venue Type | Primary Target Venue | Alternative Target Venues | Manuscript Files | High-Res Figures | Status |
 |---|---|---|---|---|---|---|
-| **Paper 1 (Sediment ML)** | Q1 Journal | **Science of The Total Environment (STOTEN)** (Elsevier, IF 9.8) | *Journal of Hazardous Materials* (Elsevier, IF 13.6), *Environmental Pollution* (Elsevier, IF 8.9) | [main.tex](file:///c:/xampp/htdocs/heavy-metal/manuscripts/paper_1_stoten/main.tex)<br>[main.pdf](file:///c:/xampp/htdocs/heavy-metal/manuscripts/paper_1_stoten/main.pdf)<br>[references.bib](file:///c:/xampp/htdocs/heavy-metal/manuscripts/paper_1_stoten/references.bib)<br>[cover_letter_stoten.md](file:///c:/xampp/htdocs/heavy-metal/manuscripts/paper_1_stoten/cover_letter_stoten.md) | [fig1_shap.png](file:///c:/xampp/htdocs/heavy-metal/manuscripts/paper_1_stoten/fig1_shap.png)<br>[fig2_risk_map.png](file:///c:/xampp/htdocs/heavy-metal/manuscripts/paper_1_stoten/fig2_risk_map.png) | **Compiled & Ready** (16 pages) |
-| **Paper 2 (Water Safety)** | Q1/Q2 Journal | **Chemosphere** (Elsevier, IF 8.8) | *Environmental Monitoring and Assessment* (EMAS, Springer, IF 3.0), *Environmental Geochemistry and Health* (Springer, IF 4.2) | [main.tex](file:///c:/xampp/htdocs/heavy-metal/manuscripts/paper_2_chemosphere/main.tex)<br>[main.pdf](file:///c:/xampp/htdocs/heavy-metal/manuscripts/paper_2_chemosphere/main.pdf)<br>[references.bib](file:///c:/xampp/htdocs/heavy-metal/manuscripts/paper_2_chemosphere/references.bib)<br>[cover_letter_chemosphere.md](file:///c:/xampp/htdocs/heavy-metal/manuscripts/paper_2_chemosphere/cover_letter_chemosphere.md) | [fig1_exceedance.png](file:///c:/xampp/htdocs/heavy-metal/manuscripts/paper_2_chemosphere/fig1_exceedance.png)<br>[fig2_dilution.png](file:///c:/xampp/htdocs/heavy-metal/manuscripts/paper_2_chemosphere/fig2_dilution.png) | **Compiled & Ready** (12 pages) |
-| **Conference 1 (Geospatial ML)** | International Conference | **IEEE IGARSS** (Int. Geoscience and Remote Sensing Symposium) | **ACM SIGSPATIAL** (GIS/Spatial Data), **AGU Fall Meeting** (Hydrology/Earth Science) | [main.tex](file:///c:/xampp/htdocs/heavy-metal/manuscripts/conference_1_igarss/main.tex)<br>[main.pdf](file:///c:/xampp/htdocs/heavy-metal/manuscripts/conference_1_igarss/main.pdf)<br>[references.bib](file:///c:/xampp/htdocs/heavy-metal/manuscripts/conference_1_igarss/references.bib) | [fig1_shap.png](file:///c:/xampp/htdocs/heavy-metal/manuscripts/conference_1_igarss/fig1_shap.png)<br>[fig2_risk_map.png](file:///c:/xampp/htdocs/heavy-metal/manuscripts/conference_1_igarss/fig2_risk_map.png) | **Compiled & Ready** (3 pages, IEEE 2-column) |
-| **Conference 2 (Water Hydrology)** | International Conference | **IWA World Water Congress & Exhibition** | **EWRI Congress** (ASCE Environmental & Water Resources), **EGU General Assembly** | [main.tex](file:///c:/xampp/htdocs/heavy-metal/manuscripts/conference_2_water/main.tex)<br>[main.pdf](file:///c:/xampp/htdocs/heavy-metal/manuscripts/conference_2_water/main.pdf)<br>[references.bib](file:///c:/xampp/htdocs/heavy-metal/manuscripts/conference_2_water/references.bib) | [fig1_exceedance.png](file:///c:/xampp/htdocs/heavy-metal/manuscripts/conference_2_water/fig1_exceedance.png)<br>[fig2_dilution.png](file:///c:/xampp/htdocs/heavy-metal/manuscripts/conference_2_water/fig2_dilution.png) | **Compiled & Ready** (3 pages, IEEE 2-column) |
+| **Paper 1 (Sediment ML)** | Q1 Journal | **Science of The Total Environment (STOTEN)** (Elsevier, IF 9.8) | *Journal of Hazardous Materials* (Elsevier, IF 13.6), *Environmental Pollution* (Elsevier, IF 8.9) | [main.tex](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_1_stoten/main.tex)<br>[main.pdf](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_1_stoten/main.pdf)<br>[references.bib](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_1_stoten/references.bib)<br>[cover_letter_stoten.md](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_1_stoten/cover_letter_stoten.md) | [fig1_shap.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_1_stoten/fig1_shap.png)<br>[fig2_risk_map.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_1_stoten/fig2_risk_map.png) | **Compiled & Ready** (16 pages) |
+| **Paper 2 (Water Safety)** | Q1/Q2 Journal | **Chemosphere** (Elsevier, IF 8.8) | *Environmental Monitoring and Assessment* (EMAS, Springer, IF 3.0), *Environmental Geochemistry and Health* (Springer, IF 4.2) | [main.tex](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_chemosphere/main.tex)<br>[main.pdf](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_chemosphere/main.pdf)<br>[references.bib](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_chemosphere/references.bib)<br>[cover_letter_chemosphere.md](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_chemosphere/cover_letter_chemosphere.md) | [graphical_abstract.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_chemosphere/graphical_abstract.png)<br>[fig1_exceedance.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_chemosphere/fig1_exceedance.png)<br>[fig2_dilution.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_chemosphere/fig2_dilution.png)<br>[fig3_spatial_coverage_map.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_chemosphere/fig3_spatial_coverage_map.png) | **Compiled & Ready** (26 pages) |
+| **Conference 1 (Geospatial ML)** | International Conference | **IEEE IGARSS** (Int. Geoscience and Remote Sensing Symposium) | **ACM SIGSPATIAL** (GIS/Spatial Data), **AGU Fall Meeting** (Hydrology/Earth Science) | [main.tex](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/conference_1_igarss/main.tex)<br>[main.pdf](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/conference_1_igarss/main.pdf)<br>[references.bib](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/conference_1_igarss/references.bib) | [fig1_shap.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/conference_1_igarss/fig1_shap.png)<br>[fig2_risk_map.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/conference_1_igarss/fig2_risk_map.png) | **Compiled & Ready** (3 pages, IEEE 2-column) |
+| **Conference 2 (Water Hydrology)** | International Conference | **IWA World Water Congress & Exhibition** | **EWRI Congress** (ASCE Environmental & Water Resources), **EGU General Assembly** | [main.tex](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/conference_2_water/main.tex)<br>[main.pdf](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/conference_2_water/main.pdf)<br>[references.bib](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/conference_2_water/references.bib) | [fig1_exceedance.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/conference_2_water/fig1_exceedance.png)<br>[fig2_dilution.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/conference_2_water/fig2_dilution.png) | **Compiled & Ready** (3 pages, IEEE 2-column) |
 
 ---
 
@@ -20,26 +20,30 @@ This document provides a comprehensive operational roadmap for submitting the fo
 ### 2.1 Journal Paper 1: *Science of The Total Environment* (STOTEN)
 - **Publisher:** Elsevier
 - **Impact Factor:** 9.8 | **CiteScore:** 16.8 | **Quartile:** Q1 (Top 5% Environmental Sciences)
+- **Title:** *Spatial Modeling and Ecological Risk Assessment of Heavy Metal Contamination in River Sediments Across Bangladesh Using River-Network Machine Learning and Geostatistics*
 - **Scope Fit:** STOTEN specializes in total environment studies bridging aquatic chemistry, sediment toxicology, and regional contamination modeling. Our nationwide HydroSHEDS river-network integration and CatBoost vs. Kriging cross-basin breakdown represent high-impact theoretical and empirical contributions.
 - **Publishing Model:** Hybrid Open Access. Choose **Subscription Publishing ($0 APC)** during author licensing to publish at zero cost.
 - **Submission Portal:** Elsevier Editorial Manager: [https://www.editorialmanager.com/stoten/](https://www.editorialmanager.com/stoten/)
 - **Submission Files Checklist:**
-  1. Primary Manuscript: [main.pdf](file:///c:/xampp/htdocs/heavy-metal/manuscripts/paper_1_stoten/main.pdf) or LaTeX source bundle (`main.tex`, `references.bib`, `fig1_shap.png`, `fig2_risk_map.png`).
-  2. Cover Letter: [cover_letter_stoten.md](file:///c:/xampp/htdocs/heavy-metal/manuscripts/paper_1_stoten/cover_letter_stoten.md).
-  3. Graphical Abstract: [fig2_risk_map.png](file:///c:/xampp/htdocs/heavy-metal/manuscripts/paper_1_stoten/fig2_risk_map.png).
-  4. Highlights: 6 bullet points provided in manuscript header.
+  1. Primary Manuscript: [main.pdf](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_1_stoten/main.pdf) or LaTeX source bundle (`main.tex`, `references.bib`, `fig1_shap.png`, `fig2_risk_map.png`).
+  2. Cover Letter: [cover_letter_stoten.md](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_1_stoten/cover_letter_stoten.md).
+  3. Graphical Abstract: [fig2_risk_map.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_1_stoten/fig2_risk_map.png).
+  4. Highlights: 5 bullet points provided in manuscript header.
+  5. Supplementary Material: Supplementary Table S1 ([supplementary_table_s1_audited_studies.md](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/supplementary_table_s1_audited_studies.md)).
 
 ### 2.2 Journal Paper 2: *Chemosphere*
 - **Publisher:** Elsevier
 - **Impact Factor:** 8.8 | **CiteScore:** 15.1 | **Quartile:** Q1 (Environmental Chemistry & Ecotoxicology)
-- **Scope Fit:** *Chemosphere* publishes investigations on environmental distribution, speciation, and risk assessment of chemicals in aquatic systems. The drinking water compliance audit against WHO guidelines (87.7% Pb violations), multi-metal HPI modeling, and statistical confirmation of seasonal monsoon dilution are ideal matches for the Environmental Chemistry / Toxicology section.
+- **Title:** *Heavy Metals in Monitored River Corridors of Bangladesh: A Critical Synthesis of Published Records (2010--2024), Regulatory Benchmark Discordance, and Hydrographic Surveillance Deficits*
+- **Scope Fit:** *Chemosphere* publishes investigations on environmental distribution, speciation, and risk assessment of chemicals in aquatic systems. The drinking water compliance audit against WHO guidelines and Bangladesh ECR 2023 standards (85.6% Pb potable violations), multi-metal HPI mathematical decoupling, random-effects seasonal dilution meta-analysis with Hartung-Knapp-Sidik-Jonkman adjustment, and Monte Carlo hydrographic network analysis are ideal matches for the Environmental Chemistry / Toxicology section.
 - **Publishing Model:** Hybrid Open Access. Choose **Subscription Publishing ($0 APC)**.
 - **Submission Portal:** Elsevier Editorial Manager: [https://www.editorialmanager.com/chemosphere/](https://www.editorialmanager.com/chemosphere/)
 - **Submission Files Checklist:**
-  1. Primary Manuscript: [main.pdf](file:///c:/xampp/htdocs/heavy-metal/manuscripts/paper_2_chemosphere/main.pdf) or LaTeX source bundle.
-  2. Cover Letter: [cover_letter_chemosphere.md](file:///c:/xampp/htdocs/heavy-metal/manuscripts/paper_2_chemosphere/cover_letter_chemosphere.md).
-  3. Graphical Abstract: [fig1_exceedance.png](file:///c:/xampp/htdocs/heavy-metal/manuscripts/paper_2_chemosphere/fig1_exceedance.png).
-  4. Highlights: 6 bullet points provided in manuscript header.
+  1. Primary Manuscript: [main.pdf](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_chemosphere/main.pdf) or LaTeX source bundle (`main.tex`, `references.bib`, `results_macros.tex`, `fig1_exceedance.png`, `fig2_dilution.png`, `fig3_spatial_coverage_map.png`, `graphical_abstract.png`).
+  2. Cover Letter: [cover_letter_chemosphere.md](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_chemosphere/cover_letter_chemosphere.md).
+  3. Graphical Abstract: [graphical_abstract.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_chemosphere/graphical_abstract.png) (4-panel multi-scale summary).
+  4. Highlights: 5 bullet points ($\le 85$ characters each, strictly compliant with Chemosphere author guidelines).
+  5. Supplementary Material: Supplementary Table S1 ([supplementary_table_s1_audited_studies.md](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/supplementary_table_s1_audited_studies.md)).
 
 ---
 
@@ -51,7 +55,7 @@ This document provides a comprehensive operational roadmap for submitting the fo
   - **Proceedings:** Indexed in IEEE Xplore, Scopus, and Web of Science.
   - **Track:** *Data Science and Machine Learning for Earth Observation and Hydrological Applications*.
   - **Page Limit:** 4 to 5 pages (IEEE double-column format).
-  - **Submission Package:** [manuscripts/conference_1_igarss/](file:///c:/xampp/htdocs/heavy-metal/manuscripts/conference_1_igarss/) ([main.pdf](file:///c:/xampp/htdocs/heavy-metal/manuscripts/conference_1_igarss/main.pdf)).
+  - **Submission Package:** [manuscripts/conference_1_igarss/](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/conference_1_igarss/) ([main.pdf](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/conference_1_igarss/main.pdf)).
 - **Target Venue 2: ACM SIGSPATIAL (International Conference on Advances in Geographic Information Systems)**
   - **Sponsor:** ACM SIGSPATIAL.
   - **Track:** *Spatial Machine Learning and Environmental Sensing*.
@@ -61,7 +65,7 @@ This document provides a comprehensive operational roadmap for submitting the fo
 - **Target Venue 1: International Water Association (IWA) World Water Congress & Exhibition**
   - **Organizer:** International Water Association (IWA).
   - **Track:** *Water Quality Monitoring, Safe Drinking Water Supply, and Contaminant Fate*.
-  - **Submission Package:** [manuscripts/conference_2_water/](file:///c:/xampp/htdocs/heavy-metal/manuscripts/conference_2_water/) ([main.pdf](file:///c:/xampp/htdocs/heavy-metal/manuscripts/conference_2_water/main.pdf)).
+  - **Submission Package:** [manuscripts/conference_2_water/](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/conference_2_water/) ([main.pdf](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/conference_2_water/main.pdf)).
 - **Target Venue 2: ASCE-EWRI Congress (Environmental & Water Resources Institute)**
   - **Organizer:** American Society of Civil Engineers (ASCE).
   - **Track:** *Watershed Management, River Basin Water Quality, and Regulatory Compliance*.
@@ -78,5 +82,4 @@ Before uploading to journal or conference portals, complete the following editor
 3. **Open Access Choice:**
    - Select **Subscription / Green Open Access ($0 APC)** upon acceptance to avoid author processing fees.
 4. **Data Availability Confirmation:**
-   - Point reviewers to the public GitHub repository: [https://github.com/ShMazumder/heavy-metal.git](https://github.com/ShMazumder/heavy-metal.git).
-
+   - Point reviewers to the public GitHub repository: [https://github.com/ShMazumder/heavy-metal.git](https://github.com/ShMazumder/heavy-metal.git) (or anonymized archive `https://anonymous.4open.science/r/bangladesh-river-metals-audit` for double-blind review).

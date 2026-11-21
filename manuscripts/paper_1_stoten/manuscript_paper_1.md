@@ -171,7 +171,7 @@ TreeSHAP feature importance rankings (Figure 1) revealed that sediment metal con
 - **Copper (Cu) & Nickel (Ni):** Local sub-catchment drainage area ($|\text{SHAP}| = 6.93$ and $6.31$) and sediment pH ($|\text{SHAP}| = 4.51$ and $5.91$) were the primary predictors, illustrating that alkaline sediment conditions facilitate the precipitation and binding of divalent cations into benthic sediments.
 - **Arsenic (As):** Controlled by regional longitudinal gradient ($|\text{SHAP}| = 1.88$) and pH ($|\text{SHAP}| = 1.76$), confirming the known geochemical mechanism of arsenic desorption under alkaline reducing conditions in Bengal delta sediments.
 
-*(Insert Figure 1: [shap_feature_importance_panel.png](file:///c:/xampp/htdocs/heavy-metal/data/phase_vi_shap/shap_feature_importance_panel.png) — Multi-panel TreeSHAP feature attribution plots across all six target heavy metals).*
+*(Insert Figure 1: [shap_feature_importance_panel.png](file:///Users/rohansmac/Documents/projects/heavy-metal/data/phase_vi_shap/shap_feature_importance_panel.png) — Multi-panel TreeSHAP feature attribution plots across all six target heavy metals).*
 
 ### 3.4 National River Reach Predictions and Ecological Risk Cartography
 Applying the champion models across all 55,668 HydroRIVERS reach segments enabled the first contiguous, reach-level spatial assessment of sediment heavy metals across Bangladesh (Figure 2).
@@ -186,7 +186,7 @@ Applying the champion models across all 55,668 HydroRIVERS reach segments enable
 
 Over half of all river reach segments in Bangladesh (**55.76%**) exhibit **Very High Ecological Risk ($RI \ge 600$)**, driven predominantly by extreme enrichment factors for Cadmium ($E_r > 300$) and Lead ($E_r > 160$). Significant contamination hotspots ($PLI > 5.0$) are concentrated along the peripheral river systems surrounding Dhaka (Buriganga, Turag, Balu, Shitalakhya), the industrialized reaches of the Karnaphuli in Chattogram, and the urban Korotoa channel in Bogra. Conversely, low-risk river segments ($RI < 150$) represent less than 0.3% of the total river network, restricted entirely to high-elevation headwaters along international borders.
 
-*(Insert Figure 2: [national_ecological_risk_map.png](file:///c:/xampp/htdocs/heavy-metal/data/phase_vii_predictions_risk/national_ecological_risk_map.png) — High-resolution national continuous river-reach ecological risk map ($RI$) of Bangladesh).*
+*(Insert Figure 2: [national_ecological_risk_map.png](file:///Users/rohansmac/Documents/projects/heavy-metal/data/phase_vii_predictions_risk/national_ecological_risk_map.png) — High-resolution national continuous river-reach ecological risk map ($RI$) of Bangladesh).*
 
 ---
 

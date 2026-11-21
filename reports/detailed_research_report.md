@@ -185,7 +185,7 @@ To explain the physical and geochemical mechanics driving model decisions, TreeS
 | **Nickel (Ni)** | **Catchment Area** | **6.31** | Latitude ($Y$) | 6.09 | pH | 5.91 | Large drainage accumulation; alkaline precipitation |
 | **Arsenic (As)** | **Longitude ($X$)** | **1.88** | pH | 1.76 | Catchment Area | 1.60 | Geogenic deltaic gradient; reductive dissolution of Fe-oxyhydroxides at high pH |
 
-*(See high-resolution multi-panel visualization: [shap_feature_importance_panel.png](file:///c:/xampp/htdocs/heavy-metal/data/phase_vi_shap/shap_feature_importance_panel.png))*
+*(See high-resolution multi-panel visualization: [shap_feature_importance_panel.png](file:///Users/rohansmac/Documents/projects/heavy-metal/data/phase_vi_shap/shap_feature_importance_panel.png))*
 
 ---
 
@@ -201,7 +201,7 @@ Trained champion models were deployed across all **55,668 HydroRIVERS reach segm
 | **Moderate Risk** | $150 \le RI < 300$ | **6,046** | **10.86%** | 2.14 | Mid-reaches of Padma, Jamuna, and Old Brahmaputra |
 | **Low Risk** | $RI < 150$ | **130** | **0.23%** | 1.00 | High-elevation forested border headwaters |
 
-*(See high-resolution cartographic map: [national_ecological_risk_map.png](file:///c:/xampp/htdocs/heavy-metal/data/phase_vii_predictions_risk/national_ecological_risk_map.png))*
+*(See high-resolution cartographic map: [national_ecological_risk_map.png](file:///Users/rohansmac/Documents/projects/heavy-metal/data/phase_vii_predictions_risk/national_ecological_risk_map.png))*
 
 ### 7.1 Nationwide Reach Prediction Uncertainty
 To prevent false precision and report model confidence across all 55,668 unsampled reaches, ensemble prediction variance was computed:
@@ -230,7 +230,7 @@ Auditing 268 surface water samples against the World Health Organization (WHO, 4
 | **Copper (Cu)** | 105 | 0.0900 | 6.320 | 2.000 mg/L | **3.8%** (4 / 105) | 1.000 mg/L | **9.5%** (10 / 105) |
 | **Zinc (Zn)** | 79 | 0.5000 | 10.290 | 3.000 mg/L | **5.1%** (4 / 79) | 5.000 mg/L | **3.8%** (3 / 79) |
 
-*(See exceedance figure: [guidelines_exceedance_rates.png](file:///c:/xampp/htdocs/heavy-metal/data/paper_2_water_results/guidelines_exceedance_rates.png))*
+*(See exceedance figure: [guidelines_exceedance_rates.png](file:///Users/rohansmac/Documents/projects/heavy-metal/data/paper_2_water_results/guidelines_exceedance_rates.png))*
 
 ### 8.1 Multi-Metal Water Pollution Indices
 - **Heavy Metal Pollution Index (HPI):** Mean $HPI = \mathbf{1,483.09}$ (median = 208.52, max = 58,134.96), dramatically exceeding the critical pollution threshold ($HPI = 100$).
@@ -261,7 +261,7 @@ Non-parametric Mann-Whitney U testing confirmed significant seasonal dilution be
 | **Zinc (Zn)** | 0.5300 | 0.0725 | **7.31×** | 308.0 | **$0.0458$** | **Yes ($p < 0.05$)** |
 | **Lead (Pb)** | 0.0245 | 0.0287 | 0.85× | 808.0 | $0.4637$ | No (Persistent wet-season urban wash-off) |
 
-*(See seasonal boxplot visualization: [seasonal_dilution_boxplots.png](file:///c:/xampp/htdocs/heavy-metal/data/paper_2_water_results/seasonal_dilution_boxplots.png))*
+*(See seasonal boxplot visualization: [seasonal_dilution_boxplots.png](file:///Users/rohansmac/Documents/projects/heavy-metal/data/paper_2_water_results/seasonal_dilution_boxplots.png))*
 
 ---
 
@@ -283,4 +283,4 @@ A spatial reach-distance algorithm isolated **4,435 major river reaches** (Strah
 | **9** | `GAP_STN_09` | **23.327083** | **90.558333** | 9 | 1,488,607 | 34,856.3 | **34.9 km** | Lower Padma Estuary Reach |
 | **10**| `GAP_STN_10` | **23.329167** | **90.550000** | 9 | 1,488,602 | 34,858.7 | **34.6 km** | Lower Padma Confluence |
 
-Full station shapefile & CSV: [priority_future_monitoring_stations.csv](file:///c:/xampp/htdocs/heavy-metal/data/paper_2_water_results/priority_future_monitoring_stations.csv)
+Full station shapefile & CSV: [priority_future_monitoring_stations.csv](file:///Users/rohansmac/Documents/projects/heavy-metal/data/paper_2_water_results/priority_future_monitoring_stations.csv)

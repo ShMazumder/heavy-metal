@@ -3,8 +3,8 @@
 **Authors:** Research Taskforce  
 **Project Repository:** [https://github.com/ShMazumder/heavy-metal.git](https://github.com/ShMazumder/heavy-metal.git)  
 **Date of Completion:** November 13, 2026  
-**Primary Database:** SQLite 3 ([heavy_metal.db](file:///c:/xampp/htdocs/heavy-metal/data/heavy_metal.db))  
-**Geospatial Layer:** GeoPackage ([hydrorivers_bangladesh.gpkg](file:///c:/xampp/htdocs/heavy-metal/data/hydrorivers_bangladesh.gpkg))  
+**Primary Database:** SQLite 3 ([heavy_metal.db](file:///Users/rohansmac/Documents/projects/heavy-metal/data/heavy_metal.db))  
+**Geospatial Layer:** GeoPackage ([hydrorivers_bangladesh.gpkg](file:///Users/rohansmac/Documents/projects/heavy-metal/data/hydrorivers_bangladesh.gpkg))  
 
 ---
 
@@ -59,14 +59,14 @@ To solve this, the research was decoupled into two focused, high-impact manuscri
 
 ## 2. Relational Database Architecture & Harmonization Audit
 
-Raw data extracted from published literature suffered from severe structural and metadata inconsistencies. A 4-table relational architecture was engineered in SQLite 3 ([heavy_metal.db](file:///c:/xampp/htdocs/heavy-metal/data/heavy_metal.db)) and exported as clean CSVs:
+Raw data extracted from published literature suffered from severe structural and metadata inconsistencies. A 4-table relational architecture was engineered in SQLite 3 ([heavy_metal.db](file:///Users/rohansmac/Documents/projects/heavy-metal/data/heavy_metal.db)) and exported as clean CSVs:
 
 ### 2.1 Database Entities and Cardinality
 
-1. **`studies` (28 rows):** Primary publication metadata, digital object identifiers (DOIs), analytical instruments (ICP-MS, AAS, ICP-OES), digestion chemistries (aqua regia, $HNO_3+HClO_4$, HF), and study quality scores. ([studies.csv](file:///c:/xampp/htdocs/heavy-metal/data/studies.csv))
-2. **`stations` (426 unique station-season combinations):** Spatial registry containing raw geographic strings, parsed WGS 84 decimal coordinates (`Lat_WGS84`, `Lon_WGS84`), coordinate precision classification, and river identities. ([stations.csv](file:///c:/xampp/htdocs/heavy-metal/data/stations.csv))
-3. **`sediment_records` (289 rows):** Target modeling table for Paper 1. Contains standardized dry-weight concentrations (`_mg_kg_dw`) for 10 heavy metals and physicochemical sediment properties (pH, organic carbon [%OC], organic matter [%OM], total nitrogen [%N], sand/silt/clay fractions, textural class). ([sediment_data.csv](file:///c:/xampp/htdocs/heavy-metal/data/sediment_data.csv))
-4. **`water_records` (268 rows):** Target modeling table for Paper 2. Contains dual-unit concentrations (`_mg_L` and `_ug_L`), composite pollution indices (HPI, HEI, MI), and water quality parameters (DO, BOD, COD, TDS, TSS, EC, salinity, hardness, nutrients). ([water_data.csv](file:///c:/xampp/htdocs/heavy-metal/data/water_data.csv))
+1. **`studies` (28 rows):** Primary publication metadata, digital object identifiers (DOIs), analytical instruments (ICP-MS, AAS, ICP-OES), digestion chemistries (aqua regia, $HNO_3+HClO_4$, HF), and study quality scores. ([studies.csv](file:///Users/rohansmac/Documents/projects/heavy-metal/data/studies.csv))
+2. **`stations` (426 unique station-season combinations):** Spatial registry containing raw geographic strings, parsed WGS 84 decimal coordinates (`Lat_WGS84`, `Lon_WGS84`), coordinate precision classification, and river identities. ([stations.csv](file:///Users/rohansmac/Documents/projects/heavy-metal/data/stations.csv))
+3. **`sediment_records` (289 rows):** Target modeling table for Paper 1. Contains standardized dry-weight concentrations (`_mg_kg_dw`) for 10 heavy metals and physicochemical sediment properties (pH, organic carbon [%OC], organic matter [%OM], total nitrogen [%N], sand/silt/clay fractions, textural class). ([sediment_data.csv](file:///Users/rohansmac/Documents/projects/heavy-metal/data/sediment_data.csv))
+4. **`water_records` (268 rows):** Target modeling table for Paper 2. Contains dual-unit concentrations (`_mg_L` and `_ug_L`), composite pollution indices (HPI, HEI, MI), and water quality parameters (DO, BOD, COD, TDS, TSS, EC, salinity, hardness, nutrients). ([water_data.csv](file:///Users/rohansmac/Documents/projects/heavy-metal/data/water_data.csv))
 
 ### 2.2 Critical Data Fixes Executed
 - **Missing River Imputation (149 rows resolved):** 149 records in historical tables lacked river names due to empty cells following row 1 of each study. Systematic PDF cross-auditing verified that all 149 rows belonged to the study's parent river: P14 (Paira, 24 rows), P18 (Kirtankhola, 60 rows), P22 (Korotoa, 20 rows), P23 (Korotoa, 10 rows), and P28 (Korotoa, 40 rows), bringing river resolution to **557 / 557 (100%)**.
@@ -78,7 +78,7 @@ Raw data extracted from published literature suffered from severe structural and
 
 ## 3. Geospatial HydroSHEDS Network Topology & Station Snapping
 
-To replace unconstrained Euclidean space with physical hydrologic routing, the HydroSHEDS HydroRIVERS v1.0 Asia network was extracted, clipped to the Bangladesh domain ($87.5^\circ\text{E}\text{--}93.0^\circ\text{E}$, $20.0^\circ\text{N}\text{--}27.0^\circ\text{N}$), and compiled into an optimized GeoPackage layer: [hydrorivers_bangladesh.gpkg](file:///c:/xampp/htdocs/heavy-metal/data/hydrorivers_bangladesh.gpkg) (14.64 MB, **55,668 reach polylines**).
+To replace unconstrained Euclidean space with physical hydrologic routing, the HydroSHEDS HydroRIVERS v1.0 Asia network was extracted, clipped to the Bangladesh domain ($87.5^\circ\text{E}\text{--}93.0^\circ\text{E}$, $20.0^\circ\text{N}\text{--}27.0^\circ\text{N}$), and compiled into an optimized GeoPackage layer: [hydrorivers_bangladesh.gpkg](file:///Users/rohansmac/Documents/projects/heavy-metal/data/hydrorivers_bangladesh.gpkg) (14.64 MB, **55,668 reach polylines**).
 
 ```
                       [Spatial Point Coordinate]
@@ -102,8 +102,8 @@ To replace unconstrained Euclidean space with physical hydrologic routing, the H
 ```
 
 This topological matching generated two enriched modeling views in the database:
-- `v_sediment_ml_features` $\rightarrow$ exported to [sediment_features_hydro.csv](file:///c:/xampp/htdocs/heavy-metal/data/sediment_features_hydro.csv)
-- `v_water_ml_features` $\rightarrow$ exported to [water_features_hydro.csv](file:///c:/xampp/htdocs/heavy-metal/data/water_features_hydro.csv)
+- `v_sediment_ml_features` $\rightarrow$ exported to [sediment_features_hydro.csv](file:///Users/rohansmac/Documents/projects/heavy-metal/data/sediment_features_hydro.csv)
+- `v_water_ml_features` $\rightarrow$ exported to [water_features_hydro.csv](file:///Users/rohansmac/Documents/projects/heavy-metal/data/water_features_hydro.csv)
 
 ---
 
@@ -205,7 +205,7 @@ To isolate the exact predictive value of adding topological river-network featur
 
 *Conclusion:* Adding HydroSHEDS hydrological topology provides substantial, statistically verified performance improvements across all anthropogenic metals, with Cadmium gaining over 15.1% in predictive power ($R^2$ jumps from 0.405 to 0.557).
 
-Full ablation dataset: [feature_ablation_study.csv](file:///c:/xampp/htdocs/heavy-metal/data/phase_v_results/feature_ablation_study.csv)
+Full ablation dataset: [feature_ablation_study.csv](file:///Users/rohansmac/Documents/projects/heavy-metal/data/phase_v_results/feature_ablation_study.csv)
 
 ---
 
@@ -223,7 +223,7 @@ To explain the physical and geochemical mechanics driving model decisions, TreeS
 | **Nickel (Ni)** | **Catchment Area** | **6.31** | Latitude ($Y$) | 6.09 | pH | 5.91 | Large drainage accumulation; alkaline precipitation |
 | **Arsenic (As)** | **Longitude ($X$)** | **1.88** | pH | 1.76 | Catchment Area | 1.60 | Geogenic deltaic gradient; reductive dissolution of Fe-oxyhydroxides at high pH |
 
-*(See high-resolution multi-panel visualization: [shap_feature_importance_panel.png](file:///c:/xampp/htdocs/heavy-metal/data/phase_vi_shap/shap_feature_importance_panel.png))*
+*(See high-resolution multi-panel visualization: [shap_feature_importance_panel.png](file:///Users/rohansmac/Documents/projects/heavy-metal/data/phase_vi_shap/shap_feature_importance_panel.png))*
 
 ### Mechanistic Findings:
 - **Local Sub-catchment Drainage Area (`CATCH_SKM`):** Emerged as the #1 physical predictor for Pb, Cu, and Ni. Larger sub-catchments with low hydrodynamic energy facilitate fine silt and clay settling, retaining particulate-bound heavy metals in benthic mud.
@@ -236,8 +236,8 @@ To explain the physical and geochemical mechanics driving model decisions, TreeS
 
 Trained champion models were deployed across all **55,668 HydroRIVERS reach segments**, computing reach-specific continuous concentrations, single-metal Geoaccumulation Indices ($I_{geo}$), multi-metal Pollution Load Index ($PLI$), and Hakanson's Potential Ecological Risk Index ($RI$).
 
-Full dataset exported: [national_river_reach_predictions_risk.csv](file:///c:/xampp/htdocs/heavy-metal/data/phase_vii_predictions_risk/national_river_reach_predictions_risk.csv)  
-Cartography figure: [national_ecological_risk_map.png](file:///c:/xampp/htdocs/heavy-metal/data/phase_vii_predictions_risk/national_ecological_risk_map.png)
+Full dataset exported: [national_river_reach_predictions_risk.csv](file:///Users/rohansmac/Documents/projects/heavy-metal/data/phase_vii_predictions_risk/national_river_reach_predictions_risk.csv)  
+Cartography figure: [national_ecological_risk_map.png](file:///Users/rohansmac/Documents/projects/heavy-metal/data/phase_vii_predictions_risk/national_ecological_risk_map.png)
 
 **Table 4:** National distribution of Potential Ecological Risk Index ($RI$) across 55,668 river reach segments.
 | Ecological Risk Tier | $RI$ Criteria | Segment Count | Network Share (%) | Mean $PLI$ | Primary Impacted River Systems |
@@ -272,7 +272,7 @@ To prevent false precision and report model confidence across all 55,668 unsampl
 | **Chromium (Cr)** | 67.29 | 29.11 mg/kg | 21.09 mg/kg | 0.438 | **61.58%** |
 | **Cadmium (Cd)** | 1.18 | 0.46 mg/kg | 0.28 mg/kg | 0.385 | **76.51%** |
 
-Full reach uncertainty dataset: [reach_prediction_uncertainty_summary.csv](file:///c:/xampp/htdocs/heavy-metal/data/phase_vii_predictions_risk/reach_prediction_uncertainty_summary.csv) and [national_river_reach_predictions_with_uncertainty.csv](file:///c:/xampp/htdocs/heavy-metal/data/phase_vii_predictions_risk/national_river_reach_predictions_with_uncertainty.csv)
+Full reach uncertainty dataset: [reach_prediction_uncertainty_summary.csv](file:///Users/rohansmac/Documents/projects/heavy-metal/data/phase_vii_predictions_risk/reach_prediction_uncertainty_summary.csv) and [national_river_reach_predictions_with_uncertainty.csv](file:///Users/rohansmac/Documents/projects/heavy-metal/data/phase_vii_predictions_risk/national_river_reach_predictions_with_uncertainty.csv)
 
 ---
 
@@ -384,7 +384,7 @@ To guide future surveillance deployments without redundant clustering along a si
 Complete academic manuscripts, cover letters, tables, models, and 300 DPI publication figures are synchronized in GitHub:
 
 ```
-c:\xampp\htdocs\heavy-metal/
+/Users/rohansmac/Documents/projects/heavy-metal/
 ├── data/
 │   ├── heavy_metal.db                                  # Relational master SQLite database
 │   ├── hydrorivers_bangladesh.gpkg                     # HydroSHEDS 55,668 reach network + risk layer
