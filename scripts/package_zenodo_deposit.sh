@@ -32,10 +32,10 @@ CONTENTS:
   heavy_metal.db                  Master SQLite relational database (4 tables)
   water_data.csv                  Surface water assays (268 rows × 49 cols)
   sediment_data.csv               Bed sediment assays (289 rows × 32 cols)
-  stations.csv                    Georeferenced station centroids (133 rows)
+  stations.csv                    Observation stations (426 rows × 14 cols)
   studies.csv                     Study metadata & instrumentation (28 rows)
-  master_harmonized.csv           Denormalized master table (557 rows)
-  station_hydrorivers_matched.csv Topological reach join table (133 rows)
+  master_harmonized.csv           Denormalized master table (557 rows × 59 cols)
+  station_hydrorivers_matched.csv Topological reach join table (213 unique stations)
   hydrorivers_bangladesh.gpkg     HydroSHEDS HydroRIVERS clipped network
   bangladesh_boundary.geojson     National boundary polygon (WGS84)
 
