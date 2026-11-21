@@ -7,16 +7,16 @@ The Editors-in-Chief
 *Chemosphere*  
 Elsevier  
 
-**Subject:** Submission of Revised Original Research Article: *"Heavy Metals in Monitored River Corridors of Bangladesh: A Critical Synthesis of Published Records (2010--2024), Regulatory Benchmark Discordance, and Hydrographic Surveillance Deficits"*
+**Subject:** Submission of Original Research Article: *"Heavy Metals in Monitored River Corridors of Bangladesh: A Critical Synthesis of Published Records (2010--2024), Regulatory Benchmark Discordance, and Hydrographic Surveillance Deficits"*
 
 Dear Editors-in-Chief,
 
-We are pleased to submit our revised original research article titled **"Heavy Metals in Monitored River Corridors of Bangladesh: A Critical Synthesis of Published Records (2010--2024), Regulatory Benchmark Discordance, and Hydrographic Surveillance Deficits"** for consideration for publication as a Regular Research Paper in *Chemosphere*.
+We are pleased to submit our original research article titled **"Heavy Metals in Monitored River Corridors of Bangladesh: A Critical Synthesis of Published Records (2010--2024), Regulatory Benchmark Discordance, and Hydrographic Surveillance Deficits"** for consideration for publication as a Regular Research Paper in *Chemosphere*.
 
 ### Overview and Key Contributions
 Surface freshwater networks across the Bengal Delta provide vital resources for regional agriculture, capture fisheries, and municipal water abstraction. Although numerous localized field studies have examined trace elements in Bangladeshi rivers, comprehensive synthesis of benchmark exceedances, rigorous evaluation of seasonal contrasts, and quantification of spatial surveillance coverage have remained fragmented.
 
-In this revision (Round 6 / Critical Peer Review), we have systematically addressed all reviewer remarks and incorporated extensive methodological, regulatory, bibliographic, and conceptual refinements:
+In this work, we present an audited, forensic synthesis incorporating extensive methodological, regulatory, bibliographic, and conceptual rigor:
 1. **Reference List Integrity and Forensic DOI Verification:** Every single entry in `references.bib` has been cross-verified against official publisher metadata and Crossref DOI records. We have corrected bibliographic mismatches (including updated records for Proshad et al. 2025 in *Water*, Bilal et al. 2023 in *ESPR*, Islam et al. 2018 in *IJERPH*, Hossain et al. 2021 in *SN Appl. Sci.*, Hasan et al. 2024 in *Pollution*, and verified records for Goodbred & Kuehl 1999, Brammer & Ravenscroft 2009, and Halim et al. 2015), removing misattributed sediment citations from surface water lists.
 2. **Regulatory Benchmark Framing (ECR 1997 vs. ECR 2023):** Reframed benchmark comparisons from "statutory violations" to potable screening indices that quantify raw-water chemical pressure and treatment plant coagulation/filtration burdens (e.g., at Saidabad and Mohara WTPs). We document that under the tightened ECR 2023 Schedule 2 potable limits, national Lead exceedance rises from **34.9% to 85.6%** (harmonizing with WHO), Cadmium from **40.2% to 44.7%**, and Nickel from **45.2% to 61.5%**, completely overturning earlier assumptions of broad domestic compliance.
 3. **Confirmed Dissolved Medians and High-Sensitivity Instrument Stratification:** Evaluated true dissolved medians on confirmed filtered records (0.45 $\mu$m filtered; $k=10$ studies, $N=131$--$139$; Pb: **0.0250 mg/L**, Cr: **0.0630 mg/L**, Ni: **0.0560 mg/L**, As: **0.0133 mg/L**, Cd: **0.0016 mg/L**). Stratification by analytical instrumentation demonstrates that under high-sensitivity spectrometry with sub-$\mu\text{g/L}$ detection limits (GF-AAS, HG-AAS, ICP-MS; $N=77, k=5$), WHO Lead exceedance remains **79.2%** (median 0.0171 mg/L), confirming that high exceedance rates are not artifacts of elevated flame-AAS detection limits.
