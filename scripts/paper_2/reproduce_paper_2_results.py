@@ -36,7 +36,7 @@ RNG_SEED = 42
 rng = np.random.default_rng(RNG_SEED)
 
 os.makedirs('data/paper_2_water_results', exist_ok=True)
-os.makedirs('manuscripts/paper_2_chemosphere', exist_ok=True)
+os.makedirs('manuscripts/paper_2_environmental_pollution', exist_ok=True)
 os.makedirs('manuscripts/conference_2_water', exist_ok=True)
 
 print("=" * 75)
@@ -845,7 +845,7 @@ ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15), ncol=2, frameon=True,
 plt.tight_layout()
 
 fig.savefig('data/paper_2_water_results/guidelines_exceedance_rates.png', dpi=300, bbox_inches='tight')
-fig.savefig('manuscripts/paper_2_chemosphere/fig1_exceedance.png', dpi=300, bbox_inches='tight')
+fig.savefig('manuscripts/paper_2_environmental_pollution/fig1_exceedance.png', dpi=300, bbox_inches='tight')
 fig.savefig('manuscripts/conference_2_water/fig1_exceedance.png', dpi=300, bbox_inches='tight')
 plt.close(fig)
 print("Saved fig1_exceedance.png (legend outside, ylim=110)")
@@ -878,7 +878,7 @@ axes[7].legend(handles=handles, loc='center', frameon=True, fontsize=11, title='
 plt.suptitle('Seasonal Contrast Dynamics of Heavy Metals in Bangladesh River Waters', fontsize=13, fontweight='bold', y=0.98)
 plt.tight_layout()
 fig.savefig('data/paper_2_water_results/seasonal_dilution_boxplots.png', dpi=300, bbox_inches='tight')
-fig.savefig('manuscripts/paper_2_chemosphere/fig2_dilution.png', dpi=300, bbox_inches='tight')
+fig.savefig('manuscripts/paper_2_environmental_pollution/fig2_dilution.png', dpi=300, bbox_inches='tight')
 fig.savefig('manuscripts/conference_2_water/fig2_dilution.png', dpi=300, bbox_inches='tight')
 plt.close(fig)
 print("Saved fig2_dilution.png")
@@ -926,7 +926,7 @@ ax.grid(linestyle=':', alpha=0.4)
 plt.tight_layout()
 
 fig.savefig('data/paper_2_water_results/spatial_coverage_map.png', dpi=300, bbox_inches='tight')
-fig.savefig('manuscripts/paper_2_chemosphere/fig3_spatial_coverage_map.png', dpi=300, bbox_inches='tight')
+fig.savefig('manuscripts/paper_2_environmental_pollution/fig3_spatial_coverage_map.png', dpi=300, bbox_inches='tight')
 fig.savefig('manuscripts/conference_2_water/fig3_spatial_coverage_map.png', dpi=300, bbox_inches='tight')
 plt.close(fig)
 print("Saved fig3_spatial_coverage_map.png (clean polygon clip with 15 candidate stations)")
@@ -1000,7 +1000,7 @@ ax_d.grid(axis='y', linestyle='--', alpha=0.5)
 
 plt.tight_layout()
 fig_ga.savefig('data/paper_2_water_results/graphical_abstract.png', dpi=300, bbox_inches='tight')
-fig_ga.savefig('manuscripts/paper_2_chemosphere/graphical_abstract.png', dpi=300, bbox_inches='tight')
+fig_ga.savefig('manuscripts/paper_2_environmental_pollution/graphical_abstract.png', dpi=300, bbox_inches='tight')
 plt.close(fig_ga)
 print("Saved graphical_abstract.png (4 panels)")
 
@@ -1175,9 +1175,9 @@ def make_macro_file(filepath):
     with open(filepath, 'w') as f:
         f.write('\n'.join(lines) + '\n')
 
-make_macro_file('manuscripts/paper_2_chemosphere/results_macros.tex')
+make_macro_file('manuscripts/paper_2_environmental_pollution/results_macros.tex')
 make_macro_file('manuscripts/conference_2_water/results_macros.tex')
-print("Saved manuscripts/paper_2_chemosphere/results_macros.tex and conference_2_water/results_macros.tex")
+print("Saved manuscripts/paper_2_environmental_pollution/results_macros.tex and conference_2_water/results_macros.tex")
 
 print("=" * 75)
 print("PAPER 2 REPRODUCIBILITY PIPELINE COMPLETED SUCCESSFULLY!")

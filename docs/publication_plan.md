@@ -250,17 +250,17 @@ Transform raw predictions ($\hat{C}_i$) into environmental decision indices usin
 - **Submission Package:** `manuscripts/paper_1_stoten/` (`main.tex`, `main.pdf`, `cover_letter_stoten.md`, `references.bib`).
 
 ### Paper 2: Surface Water Synthesis & Surveillance Deficits (Core Journal Paper)
-- **Target Journal:** *Chemosphere* (Elsevier, IF 8.8).
+- **Target Journal:** *Environmental Pollution* (Elsevier, IF 8.9, Q1, SCIE Indexed).
 - **Title:** *Heavy Metals in Monitored River Corridors of Bangladesh: A Critical Synthesis of Published Records (2010--2024), Regulatory Benchmark Discordance, and Hydrographic Surveillance Deficits*
 - **Status:** **Compiled & Ready** (26 pages, Elsevier single-column review format; post-Round 6 peer-review synchronized).
 - **Core Narrative:** Critical synthesis of 162 water metal records ($N=112$ Core-4 panel); ECR 2023 Schedule 2 potable screening (85.6% Pb non-compliance) vs ECR 1997 raw intake; confirmation of 0.45 $\mu$m true dissolved medians (Pb: 0.0250 mg/L) and high-sensitivity GF-AAS/ICP-MS exceedances (79.2%); mathematical decoupling of HPI linear weights vs realized score shares; HKSJ random-effects meta-analysis of seasonal contrasts; Monte Carlo spatial surveillance gap analysis.
 - **Key Figures & Supplementary:**
-  - Graphical Abstract: 4-panel visual summary ([graphical_abstract.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_chemosphere/graphical_abstract.png)).
-  - Fig 1: Regulatory benchmark exceedance rates and multi-metal indices ([fig1_exceedance.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_chemosphere/fig1_exceedance.png)).
-  - Fig 2: Hydrological stage and seasonal contrast boxplots ([fig2_dilution.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_chemosphere/fig2_dilution.png)).
-  - Fig 3: National hydrographic network coverage and surveillance blind spots ([fig3_spatial_coverage_map.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_chemosphere/fig3_spatial_coverage_map.png)).
+  - Graphical Abstract: 4-panel visual summary ([graphical_abstract.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_environmental_pollution/graphical_abstract.png)).
+  - Fig 1: Regulatory benchmark exceedance rates and multi-metal indices ([fig1_exceedance.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_environmental_pollution/fig1_exceedance.png)).
+  - Fig 2: Hydrological stage and seasonal contrast boxplots ([fig2_dilution.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_environmental_pollution/fig2_dilution.png)).
+  - Fig 3: National hydrographic network coverage and surveillance blind spots ([fig3_spatial_coverage_map.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_environmental_pollution/fig3_spatial_coverage_map.png)).
   - Table S1: Master catalog of 28 audited primary studies with Crossref DOIs ([supplementary_table_s1_audited_studies.md](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/supplementary_table_s1_audited_studies.md)).
-- **Submission Package:** `manuscripts/paper_2_chemosphere/` (`main.tex`, `main.pdf`, `cover_letter_chemosphere.md`, `results_macros.tex`, `references.bib`).
+- **Submission Package:** `manuscripts/paper_2_environmental_pollution/` (`main.tex`, `main.pdf`, `cover_letter_env_poll.md`, `results_macros.tex`, `references.bib`).
 
 ### Conference 1: Explainable AI & Topological Stream Routing
 - **Target Venue:** IEEE IGARSS / ACM SIGSPATIAL.
