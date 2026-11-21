@@ -1,5 +1,10 @@
 # **Comprehensive Research Evaluation and Methodological Roadmap**
 
+> [!NOTE] Document Architecture & Project Synchronization
+> This document represents the foundational research evaluation, methodological critique, and multi-phase roadmap developed at project inception (evaluating the preliminary raw dataset `Final Data Table.xlsx`).
+> - **Execution Status:** 100% of the phases proposed below have been fully executed, validated, audited, and compiled into 4 manuscript packages.
+> - **Synchronized Deliverables:** For the active submission packages and audited ground truth results, see [manuscripts/submission_and_venue_guide.md](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/submission_and_venue_guide.md) and the completed execution summary in [Section 24](#execution-summary-completed-phases--publication-deliverables).
+
 **Proposed research title:**
 
 *Spatial Prediction of Heavy Metal Contamination in Rivers of Bangladesh Using Geospatial Analysis and Machine Learning*
@@ -1697,13 +1702,13 @@ I would start with these five deliverables, in this order:
 3. **Machine Learning Benchmark:** 7 architectures evaluated under 5-fold spatial CV. CatBoost established as champion for Pb ($R^2=0.64$), Cd ($R^2=0.57$), Cr ($R^2=0.52$). Planar Ordinary Kriging collapsed on disconnected river basins ($R^2 = -63.85$ Cr). Hybrid Regression Kriging excelled on Arsenic ($R^2_{\log}=0.756$).
 4. **Feature Group Ablation Study:** Proved that adding HydroSHEDS catchment topology to spatial models increases predictive accuracy by up to +15.1% absolute $R^2$ (Cadmium $R^2$ jumps from 0.405 to 0.557).
 5. **National Ecological Risk ($RI$) & Uncertainty Cartography:** Continuous reach predictions and Hakanson $RI$ across 55,668 reaches classified 55.76% of national river reaches in Very High Ecological Risk ($RI \ge 600$). Model uncertainty quantified across all reaches (Mean CV = 0.36–0.44).
-6. **Surface Water Non-Compliance & Dilution Dynamics:** 87.7% of water samples violate WHO limits for Lead; 51.6% have $HPI > 200$. Non-parametric Mann-Whitney U testing proved significant seasonal dilution for Cr, Cd, and As ($p < 0.02$, ~50% dilution during wet season), while Lead shows chronic non-dilution ($p=0.46$).
+6. **Surface Water Potable Screening & Dilution Dynamics:** Under the tightened Bangladesh ECR 2023 Schedule 2 potable standards and WHO guidelines (0.010 mg/L), **85.6% of water samples exceed the permissible limit for Lead** (up from 34.9% under legacy ECR 1997), Cadmium exceedance is 44.7%, and Nickel is 61.5%; 51.6% have $HPI > 200$ (with Core-4 standardized median $HPI = 156.99$). Non-parametric Mann-Whitney U testing indicated apparent seasonal differences for Cr, Cd, and As, but within-study random-effects meta-analysis with Hartung-Knapp-Sidik-Jonkman (HKSJ) adjustment yielded 95% confidence intervals spanning unity across all 7 metals due to limited paired studies ($k=3\text{--}5$), cautioning against declaring seasonal dilution statistically definitive.
 7. **National Monitoring Gap Optimization:** Top 15 surveillance blind spots isolated from 4,435 unmonitored reaches, establishing candidate coordinates with the lower Meghna confluence (`GAP_STN_01`, 23.227°N, 90.631°E) as priority #1.
-8. **Manuscripts & Publications:** 4 complete packages prepared and compiled to PDF:
-   - Paper 1 (STOTEN, Elsevier, IF 9.8): `manuscripts/paper_1_stoten/main.pdf`
-   - Paper 2 (Chemosphere, Elsevier, IF 8.8): `manuscripts/paper_2_chemosphere/main.pdf`
-   - Conference 1 (IEEE IGARSS / ACM SIGSPATIAL): `manuscripts/conference_1_igarss/main.pdf`
-   - Conference 2 (IWA World Water Congress / EWRI): `manuscripts/conference_2_water/main.pdf`
+8. **Manuscripts & Publications:** 4 complete packages prepared, peer-reviewed/calibrated, and compiled to PDF:
+   - Paper 1 (STOTEN, Elsevier, IF 9.8, 16 pages): `manuscripts/paper_1_stoten/main.pdf`
+   - Paper 2 (Chemosphere, Elsevier, IF 8.8, 26 pages, post-Round 6 peer-review synchronized): `manuscripts/paper_2_chemosphere/main.pdf`
+   - Conference 1 (IEEE IGARSS / ACM SIGSPATIAL, 3 pages): `manuscripts/conference_1_igarss/main.pdf`
+   - Conference 2 (IWA World Water Congress / EWRI, 3 pages): `manuscripts/conference_2_water/main.pdf`
 
 For ongoing project management, I can provide a weekly research-progress review and identify unresolved methodological issues as the team advances.
 

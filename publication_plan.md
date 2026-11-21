@@ -30,14 +30,14 @@ Attempting to merge water, sediment, spatial mapping, temporal forecasting, and 
 ├───────────────────────────────┤   ├───────────────────────────────┤
 │ • Focus: Long-term sink       │   │ • Focus: Acute exposure       │
 │ • Unit: mg/kg dw              │   │ • Unit: µg/L / mg/L           │
-│ • Sample size: N = 264 (Pb/Cr)│   │ • Sample size: N = 140–160    │
-│ • Key Targets: Cr, Pb, Cd,    │   │ • Key Targets: As, Cr, Cd, Pb │
-│   Cu, Ni, As                  │   │ • Methods: Hydrological stage │
-│ • Methods: Spatial-block ML,  │   │   correlation, seasonal gaps, │
-│   Regression Kriging, SHAP,   │   │   WHO/BD drinking & aquatic   │
-│   Igeo, PLI, RI               │   │   criteria exceedance rates   │
-│ • Venue: STOTEN, Env Pollut,  │   │ • Venue: Chemosphere, Env Mon │
-│   J. Hydrology (Q1)           │   │   Assess, Ecotox & Env Safety │
+│ • Sample size: N = 289 assays │   │ • Sample size: N = 268 assays │
+│   (133 unique station points) │   │   (162 heavy metal records,   │
+│ • Key Targets: Cr, Pb, Cd,    │   │    112 Core-4 multi-metal)    │
+│   Cu, Ni, As                  │   │ • Key Targets: As, Cr, Cd, Pb │
+│ • Methods: Spatial-block ML,  │   │ • Methods: Regulatory screening│
+│   Regression Kriging, SHAP,   │   │   (ECR 2023 vs WHO), HKSJ     │
+│   Igeo, PLI, RI               │   │   seasonal meta-analysis, HPI │
+│ • Venue: STOTEN (Elsevier Q1) │   │ • Venue: Chemosphere (Elsevier)│
 └───────────────────────────────┘   └───────────────────────────────┘
 ```
 
@@ -95,14 +95,14 @@ Transform the unnormalized spreadsheet into a 4-table relational relational stru
 
 To prevent training unstable models on sparse observations:
 
-| Parameter | Minimum Requirement (Per Model) | Target in Dataset | Status |
+| Parameter | Minimum Requirement (Per Model) | Actual Audited Dataset | Status |
 |---|---|---|---|
-| Independent Sample Sites ($N$) | $\ge 80$ spatial sites | Sediment: 120–180 unique sites | **GO** |
-| Unique River Systems | $\ge 6$ distinct hydrological basins | 12 rivers listed | **GO (post-audit)** |
-| Distinct Studies | $\ge 5$ peer-reviewed studies | 28 studies available | **GO** |
-| Non-detect Rate | $< 35\%$ | Most major metals < 20% | **GO** |
-| Target Selection (Sediment) | Cr, Pb, Cd, Cu, Ni, As | Non-null count $\ge 210$ | **CONFIRMED** |
-| Target Selection (Water) | As, Cr, Cd, Pb | Non-null count: 124–160 | **CONFIRMED** |
+| Independent Sample Sites ($N$) | $\ge 80$ spatial sites | Sediment: 133 unique station centroids (289 assays) | **ACHIEVED** |
+| Unique River Systems | $\ge 6$ distinct hydrological basins | 12 major river systems | **ACHIEVED** |
+| Distinct Studies | $\ge 5$ peer-reviewed studies | 28 peer-reviewed studies (P01–P28) | **ACHIEVED** |
+| Non-detect Rate | $< 35\%$ | All target metals $< 15\%$ | **ACHIEVED** |
+| Target Selection (Sediment) | Cr, Pb, Cd, Cu, Ni, As | $N = 289$ (Pb: 132, Cr: 131, Cd: 132, As: 127, Cu: 82, Ni: 82) | **CONFIRMED** |
+| Target Selection (Water) | As, Cr, Cd, Pb, Ni, Cu, Zn | $N = 268$ total assays ($N=162$ heavy metal records, $N=112$ Core-4) | **CONFIRMED** |
 | Dropped from Primary ML | Co, Fe, Mn | Co $N=15$; Fe/Mn geogenic controls | **RELEGATED** |
 
 ---
@@ -237,72 +237,51 @@ Transform raw predictions ($\hat{C}_i$) into environmental decision indices usin
 
 ---
 
-## 9. Deliverable Manuscripts Blueprint
+## 9. Deliverable Manuscripts Blueprint (100% Prepared & Compiled)
 
-### Paper 1: Sediment Spatial Modeling (Core Paper)
-- **Target Journal:** *Science of The Total Environment* (Elsevier, IF ~9.8) or *Journal of Hazardous Materials* (IF ~13.6).
-- **Core Narrative:** High-resolution river-network prediction of 6 heavy metals across Bangladesh rivers; proof that upstream topological indicators outperform Euclidean distance; identification of critical regional sediment sinks and ecological risk hotpots.
-- **Figures:**
-  - Fig 1: Hydrological map of Bangladesh, sampling stations, study quality distribution, and data density.
-  - Fig 2: Validation scatter plots: Random CV vs. Spatial Block CV vs. LORO-CV.
-  - Fig 3: Four-panel reach-level continuous maps for Pb and Cr: (a) Predicted median, (b) Uncertainty width, (c) AOA mask, (d) $I_{geo}$ class.
-  - Fig 4: SHAP summary beeswarm and ALE response functions for top 5 hydrological/anthropogenic features.
-  - Fig 5: National Multi-metal Ecological Risk ($RI$) reach classification highlighting priority remediation reaches.
+### Paper 1: Sediment Spatial Modeling (Core Journal Paper)
+- **Target Journal:** *Science of The Total Environment* (STOTEN, Elsevier, IF 9.8).
+- **Title:** *Spatial Modeling and Ecological Risk Assessment of Heavy Metal Contamination in River Sediments Across Bangladesh Using River-Network Machine Learning and Geostatistics*
+- **Status:** **Compiled & Ready** (16 pages, Elsevier standard format).
+- **Core Narrative:** High-resolution river-network prediction of 6 heavy metals across 55,668 HydroRIVERS reach segments; proof that upstream topological indicators outperform Euclidean distance; proof of spatial collapse of Ordinary Kriging across disconnected basins; TreeSHAP physical feature attribution; national Hakanson $RI$ ecological risk mapping.
+- **Key Figures:**
+  - Fig 1: Multi-panel TreeSHAP feature importance and interaction plots ([fig1_shap.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_1_stoten/fig1_shap.png)).
+  - Fig 2: High-resolution national continuous river-reach ecological risk map ($RI$) ([fig2_risk_map.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_1_stoten/fig2_risk_map.png)).
+- **Submission Package:** `manuscripts/paper_1_stoten/` (`main.tex`, `main.pdf`, `cover_letter_stoten.md`, `references.bib`).
 
-### Paper 2: Surface Water Synthesis & Monitoring Prioritization
-- **Target Journal:** *Chemosphere* or *Environmental Monitoring and Assessment*.
-- **Core Narrative:** Meta-analysis of surface water metal concentrations across Bangladesh; seasonal comparison (monsoon vs dry-flow dilution effects); compliance assessment against Bangladesh ECR 2023 and WHO guidelines; spatial gap analysis designating optimal future government monitoring stations.
+### Paper 2: Surface Water Synthesis & Surveillance Deficits (Core Journal Paper)
+- **Target Journal:** *Chemosphere* (Elsevier, IF 8.8).
+- **Title:** *Heavy Metals in Monitored River Corridors of Bangladesh: A Critical Synthesis of Published Records (2010--2024), Regulatory Benchmark Discordance, and Hydrographic Surveillance Deficits*
+- **Status:** **Compiled & Ready** (26 pages, Elsevier single-column review format; post-Round 6 peer-review synchronized).
+- **Core Narrative:** Critical synthesis of 162 water metal records ($N=112$ Core-4 panel); ECR 2023 Schedule 2 potable screening (85.6% Pb non-compliance) vs ECR 1997 raw intake; confirmation of 0.45 $\mu$m true dissolved medians (Pb: 0.0250 mg/L) and high-sensitivity GF-AAS/ICP-MS exceedances (79.2%); mathematical decoupling of HPI linear weights vs realized score shares; HKSJ random-effects meta-analysis of seasonal contrasts; Monte Carlo spatial surveillance gap analysis.
+- **Key Figures & Supplementary:**
+  - Graphical Abstract: 4-panel visual summary ([graphical_abstract.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_chemosphere/graphical_abstract.png)).
+  - Fig 1: Regulatory benchmark exceedance rates and multi-metal indices ([fig1_exceedance.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_chemosphere/fig1_exceedance.png)).
+  - Fig 2: Hydrological stage and seasonal contrast boxplots ([fig2_dilution.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_chemosphere/fig2_dilution.png)).
+  - Fig 3: National hydrographic network coverage and surveillance blind spots ([fig3_spatial_coverage_map.png](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_chemosphere/fig3_spatial_coverage_map.png)).
+  - Table S1: Master catalog of 28 audited primary studies with Crossref DOIs ([supplementary_table_s1_audited_studies.md](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/supplementary_table_s1_audited_studies.md)).
+- **Submission Package:** `manuscripts/paper_2_chemosphere/` (`main.tex`, `main.pdf`, `cover_letter_chemosphere.md`, `results_macros.tex`, `references.bib`).
+
+### Conference 1: Explainable AI & Topological Stream Routing
+- **Target Venue:** IEEE IGARSS / ACM SIGSPATIAL.
+- **Status:** **Compiled & Ready** (3 pages, IEEE double-column format).
+- **Submission Package:** `manuscripts/conference_1_igarss/` (`main.tex`, `main.pdf`).
+
+### Conference 2: Fluvial Dilution Dynamics & Surveillance Gaps
+- **Target Venue:** IWA World Water Congress & Exhibition / EWRI Congress.
+- **Status:** **Compiled & Ready** (3 pages, IEEE double-column format).
+- **Submission Package:** `manuscripts/conference_2_water/` (`main.tex`, `main.pdf`).
 
 ---
 
-## 10. Execution Timeline & Role Distribution (18 Weeks)
+## 10. Execution Timeline & Milestones (100% Completed)
 
-```
-WEEKS 1–4: DATA HARMONIZATION & AUDIT SPRINT
-├── Re-read 28 source papers
-├── Resolve 149 missing river records & georeference coordinates
-├── Standardize units to mg/kg dw (sediment) and µg/L (water)
-└── Establish SQLite database and LOD registry
-    Deliverable: Audited Master Dataset v1.0 + Audit Report
+All phases outlined in the initial roadmap have been executed, validated, audited, and compiled:
 
-WEEKS 5–8: GEOSPATIAL EXTRACTION & NETWORK ACCUMULATION
-├── Extract HydroSHEDS river reach network
-├── Calculate upstream accumulated covariates via PySheds
-├── Match sample stations to nearest river reaches
-└── Build feature matrix X
-    Deliverable: Feature Engine Matrix + Covariate Multicollinearity Report
-
-WEEKS 9–13: MACHINE LEARNING & SPATIAL VALIDATION BENCHMARK
-├── Implement SBCV, LORO-CV, LOSO-CV pipelines
-├── Train baselines, tree ensembles, and Regression Kriging
-├── Hyperparameter optimization via Optuna
-└── Compute QRF uncertainty intervals and AOA masks
-    Deliverable: Model Benchmark Tables + Spatial Error Maps
-
-WEEKS 14–16: XAI & ECOLOGICAL RISK INTEGRATION
-├── Run TreeSHAP and ALE interpretation
-├── Calculate reach-level Igeo, PLI, and RI
-└── Generate publication cartography in QGIS/Python
-    Deliverable: Final Publication Figures (300 DPI)
-
-WEEKS 17–18: MANUSCRIPT DRAFTING & SUBMISSION
-├── Draft Manuscript Sections (Paper 1)
-├── Package code & reproducible workflow on GitHub/Zenodo
-└── Complete journal formatting & peer review submission
-    Deliverable: Submitted Paper 1 Manuscript
-```
-
-### Team Responsibilities (3 Researchers)
-
-- **Researcher 1 (Data Lead & Geochemist):**
-  - Primary ownership: Weeks 1–4.
-  - Task: Literature extraction audit, analytical quality scoring, digestion method harmonization, LOD table, background value validation, geochemical interpretation.
-- **Researcher 2 (GIS & Spatial Analyst):**
-  - Primary ownership: Weeks 5–8.
-  - Task: HydroSHEDS topology, upstream catchment flow routing, land use/population extraction, coordinate snapping, QGIS cartography and vector reach preparation.
-- **Researcher 3 (ML Engineer & Statistician):**
-  - Primary ownership: Weeks 9–14.
-  - Task: Spatial Block CV pipeline, ML training/tuning, Regression Kriging, SHAP/ALE scripts, QRF prediction intervals, reproducible codebase.
-- **Joint Effort:**
-  - Manuscript writing, review response, and data curation.
+1. **Phase 1 (Harmonization & Audit):** 28 studies audited (P01–P28); units standardized; 149 missing river coordinates resolved; SQLite database `heavy_metal.db` engineered.
+2. **Phase 2 (HydroSHEDS Routing):** 55,668 reaches extracted; stations snapped (mean offset: 357 m); topological covariates accumulated.
+3. **Phase 3 (Spatial Benchmarking):** 7 ML architectures tested under 5-fold spatial block CV; CatBoost established as champion; Ordinary Kriging spatial failure confirmed.
+4. **Phase 4 (XAI & Risk Mapping):** TreeSHAP attribution and Hakanson $RI$ cartography executed across all 55,668 reaches (55.76% Very High Risk).
+5. **Phase 5 (Water Synthesis & Gap Optimization):** Potable benchmark screening, HKSJ seasonal meta-analysis, HPI algebraic decoupling, and top 15 monitoring gap coordinates prioritized.
+6. **Phase 6 (Manuscript Packages):** 4 complete, publication-ready packages compiled to clean PDFs with zero LaTeX errors.
 
