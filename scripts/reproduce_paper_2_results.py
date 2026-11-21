@@ -172,7 +172,7 @@ print("\n--- 3. Computing Benchmark Exceedance Rates & Sensitivity Analysis ---"
 peri_urban = ['Buriganga', 'Turag', 'Shitalakhya']
 df_non_urban = df_water[~df_water['River'].isin(peri_urban)]
 # Confirmed dissolved fraction: 10 studies explicitly reported filtration through 0.45 um membranes
-df_confirmed_dissolved = df_water[~df_water['Study_ID'].isin(['P02', 'P11'])]
+df_confirmed_dissolved = df_water[~df_water['Study_ID'].isin(['P06', 'P11'])]
 
 exceed_records = []
 sensitivity_master = []

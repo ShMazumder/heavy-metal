@@ -190,7 +190,7 @@ Metal & $N$ & Mean (mg/kg) & Median (mg/kg) & Moran's $I$ ($\log_{10}$) & $z$-sc
 \end{tabularx}
 \end{table}
 
-Arsenic exhibited the highest degree of spatial clustering ($I = +0.8171, z = +18.29$), reflecting regional geochemical sediment lithology in the delta. Nickel ($I = +0.6552$) and Lead ($I = +0.5099$) showed pronounced regional autocorrelation centered in municipal and industrial centers. All metals displayed $p$-values $< 10^{-7}$, formally justifying the development of spatially explicit machine learning models.
+Arsenic exhibited the highest degree of spatial clustering ($I = +0.8171, z = +18.29$), reflecting regional geochemical sediment lithology in the delta. Nickel ($I = +0.6552$) and Lead ($I = +0.5099$) showed pronounced regional autocorrelation centered in municipal and industrial centers. All metals displayed asymptotic analytical normal $p$-values $< 10^{-7}$ (derived from standardized $z$-scores under the randomization assumption; all empirical Monte Carlo permutation tests yielded $p \le 0.001$ with $B=999$), formally justifying the development of spatially explicit machine learning models.
 
 \subsection{Machine Learning and Geostatistical Benchmark}
 Cross-validation performance demonstrated pronounced differences between purely spatial geostatistical techniques and catchment-aware machine learning (Table~\ref{tab:benchmark}).
@@ -246,7 +246,7 @@ TreeSHAP feature importance rankings (Fig.~\ref{fig:shap}) revealed that sedimen
 \end{figure}
 
 \subsection{National River Reach Predictions and Ecological Risk Cartography}
-Applying the champion models across all 55,668 HydroRIVERS reach segments enabled the first contiguous, reach-level spatial assessment of sediment heavy metals across Bangladesh (Fig.~\ref{fig:risk_map}, Table~\ref{tab:risk}).
+Applying the champion models across all 55,668 HydroRIVERS reach segments enabled the first contiguous, reach-level spatial assessment of sediment heavy metals across Bangladesh (Fig.~\ref{fig:risk_map}, Table~\ref{tab:risk}). Crucially, to prevent predictor-availability bottlenecks across unmonitored reaches where localized sediment geochemical parameters (e.g., pH) are unavailable, nationwide reach extrapolation was parameterized strictly using topological stream network covariates ($\text{UPLAND\_SKM}$, $\text{DIS\_AV\_CMS}$, $\text{ORD\_STRA}$, $\text{LENGTH\_KM}$, $\text{DIST\_DN\_KM}$). Conversely, TreeSHAP feature attribution (Fig.~\ref{fig:shap}) was evaluated on localized models trained on monitoring stations with co-located sediment geochemical assays to diagnose underlying process physics.
 
 \begin{table}[htbp]
 \centering

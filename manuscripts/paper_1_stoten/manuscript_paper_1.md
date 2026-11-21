@@ -135,7 +135,7 @@ Global Moran's $I$ confirmed that sediment contamination across Bangladesh river
 | **Chromium (Cr)** | 131 | 55.83 | 42.07 | **+0.4282** | +9.840 | $7.56 \times 10^{-23}$ | Strongly Clustered |
 | **Cadmium (Cd)** | 132 | 1.12 | 0.86 | **+0.2438** | +5.702 | $1.18 \times 10^{-08}$ | Clustered ($p < 0.001$) |
 
-Arsenic exhibited the highest degree of spatial clustering ($I = +0.8171, z = +18.29$), reflecting regional geochemical sediment lithology in the delta. Nickel ($I = +0.6552$) and Lead ($I = +0.5099$) showed pronounced regional autocorrelation centered in municipal and industrial centers. All metals displayed $p$-values $< 10^{-7}$, formally justifying the development of spatially explicit machine learning models.
+Arsenic exhibited the highest degree of spatial clustering ($I = +0.8171, z = +18.29$), reflecting regional geochemical sediment lithology in the delta. Nickel ($I = +0.6552$) and Lead ($I = +0.5099$) showed pronounced regional autocorrelation centered in municipal and industrial centers. All metals displayed asymptotic analytical normal $p$-values $< 10^{-7}$ (derived from standardized $z$-scores under the randomization assumption; all empirical Monte Carlo permutation tests yielded $p \le 0.001$ with $B=999$), formally justifying the development of spatially explicit machine learning models.
 
 ### 3.2 Machine Learning and Geostatistical Benchmark
 Cross-validation performance demonstrated pronounced differences between purely spatial geostatistical techniques and catchment-aware machine learning (Table 2).

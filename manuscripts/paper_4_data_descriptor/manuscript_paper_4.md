@@ -126,7 +126,7 @@ data/
 ## Technical Validation
 
 ### Extraction Concordance Audit
-To ensure 100% extraction fidelity, a dual-evaluator audit was performed. An independent researcher re-extracted 20% of randomly selected records from primary PDFs and cross-verified numerical values against the database. Zero numerical discordances were detected across the audit sample (95% CI on discordance: 0.0–2.8%).
+To ensure 100% extraction fidelity, a dual-evaluator audit was performed. An independent researcher re-extracted 20% of randomly selected records from primary PDFs and cross-verified numerical values against the database. Zero numerical discordances were detected across the audit sample (95% CI on discordance: 0.0–3.3%).
 
 ### Instrumental Sensitivity Stratification
 Historical compilations often conflate detection limits of flame atomic absorption spectrometry (Flame-AAS, $\text{DL} = 0.005\text{--}0.050$ mg/L) with genuine trace concentrations. We validated instrumental reliability by segregating observations into high-sensitivity instrumentation (GF-AAS, HG-AAS, ICP-MS with sub-$\mu\text{g/L}$ detection limits, $N=77$) versus Flame-AAS ($N=69$). Across high-sensitivity records, Lead exhibited a median of **0.0171 mg/L**, with **79.2%** of samples exceeding the WHO 0.010 mg/L potable guideline. This confirms that elevated dissolved trace metal concentrations are an authentic geochemical property of monitored river corridors and cannot be attributed to flame-AAS detection limit artifacts.

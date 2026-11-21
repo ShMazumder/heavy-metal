@@ -1266,3 +1266,865 @@ The data descriptor would receive the most positive consideration, provided the 
 One important limitation of this review: I inspected the current repository overview, accessible LaTeX manuscripts, study metadata, and the visible Paper 2 analysis script. I could not clone and execute the complete repository or independently recalculate all results from its binary SQLite database and full CSV assets. Accordingly, this is a source-level scientific peer review, not a completed clean-room numerical reproduction. A connected GitHub account would enable a deeper examination of those underlying assets.
 
 My final advice: Do not spend the next development cycle writing more manuscripts or generating additional figures. Spend it making the existing evidence scientifically defensible. That is likely to produce fewer papers, but considerably stronger research.
+
+
+# **Updated brutal peer review: source-level and data-level audit**
+
+Repository: [github.com/ShMazumder/heavy-metal](https://github.com/ShMazumder/heavy-metal?utm_source=chatgpt.com) · Default branch: main · Audited repository tree SHA: `32cb9796a23e7f9794b5d9e25014e9c1628d7faa`
+
+Major scientific and reproducibility concerns confirmed
+
+The direct examination of the repository reveals a more serious issue than manuscript overlap: **the spatial sample-size hierarchy and geolocation quality are not adequately represented in the research claims.**
+
+This is particularly consequential for Paper 1, because its central contribution depends on spatially meaningful observations.
+
+## **1. A significant problem with the sediment dataset**
+
+I independently inspected `stations.csv`, `sediment_data.csv` and `sediment_features_hydro.csv`.
+
+The actual counts are:
+
+# **289**
+
+**Sediment observations**
+
+Compiled records
+
+# **132**
+
+**Geolocated observations**
+
+With coordinate values
+
+# **36**
+
+**Distinct coordinate pairs**
+
+Across the 132 geolocated records
+
+# **157**
+
+**Ungeolocated observations**
+
+54.3% of the sediment dataset
+
+The most alarming result is the concentration of records at three coordinates.
+
+| Study                        | Records | Coordinate pairs |
+| ---------------------------- | ------- | ---------------- |
+| P18                          | 30      | 1                |
+| P14                          | 24      | 1                |
+| P28                          | 20      | 1                |
+| All other geolocated records | 58      | 33               |
+| **Total**                    | **132** | **36**           |
+
+P18 has 30 records across ten station labels and multiple sampling years, but all 30 carry the same coordinates.
+
+P14 has 24 records across eight station labels, again with the same coordinates.
+
+P28 has 20 records, all assigned to one approximate district centroid.
+
+There is an important distinction here:
+
+- 132 geolocated observation records;
+- 133 HydroRIVERS-matched records;
+- 36 distinct coordinate pairs;
+- 289 total sediment observations.
+
+These are not interchangeable quantities.
+
+The repository describes 133 unique spatial station centroids. However, its actual coordinate data contain only 36 distinct coordinate pairs among the 132 geolocated sediment observations.
+
+This raises a major question: were study-level or river-level coordinates copied across multiple sampling stations when the original papers did not supply individual station coordinates?
+
+P28 is explicitly classified as an approximate district centroid. P14 and P18, despite their repeated coordinates, are classified as exact points.
+
+That classification needs source-level verification.
+
+**Why this matters:** A spatial machine-learning model cannot treat repeated observations at the same geographic coordinate as independent spatial locations. Spatial cross-validation must group observations by their true physical location, not merely by their Station_ID.
+
+Until this is resolved, the reported spatial validation results are not sufficiently trustworthy.
+
+## **2. The ML reproducibility problem is confirmed**
+
+The repository contains:
+
+- Model benchmark CSVs.
+- Moran's I results.
+- SHAP outputs.
+- National prediction maps.
+- Reach-level prediction files.
+- Prediction uncertainty summaries.
+
+However, the current Git tree does not contain the `scripts/paper_1/` implementation described in the README.
+
+I found the Paper 2 and Paper 3 analysis scripts, but not the corresponding Paper 1 training, spatial-fold generation, model tuning and national inference pipeline.
+
+This means that the most ambitious research output cannot currently be independently reproduced from the published repository's documented code.
+
+The benchmark results are also aggregated into a single CSV without fold-level predictions or uncertainty estimates.
+
+Furthermore, the model comparison does not establish that CatBoost is universally superior: Ordinary Kriging actually achieves higher reported \\(R^2\\) for Cu and Ni, while LightGBM and Regression Kriging have advantages for As under particular metrics.
+
+The manuscript acknowledges some of this, but its broader description of geostatistical failure needs qualification.
+
+## **3. Paper 1 — Additional scientific problems**
+
+**My assessment: Reject current version; substantial redesign.**
+
+[Read Paper 1 manuscript](https://github.com/ShMazumder/heavy-metal/blob/main/manuscripts/paper_1_stoten/main.tex?utm_source=chatgpt.com)
+
+### **3.1 Spatial autocorrelation statistics are internally inconsistent**
+
+The manuscript reports Moran's I results using 999 Monte Carlo permutations, with p-values such as:
+
+\\[ p\_{\mathrm{As}}=9.97\times10^{-75} \\]
+
+This is not an attainable empirical permutation p-value with only 999 permutations.
+
+The minimum conventional plus-one Monte Carlo p-value would be:
+
+\\[ p\_{\min}=\frac{1}{999+1}=0.001 \\]
+
+Extremely small values could be obtained from a normal approximation to the permutation z-score. However, that is a different p-value and must be labelled accordingly.
+
+This needs correction in the manuscript and statistical output.
+
+There is also the more fundamental coordinate problem identified above: calculating Moran's I using 132 station records at only 36 distinct coordinates risks artificially inflating spatial autocorrelation through co-located observations.
+
+**Required:** Recalculate Moran's I after consolidating physically identical coordinates and accounting for study-level dependence. Report the actual permutation p-values separately from asymptotic normal p-values.
+
+### **3.2 Your national prediction model has a predictor-availability problem**
+
+This is a particularly important issue.
+
+The manuscript identifies sediment pH as a significant predictor:
+
+- Pb: mean absolute SHAP 2.35.
+- Cu: 4.51.
+- Ni: 5.91.
+- As: 1.76.
+
+It then applies the champion models to 55,668 river reaches.
+
+But pH measured at published sediment sampling locations is not a standard attribute of HydroRIVERS.
+
+I could find the following nationwide reach-level attributes described in the manuscript:
+
+- Upstream catchment area.
+- Average discharge.
+- Strahler order.
+- Distance to marine outlet.
+- Local sub-basin area.
+
+I could not identify a corresponding nationwide sediment-pH dataset or an explicit method for generating pH values at unsampled reaches.
+
+This creates a prediction-time feature problem.
+
+The authors must explain whether pH was:
+
+1. Interpolated spatially.
+2. Assigned using river-level averages.
+3. Imputed using another environmental dataset.
+4. Excluded from the national prediction model.
+
+Each produces different scientific implications.
+
+There must be a reproducible, independent source for every predictor supplied to a nationwide inference model.
+
+The same scrutiny should be applied to sediment grain size, organic matter and other sample-specific properties.
+
+### **3.3 Six-metal ecological risk requires uncertainty propagation**
+
+The manuscript calculates RI using six elements:
+
+\\[ RI=\sum\_{i=1}^{6}T_r^i\frac{C_i}{B_i} \\]
+
+However, the repository's `reach_prediction_uncertainty_summary.csv` reports uncertainty summaries for only three:
+
+- Pb.
+- Cr.
+- Cd.
+
+There are no corresponding summaries for As, Cu and Ni, and no uncertainty summary for aggregate RI.
+
+This is an important gap because a reach can cross the RI = 600 boundary due to relatively uncertain predictions.
+
+I would require an uncertainty-aware RI classification.
+
+For example:
+
+| Reach classification       | Interpretation                                                            |
+| -------------------------- | ------------------------------------------------------------------------- |
+| High-confidence high risk  | Probability of RI ≥ 600 is high                                           |
+| Uncertain high risk        | Point estimate exceeds 600, but classification uncertainty is substantial |
+| High-confidence lower risk | Probability of RI below 600 is high                                       |
+
+Also, clearly identify the index as a six-element adaptation of Hakanson's RI. The original framework's full element composition and reference thresholds should not be assumed automatically interchangeable with a reduced-panel implementation.
+
+### **3.4 The geographical denominator needs clarification**
+
+Paper 1 describes its network extraction using the rectangle:
+
+\\[ 87.5^\circ E-93.0^\circ E \\]
+
+\\[ 20.0^\circ N-27.0^\circ N \\]
+
+This is a bounding extent, not Bangladesh's sovereign polygon.
+
+The manuscript must distinguish between the transboundary analysis domain and the reaches strictly inside Bangladesh.
+
+Otherwise, the term *national distribution* and the 55,668-reach denominator could be misunderstood.
+
+Paper 2 already has a separate country-polygon analysis. Both papers should use consistent geographic definitions.
+
+### **3.5 Novelty: Hydrographic-feature ML versus river-network ML**
+
+I would also challenge the central methodological novelty claim.
+
+Using HydroRIVERS-derived attributes in CatBoost does not automatically establish river-network-aware machine learning.
+
+The described methodology primarily demonstrates feature-engineered ML with:
+
+- Hydrological covariates.
+- Geographic coordinates.
+- Catchment characteristics.
+- Conventional Euclidean geostatistics.
+
+That is valuable, but different from modelling network connectivity directly.
+
+I would either implement a true network-constrained approach or rename the contribution:
+
+*Hydrographic-feature-enhanced spatial machine learning for river sediment contamination.*
+
+That is a scientifically more defensible description.
+
+**Paper 1's essential problem:** The study has more prediction ambition than independent geographical evidence.
+
+## **4. Paper 2 — A confirmed error that changes the main results**
+
+Critical quantitative correction required
+
+**My assessment: Major revision, including recalculation of the dissolved-phase results.**
+
+[Read Paper 2 manuscript](https://github.com/ShMazumder/heavy-metal/blob/main/manuscripts/paper_2_environmental_pollution/main.tex?utm_source=chatgpt.com)
+
+This is the most important new finding from the detailed code audit.
+
+### **4.1 The confirmed dissolved dataset is incorrectly constructed**
+
+The current script contains:
+
+```
+df_confirmed_dissolved = df_water[    ~df_water['Study_ID'].isin(['P02', 'P11'])]
+```
+
+But the repository's own supplementary study table says:
+
+| Study | Fraction in Supplementary S1 | Correct treatment |
+| ----- | ---------------------------- | ----------------- |
+| P02   | Filtered (0.45 μm)           | Include           |
+| P04   | Filtered (acid digested)     | Include           |
+| P06   | Unspecified                  | Exclude           |
+| P08   | Filtered (dissolved)         | Include           |
+| P09   | Filtered (0.45 μm)           | Include           |
+| P11   | Unspecified                  | Exclude           |
+| P18   | Filtered (0.45 μm)           | Include           |
+| P20   | Filtered (0.45 μm)           | Include           |
+| P21   | Filtered (0.45 μm)           | Include           |
+| P22   | Filtered (acid digested)     | Include           |
+| P27   | Filtered (0.45 μm)           | Include           |
+| P28   | Filtered (0.45 μm)           | Include           |
+
+The current script excludes P02, which is explicitly documented as filtered, and retains P06, whose fraction is unspecified.
+
+The correct set, according to the repository's own metadata, should include P02 and exclude P06 and P11.
+
+This is not an interpretation difference. It is a code-to-metadata contradiction.
+
+### **4.2 I recalculated the affected results**
+
+I parsed the actual `water_data.csv` and applied the fraction classifications in `supplement_s1_studies.csv`.
+
+The following comparison uses WHO guideline thresholds.
+
+Current script versus corrected filtered-study membership. Values are recalculations from the repository's CSV files, not independently collected environmental measurements.
+
+| Metal | Current N | Current median | Current exceedance | Correct N | Correct median | Correct exceedance |
+| ----- | --------- | -------------- | ------------------ | --------- | -------------- | ------------------ |
+| Pb    | 131       | 0.0250         | 84.0%              | 146       | 0.02856        | 85.6%              |
+| Cr    | 139       | 0.0630         | 55.4%              | 150       | 0.0705         | 60.7%              |
+| Cd    | 117       | 0.00158        | 37.6%              | 126       | 0.001935       | 46.8%              |
+| As    | 103       | 0.0133         | 52.4%              | 112       | 0.017495       | 59.8%              |
+| Ni    | 89        | 0.0560         | 47.2%              | 98        | 0.1000         | 58.2%              |
+
+Concentrations and medians are in mg/L.
+
+This has important implications.
+
+The paper currently reports Pb dissolved median around 0.025 mg/L and 84.0% exceedance.
+
+Under the supplementary table's stated classification, the corrected subset produces approximately 0.02856 mg/L and 85.6%.
+
+The changes are particularly substantial for Cd, As and Ni.
+
+The paper's overall conclusion that dissolved-phase contamination exists is not necessarily invalidated. But the numerical results supporting that conclusion are not reliable in the current version.
+
+**This entire sensitivity analysis must be regenerated, including the abstract, graphical abstract, tables, figures and manuscript result macros.**
+
+Source files:
+
+- [P2 reproducibility script](https://github.com/ShMazumder/heavy-metal/blob/main/scripts/paper_2/reproduce_paper_2_results.py?utm_source=chatgpt.com)
+- [Supplementary S1 study metadata](https://github.com/ShMazumder/heavy-metal/blob/main/data/derived/paper_2/supplement_s1_studies.csv?utm_source=chatgpt.com)
+- [Water dataset](https://github.com/ShMazumder/heavy-metal/blob/main/data/processed/water_data.csv?utm_source=chatgpt.com)
+
+### **4.3 The non-detect classification is also wrong**
+
+The manuscript claims that the three non-detect observations (two As and one Cd) all come from ICP-MS investigations with sub-μg/L detection limits.
+
+I checked the actual zero-valued records.
+
+| Observation | Study | Metal | Instrument in S1 |
+| ----------- | ----- | ----- | ---------------- |
+| OBS_0210    | P11   | As    | AAS              |
+| OBS_0213    | P11   | As    | AAS              |
+| OBS_0142    | P08   | Cd    | Flame-AAS        |
+
+None of these three entries belongs to the claimed ICP-MS group.
+
+P11 also has an unspecified water fraction, while P08 is marked as filtered dissolved water.
+
+This invalidates the present description of the non-detects as uniformly high-sensitivity ICP-MS measurements.
+
+There is a related dataset problem: the delivered water CSV stores these values as zero but does not provide an observation-level censored flag or numerical LOD.
+
+The supplementary file contains categorical LOD information (`Yes`, `No`, `Yes (BDL defined)`), but not the actual per-element detection-limit values required to reproduce the claimed censoring treatment.
+
+The paper needs an observation-level metadata structure containing:
+
+- Original reported value.
+- Original unit.
+- Harmonized concentration.
+- Analytical fraction.
+- Detection limit.
+- Quantification limit.
+- Censored/non-detect flag.
+- Source table and page.
+
+Without that, the treatment of non-detects cannot be independently audited.
+
+### **4.4 High-sensitivity instrumentation does not establish measurement independence**
+
+The paper compares GF-AAS/HG-AAS/ICP-MS results against Flame-AAS results using Mann-Whitney tests.
+
+This is not a clean validation of analytical accuracy.
+
+Different instrument groups correspond to different investigations, potentially with different:
+
+- Rivers.
+- Sampling years.
+- Sampling seasons.
+- Water fractions.
+- Industrial exposure conditions.
+
+Consequently, a lower median in one instrument group cannot automatically be attributed to its measurement sensitivity.
+
+There is also a discrepancy between the claim that high-sensitivity instruments achieved detection limits below 0.001 mg/L and Supplementary S1, where several GF-AAS, HG-AAS and ICP-MS studies have `DL_Reported = No`.
+
+The authors need actual study- and element-specific detection limits, or must soften the claim.
+
+### **4.5 Hazard Quotient terminology needs correction**
+
+The manuscript defines:
+
+\\[ HEI=\sum_i\frac{C_i}{S_i} \\]
+
+and then:
+
+\\[ HQ\_{\mathrm{mean}}=\frac{HEI}{4} \\]
+
+The script implements exactly this relationship.
+
+This is a mean normalized concentration-to-guideline ratio, not a conventional human-health hazard quotient based on exposure dose relative to a toxicological reference dose.
+
+A standard exposure-based hazard quotient requires exposure estimation, such as average daily dose, and an appropriate reference dose.
+
+I recommend renaming this quantity to something like:
+
+**Mean Core-4 benchmark-normalized concentration ratio.**
+
+Do not present it as an independent toxicological risk assessment without the required exposure calculations.
+
+### **4.6 The HPI derivation is a useful contribution, with limitations**
+
+I find the mathematical analysis more defensible than the paper's broader novelty claims.
+
+The derivation:
+
+\\[ W_iQ_i=100\frac{C_i}{S_i^2} \\]
+
+is correct for the selected Prasad–Bose formulation.
+
+It explains why low-guideline metals such as Cd and Pb dominate the index.
+
+The manuscript also correctly acknowledges that HEI and MI are algebraically equivalent under the identical standard values used in its implementation.
+
+However, this remains a methodological critique and sensitivity analysis, not a new pollution index.
+
+It should be presented as a critical assessment of index behaviour rather than an entirely new mathematical framework.
+
+### **4.7 Monitoring gap: the geometric calculation needs redesign**
+
+The Paper 2 script has several limitations:
+
+1. It uses a reach's arithmetic midpoint to represent the entire reach.
+2. It counts the entire reach length as covered or uncovered based on midpoint distance.
+3. Its country-boundary selection uses midpoint-in-polygon rather than exact line-geometry clipping.
+4. It selects random river reaches uniformly by reach count, not proportional to river length.
+5. It treats the 23 unique monitoring coordinates as independent random locations, without preserving study-level spatial clustering.
+
+The algorithm therefore estimates a particular centroid-based coverage statistic, not an exact percentage of network length within a monitoring buffer.
+
+The manuscript needs to describe it as an approximation or rebuild it using geometric buffer intersections and a justified spatial null model.
+
+There is also a minor but revealing reproducibility error:
+
+- The script's comments and output label refer to 24 random sites.
+- The actual coordinate table contains 23 unique monitoring coordinates.
+- The code takes the number from the computed coordinate list, so the label is stale.
+
+For the empirical p-value, 1,000 simulations cannot justify a reported p-value below 0.0001 using the standard Monte Carlo estimator. If zero simulated values are as low as the observation, use the appropriate plus-one correction, approximately \\(p=0.001\\).
+
+### **4.8 A more positive point: seasonal HKSJ implementation**
+
+I checked the actual seasonal-analysis code against the previous review concerns.
+
+The implementation does include:
+
+\\[ Q\_{\mathrm{HK}}/(k-1) \\]
+
+with a lower bound of 1, followed by a Student-t critical value.
+
+That is a modified Hartung-Knapp approach. I would not classify it as merely replacing a normal critical value with a t critical value without variance adjustment.
+
+However, the paired evidence remains weak: only 3–5 investigations contribute to individual metal contrasts, and the confidence intervals span unity.
+
+The current paper is right to avoid claiming statistically established seasonal differences. The descriptive pre-monsoon arsenic pattern should also remain exploratory; the groundwater irrigation mechanism has not been causally demonstrated.
+
+## **5. Paper 3 — The meta-analysis is not sufficiently defensible**
+
+Do not submit
+
+[Read Paper 3 manuscript](https://github.com/ShMazumder/heavy-metal/blob/main/manuscripts/paper_3_systematic_review/main.tex?utm_source=chatgpt.com)
+
+### **5.1 The publication window is demonstrably violated**
+
+Paper 3 states that the literature search ended on 31 March 2024.
+
+However, the 28-study catalog contains P12:
+
+*Ahmed et al. (2025), Journal of Trace Elements and Minerals*, DOI:
+
+`10.1016/j.jtemin.2025.100220`
+
+This study was published in 2025, with the article available online on 25 February 2025 and appearing in the June 2025 volume. Its underlying samples were collected in 2021.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://www.sciencedirect.com\&sz=32)
+
+sciencedirect.com+1
+
+
+
+P12 contributes six sediment records to the repository.
+
+Therefore, the sampling period and publication period have been conflated.
+
+This study could legitimately be included in a 2025 dataset, but it cannot have been identified through a search that ended in March 2024.
+
+**Either update the systematic-review search and PRISMA flow or exclude the study from the review's eligible corpus.**
+
+### **5.2 PRISMA screening is not reproducible**
+
+The Paper 3 script hardcodes:
+
+```
+prisma_counts = {    'Identified_Records_Databases': 1420,    'Duplicates_Removed': 582,    'Screened_Titles_Abstracts': 838,    'Excluded_NonFlvial_OffTopic': 764,    'FullText_Articles_Retrieved': 74,    'Excluded_Methodological_Deficits': 46,    'Included_Studies_Total': 28}
+```
+
+The arithmetic is internally consistent.
+
+But I cannot find the actual 1,420-record search export, complete duplicate-removal log, screening decisions or the 46 individually documented full-text exclusions.
+
+A PRISMA diagram generated from fixed constants is not a reproducible PRISMA screening workflow.
+
+The eligibility definitions also conflict with the study allocation:
+
+- The manuscript requires quantitative heavy-metal measurements.
+- Its included corpus contains five physicochemical-only studies.
+- It also counts sediment-only investigations in the same overall inclusion total.
+
+A multi-matrix review can legitimately have separate sediment, water-metal and ancillary physicochemical branches. But the PRISMA flow must explicitly show those branches and their distinct eligibility rules.
+
+### **5.3 The meta-regression is a record-level logistic regression**
+
+The manuscript labels the method a multivariable meta-regression.
+
+The implementation actually uses:
+
+```
+LogisticRegression(penalty='l2', C=10.0)
+```
+
+on individual sample records, followed by study-level cluster bootstrap resampling.
+
+That can be a useful exploratory model, but it is not equivalent to a conventional random-effects meta-regression of study-level effect estimates.
+
+It does not adequately model the hierarchical study structure through random effects.
+
+The independent study counts are only 9–12 for the different metals.
+
+The model includes four predictors:
+
+- Instrument sensitivity.
+- Urban industrial corridor.
+- Dry season.
+- Pre-monsoon season.
+
+This is too ambitious for the available independent study clusters.
+
+### **5.4 The only nominally significant result disappears after multiple-testing correction**
+
+Paper 3 reports:
+
+| Parameter        | Result     |
+| ---------------- | ---------- |
+| Metal            | Cr         |
+| Predictor        | Dry season |
+| OR               | 2.77       |
+| 95% CI           | 1.15–28.54 |
+| Reported p-value | 0.026      |
+
+However, the analysis generates 20 coefficients/tests across five metals and four covariates.
+
+Applying a Holm correction to the reported p-values gives:
+
+\\[ p\_{\mathrm{adjusted}}=0.52 \\]
+
+for the smallest observed p-value.
+
+Thus, none of the 20 associations remains significant under this correction.
+
+The manuscript's designation of dry-season chromium as an independently significant driver is not robust.
+
+### **5.5 The regression reference category is incorrectly described**
+
+The code maps:
+
+- Winter → dry.
+- Rainy → wet.
+- Summer/Spring → pre-monsoon.
+- Late Autumn → post-monsoon.
+- Missing or other values → unclassified.
+
+But it then creates:
+
+```
+Season_Dry = 1 if dry else 0Season_Premonsoon = 1 if pre_monsoon else 0
+```
+
+Consequently, the reference category includes wet, post-monsoon and unclassified observations.
+
+The manuscript describes it as monsoon wet season only.
+
+That is a model specification and reporting mismatch.
+
+The unclassified observations should be excluded or handled as an explicit category.
+
+### **5.6 Independent literature review has moved ahead of this paper**
+
+There is already a substantial 2025 review by Proshad et al. examining Bangladeshi surface-river water metals from 2012–2022.
+
+It aggregates 648 samples across 24 rivers and examines multiple pollution indices, source patterns and health risks.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://doi.org\&sz=32)
+
+doi.org
+
+
+
+Paper 2 acknowledges this study, which is good.
+
+But Paper 3 needs to position its independent contribution much more carefully. A second multi-matrix review cannot claim novelty merely by expanding the number of tables and applying another regression.
+
+I would reposition Paper 3 around:
+
+**Analytical heterogeneity, evidence quality and uncertainty in cross-study heavy-metal contamination estimates across water and sediment systems.**
+
+That is a more distinctive scientific question.
+
+## **6. Paper 4 — The dataset is valuable, but the descriptor is not ready**
+
+Major data-quality revision
+
+[Read Paper 4 manuscript](https://github.com/ShMazumder/heavy-metal/blob/main/manuscripts/paper_4_data_descriptor/main.tex?utm_source=chatgpt.com)
+
+This remains one of the most strategically worthwhile outputs, but it needs a much stronger technical description.
+
+### **6.1 The summary statistics are correct**
+
+I independently recalculated the water and sediment descriptive statistics from the processed CSV files.
+
+The table's sample counts, medians, means, IQRs, minima and maxima match the underlying data to the reported precision.
+
+This is a positive finding.
+
+### **6.2 The geospatial manifest overstates completeness**
+
+The data descriptor says that all stations were snapped to HydroRIVERS reaches.
+
+However, `stations.csv` contains:
+
+- 426 station records.
+- 220 resolved coordinates.
+- 206 unresolved coordinates.
+
+The descriptor should explicitly distinguish:
+
+- Station records.
+- Unique physical locations.
+- Unique coordinate pairs.
+- Successfully georeferenced stations.
+- Successfully matched HydroRIVERS reaches.
+
+The present wording makes the spatial completeness appear stronger than it is.
+
+### **6.3 Important machine-readable measurement metadata is missing**
+
+The descriptor refers to detailed measurement provenance and censoring information.
+
+Yet the processed CSV structure does not expose the required observation-level fields:
+
+- Raw analytical value.
+- Original raw measurement unit.
+- Numerical LOD.
+- Numerical LOQ.
+- Censored flag.
+- Per-observation water fraction.
+- Source table/page reference.
+
+Some methodological information exists in separate supplementary tables, but those do not replace observation-level metadata.
+
+This is particularly problematic for studies combining filtered/unfiltered samples or reporting non-detects.
+
+A researcher should be able to query a sample and identify the original analytical result and its operational definition without manually reopening the PDF.
+
+### **6.4 The extraction-validation confidence interval is incorrect**
+
+Paper 4 reports zero discrepancies across 112 assays and a 95% Wilson interval of 0.0–2.8%.
+
+For 0 discrepancies among 112 independent observations, the conventional two-sided 95% Wilson upper limit is approximately 3.3%, not 2.8%.
+
+There is a further issue: those 112 records are drawn from only six articles.
+
+The independence assumption underlying an ordinary 112-observation Wilson interval is questionable.
+
+Report the number of sampled source articles, the sampling procedure, and the article-level clustering. Do not present an artificially narrow uncertainty interval as proof of perfect extraction quality.
+
+### **6.5 The format manifest is not consistent with the repository**
+
+The manuscript and Zenodo metadata refer to Parquet distribution.
+
+There are no `.parquet` files in the current Git tree, and the Zenodo packaging script does not generate or package Parquet files.
+
+Either supply the advertised files or remove the claim.
+
+### **6.6 Zenodo availability is not yet established**
+
+The launch checklist describes DOI `10.5281/zenodo.24414976` as reserved and explicitly instructs the authors to keep the deposit in Draft.
+
+Yet Paper 4's Data Availability section describes the dataset as publicly accessible without restriction.
+
+A reserved DOI and a publicly released data record are not the same thing.
+
+Publish the deposit or provide an appropriate reviewer-access mechanism before claiming unrestricted public availability.
+
+### **6.7 Licensing and provenance**
+
+The repository claims MIT licensing for code, but the current root tree has no `LICENSE` file.
+
+It also assigns CC-BY 4.0 to the dataset package. This needs to be carefully separated from the rights associated with third-party source PDFs and geospatial materials.
+
+HydroSHEDS explicitly specifies product-specific licence and attribution conditions for HydroRIVERS. Its current product documentation permits scientific, educational and commercial use, subject to those terms.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://www.hydrosheds.org\&sz=32)
+
+hydrosheds.org+1
+
+
+
+The 28 primary research PDFs in `data/raw/source_pdfs/` also need individual redistribution-rights verification.
+
+This is a repository-distribution issue, not necessarily a problem with using those articles as research sources.
+
+## **7. Conference papers and publication integrity**
+
+The conference papers currently look too close to journal-manuscript derivatives.
+
+I compared the actual Git blob hashes of the figures.
+
+**Verified figure duplication**
+
+Paper 1 vs Conference 1
+
+Identical
+
+SHAP figure and ecological-risk map have identical Git blob hashes.
+
+Paper 2 vs Conference 2
+
+Identical
+
+Exceedance, seasonal dilution and spatial coverage figures have identical Git blob hashes.
+
+This does not automatically constitute duplicate publication. A conference paper can be an earlier, shorter publication of work that is subsequently extended into a journal paper, provided the applicable policies are followed.
+
+However, the conference contributions should contain a clear, differentiated contribution and the authors must disclose the relationship.
+
+### **Conference 1 — IGARSS**
+
+The existing paper mostly restates the sediment ML work.
+
+I do not find a sufficiently developed satellite Earth-observation contribution to justify its current positioning as a distinctive IGARSS study.
+
+Adding satellite-derived land use, industrial growth, upstream land-cover metrics or remote-sensing-assisted monitoring would help.
+
+### **Conference 2 — IWA World Water Congress**
+
+There is a venue-format mismatch.
+
+The README and launch checklist identify IWA World Water Congress, but the manuscript uses:
+
+```
+\documentclass[conference]{IEEEtran}
+```
+
+and IEEE author blocks.
+
+The conference package must be matched to the actual target.
+
+A stronger IWA contribution would be an operational monitoring-network design, not another compressed version of the journal's benchmark-exceedance figures.
+
+### **Six deliverables versus two-paper architecture**
+
+There is also an unresolved strategy conflict:
+
+- README: four journal articles and two conference papers.
+- `docs/publication_plan.md`: a two-paper publication architecture.
+- `docs/publication_launch_checklist.md`: plans to submit four journal papers.
+
+The research programme needs one authoritative publication strategy.
+
+Finally, the launch checklist explicitly states that the six manuscript review packages are internal LLM reviews (Claude, ChatGPT and Gemini), not actual journal peer-review reports.
+
+That is a useful transparency statement, but these reviews should not be treated as independent external peer review.
+
+# **8. Final revised scorecard**
+
+The ratings below reflect the direct data and code checks, including the new Paper 2 subset error.
+
+| Research output             | Score / 10 | Editorial recommendation                           |
+| --------------------------- | ---------- | -------------------------------------------------- |
+| Paper 1 — Sediment ML       | 3.0        | Reject current version; rebuild spatial validation |
+| Paper 2 — Water synthesis   | 4.5        | Major revision; recalculate key results            |
+| Paper 3 — Systematic review | 2.0        | Reject/reframe; redesign review and regression     |
+| Paper 4 — Data descriptor   | 4.0        | Major technical and data-quality revision          |
+| Conference 1 — IGARSS       | 2.0        | Develop genuinely new EO contribution              |
+| Conference 2 — IWA          | 2.0        | Reposition and correct venue formatting            |
+
+# **3.0 / 10**
+
+**Overall current publication readiness**
+
+Reviewer judgment, not a statistical measure.
+
+**The research programme is worth continuing. The current manuscripts are not ready for the proposed journal submissions.**
+
+# **9. My recommended order of work**
+
+I would stop manuscript polishing temporarily and execute these corrections in this order.
+
+P0 — Immediate
+
+**Correct Paper 2's dissolved-phase dataset.**
+
+Fix the P02/P06 membership, recalculate all metal statistics and identify the actual non-detects. Correct all corresponding manuscript and presentation values.
+
+P0 — Immediate
+
+**Reconstruct the sediment spatial sampling database.**
+
+Verify P14 and P18 coordinates against the original papers, distinguish study-level coordinates from station GPS coordinates, and group true co-located observations.
+
+P0 — Immediate
+
+**Publish the complete Paper 1 analysis pipeline.**
+
+Supply the actual training, spatial-fold construction, hyperparameter selection, feature processing and prediction scripts. Include the pH input source and uncertainty-propagation procedure.
+
+P1 — High
+
+**Rebuild the systematic-review evidence pipeline.**
+
+Update the PRISMA window, resolve the 2025 P12 inclusion, publish the 46 full-text exclusions, and introduce proper multi-matrix selection branches.
+
+P1 — High
+
+**Rebuild the monitoring-gap calculation.**
+
+Use exact river geometry, a length-aware null model and corrected Monte Carlo inference. Reconcile candidate primary studies against broader published reviews.
+
+P1 — High
+
+**Reframe Paper 3's regression.**
+
+Remove unsupported contamination-driver conclusions. Apply multiplicity adjustment and use a defensible hierarchical or study-level meta-analytic design.
+
+P2 — Before submission
+
+**Complete Paper 4's metadata, validation and licensing.**
+
+Publish actual LOD/censoring fields, accurate coordinate-quality statistics, the missing distribution formats, valid Zenodo access and author metadata.
+
+P2 — Before submission
+
+**Consolidate the publication portfolio.**
+
+Decide which papers are genuinely independent and remove conference/journal overlap that does not meet the respective venue policies.
+
+## **10. My final judgment**
+
+There is one thing I would preserve at almost any cost: the underlying national literature-derived research database.
+
+That is the strongest foundation for this entire programme.
+
+However, the current repository has a recurring scientific problem:
+
+**The number of observations, the number of spatial locations, the number of independent studies and the number of validated prediction locations are repeatedly treated as though they represent equivalent evidence.**
+
+They do not.
+
+This affects the spatial ML, Moran's I, risk mapping, regulatory exceedance calculations and national surveillance estimates.
+
+The current manuscripts also need to distinguish three different things:
+
+1. What the original published studies actually measured.
+2. What the repository successfully extracted and harmonized.
+3. What the models infer beyond the measured locations.
+
+That distinction should become the organizing principle of the research programme.
+
+I would not submit all four journal papers in their present forms. I would concentrate on correcting the database, rebuilding Paper 1's spatial evidence, and recalculating Paper 2. Those corrections will determine whether the other manuscripts have independent publication value.
+
+**Review scope:** I inspected the current `main` commit dated 21 November 2026, the processed CSV datasets, manuscript sources, visible analysis scripts, derived results and publication documentation. I independently recalculated the descriptive statistics, coordinate counts, and corrected dissolved-subset comparisons. I did not execute the complete SQLite/GeoPackage and ML inference pipelines. In particular, the absence of the Paper 1 implementation prevents me from independently validating its national predictions.
+
+The most useful next deliverable would be a **forensic correction ledger**, mapping every confirmed problem to the exact source row, script, manuscript section and recalculation required before submission.
