@@ -9,9 +9,9 @@ A multi-publication research repository consolidating, modeling, and synthesizin
 | Package | Venue / Target | Description | Status | Build |
 |---|---|---|:---:|:---:|
 | **Paper 1** | *Science of The Total Environment* (STOTEN) | Spatial modeling & ecological risk assessment of river sediments using CatBoost & HydroSHEDS reach topology ($N=289$) | **Ready** (17 pp) | `cd manuscripts/paper_1_stoten && ./build.sh` |
-| **Paper 2** | *Chemosphere* | Surface water synthesis, ECR 2023 statutory screening, HPI mathematical critique, and hydrographic surveillance gaps ($N=162$) | **Post-R6 Audit** (26 pp) | `cd manuscripts/paper_2_chemosphere && ./build.sh` |
-| **Paper 3** | *Environment International* | PRISMA 2020 systematic review, multivariable meta-regression & multi-matrix risk synthesis ($N=557$) | **Drafted** (Full Review) | `manuscripts/paper_3_systematic_review/` |
-| **Paper 4** | Nature *Scientific Data* | A curated and snapped geospatial database of heavy metal concentrations in Bangladesh rivers | **Drafted** (Data Descriptor) | `manuscripts/paper_4_data_descriptor/` |
+| **Paper 2** | *Chemosphere* | Surface water synthesis, ECR 2023 statutory screening, HPI mathematical critique, and hydrographic surveillance gaps ($N=162$) | **Post-R6 Ready** (26 pp) | `cd manuscripts/paper_2_chemosphere && ./build.sh` |
+| **Paper 3** | *Environment International* | PRISMA 2020 systematic review, multivariable meta-regression & multi-matrix risk synthesis ($N=557$) | **Ready** (16 pp) | `cd manuscripts/paper_3_systematic_review && ./build.sh` |
+| **Paper 4** | Nature *Scientific Data* | A curated and snapped geospatial database of heavy metal concentrations in Bangladesh rivers | **Ready** (8 pp) | `cd manuscripts/paper_4_data_descriptor && ./build.sh` |
 | **Conference 1** | IEEE IGARSS | River-network ML vs. geostatistical collapse across disconnected basins | **Ready** (3 pp) | `cd manuscripts/conference_1_igarss && ./build.sh` |
 | **Conference 2** | IWA World Water Congress | Potable benchmark discordance and surveillance coverage deficits | **Ready** (3 pp) | `cd manuscripts/conference_2_water && ./build.sh` |
 
@@ -39,23 +39,33 @@ heavy-metal/
 │   │   └── studies.csv                # Study metadata and analytical instrumentation
 │   └── derived/                       # Generated analysis outputs
 │       ├── paper_1/                   # Spatial CV benchmarks, SHAP values, risk maps
-│       └── paper_2/                   # Exceedance tables, HPI panels, figures, macros
+│       ├── paper_2/                   # Exceedance tables, HPI panels, figures, macros
+│       └── paper_3/                   # PRISMA flow chart, meta-regression forest plots, tables
 │
 ├── scripts/
 │   ├── common/
 │   │   └── benchmarks.py              # Single source of truth (WHO / ECR / FAO / UCC)
 │   ├── paper_1/                       # Sediment geospatial & ML modeling pipelines
-│   └── paper_2/
-│       └── reproduce_paper_2_results.py # Master reproducibility pipeline for Paper 2
+│   ├── paper_2/
+│   │   └── reproduce_paper_2_results.py # Master reproducibility pipeline for Paper 2
+│   └── paper_3/
+│       └── run_systematic_review_meta_regression.py # 2,000-bootstrap meta-regression
 │
 ├── manuscripts/
 │   ├── shared/
 │   │   ├── supplementary_table_s1_audited_studies.md  # Master 28-study catalog
 │   │   └── submission_and_venue_guide.md              # Editorial & portal roadmap
-│   ├── paper_1_stoten/                # STOTEN LaTeX package (main.tex, bib, build.sh)
-│   ├── paper_2_chemosphere/           # Chemosphere package (main.tex, bib, build.sh)
-│   ├── conference_1_igarss/           # IEEE IGARSS package
-│   └── conference_2_water/            # IEEE Water Conference package
+│   ├── submissions/                   # Self-contained submission ZIP archives
+│   │   ├── stoten_paper_1_submission.zip
+│   │   ├── chemosphere_paper_2_revision_r6.zip
+│   │   ├── env_intl_paper_3_submission.zip
+│   │   └── scientific_data_paper_4_submission.zip
+│   ├── paper_1_stoten/                # STOTEN LaTeX package (17 pp PDF, build.sh)
+│   ├── paper_2_chemosphere/           # Chemosphere package (26 pp PDF, build.sh)
+│   ├── paper_3_systematic_review/     # Environment International package (16 pp PDF, build.sh)
+│   ├── paper_4_data_descriptor/       # Scientific Data package (8 pp PDF, build.sh)
+│   ├── conference_1_igarss/           # IEEE IGARSS package (3 pp PDF, build.sh)
+│   └── conference_2_water/            # IEEE Water Conference package (3 pp PDF, build.sh)
 │
 ├── review/
 │   └── paper_2/                       # Chronological peer review history
@@ -68,6 +78,7 @@ heavy-metal/
 └── docs/
     ├── plan.md                        # Foundational 1,700-line research roadmap
     ├── publication_plan.md            # Decoupled two-paper publication architecture
+    ├── review_and_data_paper_proposals.md # Systematic review & data descriptor specifications
     ├── mindmaps/                      # Conceptual workflow diagrams
     └── reports/                       # Data consistency & reference audit reports
 ```
