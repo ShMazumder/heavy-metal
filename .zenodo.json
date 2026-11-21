@@ -1,0 +1,52 @@
+{
+  "metadata": {
+    "title": "A Curated and Snapped Geospatial Database of Heavy Metal Concentrations in River Sediments and Waters Across Bangladesh (2010–2024)",
+    "upload_type": "dataset",
+    "description": "<p>Harmonized, provenance-documented, and hydrologically snapped geospatial database of heavy metal concentrations in river waters and bed sediments across Bangladesh, compiled from 28 peer-reviewed publications (2010–2024).</p><p>The database contains 557 verified analytical assays — 289 bed sediment records across 133 unique station centroids and 268 surface water records across 12 major river basins — covering seven key trace elements (As, Cd, Cr, Cu, Ni, Pb, Zn) alongside 106 bulk physicochemical records. All stations are snapped to topological river reach polylines from HydroSHEDS HydroRIVERS v1.0 (mean offset: 357 m).</p><p><strong>Formats:</strong> SQLite relational database, flat CSV tables, GeoPackage (clipped HydroRIVERS network), GeoJSON (national boundary).</p><p><strong>Companion Code:</strong> <a href='https://github.com/ShMazumder/heavy-metal'>https://github.com/ShMazumder/heavy-metal</a></p>",
+    "creators": [
+      {
+        "name": "Author One",
+        "affiliation": "University Name, Dhaka, Bangladesh",
+        "orcid": ""
+      },
+      {
+        "name": "Author Two",
+        "affiliation": "University Name, Dhaka, Bangladesh",
+        "orcid": ""
+      },
+      {
+        "name": "Author Three",
+        "affiliation": "Technical University, Dhaka, Bangladesh",
+        "orcid": ""
+      }
+    ],
+    "keywords": [
+      "heavy metals",
+      "river water quality",
+      "river sediments",
+      "Bangladesh",
+      "Bengal Delta",
+      "HydroSHEDS",
+      "geospatial database",
+      "trace elements",
+      "environmental monitoring",
+      "open data"
+    ],
+    "license": "cc-by-4.0",
+    "access_right": "open",
+    "related_identifiers": [
+      {
+        "identifier": "https://github.com/ShMazumder/heavy-metal",
+        "relation": "isSupplementTo",
+        "scheme": "url"
+      }
+    ],
+    "version": "1.0.0",
+    "language": "eng",
+    "subjects": [
+      {"term": "Environmental Chemistry", "identifier": "http://id.loc.gov/authorities/subjects/sh85044203", "scheme": "url"},
+      {"term": "Hydrology", "identifier": "http://id.loc.gov/authorities/subjects/sh85063471", "scheme": "url"}
+    ],
+    "notes": "Companion dataset for: (1) 'Spatial Modeling and Ecological Risk Assessment of Heavy Metal Contamination in River Sediments Across Bangladesh' (submitted to Science of The Total Environment); (2) 'Heavy Metals in Monitored River Corridors of Bangladesh: A Critical Synthesis' (submitted to Chemosphere); (3) 'Heavy Metal Contamination in Bangladesh River Systems: A Systematic Review and Meta-Analysis' (submitted to Environment International); (4) 'A Curated and Snapped Geospatial Database of Heavy Metal Concentrations in River Sediments and Waters Across Bangladesh' (submitted to Nature Scientific Data)."
+  }
+}
