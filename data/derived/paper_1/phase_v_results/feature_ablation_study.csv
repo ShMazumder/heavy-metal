@@ -1,25 +1,25 @@
 Metal,Feature_Set,Num_Features,CatBoost_R2,CatBoost_RMSE,RF_R2,RF_RMSE
-Lead (Pb),Model A (Geo Only),2,0.6091,12.31,0.5599,13.07
-Lead (Pb),Model B (Geo + Hydro),7,0.6348,11.9,0.5395,13.36
-Lead (Pb),Model C (Geo + Geochem),3,0.6104,12.29,0.5454,13.28
-Lead (Pb),Model D (Full Combined),8,0.6432,11.76,0.5369,13.4
-Chromium (Cr),Model A (Geo Only),2,0.5627,24.37,0.5705,24.15
-Chromium (Cr),Model B (Geo + Hydro),7,0.5773,23.96,0.5426,24.93
-Chromium (Cr),Model C (Geo + Geochem),3,0.5037,25.96,0.4622,27.03
-Chromium (Cr),Model D (Full Combined),8,0.5207,25.52,0.4271,27.9
-Cadmium (Cd),Model A (Geo Only),2,0.4054,0.8,0.4348,0.78
-Cadmium (Cd),Model B (Geo + Hydro),7,0.5445,0.7,0.523,0.71
-Cadmium (Cd),Model C (Geo + Geochem),3,0.3982,0.8,0.4246,0.78
-Cadmium (Cd),Model D (Full Combined),8,0.5566,0.69,0.5243,0.71
-Copper (Cu),Model A (Geo Only),2,0.638,17.87,0.5318,20.32
-Copper (Cu),Model B (Geo + Hydro),7,0.6083,18.59,0.5513,19.89
-Copper (Cu),Model C (Geo + Geochem),3,0.5156,20.67,0.4623,21.78
-Copper (Cu),Model D (Full Combined),8,0.5055,20.88,0.4758,21.5
-Nickel (Ni),Model A (Geo Only),2,0.6389,22.4,0.5706,24.42
-Nickel (Ni),Model B (Geo + Hydro),7,0.6453,22.2,0.5697,24.45
-Nickel (Ni),Model C (Geo + Geochem),3,0.5481,25.06,0.5362,25.38
-Nickel (Ni),Model D (Full Combined),8,0.5687,24.48,0.5273,25.62
-Arsenic (As),Model A (Geo Only),2,0.4748,8.32,0.4852,8.24
-Arsenic (As),Model B (Geo + Hydro),7,0.473,8.33,0.4834,8.25
-Arsenic (As),Model C (Geo + Geochem),3,0.1616,10.51,0.2169,10.16
-Arsenic (As),Model D (Full Combined),8,0.1531,10.56,0.2263,10.1
+Lead (Pb),Model A (Geo Only),2,0.5721,13.76,0.5852,13.55
+Lead (Pb),Model B (Geo + Hydro),7,0.5729,13.75,0.5825,13.59
+Lead (Pb),Model C (Geo + Geochem),3,0.5679,13.83,0.6061,13.2
+Lead (Pb),Model D (Full Combined),8,0.5839,13.57,0.6059,13.21
+Chromium (Cr),Model A (Geo Only),2,0.4304,31.36,0.4109,31.89
+Chromium (Cr),Model B (Geo + Hydro),7,0.4176,31.71,0.4061,32.02
+Chromium (Cr),Model C (Geo + Geochem),3,0.3432,33.68,0.274,35.41
+Chromium (Cr),Model D (Full Combined),8,0.3576,33.31,0.2649,35.63
+Cadmium (Cd),Model A (Geo Only),2,0.0808,0.51,0.0651,0.51
+Cadmium (Cd),Model B (Geo + Hydro),7,0.0746,0.51,0.0534,0.52
+Cadmium (Cd),Model C (Geo + Geochem),3,0.0251,0.53,0.015,0.53
+Cadmium (Cd),Model D (Full Combined),8,0.021,0.53,0.0094,0.53
+Copper (Cu),Model A (Geo Only),2,0.5415,20.0,0.5413,20.0
+Copper (Cu),Model B (Geo + Hydro),7,0.5433,19.96,0.5422,19.98
+Copper (Cu),Model C (Geo + Geochem),3,0.4316,22.26,0.3827,23.2
+Copper (Cu),Model D (Full Combined),8,0.4621,21.66,0.3797,23.26
+Nickel (Ni),Model A (Geo Only),2,0.5558,24.4,0.5535,24.46
+Nickel (Ni),Model B (Geo + Hydro),7,0.554,24.45,0.5506,24.54
+Nickel (Ni),Model C (Geo + Geochem),3,0.4715,26.61,0.459,26.93
+Nickel (Ni),Model D (Full Combined),8,0.4662,26.75,0.4471,27.22
+Arsenic (As),Model A (Geo Only),2,0.1659,11.71,0.1563,11.78
+Arsenic (As),Model B (Geo + Hydro),7,0.1713,11.67,0.1629,11.73
+Arsenic (As),Model C (Geo + Geochem),3,-0.0222,12.96,-0.1023,13.46
+Arsenic (As),Model D (Full Combined),8,0.007,12.77,-0.0974,13.43

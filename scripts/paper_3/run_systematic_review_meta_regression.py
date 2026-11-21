@@ -4,8 +4,8 @@ Meta-Regression & Systematic Synthesis Pipeline for Paper 3 (Systematic Review).
 Performs:
   1. PRISMA 2020 Flow Metrics computation and diagram generation.
   2. Multi-Element Benchmark Exceedance Synthesis for both Water and Sediment.
-  3. Meta-Regression: P(Exceedance) ~ Instrument Sensitivity + Urban Corridors + Hydrological Seasons
-     with study-level cluster bootstrapping (B=2,000) for robust Odds Ratios & 95% CIs.
+  3. Multivariable Pooled Logistic Regression: P(Exceedance) ~ Instrument Sensitivity + Urban Corridors + Hydrological Seasons
+     with study-level cluster bootstrapping (B=2,000) for cluster-robust Odds Ratios & 95% CIs.
   4. Sediment Pollution Load Index (PLI), Geoaccumulation (Igeo), and Hakanson Ecological Risk (RI).
   5. Decoupled HPI vs. HEI Scaling Analysis.
   6. Exports publication-quality figures (300 DPI) and machine-readable CSVs to data/derived/paper_3/.
@@ -128,7 +128,7 @@ print("Saved sediment_enrichment_summary.csv")
 # -----------------------------------------------------------------------------
 # 4. META-REGRESSION: EXCEEDANCE ~ INSTRUMENT + URBAN + SEASON
 # -----------------------------------------------------------------------------
-print("\n--- Running Multivariable Meta-Regression across Surface Water Metals ---")
+print("\n--- Running Multivariable Pooled Logistic Regression across Surface Water Metals ---")
 # Merge water records with study detection methods
 merged = pd.merge(df_water, df_studies[['Study_ID', 'Detection_Method']], on='Study_ID', how='left')
 

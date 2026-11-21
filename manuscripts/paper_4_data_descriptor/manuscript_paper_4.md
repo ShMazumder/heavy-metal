@@ -54,7 +54,7 @@ The database was structured into a four-table normalized relational schema imple
 ### Coordinate Verification & Topological HydroRIVERS Snapping
 Published coordinates were audited and converted into standardized WGS84 decimal degrees (EPSG:4326). Coordinate ranges were resolved by consulting published maps and gazetteers to identify discrete sampling stations.
 
-All sampling stations were projected to metric coordinates (EPSG:3857, Pseudo-Mercator) and snapped to the nearest HydroSHEDS HydroRIVERS v1.0 reach centerline polyline using spatial index nearest-neighbor joining. Snapping distance offsets were computed:
+All coordinate-resolved sampling stations ($N=220$ across 218 unique reach-join records; 206 descriptive entries lacked coordinates in source literature) were projected to metric coordinates (EPSG:3857, Pseudo-Mercator) and snapped to the nearest HydroSHEDS HydroRIVERS v1.0 reach centerline polyline using spatial index nearest-neighbor joining. Snapping distance offsets were computed:
 - 67.4% of stations snapped within 500 meters of the river polyline centerline;
 - 97.7% of stations snapped within 1,000 meters;
 - Maximum offset was 2,021 meters (mean offset: 357 meters), consistent with deltaic channel widths, braiding, and historical river meandering in the Bengal floodplain.
@@ -82,12 +82,13 @@ data/
 │   └── source_pdfs/                   # P01–P28 primary PDF articles
 └── processed/
     ├── heavy_metal.db                 # Master relational SQLite database
+    ├── *.parquet                      # Columnar Apache Parquet exports for all tabular datasets
     ├── water_data.csv                 # Surface water chemical assays (268 rows, 49 cols)
     ├── sediment_data.csv              # Bed sediment chemical assays (289 rows, 32 cols)
-    ├── stations.csv                   # Georeferenced station centroids (133 rows)
+    ├── stations.csv                   # Observation stations (426 rows: 220 georeferenced centroids, 206 descriptive)
     ├── studies.csv                    # Provenance and study metadata (28 rows)
-    ├── master_harmonized.csv          # Denormalized master assay table (557 rows)
-    └── station_hydrorivers_matched.csv# Topological reach join table (133 rows)
+    ├── master_harmonized.csv          # Denormalized master assay table (557 rows, 59 cols)
+    └── station_hydrorivers_matched.csv# Topological reach join table (218 rows)
 ```
 
 ### Data Dictionary

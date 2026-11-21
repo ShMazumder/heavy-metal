@@ -7,5 +7,5 @@ Uncovered at 25 km (Straight-Line),3841.9 km (83.5%) across 1890 reaches (85.0%)
 Uncovered at 10 km (Straight-Line),4379.7 km (95.2%)
 Uncovered at 50 km (Straight-Line),2732.0 km (59.4%)
 Uncovered at 25 km (Topological Along-Network Dijkstra),4094.5 km (89.0%)
-Monte Carlo Null Model Expected Coverage (24 Random Sites),38.2% [95% CI: 31.5–44.7%]
-Null Model Empirical Clustering P-Value,0.0000 (p < 0.0001)
+Monte Carlo Null Model Expected Coverage (23 Random Sites),38.2% [95% CI: 31.5–44.7%]
+Null Model Empirical Clustering P-Value,0.0000 (p <= 0.001)

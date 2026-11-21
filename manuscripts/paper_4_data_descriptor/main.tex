@@ -109,7 +109,7 @@ The database was structured into a four-table normalized relational schema imple
 \subsection*{Coordinate Verification \& Topological HydroRIVERS Snapping}
 Published coordinates were audited and converted into standardized WGS84 decimal degrees (EPSG:4326). Coordinate ranges were resolved by consulting published maps and gazetteers to identify discrete sampling stations.
 
-All sampling stations were projected to metric coordinates (EPSG:3857, Pseudo-Mercator) and snapped to the nearest HydroSHEDS HydroRIVERS v1.0 reach centerline polyline \citep{Lehner2013} using spatial index nearest-neighbor joining. Snapping distance offsets were computed:
+All coordinate-resolved sampling stations ($N=220$ across 218 unique reach-join records; 206 descriptive entries lacked coordinates in source literature) were projected to metric coordinates (EPSG:3857, Pseudo-Mercator) and snapped to the nearest HydroSHEDS HydroRIVERS v1.0 reach centerline polyline \citep{Lehner2013} using spatial index nearest-neighbor joining. Snapping distance offsets were computed:
 \begin{itemize}
     \item 67.4\% of stations snapped within 500 meters of the river polyline centerline;
     \item 97.7\% of stations snapped within 1,000 meters;
@@ -141,11 +141,12 @@ The primary files and structured relational tables are summarized in Table~\ref{
 File Path & Format & Records & Description \\
 \midrule
 \texttt{data/processed/heavy\_metal.db} & SQLite & 4 tables & Master relational database with foreign key constraints \\
-\texttt{data/processed/water\_data.csv} & CSV & 268 rows, 49 cols & Surface water assays with physicochemical and metal parameters \\
-\texttt{data/processed/sediment\_data.csv} & CSV & 289 rows, 32 cols & Bed sediment assays with grain size and trace metals \\
-\texttt{data/processed/stations.csv} & CSV & 426 rows, 14 cols & Observation stations (133 sediment centroids, 23 water metal sites) with WGS84 coordinates \\
-\texttt{data/processed/studies.csv} & CSV & 28 rows, 8 cols & Study metadata, instrumentation, DOIs, and QA/QC rubric \\
-\texttt{data/processed/master\_harmonized.csv} & CSV & 557 rows, 59 cols & Denormalized master assay table linking water and sediment \\
+\texttt{data/processed/water\_data.csv} & CSV / Parquet & 268 rows, 49 cols & Surface water assays with physicochemical and metal parameters (171 georeferenced) \\
+\texttt{data/processed/sediment\_data.csv} & CSV / Parquet & 289 rows, 32 cols & Bed sediment assays with grain size and trace metals (133 georeferenced) \\
+\texttt{data/processed/stations.csv} & CSV / Parquet & 426 rows, 14 cols & Observation station register (220 coordinate-resolved centroids; 206 descriptive entries) \\
+\texttt{data/processed/studies.csv} & CSV / Parquet & 28 rows, 8 cols & Study metadata, instrumentation, DOIs, and QA/QC rubric \\
+\texttt{data/processed/master\_harmonized.csv} & CSV / Parquet & 557 rows, 59 cols & Denormalized master assay table linking water and sediment \\
+\texttt{data/processed/station\_hydrorivers\_matched.csv} & CSV / Parquet & 218 rows, 16 cols & Topological reach join table with \texttt{HYRIV\_ID} and snapping distances \\
 \texttt{data/raw/hydrorivers\_bangladesh.gpkg} & GeoPackage & 2,224 reaches & Clipped national HydroRIVERS major stream network (Strahler $\ge 4$, $Q \ge 50\text{ m}^3/\text{s}$) \\
 \bottomrule
 \end{tabular}%

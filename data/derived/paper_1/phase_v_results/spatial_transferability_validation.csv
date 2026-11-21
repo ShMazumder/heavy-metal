@@ -1,0 +1,7 @@
+Metal,N,Unique_River_Basins,Standard_Random_5Fold_R2,Spatial_Cluster_LORO_R2,Transferability_Penalty
+Lead (Pb),132,8,0.5858,-0.663,1.2487
+Chromium (Cr),131,7,0.5537,-0.5817,1.1354
+Cadmium (Cd),132,8,0.542,-0.7763,1.3182
+Copper (Cu),82,6,0.6072,-0.5897,1.1969
+Nickel (Ni),82,6,0.646,-0.0131,0.6591
+Arsenic (As),127,6,0.4429,-0.8182,1.261

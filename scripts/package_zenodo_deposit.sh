@@ -6,7 +6,7 @@ mkdir -p "$OUTDIR"
 
 echo "Packaging Zenodo deposit..."
 
-# Core database
+# Core database (CSV, Parquet, and SQLite)
 cp data/processed/heavy_metal.db        "$OUTDIR/"
 cp data/processed/water_data.csv        "$OUTDIR/"
 cp data/processed/sediment_data.csv     "$OUTDIR/"
@@ -14,6 +14,7 @@ cp data/processed/stations.csv          "$OUTDIR/"
 cp data/processed/studies.csv           "$OUTDIR/"
 cp data/processed/master_harmonized.csv "$OUTDIR/"
 cp data/processed/station_hydrorivers_matched.csv "$OUTDIR/"
+cp data/processed/*.parquet             "$OUTDIR/"
 
 # GIS layers
 cp data/raw/hydrorivers_bangladesh.gpkg "$OUTDIR/"
@@ -30,12 +31,13 @@ Heavy Metal Geospatial Database — Bangladesh Rivers (2010–2024)
 
 CONTENTS:
   heavy_metal.db                  Master SQLite relational database (4 tables)
+  *.parquet                       Columnar Parquet exports for all tables
   water_data.csv                  Surface water assays (268 rows × 49 cols)
   sediment_data.csv               Bed sediment assays (289 rows × 32 cols)
-  stations.csv                    Observation stations (426 rows × 14 cols)
+  stations.csv                    Observation stations (426 rows × 14 cols; 220 georeferenced)
   studies.csv                     Study metadata & instrumentation (28 rows)
   master_harmonized.csv           Denormalized master table (557 rows × 59 cols)
-  station_hydrorivers_matched.csv Topological reach join table (213 unique stations)
+  station_hydrorivers_matched.csv Topological reach join table (218 records)
   hydrorivers_bangladesh.gpkg     HydroSHEDS HydroRIVERS clipped network
   bangladesh_boundary.geojson     National boundary polygon (WGS84)
 

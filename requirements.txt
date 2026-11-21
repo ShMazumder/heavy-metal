@@ -4,6 +4,7 @@ pandas>=2.0.0
 scipy>=1.10.0
 matplotlib>=3.7.0
 networkx>=3.1
+fastparquet>=2024.2.0
 
 # Spatial & GIS processing
 geopandas>=0.13.0

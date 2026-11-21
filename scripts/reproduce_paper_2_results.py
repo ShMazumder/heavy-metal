@@ -796,8 +796,8 @@ df_spatial_summary = pd.DataFrame([
     {'Metric': 'Uncovered at 10 km (Straight-Line)', 'Value': f"{unsamp_hav_10_len:.1f} km ({unsamp_hav_10_pct_len:.1f}%)"},
     {'Metric': 'Uncovered at 50 km (Straight-Line)', 'Value': f"{unsamp_hav_50_len:.1f} km ({unsamp_hav_50_pct_len:.1f}%)"},
     {'Metric': 'Uncovered at 25 km (Topological Along-Network Dijkstra)', 'Value': f"{unsamp_net_25_len:.1f} km ({unsamp_net_25_pct_len:.1f}%)"},
-    {'Metric': 'Monte Carlo Null Model Expected Coverage (24 Random Sites)', 'Value': f"{null_mean:.1f}% [95% CI: {null_ci_lo:.1f}–{null_ci_hi:.1f}%]"},
-    {'Metric': 'Null Model Empirical Clustering P-Value', 'Value': f"{null_pval:.4f} (p < 0.0001)"}
+    {'Metric': f'Monte Carlo Null Model Expected Coverage ({n_station_points} Random Sites)', 'Value': f"{null_mean:.1f}% [95% CI: {null_ci_lo:.1f}–{null_ci_hi:.1f}%]"},
+    {'Metric': 'Null Model Empirical Clustering P-Value', 'Value': f"{null_pval:.4f} (p <= 0.001)"}
 ])
 df_spatial_summary.to_csv('data/paper_2_water_results/spatial_coverage_summary.csv', index=False)
 

@@ -11,7 +11,7 @@
 - 557 audited geochemical assays (289 sediment, 268 water) reconciled across 28 peer-reviewed studies (2010–2024).
 - Sediment bed enrichment is ubiquitous: Cadmium (97.0%) and Arsenic (94.3%) exceed continental crust baselines.
 - Water Lead exceeds WHO drinking guidelines in 85.6% of records; ECR 2023 statutory update aligns with WHO limits.
-- Multivariable meta-regression proves dry-season concentration triples Chromium drinking exceedance ($\text{OR}=2.77$).
+- Multivariable logistic regression indicates dry-season baseflow elevates Chromium drinking exceedance ($\text{OR}=2.77$).
 - HPI algebraic decomposition demonstrates quadratic $1/S_i^2$ damping, with Cd and Pb commanding 78.3% of linear weights.
 - HydroSHEDS river routing reveals published literature covers only 16.5% of national major river corridor length.
 
@@ -27,7 +27,7 @@ Surface water and bed sediments in the Bengal Delta support the livelihoods and 
 
 In riverbed sediments, pervasive multi-element contamination was documented against Upper Continental Crust (UCC) geochemical baselines: Cadmium (median: 1.77 mg/kg; UCC: 0.1 mg/kg) and Arsenic (median: 10.16 mg/kg; UCC: 1.5 mg/kg) exhibited contamination factors ($CF > 1$) in **97.0%** and **94.3%** of records, with **95.9%** and **92.5%** falling into positive geoaccumulation classes ($I_{geo} > 0$). Severe anthropogenic enrichment was observed in urban industrial corridors for Lead (maximum: 3,312 mg/kg; 61.2% enriched) and Chromium (maximum: 1,884 mg/kg; 68.2% enriched). In surface river waters, screening against international and statutory standards demonstrated critical raw-water chemical stress: Lead exceeded the WHO drinking-water guideline (0.010 mg/L) in **85.6%** of records (cluster 95% CI: [71.1–94.3%]; confirmed dissolved median: 0.0250 mg/L; GF-AAS/ICP-MS high-sensitivity exceedance: 79.2%). Under the updated Bangladesh Environmental Conservation Rules (ECR 2023 Schedule 2), which lowered domestic potable limits for Pb (0.050 to 0.010 mg/L), statutory drinking benchmark exceedance surged from 34.9% (under repealed ECR 1997) to **85.6%**, formally harmonizing domestic standards with WHO health criteria.
 
-Multivariable meta-regression incorporating study-level cluster bootstrapping ($B=2,000$) demonstrated that hydrological low-flow conditions significantly amplify contamination risk: winter dry baseflow increased the odds of Chromium guideline exceedance nearly threefold ($\text{OR} = 2.77$, 95% CI: [1.15–28.54], $p = 0.026$), while pre-monsoon summer irrigation pumping substantially elevated Cadmium ($\text{OR} = 6.58$) and Arsenic ($\text{OR} = 5.67$). A mathematical critique of the widely applied Heavy Metal Pollution Index ($\mathrm{HPI}$) demonstrates that index scores scale quadratically with inverse guidelines ($1/S_i^2$), concentrating **78.3% of linear weights** and **77.1% of median index scores** onto Cadmium and Lead, mathematically explaining reported panel invariances across disparate studies. Finally, spatial stream network analysis across 2,224 major river reaches (4,599.1 km) strictly within Bangladesh revealed that published monitoring sites cover only **16.5% of major river length (757.2 km)** at 25 km, significantly lower than spatial random expectation (38.2%, Monte Carlo $p \le 0.001$). We provide a concrete, reach-prioritized blueprint for establishing a standardized national river monitoring network across unmonitored transboundary mainstems.
+Pooled multivariable logistic regression incorporating study-level cluster bootstrapping ($B=2,000$) demonstrated that hydrological low-flow conditions are associated with elevated contamination odds: winter dry baseflow elevated Chromium guideline exceedance odds nearly threefold ($\text{OR} = 2.77$, 95% CI: [1.15–28.54], $p = 0.026$), with exploratory pre-monsoon increases for Cadmium ($\text{OR} = 6.58$, CI: [0.41–62.11]) and Arsenic ($\text{OR} = 5.67$, CI: [0.12–144.70]). A mathematical critique of the widely applied Heavy Metal Pollution Index ($\mathrm{HPI}$) demonstrates that index scores scale quadratically with inverse guidelines ($1/S_i^2$), concentrating **78.3% of linear weights** and **77.1% of median index scores** onto Cadmium and Lead, mathematically explaining reported panel invariances across disparate studies. Finally, spatial stream network analysis across 2,224 major river reaches (4,599.1 km) strictly within Bangladesh revealed that published monitoring sites cover only **16.5% of major river length (757.2 km)** at 25 km, significantly lower than spatial random expectation (38.2%, Monte Carlo $p \le 0.001$). We provide a concrete, reach-prioritized blueprint for establishing a standardized national river monitoring network across unmonitored transboundary mainstems.
 
 **Keywords:** Systematic Review; Meta-Analysis; PRISMA 2020; Heavy Metals; Bengal Delta; ECR 2023; Meta-Regression; HydroSHEDS; Surveillance Gaps.
 
@@ -164,36 +164,36 @@ Restricting sensitivity analysis strictly to confirmed filtered investigations (
 
 ---
 
-### 3.3 Multivariable Meta-Regression: Identifying Key Contamination Drivers
-Multivariable logistic meta-regressions with 2,000 cluster bootstraps quantified the independent contributions of analytical instrumentation, industrial land use, and hydrology on benchmark exceedance (Figure 2, Table 3).
+### 3.3 Multivariable Logistic Analysis: Identifying Contamination Predictors and Uncertainty
+To evaluate multivariable associations between sample attributes and guideline exceedance, pooled record-level multivariable logistic regressions were fitted with 2,000 study-cluster bootstrap resamples to account for study-level grouping (Figure 2, Table 3).
 
 ![Figure 2: Meta-Regression Odds Ratio Forest Plot](../../data/derived/paper_3/fig_meta_regression_forest_plot.png)
 
-**Table 3:** Multivariable meta-regression model estimates for heavy metal benchmark exceedance in Bangladesh river waters ($B=2,000$ cluster bootstrap resamples).
+**Table 3:** Multivariable pooled logistic regression model estimates for heavy metal benchmark exceedance in Bangladesh river waters ($B=2,000$ study-cluster bootstrap resamples).
 
 | Element | Predictor Covariate | Odds Ratio ($\text{OR}$) | Cluster-Robust 95% CI | Bootstrap $p$-value | Environmental Interpretation |
 |---|---|:---:|:---:|:---:|---|
-| **Chromium (Cr)** | **Winter Dry Season** | **2.77** | **[1.15–28.54]** | **0.026\*** | Significant baseflow concentration effect |
-| | Urban Industrial Corridor | 5.87 | [0.46–920.87] | 0.126 | Upstream tannery/electroplating discharge |
-| | Pre-Monsoon Season | 4.10 | [0.16–68.99] | 0.336 | Evaporative hydrological low-flow peak |
-| | High-Sensitivity Spectrometry | 0.53 | [0.01–26.20] | 0.913 | Flame-AAS bias absent |
-| **Cadmium (Cd)** | **Urban Industrial Corridor** | **10.79** | [0.31–623.07] | 0.140 | Massive point-source industrial enrichment |
-| | Pre-Monsoon Season | 6.58 | [0.41–62.11] | 0.325 | Low-flow estuarine trapping |
+| **Chromium (Cr)** | **Winter Dry Season** | **2.77** | **[1.15–28.54]** | **0.026\*** | Nominal baseflow concentration effect |
+| | Urban Industrial Corridor | 5.87 | [0.46–920.87] | 0.126 | Wide CI; non-significant exploratory trend |
+| | Pre-Monsoon Season | 4.10 | [0.16–68.99] | 0.336 | Hydrological low-flow variation |
+| | High-Sensitivity Spectrometry | 0.53 | [0.01–26.20] | 0.913 | Flame-AAS bias not detected |
+| **Cadmium (Cd)** | **Urban Industrial Corridor** | **10.79** | [0.31–623.07] | 0.140 | Exploratory point-source trend (wide CI spans unity) |
+| | Pre-Monsoon Season | 6.58 | [0.41–62.11] | 0.325 | Low-flow estuarine variation (non-significant) |
 | | High-Sensitivity Spectrometry | 2.28 | [0.02–86.80] | 0.686 | True low-level dissolved detection |
-| | Winter Dry Season | 1.72 | [0.21–13.31] | 0.700 | Fluvial baseflow concentration |
-| **Arsenic (As)** | **Pre-Monsoon Season** | **5.67** | [0.12–144.70] | 0.300 | Agricultural *boro* irrigation pumping peak |
+| | Winter Dry Season | 1.72 | [0.21–13.31] | 0.700 | Fluvial baseflow variation |
+| **Arsenic (As)** | **Pre-Monsoon Season** | **5.67** | [0.12–144.70] | 0.300 | Exploratory agricultural irrigation hypothesis (CI spans unity) |
 | | Winter Dry Season | 2.09 | [0.59–19.55] | 0.242 | Baseflow groundwater discharge |
-| | Urban Industrial Corridor | 1.84 | [0.01–1193.4] | 0.752 | Primarily geogenic rather than industrial |
-| **Lead (Pb)** | Winter Dry Season | 4.71 | [0.63–63.72] | 0.108 | Fluvial baseflow concentration |
+| | Urban Industrial Corridor | 1.84 | [0.01–1193.4] | 0.752 | Primarily geogenic lithology |
+| **Lead (Pb)** | Winter Dry Season | 4.71 | [0.63–63.72] | 0.108 | Fluvial baseflow variation |
 | | Urban Industrial Corridor | 1.17 | [0.20–113.43] | 0.683 | Widespread urban & peri-urban dispersion |
 | | High-Sensitivity Spectrometry | 0.36 | [0.01–17.60] | 0.462 | Confirmed across all instrumentation tiers |
 | **Nickel (Ni)** | Urban Industrial Corridor | 2.82 | [0.23–165.04] | 0.312 | Industrial electroplating loadings |
 | | Pre-Monsoon Season | 1.84 | [0.22–35.38] | 0.610 | Low baseflow enrichment |
 
-Key meta-regression findings include:
-1. **Hydrological Baseflow Concentration:** Hydrological low-flow conditions are the single most consistent physical driver of elevated concentrations. For Chromium, dry-season baseflow produces a statistically significant nearly threefold increase in the odds of exceeding drinking guidelines ($\text{OR} = 2.77$, 95% CI: [1.15–28.54], $p = 0.026$). During the monsoon wet season, massive monsoonal runoff ($>100,000\text{ m}^3/\text{s}$ across the delta) dilutes wastewater loadings, whereas dry-season baseflow drops by over 80–90%, concentrating continuous industrial effluents.
-2. **Pre-Monsoon Arsenic Dynamics:** Arsenic odds of exceedance peak during the pre-monsoon summer ($\text{OR} = 5.67$). While winter dry (0.0073 mg/L) and monsoon wet (0.0042 mg/L) medians are low, pre-monsoon records exhibit a median of **0.0304 mg/L** ($N=41$). In March and April, baseflow reaches its annual minimum while nationwide intensive groundwater pumping for *boro* rice irrigation draws arsenic-rich shallow alluvial aquifers, discharging return flows into low-flow riverbeds (Brammer and Ravenscroft, 2009; Halim et al., 2015).
-3. **Urban Industrial Attenuation:** Proximity to urban-industrial centers increases the odds of exceeding guidelines by $10.79\times$ for Cadmium and $5.87\times$ for Chromium.
+Key regression findings and interpretive cautions include:
+1. **Hydrological Baseflow Concentration:** Low-flow hydrology emerges as the most consistent physical predictor. For Chromium, dry-season baseflow produces a statistically significant nominal increase in the odds of exceeding drinking guidelines ($\text{OR} = 2.77$, 95% CI: [1.15–28.54], $p = 0.026$). During the monsoon wet season, monsoonal runoff dilutes wastewater loadings, whereas dry-season baseflow drops drastically, concentrating municipal and industrial effluents. However, given multiple hypothesis testing across metals, this nominal $p$-value should be interpreted cautiously.
+2. **Pre-Monsoon Arsenic Dynamics:** Point estimates for Arsenic exceedance odds peak during the pre-monsoon summer ($\text{OR} = 5.67$, 95% CI: [0.12–144.70]), reflecting higher median concentrations in summer ($0.0304$ mg/L, $N=41$) compared to dry ($0.0073$ mg/L) and monsoon ($0.0042$ mg/L) seasons. While intensive agricultural groundwater pumping for *boro* rice irrigation during March–April provides a plausible physical hypothesis for aquifer-river return flows (Brammer and Ravenscroft, 2009; Halim et al., 2015), the wide cluster bootstrap confidence interval spans unity ($p=0.300$), indicating that this mechanism remains an unproven exploratory hypothesis in current data.
+3. **Urban Corridor Associations and Estimation Uncertainty:** While point odds ratios for urban corridor locations are elevated (e.g., $10.79$ for Cadmium and $5.87$ for Chromium), their 95% confidence intervals are exceptionally wide and span unity ($p > 0.10$). These wide intervals reflect substantial between-study heterogeneity and clustering of sampling stations in selected rivers, demonstrating that pooled odds ratios cannot be interpreted as confirmed causal drivers.
 
 ---
 
