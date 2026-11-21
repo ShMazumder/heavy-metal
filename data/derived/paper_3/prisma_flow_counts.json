@@ -1,0 +1,15 @@
+{
+  "Identified_Records_Databases": 1420,
+  "Duplicates_Removed": 582,
+  "Screened_Titles_Abstracts": 838,
+  "Excluded_NonFlvial_OffTopic": 764,
+  "FullText_Articles_Retrieved": 74,
+  "Excluded_Methodological_Deficits": 46,
+  "Included_Studies_Total": 28,
+  "Included_Sediment_Only_Studies": 11,
+  "Included_Bulk_Physchem_Studies": 5,
+  "Included_Surface_Water_Metals_Studies": 12,
+  "Total_Sediment_Assays": 289,
+  "Total_Water_Assays": 268,
+  "Total_Combined_Records": 557
+}

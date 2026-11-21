@@ -10,6 +10,8 @@ A multi-publication research repository consolidating, modeling, and synthesizin
 |---|---|---|:---:|:---:|
 | **Paper 1** | *Science of The Total Environment* (STOTEN) | Spatial modeling & ecological risk assessment of river sediments using CatBoost & HydroSHEDS reach topology ($N=289$) | **Ready** (17 pp) | `cd manuscripts/paper_1_stoten && ./build.sh` |
 | **Paper 2** | *Chemosphere* | Surface water synthesis, ECR 2023 statutory screening, HPI mathematical critique, and hydrographic surveillance gaps ($N=162$) | **Post-R6 Audit** (26 pp) | `cd manuscripts/paper_2_chemosphere && ./build.sh` |
+| **Paper 3** | *Environment International* | PRISMA 2020 systematic review, multivariable meta-regression & multi-matrix risk synthesis ($N=557$) | **Drafted** (Full Review) | `manuscripts/paper_3_systematic_review/` |
+| **Paper 4** | Nature *Scientific Data* | A curated and snapped geospatial database of heavy metal concentrations in Bangladesh rivers | **Drafted** (Data Descriptor) | `manuscripts/paper_4_data_descriptor/` |
 | **Conference 1** | IEEE IGARSS | River-network ML vs. geostatistical collapse across disconnected basins | **Ready** (3 pp) | `cd manuscripts/conference_1_igarss && ./build.sh` |
 | **Conference 2** | IWA World Water Congress | Potable benchmark discordance and surveillance coverage deficits | **Ready** (3 pp) | `cd manuscripts/conference_2_water && ./build.sh` |
 
