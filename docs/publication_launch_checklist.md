@@ -60,6 +60,19 @@ done
 
 ---
 
+## Phase 1.5: Brutal Cross-Manuscript Peer Review & Harmonization (DONE ✅)
+
+- [x] **Paper 4 Table 2 Discrepancies Patched:** Replaced incorrect draft summary statistics with empirical parameters computed directly from `water_data.csv` and `sediment_data.csv` (e.g., Water Cr max 7.55 mg/L, Pb max 0.70 mg/L; Sediment Pb min 0.34 mg/kg, Cr min 4.74 mg/kg).
+- [x] **Paper 4 Table 3 Discrepancies Patched:** Updated spectrometry tier validation with empirical values from `instrument_stratification_summary.csv` and exact two-sided Mann-Whitney $U$ test statistics (Flame-AAS Pb median 0.1100 mg/L, High-Sens Pb median 0.0171 mg/L, $U=4725.0, p<0.001$).
+- [x] **Paper 4 Schema Table 1 Patched:** Updated `stations.csv` (426 rows, 14 cols), `master_harmonized.csv` (557 rows, 59 cols), and HydroRIVERS description (2,224 reaches, Strahler $\ge 4$).
+- [x] **Paper 1 & Conf 1 Study/River Denominators Harmonized:** Corrected sediment study count to 17 studies (within 28-study total database) and 10 river systems (12 across combined media).
+- [x] **Temporal Scope Harmonized:** Clarified study window to 2010–2024 across all manuscripts (reflecting sampling campaigns 2010–2022).
+- [x] **Conf 2 River Scope Harmonized:** Clarified water river network to 10 river systems (12 across combined media).
+- [x] **All 4 Modified Manuscripts Recompiled to PDF with zero LaTeX errors.**
+- [x] **All submission ZIP archives and Zenodo bundles refreshed and pushed to GitHub (`1fc0d74`).**
+
+---
+
 ## Phase 2: Submit Papers 1 & 2 (Day 1–3)
 
 ### Paper 2 → Environmental Pollution (Submit First)
