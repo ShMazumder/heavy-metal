@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Single Master Reproducibility Pipeline for Paper 2 (Chemosphere) & Water Conference Paper.
+Single Master Reproducibility Pipeline for Paper 2 (Environmental Pollution) & Water Conference Paper.
 Addresses all Round 1, Round 2, & Round 3 Peer Review Critiques:
   - Phase 0 & 1: True Bangladesh polygon clipping via GeoJSON MultiPolygon & Path point-in-polygon;
                  Study reconciliation (28 -> 17 -> 12) & sampling station provenance cataloging;
@@ -13,7 +13,7 @@ Addresses all Round 1, Round 2, & Round 3 Peer Review Critiques:
              Seasonal analysis with sample accounting and random-effects pooling of study-level log-ratios;
   - Phase 4: Spatial stream network analysis on strictly clipped Bangladesh reaches (N=2,224, 4,599.1 km);
              Straight-line & along-network Dijkstra topological distance;
-             Spatial Monte Carlo null model (1,000 iterations) proving significant clustering (p < 0.0001);
+             Spatial Monte Carlo null model (1,000 iterations) proving significant clustering (p <= 0.001);
              Publication 300 DPI GIS coverage map without international segment spillover;
   - Phase 5 & 6: Fixed presentation items: Fig 1 legend repositioned with ylim=110, Highlights <= 85 chars, etc.
 """
