@@ -156,9 +156,20 @@ Cross-validation performance demonstrated pronounced differences between purely 
 | **As ($R^2$)** | 0.2258 | 0.0310 | **0.3713** | 0.1497 | -21.9037 | 0.1883 | 0.2736 | **LightGBM** |
 | As ($R^2_{\log}$) | 0.5612 | 0.6479 | -0.5607 | 0.4809 | -24.7090 | **0.7562** | -1.1725 | **Hybrid RK (RF)** |
 
+### Table 2b: Empirical Spatial Transferability Penalty Under Strict Leave-One-River-Out (LORO) Validation
+
+| Element | Assays ($N$) | River Basins | Standard 5-Fold $R^2$ | True LORO $R^2$ | Transferability Penalty ($\Delta R^2$) |
+|---|---|---|---|---|---|
+| **Lead (Pb)** | 132 | 8 | 0.5858 | -0.4567 | 1.0424 |
+| **Chromium (Cr)** | 131 | 7 | 0.5537 | -0.4386 | 0.9923 |
+| **Cadmium (Cd)** | 132 | 8 | 0.5420 | -1.5201 | 2.0621 |
+| **Copper (Cu)** | 82 | 6 | 0.6072 | -0.5804 | 1.1876 |
+| **Nickel (Ni)** | 82 | 6 | 0.6460 | -0.0063 | 0.6523 |
+| **Arsenic (As)** | 127 | 6 | 0.4429 | -0.6278 | 1.0707 |
+
 Key benchmarking findings include:
 1. **Failure of Pure Geostatistics Across Basins:** Ordinary Kriging experienced catastrophic breakdown when cross-validating unmeasured river reaches, producing severely negative $R^2$ values for Chromium ($R^2 = -63.85$) and Arsenic ($R^2 = -21.90$). This failure occurs because planar Euclidean variograms assume omnidirectional continuity across terrestrial landmasses, ignoring hydrological drainage boundaries.
-2. **Dual Validation: Interpolation vs. Out-of-Basin Transferability:** To evaluate the boundary between interpolation within monitored basins and generalization to unmonitored watersheds, models were tested under both standard 5-fold cross-validation ($R^2 = 0.52\text{--}0.64$, Table 2) and Leave-One-River-Out (LORO) spatial cluster validation. Under LORO validation, cross-basin transferability decreases ($R^2 < 0$), demonstrating that while stream network attributes capture hydraulic scaling within monitored rivers, sediment trace metal contamination in deltaic systems is dominated by localized industrial discharge clusters that cannot be extrapolated deterministically to unmonitored basins without local emission inventories.
+2. **Dual Validation: Interpolation vs. Out-of-Basin Transferability:** To evaluate the boundary between interpolation within monitored basins and generalization to unmonitored watersheds, models were tested under both standard 5-fold cross-validation ($R^2 = 0.52\text{--}0.65$, Table 2) and Leave-One-River-Out (LORO) spatial cluster validation (Table 2b). Under strict LORO validation holding out one river basin at a time, cross-basin transferability drops to negative $R^2$ across all six metals (Pb: $-0.4567$, Cr: $-0.4386$, Cd: $-1.5201$, Cu: $-0.5804$, Ni: $-0.0063$, As: $-0.6278$), demonstrating a transferability penalty ($\Delta R^2$) between 0.65 and 2.06. This quantitatively proves that while stream network attributes capture hydraulic scaling within monitored corridors, sediment trace metal contamination in deltaic systems is dominated by hyper-localized industrial effluent clusters that cannot be extrapolated deterministically to unmonitored basins without local emission inventories.
 3. **Dominance of CatBoost on Widespread Metals:** CatBoost proved to be the most consistent and accurate model nationwide for Lead ($R^2 = 0.6393$, $\text{RMSE} = 11.83\text{ mg/kg}$), Cadmium ($R^2 = 0.5689$, $\text{RMSE} = 0.68\text{ mg/kg}$), and Chromium ($R^2 = 0.5201$, $\text{RMSE} = 25.53\text{ mg/kg}$).
 4. **Estuarine Geostatistical Strengths:** Ordinary Kriging achieved competitive performance for Copper ($R^2 = 0.5267$) and Nickel ($R^2 = 0.6118$), where observations are concentrated along contiguous southern estuarine reaches (Karnaphuli, Rupsa) with strong local semivariance.
 5. **Hybrid RK Superiority on Arsenic:** Hybrid Regression Kriging (RK_RF) produced the highest log-scale performance for Arsenic ($R^2_{\log} = +0.7562$), showing that combining tree-based hydrological baselines with kriged local residuals explains over 75% of variance in geochemical dispersion.

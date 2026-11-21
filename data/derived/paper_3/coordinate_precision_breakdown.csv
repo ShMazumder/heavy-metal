@@ -1,0 +1,5 @@
+Tier,Count,Percentage,Description
+Tier 1: Explicit Reported GPS Coordinates,176,41.3,Verified handheld GPS decimal/DMS coordinates from published source tables
+Tier 2: Accurately Digitized Station Landmark Centroid,44,10.3,Digitized from high-resolution published station maps matching river confluences/bridges
+Tier 3: Unresolved Descriptive Gazetteer Entry,206,48.4,Published station names without coordinates or maps (retained for narrative/database inventory)
+Total Registered Station Inventory,426,100.0,All sampling stations cataloged across 28 peer-reviewed investigations
