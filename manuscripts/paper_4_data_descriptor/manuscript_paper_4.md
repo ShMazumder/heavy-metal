@@ -68,7 +68,7 @@ Measurement units were audited against primary publications:
 ---
 
 ## Data Records
-All data records are available through GitHub ([https://github.com/ShMazumder/heavy-metal.git](https://github.com/ShMazumder/heavy-metal.git)) and archived on Zenodo (DOI: 10.5281/zenodo.XXXXXXX).
+All data records are available through GitHub ([https://github.com/ShMazumder/heavy-metal.git](https://github.com/ShMazumder/heavy-metal.git)) and archived on Zenodo (DOI: 10.5281/zenodo.24414976).
 
 ### File Formats & Manifest
 The dataset is organized into `data/processed/` and `data/raw/`:

@@ -23,7 +23,7 @@ To provide the scientific community with an open, harmonized digital asset, we h
 4. **FAIR Compliant & Multi-Format:** Distributed under CC-BY / MIT licensing as a relational SQLite database (`heavy_metal.db`), flat CSVs, Apache Parquet, and GeoPackage files, complete with query tutorials in Python and R.
 
 ### Declarations
-- The dataset and code are openly available on GitHub (`https://github.com/ShMazumder/heavy-metal.git`) and archived on Zenodo (`10.5281/zenodo.XXXXXXX`).
+- The dataset and code are openly available on GitHub (`https://github.com/ShMazumder/heavy-metal.git`) and archived on Zenodo (`10.5281/zenodo.24414976`).
 - The manuscript is original and not under consideration elsewhere.
 - All authors have approved the submission.
 - No competing financial interests exist.

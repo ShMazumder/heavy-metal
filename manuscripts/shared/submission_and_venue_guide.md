@@ -71,7 +71,7 @@ This document provides a comprehensive operational roadmap for submitting the fo
 - **Submission Files Checklist:**
   1. Primary Manuscript: [main.pdf](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_4_data_descriptor/main.pdf) or LaTeX source bundle (`main.tex`, `references.bib`, `fig1_spatial_coverage.png`).
   2. Cover Letter: [cover_letter_scientific_data.md](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_4_data_descriptor/cover_letter_scientific_data.md).
-  3. Repository Link: GitHub repository (`https://github.com/ShMazumder/heavy-metal.git`) and Zenodo reserved DOI (`10.5281/zenodo.XXXXXXX`).
+  3. Repository Link: GitHub repository (`https://github.com/ShMazumder/heavy-metal.git`) and Zenodo reserved DOI (`10.5281/zenodo.24414976`).
 
 ---
 
