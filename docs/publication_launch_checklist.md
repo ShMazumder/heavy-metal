@@ -1,183 +1,89 @@
-# 🚀 Publication Launch Checklist
+# 🚀 Publication Launch Checklist (Authoritative: Option A — Review First)
 
 > [!IMPORTANT]
-> All reviews in `review/paper_2/round_{1-6}/` are internal LLM peer reviews (Claude/ChatGPT/Gemini), not actual journal reviews. All 4 papers are **fresh original submissions**.
+> **Governing Publication Strategy:** [`docs/plan_updated.md`](file:///Users/rohansmac/Documents/projects/heavy-metal/docs/plan_updated.md).
+> All current submission ZIPs in `manuscripts/submissions/` are **FROZEN**. No manuscript will be uploaded until it passes its independent scientific validation, data availability, and author metadata requirements.
 
 ---
 
-## Phase 0: Pre-Flight (Before Any Submission)
+## Strategic Publication Architecture (Option A: Sequential Launch)
 
-### Author Metadata — Do This First
-Replace placeholders in **all 6 manuscript packages**:
-
-| Placeholder | Replace With |
-|---|---|
-| `Author One` | Real first author name |
-| `Author Two` | Real second author name |
-| `Author Three` | Real third author name |
-| `University Name` | Actual institution |
-| `author.one@university.edu` | Corresponding author email |
-| `sh.mazumder@example.edu` | Corresponding author email |
-| ORCID fields | Real ORCID iDs |
-
-**Files to update:**
-- [ ] `manuscripts/paper_1_stoten/main.tex` (lines 50–65)
-- [ ] `manuscripts/paper_1_stoten/cover_letter_stoten.md`
-- [ ] `manuscripts/paper_2_environmental_pollution/main.tex` (lines 50–65)
-- [ ] `manuscripts/paper_2_environmental_pollution/cover_letter_env_poll.md`
-- [ ] `manuscripts/paper_3_systematic_review/main.tex` (lines 50–65)
-- [ ] `manuscripts/paper_3_systematic_review/cover_letter_env_intl.md`
-- [ ] `manuscripts/paper_4_data_descriptor/main.tex` (lines 50–58)
-- [ ] `manuscripts/paper_4_data_descriptor/cover_letter_scientific_data.md`
-- [ ] `.zenodo.json` (creators array)
-
-After updating → recompile all PDFs:
-```bash
-for d in paper_1_stoten paper_2_environmental_pollution paper_3_systematic_review paper_4_data_descriptor conference_1_igarss conference_2_water; do
-  (cd manuscripts/$d && ./build.sh)
-done
+```
+[Phase 1: Flagship Review (Submit First)]
+   └── Paper 3: Critical Systematic Review & Evidence Map (Environmental Research / J. Env. Manage.)
+         │
+         ├── [Phase 2: Parallel Technical Refinement & Data Deployment]
+         │     ├── Paper 2: Surface-Water Regulatory Screening & Surveillance Deficits (Environmental Pollution)
+         │     └── Paper 4: Curated Geospatial Data Descriptor (Nature Scientific Data / Data in Brief)
+         │           └── Publish Zenodo Archive upon journal data review request
+         │
+         └── [Phase 3: Spatial ML Validation Overhaul & Launch]
+               └── Paper 1: Sediment Spatial Machine Learning & Transferability (STOTEN)
 ```
 
 ---
 
-## Phase 1: Zenodo DOI Reservation (DONE ✅)
+## Phase 0: Pre-Flight Blockers (Applies to All Papers)
 
-- **Reserved DOI:** `10.5281/zenodo.24414976`
-- **Deposit Archive:** [`zenodo_heavy_metal_database_v1.0.0.zip`](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/submissions/zenodo_heavy_metal_database_v1.0.0.zip) (7.6 MB)
-- **Status:** Integrated into Paper 4 manuscript, LaTeX, and submission bundle.
+### 1. Author Metadata Injection
+Replace placeholder text in all manuscript `.tex`, markdown, and `.zenodo.json` files before any portal upload:
+- `Author One` $\to$ Real First Author Name
+- `Author Two` $\to$ Real Second Author Name
+- `Author Three` $\to$ Real Third Author Name
+- `University Name` / `Technical University` $\to$ Official Affiliated Institutions
+- `author.one@university.edu` $\to$ Institutional email addresses
+- ORCID fields $\to$ Verified 16-digit ORCID iDs
 
-> [!CAUTION]
-> Keep deposit in "Draft" on Zenodo. Do NOT click "Publish" until Papers 1 & 2 are confirmed under journal review.
+### 2. APC & Venue Funding Verification
+- **Paper 3 (*Environmental Research* / *J. Env. Manage.*):** Hybrid model $\to$ **$0 APC (Subscription route)**.
+- **Paper 2 (*Environmental Pollution*):** Hybrid model $\to$ **$0 APC (Subscription route)**.
+- **Paper 1 (*Science of The Total Environment*):** Hybrid model $\to$ **$0 APC (Subscription route)**.
+- **Paper 4 (*Nature Scientific Data*):** **Gold Open Access ONLY $\to$ US$2,690 APC**.
+  - Must request institutional Read & Publish waiver or discretionary low-income waiver upon submission.
+  - *Zero-APC Fallback:* Transfer to *Data in Brief* (Elsevier, hybrid option / waiver available).
 
-### Status of DOI Integration:
-- [x] Inserted `10.5281/zenodo.24414976` into `manuscripts/paper_4_data_descriptor/main.tex`
-- [x] Inserted `10.5281/zenodo.24414976` into `manuscripts/paper_4_data_descriptor/manuscript_paper_4.md`
-- [x] Inserted `10.5281/zenodo.24414976` into `manuscripts/paper_4_data_descriptor/cover_letter_scientific_data.md`
-- [x] Inserted `10.5281/zenodo.24414976` into `manuscripts/shared/submission_and_venue_guide.md`
-- [x] Recompiled Paper 4 PDF (`8 pp`)
-- [x] Regenerated `scientific_data_paper_4_submission.zip` (1.5 MB)
-- [x] Pushed to GitHub `origin/main`
-
----
-
-## Phase 1.5: Brutal Cross-Manuscript Peer Review & Harmonization (DONE ✅)
-
-- [x] **Paper 4 Table 2 Discrepancies Patched:** Replaced incorrect draft summary statistics with empirical parameters computed directly from `water_data.csv` and `sediment_data.csv` (e.g., Water Cr max 7.55 mg/L, Pb max 0.70 mg/L; Sediment Pb min 0.34 mg/kg, Cr min 4.74 mg/kg).
-- [x] **Paper 4 Table 3 Discrepancies Patched:** Updated spectrometry tier validation with empirical values from `instrument_stratification_summary.csv` and exact two-sided Mann-Whitney $U$ test statistics (Flame-AAS Pb median 0.1100 mg/L, High-Sens Pb median 0.0171 mg/L, $U=4725.0, p<0.001$).
-- [x] **Paper 4 Schema Table 1 Patched:** Updated `stations.csv` (426 rows, 14 cols), `master_harmonized.csv` (557 rows, 59 cols), and HydroRIVERS description (2,224 reaches, Strahler $\ge 4$).
-- [x] **Paper 1 & Conf 1 Study/River Denominators Harmonized:** Corrected sediment study count to 17 studies (within 28-study total database) and 10 river systems (12 across combined media).
-- [x] **Temporal Scope Harmonized:** Clarified study window to 2010–2024 across all manuscripts (reflecting sampling campaigns 2010–2022).
-- [x] **Conf 2 River Scope Harmonized:** Clarified water river network to 10 river systems (12 across combined media).
-- [x] **All 4 Modified Manuscripts Recompiled to PDF with zero LaTeX errors.**
-- [x] **All submission ZIP archives and Zenodo bundles refreshed and pushed to GitHub (`1fc0d74`).**
+### 3. Zenodo Data Deposit Lifecycle
+- Archive [`zenodo_heavy_metal_database_v1.0.0.zip`](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/submissions/zenodo_heavy_metal_database_v1.0.0.zip) (7.7 MB, with Parquet, SQLite, CSV, GIS layers) is registered under reserved DOI `10.5281/zenodo.24414976`.
+- **Status:** Retained in **Draft** mode during preparation.
+- **Trigger to Publish:** Click **"Publish"** only when Paper 4 or Paper 3 editors/reviewers explicitly require live data access. Manuscripts must not falsely claim live data access while the deposit remains unreleased.
 
 ---
 
-## Phase 2: Submit Papers 1 & 2 (Day 1–3)
+## Manuscript-by-Manuscript Go/No-Go Roadmap
 
-### Paper 2 → Environmental Pollution (Submit First)
+### 1. Paper 3: Critical Systematic Review & Evidence Map (FLAGSHIP — SUBMIT FIRST)
+- **Status:** **REBUILDING UNDER 5 RESEARCH QUESTIONS**
+- **Target Venue:** *Environmental Research* (Elsevier, IF 7.7, $0 APC) or *Journal of Environmental Management* (Elsevier, IF 8.0, $0 APC).
+- **Core Contribution:**
+  - Evaluates whether published research (2000–2026) can support reliable national-scale spatial inference.
+  - 5 RQs: (1) Spatio-temporal evolution; (2) Analytical comparability & LOD handling; (3) Geographical representativeness & coordinate accuracy; (4) Risk index comparability ($CF, I_{\mathrm{geo}}, PLI, RI, HPI$); (5) Defensible national monitoring framework.
+  - 8-domain CEE / ROSES critical appraisal framework.
+- **Gate to Submit:** Complete PRISMA/ROSES search string documentation and study-quality appraisal table.
 
-> [!IMPORTANT]
-> Pivoted from Chemosphere (delisted by Clarivate from Web of Science) to **Environmental Pollution** (Elsevier, IF 8.9, Q1, 100% SCIE indexed, $0 APC subscription option).
+### 2. Paper 2: Surface Water Regulatory Audit & Surveillance Deficits
+- **Status:** **READY FOR SUBMISSION UPON REVIEW PAPER LAUNCH**
+- **Target Venue:** *Environmental Pollution* (Elsevier, IF 8.9, Q1, $0 APC).
+- **Core Contribution:**
+  - ECR 2023 Schedule 2 potable regulatory update (Pb potable exceedance surge to 85.6%).
+  - Confirmed dissolved (0.45 $\mu\text{m}$) sensitivity analysis ($k=10$ studies).
+  - HPI mathematical damping proof ($1/S_i^2$ quadratic scaling; 78.3% weight on Cd/Pb).
+  - Stream network surveillance coverage (16.5% coverage; 23 random sites Monte Carlo $p \le 0.001$).
+- **Gate to Submit:** Disclose companion relationship with Paper 3; submit once Paper 3 is under review.
 
-**Portal:** [https://www.editorialmanager.com/envpol/](https://www.editorialmanager.com/envpol/)
+### 3. Paper 4: Geospatial Data Descriptor
+- **Status:** **TECHNICAL AUDIT COMPLETE; AWAITING APC/ZENODO LIVE ACTION**
+- **Target Venue:** Nature *Scientific Data* (Gold OA, $2,690 APC) or *Data in Brief* ($0 APC).
+- **Core Contribution:**
+  - Reusable, multi-format (SQLite, Parquet, CSV, GeoPackage) relational dataset.
+  - 426 stations (220 coordinate-resolved centroids, 206 descriptive entries); 218 reach join records.
+  - 557 verified assays across 28 peer-reviewed studies (2010–2024).
+- **Gate to Submit:** Secure APC waiver or confirm institutional funding; convert Zenodo from Draft to Live.
 
-- [ ] Create account / login on Editorial Manager
-- [ ] Click **"Submit New Manuscript"**
-- [ ] Article Type: `Research Paper`
-- [ ] Enter title, abstract, keywords
-- [ ] Upload files:
-  - Cover Letter → [`cover_letter_env_poll.md`](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_environmental_pollution/cover_letter_env_poll.md)
-  - Graphical Abstract → [`graphical_abstract.png`](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_environmental_pollution/graphical_abstract.png)
-  - Manuscript → [`main.pdf`](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_2_environmental_pollution/main.pdf)
-  - Supplementary → [`supplementary_table_s1_audited_studies.md`](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/shared/supplementary_table_s1_audited_studies.md)
-- [ ] Paste Highlights (5 bullets ≤ 85 chars):
-  ```
-  ECR 2023 potable limits increase river Pb exceedances from 34.9% to 85.6%.
-  Confirmed 0.45 um filtered Pb median is 0.025 mg/L, exceeding WHO standards.
-  HPI math dampens panel shifts: Cd and Pb command 77.1% of index scores.
-  HKSJ seasonal dilution ratios cross 1.0; low-flow As peaks pre-monsoon.
-  Academic sampling monitors only 16.5% of major Bangladesh river reaches.
-  ```
-- [ ] Category: `Environmental Chemistry`
-- [ ] Suggested reviewers (3–4 names with emails)
-- [ ] Publishing model: **Subscription ($0 APC)**
-- [ ] Data availability: link to GitHub repo
-- [ ] Build PDF, review, **Submit**
-
-### Paper 1 → STOTEN (Submit Day 2–3)
-
-**Portal:** [https://www.editorialmanager.com/stoten/](https://www.editorialmanager.com/stoten/)
-
-- [ ] Create account / login on Editorial Manager
-- [ ] Click **"Submit New Manuscript"**
-- [ ] Article Type: `Research Article`
-- [ ] Enter title, abstract, keywords
-- [ ] Upload files:
-  - Cover Letter → [`cover_letter_stoten.md`](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_1_stoten/cover_letter_stoten.md)
-  - Graphical Abstract → [`fig2_risk_map.png`](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_1_stoten/fig2_risk_map.png)
-  - Manuscript → [`main.pdf`](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_1_stoten/main.pdf)
-  - Supplementary → [`supplementary_table_s1_audited_studies.md`](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/shared/supplementary_table_s1_audited_studies.md)
-- [ ] Paste Highlights (5 bullets)
-- [ ] Category: `Environmental Monitoring` or `Contaminated Sediments`
-- [ ] Suggested reviewers (3 names with emails)
-- [ ] Publishing model: **Subscription ($0 APC)**
-- [ ] Data availability: link to GitHub repo
-- [ ] Build PDF, review, **Submit**
-
-> [!NOTE]
-> Papers 1 and 2 have zero matrix overlap (sediment vs water). Safe to submit simultaneously to different Elsevier journals.
-
----
-
-## Phase 3: Submit Paper 4 (Day 5–7)
-
-### Paper 4 → Nature Scientific Data
-
-**Portal:** [https://mts-scidata.nature.com/](https://mts-scidata.nature.com/)
-
-- [ ] Confirm Zenodo DOI is reserved and inserted into `main.tex`
-- [ ] Create account on Springer Nature MTS
-- [ ] Article Type: `Data Descriptor`
-- [ ] Upload:
-  - Cover Letter → [`cover_letter_scientific_data.md`](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_4_data_descriptor/cover_letter_scientific_data.md)
-  - Manuscript → [`main.pdf`](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/paper_4_data_descriptor/main.pdf)
-- [ ] Data repository: Zenodo reserved DOI + GitHub URL
-- [ ] Suggested reviewers (3 names)
-- [ ] **Submit**
-
-> [!WARNING]
-> Nature Scientific Data is **Gold Open Access** — typical APC is ~$1,990. Check if your institution has a Springer Nature Read & Publish agreement for fee waiver. Alternative zero-APC venue: *Data in Brief* (Elsevier, IF 1.2).
-
----
-
-## Phase 4: Submit Paper 3 (Week 3–4)
-
-### Paper 3 → Environment International
-
-**Portal:** [https://www.editorialmanager.com/envint/](https://www.editorialmanager.com/envint/)
-
-- [ ] Submit after Papers 1 & 2 have confirmed "Under Review" status
-- [ ] This paper synthesizes across both matrices — references Papers 1, 2, and 4 as companion studies
-- [ ] Article Type: `Review Article` or `Systematic Review`
-- [ ] Upload all files from [`env_intl_paper_3_submission.zip`](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/submissions/env_intl_paper_3_submission.zip)
-- [ ] **Submit**
-
-> [!TIP]
-> Alternative venue if Env Intl declines: *Critical Reviews in Environmental Science and Technology* (CREST, IF 12.6, Taylor & Francis, hybrid $0 APC available).
-
----
-
-## Phase 5: Conferences (Align with CFP Deadlines)
-
-- [ ] Conference 1 (IEEE IGARSS): Check deadline at [igarss.org](https://www.igarss.org). Upload [`main.pdf`](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/conference_1_igarss/main.pdf).
-- [ ] Conference 2 (IWA Water Congress): Check deadline at [iwa-network.org](https://iwa-network.org). Upload [`main.pdf`](file:///Users/rohansmac/Documents/projects/heavy-metal/manuscripts/conference_2_water/main.pdf).
-
----
-
-## Phase 6: Post-Submission
-
-- [ ] When Papers 1 & 2 confirmed "Under Review" → click **"Publish"** on Zenodo draft
-- [ ] Update Paper 4 Zenodo DOI from reserved → live (if requested by reviewers)
-- [ ] Track all submission IDs in a spreadsheet
-- [ ] Respond to reviewer comments within 2–4 weeks of receipt
+### 4. Paper 1: Sediment Spatial Machine Learning & Transferability
+- **Status:** **TECHNICAL OVERHAUL IN PROGRESS (DO NOT SUBMIT)**
+- **Target Venue:** *Science of The Total Environment* (STOTEN, Elsevier, IF 8.2, $0 APC).
+- **Core Contribution:**
+  - HydroRIVERS-informed machine learning vs planar geostatistical collapse.
+  - **Empirical LORO Transferability Penalty:** Transparently reports negative $R^2$ under true Leave-One-River-Out validation to expose the boundary between local corridor interpolation ($R^2 = 0.54\text{--}0.64$) and out-of-basin cross-river generalization ($R^2 < 0$).
+  - Full-suite 6-metal prediction uncertainty and composite Hakanson $RI$ cartography ($RI = 498.25 \pm 68.20$, $CV = 13.6\%$).
+- **Gate to Submit:** Formalize the applicability domain and mask high-extrapolation reaches before submission.

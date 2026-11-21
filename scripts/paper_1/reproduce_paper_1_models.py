@@ -126,19 +126,20 @@ for metal_name, m_info in METALS.items():
             'RMSE_log': round(rmse_log, 3), 'R2_log': round(r2_log, 4)
         })
 
-    # Leave-One-River-Out (LORO) Spatial Generalization Evaluation
-    gkf = GroupKFold(n_splits=min(5, len(np.unique(rivers))))
+    # Strict Leave-One-River-Out (LORO) Spatial Generalization Evaluation
+    from sklearn.model_selection import LeaveOneGroupOut
+    logo = LeaveOneGroupOut()
     cat_std_preds = np.zeros(N)
     cat_spatial_preds = np.zeros(N)
 
-    # Standard fold
+    # Standard random 5-fold CV (interpolation within monitored corridors)
     for train_idx, val_idx in kf.split(X, y):
         cat_m = CatBoostRegressor(iterations=100, depth=4, learning_rate=0.05, random_seed=SEED, verbose=0)
         cat_m.fit(X[train_idx], y[train_idx])
         cat_std_preds[val_idx] = cat_m.predict(X[val_idx])
 
-    # Spatial cluster fold (by river basin to prevent co-located data leakage)
-    for train_idx, val_idx in gkf.split(X, y, groups=rivers):
+    # True Leave-One-River-Out (holding out one entire river basin at a time)
+    for train_idx, val_idx in logo.split(X, y, groups=rivers):
         cat_m = CatBoostRegressor(iterations=100, depth=4, learning_rate=0.05, random_seed=SEED, verbose=0)
         cat_m.fit(X[train_idx], y[train_idx])
         cat_spatial_preds[val_idx] = cat_m.predict(X[val_idx])
@@ -150,7 +151,7 @@ for metal_name, m_info in METALS.items():
         'N': N,
         'Unique_River_Basins': len(np.unique(rivers)),
         'Standard_Random_5Fold_R2': round(std_r2, 4),
-        'Spatial_Cluster_LORO_R2': round(spatial_r2, 4),
+        'True_LORO_R2': round(spatial_r2, 4),
         'Transferability_Penalty': round(std_r2 - spatial_r2, 4)
     })
 
