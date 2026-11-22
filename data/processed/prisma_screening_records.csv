@@ -1,0 +1,17 @@
+Stage,Database,Records_Identified,Exclusion_Reason,Notes
+Identification,Web of Science Core Collection,580,N/A,Topic search: heavy metal AND river AND Bangladesh (2010–2025)
+Identification,Scopus (Elsevier),610,N/A,Title-Abs-Key: trace metal AND river AND Bangladesh (2010–2025)
+Identification,PubMed / MEDLINE,110,N/A,MeSH & text words for aquatic toxic metals Bangladesh (2010–2025)
+Identification,Google Scholar / Institutional Repositories,120,N/A,Targeted forward and backward citation chaining across key authors
+Deduplication,Cross-Database Reconciliation,582,Duplicate Title/DOI Match,Exact DOI match and Title/Author string deduplication
+Screening,Title & Abstract Screening,838,Screened for Eligibility,Assessed against inclusion/exclusion criteria
+Exclusion_Title_Abstract,Title/Abstract Review,312,Non-riverine marine or groundwater systems,Excluded deep tube-well drinking water or Bay of Bengal offshore cruises
+Exclusion_Title_Abstract,Title/Abstract Review,245,Agricultural soil and crop bioaccumulation,Excluded paddy soil and food-crop ingestion studies without riverine matrices
+Exclusion_Title_Abstract,Title/Abstract Review,128,Laboratory fish toxicology / in-vitro only,Excluded laboratory bioassays without field ambient environmental sampling
+Exclusion_Title_Abstract,Title/Abstract Review,79,"Review articles, commentaries, and editorials",Excluded secondary compilations lacking primary field measurements
+Eligibility,Full-Text Retrieval,74,Assessed in Full Text,Full PDF articles retrieved and forensically examined
+Exclusion_Full_Text,Full-Text Assessment,18,Missing station-level primary concentration data,Reported only aggregate study-level bar charts or Pearson correlation matrices
+Exclusion_Full_Text,Full-Text Assessment,14,Direct industrial wastewater / point-source pipe outfalls,Samples taken directly from factory drainage pipes rather than ambient river receiving waters
+Exclusion_Full_Text,Full-Text Assessment,9,Unstated or untraceable analytical instrumentation,"Failed to report spectrometry model, digestion acids, or quality control"
+Exclusion_Full_Text,Full-Text Assessment,5,Published prior to 2010 temporal baseline,Field sampling and publication antedated the 2010 synthesis horizon
+Included,Systematic Review & Meta-Database,28,Fully Eligible and Audited,"Comprises 11 sediment exclusive, 12 surface-water heavy metal, and 5 bulk water quality studies"

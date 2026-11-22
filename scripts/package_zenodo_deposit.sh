@@ -15,6 +15,7 @@ cp data/processed/studies.csv           "$OUTDIR/"
 cp data/processed/master_harmonized.csv "$OUTDIR/"
 cp data/processed/station_hydrorivers_matched.csv "$OUTDIR/"
 cp data/processed/study_extraction_evidence.csv "$OUTDIR/"
+cp data/processed/prisma_screening_records.csv "$OUTDIR/"
 cp data/processed/*.parquet             "$OUTDIR/"
 
 # GIS layers
@@ -27,23 +28,24 @@ cp .zenodo.json "$OUTDIR/"
 # Create README for the deposit
 cat > "$OUTDIR/README.txt" << 'EOF'
 ==============================================================================
-Heavy Metal Geospatial Database — Bangladesh Rivers (2010–2024)
+Heavy Metal Geospatial Database — Bangladesh Rivers (2010–2025)
 ==============================================================================
 
 CONTENTS:
-  heavy_metal.db                  Master SQLite relational database (4 tables)
+  heavy_metal.db                  Master SQLite relational database (8 tables, 2 views)
   *.parquet                       Columnar Parquet exports for all tables
   water_data.csv                  Surface water assays (268 rows × 49 cols)
   sediment_data.csv               Bed sediment assays (289 rows × 32 cols)
-  stations.csv                    Observation stations (426 rows × 14 cols; 220 georeferenced)
+  stations.csv                    Physical sampling stations (222 rows × 15 cols; 85 georeferenced, 137 descriptive)
   studies.csv                     Study metadata & instrumentation (28 rows)
   master_harmonized.csv           Denormalized master table (557 rows × 59 cols)
-  station_hydrorivers_matched.csv Topological reach join table (220 records)
+  station_hydrorivers_matched.csv Metric UTM 45N topological reach join table (85 records)
   study_extraction_evidence.csv   8-domain CEE extraction evidence table (28 studies)
+  prisma_screening_records.csv    PRISMA 2020 screening log (1,420 candidates -> 28 studies)
   hydrorivers_bangladesh.gpkg     HydroSHEDS HydroRIVERS clipped network
   bangladesh_boundary.geojson     National boundary polygon (WGS84)
 
-COORDINATE SYSTEM: EPSG:4326 (WGS84)
+COORDINATE SYSTEM: EPSG:4326 (WGS84) / Metric Snapping in EPSG:32645 (UTM Zone 45N)
 LICENSE: CC-BY 4.0
 CODE: https://github.com/ShMazumder/heavy-metal
 EOF

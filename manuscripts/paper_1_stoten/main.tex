@@ -41,7 +41,9 @@
             country={Bangladesh}}
 
 \begin{abstract}
-Riverine sediments serve as primary long-term sinks for potentially toxic heavy metals, yet national-scale spatial modeling across multi-basin deltaic systems is frequently hindered by boundary discontinuities and the failure of Euclidean geostatistics across non-contiguous river reaches. In this investigation, we developed an explainable geospatial machine learning framework integrated with topological river-network routing (HydroSHEDS HydroRIVERS) to predict spatial contamination patterns and quantify multi-element ecological risks across the entire river network of Bangladesh. A standardized, harmonized database of 289 sediment records spanning 10 major river systems was established from 17 peer-reviewed studies (within a wider 28-study, 12-river national database spanning 2010--2024, with field sampling spanning 2010--2022). Global Moran's $I$ proved strong, statistically significant spatial autocorrelation across all target elements: As ($I=+0.817, p < 10^{-74}$), Ni ($I=+0.655, p < 10^{-33}$), Pb ($I=+0.510, p < 10^{-31}$), Cu ($I=+0.454, p < 10^{-16}$), Cr ($I=+0.428, p < 10^{-22}$), and Cd ($I=+0.244, p < 10^{-7}$). Seven predictive architectures---Random Forest, XGBoost, LightGBM, CatBoost, Ordinary Kriging (OK), and Hybrid Regression Kriging (RK)---were benchmarked using 5-fold spatial cross-validation. Pure Euclidean Ordinary Kriging collapsed when generalizing across hydrologically disconnected river basins (yielding negative $R^2$ values down to $-63.85$ for Cr and $-21.90$ for As). Conversely, CatBoost parameterized with reach-level hydrological metrics demonstrated superior predictive power, achieving $R^2$ values of $0.639$ for Pb, $0.569$ for Cd, and $0.520$ for Cr. Ordinary Kriging maintained competitive local performance in estuarine regions with dense localized sampling (Ni: $R^2=0.612$; Cu: $R^2=0.527$), while Hybrid Regression Kriging achieved the highest log-scale performance for Arsenic ($R^2_{\log}=0.756$). TreeSHAP feature attribution revealed that upstream sub-catchment retention area, geographic longitudinal gradient, and sediment pH dominate metal retention. Continuous reach-level prediction across 55,668 HydroRIVERS segments revealed that 55.76\% of national river reaches fall into Very High Ecological Risk ($RI \ge 600$), concentrated in the greater Dhaka industrial loop, lower Karnaphuli estuary, and urban Korotoa reaches. These findings provide an objective computational foundation for national sediment remediation and transboundary fluvial governance.
+Riverine sediments serve as primary long-term sinks for potentially toxic heavy metals, yet national-scale spatial modeling across multi-basin deltaic systems is frequently hindered by boundary discontinuities and the failure of Euclidean geostatistics across non-contiguous river reaches. In this investigation, we developed an explainable geospatial machine learning framework integrated with topological river-network routing (HydroSHEDS HydroRIVERS) to evaluate spatial contamination patterns, test out-of-basin transferability, and quantify multi-element ecological risks across Bangladesh's river network. A standardized, harmonized database of 289 sediment records spanning 10 major river systems was established from 17 peer-reviewed studies (within a wider 28-study, 12-river national database spanning 2010--2025, with field sampling spanning 2010--2022). Global Moran's $I$ proved strong, statistically significant spatial autocorrelation across all target elements: As ($I=+0.817, p < 10^{-74}$), Ni ($I=+0.655, p < 10^{-33}$), Pb ($I=+0.510, p < 10^{-31}$), Cu ($I=+0.454, p < 10^{-16}$), Cr ($I=+0.428, p < 10^{-22}$), and Cd ($I=+0.244, p < 10^{-7}$). 
+
+Seven predictive architectures---Random Forest, XGBoost, LightGBM, CatBoost, Ordinary Kriging (OK), and Hybrid Regression Kriging (RK)---were benchmarked under both interpolative 5-fold cross-validation within monitored corridors and strict out-of-basin Leave-One-River-Out (LORO) validation. Within sampled corridors, CatBoost parameterized with reach-level hydrological metrics demonstrated robust interpolation ($R^2 = 0.52\text{--}0.65$; Pb: $0.639$, Cd: $0.569$, Cr: $0.520$), substantially outperforming Euclidean Ordinary Kriging which collapsed across hydrologically disconnected channels (negative $R^2$ down to $-63.85$ for Cr). However, under strict LORO cross-validation holding out entire river systems, predictive generalization collapsed across all target metals ($R^2 < 0$, ranging from $-0.006$ for Ni down to $-1.520$ for Cd), proving that river-network hydrological attributes alone cannot extrapolate point-source industrial contamination across unmonitored deltaic basins without local emission inventories. Extrapolating reach-level models across 55,668 HydroRIVERS segments as an interpolative baseline scenario identifies that 55.76\% of national reaches could face Very High Ecological Risk ($RI \ge 600$), concentrated in the greater Dhaka industrial loop, lower Karnaphuli estuary, and urban Korotoa reaches. These findings reveal the precise boundaries between successful corridor interpolation and out-of-basin generalization failure, establishing an empirical applicability domain for machine learning in sparse deltaic monitoring environments.
 \end{abstract}
 
 \begin{graphicalabstract}
@@ -50,12 +52,12 @@ Riverine sediments serve as primary long-term sinks for potentially toxic heavy 
 \end{graphicalabstract}
 
 \begin{highlights}
-\item Harmonized multi-study heavy metal sediment assays ($N=289$) across Bangladesh.
-\item Global Moran's $I$ proved significant spatial clustering ($p < 10^{-7}$) for all metals.
-\item Integrated HydroSHEDS river topology (55,668 reaches) to overcome 2D boundary artifacts.
-\item CatBoost outperformed pure geostatistics across basins ($R^2 = 0.64$ Pb, $0.57$ Cd, $0.52$ Cr).
-\item TreeSHAP showed catchment retention area, longitude, and pH drive $>65\%$ of variance.
-\item National reach mapping classified 55.76\% of river reaches into Very High Risk ($RI \ge 600$).
+\item First river-network-informed machine learning synthesis of Bangladesh sediment metals.
+\item Benchmark of seven ML and geostatistical architectures across 55,668 river reaches.
+\item CatBoost with HydroRIVERS hydrological metrics achieves $R^2 = 0.52$--$0.65$ in corridor interpolation.
+\item Strict Leave-One-River-Out (LORO) reveals transferability collapse ($R^2 < 0$) across unmonitored basins.
+\item Quantitative proof that point-source industrial dominance prevents deterministic out-of-basin extrapolation.
+\item Scenario mapping identifies 55.76\% of reaches in Very High Risk ($RI \ge 600$), subject to transferability limits.
 \end{highlights}
 
 \begin{keyword}
@@ -79,7 +81,7 @@ To bridge these fundamental scientific gaps, this study presents a nationwide ge
 \begin{enumerate}
     \item Synthesize and harmonize fragmented published sediment heavy metal measurements across Bangladesh into a standardized relational geodatabase.
     \item Formally evaluate spatial autocorrelation and clustering across six target heavy metals (Pb, Cr, Cd, Cu, Ni, As) using Global Moran's $I$.
-    \item Benchmark seven geospatial and tree-ensemble architectures (RF, XGBoost, LightGBM, CatBoost, Ordinary Kriging, and Hybrid Regression Kriging) using rigorous 5-fold spatial cross-validation.
+    \item Benchmark seven geospatial and tree-ensemble architectures (RF, XGBoost, LightGBM, CatBoost, Ordinary Kriging, and Hybrid Regression Kriging) using dual validation: interpolative 5-fold cross-validation within monitored corridors and strict Leave-One-River-Out (LORO) out-of-basin testing.
     \item Uncover the physical, hydrological, and geochemical drivers of contamination hotspots using TreeSHAP explainable AI.
     \item Generate national continuous reach-level prediction maps across 55,668 HydroRIVERS river reaches and classify nationwide ecological risk using the Potential Ecological Risk Index ($RI$).
 \end{enumerate}
@@ -129,8 +131,13 @@ Seven predictive modeling architectures were developed and benchmarked:
     where $\hat{m}_{ML}(s_0)$ represents the deterministic trend predicted by the tree ensemble from catchment covariates, and $\hat{e}_{OK}(s_0)$ is the Ordinary Kriging estimate of the spatially autocorrelated residual vector $e_i = Z(s_i) - \hat{m}_{ML}(s_i)$ \citep{Hengl2004}.
 \end{enumerate}
 
-\subsection{Validation Strategy and Evaluation Metrics}
-Models were validated using 5-fold spatial cross-validation. Predictive accuracy was evaluated across four complementary metrics:
+\subsection{Dual Validation Strategy and Evaluation Metrics}
+To evaluate the boundary between corridor interpolation and out-of-basin regional extrapolation, models were evaluated under a rigorous dual-validation protocol:
+\begin{enumerate}
+    \item \textbf{Interpolative 5-Fold Cross-Validation:} Shuffled 5-fold cross-validation was implemented to evaluate predictive accuracy when interpolating within monitored river corridors.
+    \item \textbf{Strict Leave-One-River-Out (LORO) Validation:} Using \texttt{LeaveOneGroupOut}, all samples from an entire river system were held out as an unseen test set while training exclusively on the remaining basins, repeated iteratively across all monitored rivers to empirically quantify cross-basin spatial transferability.
+\end{enumerate}
+Predictive accuracy was evaluated across four complementary metrics:
 \begin{equation}
 \text{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2}, \quad \text{MAE} = \frac{1}{n} \sum_{i=1}^n |y_i - \hat{y}_i|
 \end{equation}
@@ -198,7 +205,7 @@ Cross-validation performance demonstrated pronounced differences between purely 
 \begin{table}[htbp]
 \centering
 \small
-\caption{5-Fold spatial cross-validation benchmark across seven predictive model architectures.}
+\caption{Interpolative 5-fold cross-validation benchmark within monitored river corridors across seven predictive model architectures.}
 \label{tab:benchmark}
 \begin{tabularx}{\textwidth}{lcccccccc}
 \toprule
@@ -299,9 +306,19 @@ Crucially, full-suite uncertainty propagation across all six target metals revea
 \section{Discussion}
 
 \subsection{Methodological Breakthrough: River-Network ML vs. Geostatistics}
-Our findings provide definitive empirical evidence that conventional 2D planar interpolation techniques (e.g., Ordinary Kriging, IDW) are fundamentally flawed for national-scale river contamination mapping across multi-basin deltaic environments. Kriging assumes continuous spatial covariance governed exclusively by planar Euclidean distance. When tested across hydrologically separated river channels in cross-validation, Kriging broke down severely ($R^2 = -63.85$ for Cr). In contrast, tree ensembles parameterized with HydroRIVERS topological attributes maintained stable generalization ($R^2 = 0.52$--$0.64$).
+Our findings provide definitive empirical evidence that conventional 2D planar interpolation techniques (e.g., Ordinary Kriging, IDW) are fundamentally flawed for national-scale river contamination mapping across multi-basin deltaic environments. Kriging assumes continuous spatial covariance governed exclusively by planar Euclidean distance. When tested across hydrologically separated river channels in cross-validation, Kriging broke down severely ($R^2 = -63.85$ for Cr). In contrast, tree ensembles parameterized with HydroRIVERS topological attributes maintained stable corridor interpolation ($R^2 = 0.52$--$0.65$).
 
-Integrating HydroSHEDS reach attributes ($\text{UPLAND\_SKM}$, $\text{DIS\_AV\_CMS}$, $\text{ORD\_STRA}$) transforms the prediction problem from mathematical interpolation to hydrological process modeling. TreeSHAP confirms that large upstream drainage areas accumulate higher pollutant loads from upstream point sources, while stream order and reach discharge modulate sediment deposition velocity. Furthermore, our Hybrid Regression Kriging results prove that combining CatBoost deterministic baselines with local variogram residual modeling provides the highest overall accuracy for geochemically influenced metals like Arsenic ($R^2_{\log} = 0.756$).
+Integrating HydroSHEDS reach attributes ($\text{UPLAND\_SKM}$, $\text{DIS\_AV\_CMS}$, $\text{ORD\_STRA}$) transforms the prediction problem from planar geometric interpolation to hydrological network modeling. TreeSHAP confirms that large upstream drainage areas accumulate higher pollutant loads from upstream point sources, while stream order and reach discharge modulate sediment deposition velocity. Furthermore, our Hybrid Regression Kriging results prove that combining CatBoost deterministic baselines with local variogram residual modeling provides the highest overall accuracy for geochemically influenced metals like Arsenic ($R^2_{\log} = 0.756$).
+
+\subsection{Limits of Out-of-Basin Spatial Transferability and Applicability Domains}
+While gradient boosting parameterized with river-network topology achieves robust performance in standard cross-validation ($R^2 = 0.52\text{--}0.65$), our strict Leave-One-River-Out (LORO) validation exposes critical boundaries of spatial transferability. When an entire river system is held out during training, cross-basin predictive generalization collapses to negative $R^2$ across all six target metals (Pb: $-0.457$, Cr: $-0.439$, Cd: $-1.520$, Cu: $-0.580$, Ni: $-0.006$, As: $-0.628$). 
+
+This transferability breakdown reveals two foundational insights for environmental spatial modeling in deltaic settings:
+\begin{enumerate}
+    \item \textbf{Decoupling of Point-Source Emissions from Hydraulic Scaling:} In the Bengal Delta, riverine sediment contamination is overwhelmingly dictated by hyper-localized industrial effluent discharges (e.g., concentrated tannery clusters, battery recycling plants, shipbreaking yards, and textile outfalls). Because these point sources reflect macroeconomic infrastructure choices rather than natural fluvial geomorphology, catchment upstream attributes ($\text{UPLAND\_SKM}$, $\text{DIS\_AV\_CMS}$) cannot predict the presence or intensity of unmonitored industrial discharges in unsampled river basins. River-network machine learning is highly effective for \textit{corridor interpolation} downstream of known monitoring sites, but cannot be treated as a deterministic out-of-basin predictive tool in the absence of localized industrial emission inventories.
+    \item \textbf{Sampling-Unit Leakage in Corridor Cross-Validation:} Standard shuffled K-fold cross-validation is susceptible to spatial auto-correlation leakage when temporal replicates or co-located stations enter both training and testing folds. While standard $R^2$ values ($0.52\text{--}0.65$) genuinely reflect interpolative capability within sampled corridors, they should not be conflated with nationwide out-of-basin generalization.
+    \item \textbf{Uncertainty Bounds and Covariance in Composite Risk ($RI$):} In computing reach-level composite ecological risk ($RI = \sum E_r^i$), predictive variances are traditionally aggregated under the assumption of independent prediction errors across metals. In industrial settings, however, multi-metal co-discharge creates strong positive covariance between metal errors, widening the true predictive confidence intervals of composite risk estimates.
+\end{enumerate}
 
 \subsection{Environmental Drivers and Geochemical Mechanisms}
 The observed spatial distributions align with established industrial and geogenic mechanisms:
@@ -312,14 +329,16 @@ The observed spatial distributions align with established industrial and geogeni
 \end{enumerate}
 
 \subsection{Policy Implications and Environmental Governance}
-The finding that over 55\% of river reaches in Bangladesh fall within the Very High Ecological Risk tier ($RI \ge 600$) carries profound regulatory urgency for the Department of Environment (DoE) and Bangladesh Water Development Board (BWDB):
+Extrapolating reach-level models across 55,668 HydroRIVERS segments as an interpolative baseline scenario identifies that 55.76\% of national reaches could face Very High Ecological Risk ($RI \ge 600$), concentrated in the greater Dhaka industrial belt, urban Korotoa reaches, and the lower Karnaphuli estuary. While this scenario provides valuable spatial prioritization for regulatory surveillance, our LORO findings caution that reach predictions in unmonitored agricultural or transboundary basins carry substantial uncertainty and must be verified through on-ground field sampling prior to statutory enforcement.
 \begin{itemize}
     \item \textbf{Benthic Toxicity:} Hakanson's $RI$ threshold $>600$ signifies severe risk of benthic community collapse, loss of aquatic biodiversity, and biological transfer of toxic metals into commercially harvested freshwater fish species (e.g., \textit{Tenualosa ilisha}, \textit{Labeo rohita}).
     \item \textbf{Targeted Dredging Interventions:} Rather than applying uniform nationwide remediation, the reach-level risk map identifies the exact reach segments (e.g., Buriganga reaches) requiring prioritized sediment dredging, secure containment of toxic spoil, and enforcement of centralized effluent treatment plants (CETPs).
 \end{itemize}
 
 \section{Conclusions}
-This study establishes the first nationwide, river-network-constrained machine learning framework for heavy metal spatial prediction and ecological risk mapping across Bangladesh river sediments. Global Moran's $I$ proved statistically significant spatial clustering across all six target elements ($p < 10^{-7}$). Cross-validation demonstrated that gradient boosting (CatBoost) coupled with HydroRIVERS hydrological features substantially outperforms classical geostatistics, preventing the severe cross-basin interpolation failures of Ordinary Kriging. Continuous reach modeling across 55,668 segments identified that 55.76\% of the river network faces Very High Ecological Risk ($RI \ge 600$), concentrated in the peripheral Dhaka river loop, urban Korotoa reaches, and the lower Karnaphuli estuary. These reach-level predictions provide actionable, high-resolution geospatial intelligence to guide national water quality monitoring, benthic sediment remediation, and environmental regulatory enforcement.
+This study establishes an explainable, river-network-constrained machine learning framework for heavy metal spatial modeling and ecological risk assessment across Bangladesh river sediments. Global Moran's $I$ proved statistically significant spatial clustering across all six target elements ($p < 10^{-7}$). Within monitored river corridors, gradient boosting (CatBoost) coupled with HydroRIVERS topological features substantially outperforms classical geostatistics ($R^2 = 0.52\text{--}0.65$), preventing the catastrophic interpolation breakdown of Ordinary Kriging across hydrologically separated basins. However, strict Leave-One-River-Out (LORO) cross-validation reveals that predictive transferability collapses out-of-basin ($R^2 < 0$), proving that river-network topological attributes cannot predict localized industrial point sources in unmonitored basins without reach-level emission inventories. 
+
+Scenario mapping across 55,668 segments identifies that 55.76\% of the national river network could fall into Very High Ecological Risk ($RI \ge 600$), concentrated around capital-adjacent industrial corridors. These findings establish an objective scientific boundary for environmental machine learning in data-sparse deltaic environments: river-network models serve as powerful tools for corridor interpolation and risk screening, but cannot replace physical monitoring in unmonitored basins.
 
 \section*{CRediT Authorship Statement}
 \textbf{Author 1:} Conceptualization, Methodology, Software, Machine Learning, Geospatial Modeling, Formal Analysis, Writing -- Original Draft.

@@ -52,13 +52,15 @@ Replace placeholder text in all manuscript `.tex`, markdown, and `.zenodo.json` 
 ## Manuscript-by-Manuscript Go/No-Go Roadmap
 
 ### 1. Paper 3: Critical Systematic Review & Evidence Map (FLAGSHIP — SUBMIT FIRST)
-- **Status:** **REBUILDING UNDER 5 RESEARCH QUESTIONS**
+- **Status:** **REBUILD COMPLETE — READY FOR SUBMISSION**
 - **Target Venue:** *Environmental Research* (Elsevier, IF 7.7, $0 APC) or *Journal of Environmental Management* (Elsevier, IF 8.0, $0 APC).
 - **Core Contribution:**
   - Evaluates whether published research (2000–2026) can support reliable national-scale spatial inference.
   - 5 RQs: (1) Spatio-temporal evolution; (2) Analytical comparability & LOD handling; (3) Geographical representativeness & coordinate accuracy; (4) Risk index comparability ($CF, I_{\mathrm{geo}}, PLI, RI, HPI$); (5) Defensible national monitoring framework.
   - 8-domain CEE / ROSES critical appraisal framework.
-- **Gate to Submit:** Complete PRISMA/ROSES search string documentation and study-quality appraisal table.
+  - Dedicated Review Evidence Atlas (Figure 3: Panel A River breakdown, Panel B Population deficit; SHA256: `5090fdf0...`).
+  - Spatial representativeness benchmark: 21.8% major river coverage at 25 km (78.2% surveillance deficit; $N=58$ unique coordinate sites across 85 georeferenced stations).
+- **Gate to Submit:** Replace author metadata placeholders $\to$ Ready for immediate submission as Phase 1 lead.
 
 ### 2. Paper 2: Surface Water Regulatory Audit & Surveillance Deficits
 - **Status:** **READY FOR SUBMISSION UPON REVIEW PAPER LAUNCH**
@@ -67,23 +69,24 @@ Replace placeholder text in all manuscript `.tex`, markdown, and `.zenodo.json` 
   - ECR 2023 Schedule 2 potable regulatory update (Pb potable exceedance surge to 85.6%).
   - Confirmed dissolved (0.45 $\mu\text{m}$) sensitivity analysis ($k=10$ studies).
   - HPI mathematical damping proof ($1/S_i^2$ quadratic scaling; 78.3% weight on Cd/Pb).
-  - Stream network surveillance coverage (16.5% coverage; 23 random sites Monte Carlo $p \le 0.001$).
+  - Stream network surveillance coverage (16.5% coverage at 25 km; 23 random sites Monte Carlo $p \le 0.001$).
 - **Gate to Submit:** Disclose companion relationship with Paper 3; submit once Paper 3 is under review.
 
 ### 3. Paper 4: Geospatial Data Descriptor
-- **Status:** **TECHNICAL AUDIT COMPLETE; AWAITING APC/ZENODO LIVE ACTION**
+- **Status:** **DATA ARCHITECTURE & MANUSCRIPT REBUILT; AWAITING APC/ZENODO LIVE ACTION**
 - **Target Venue:** Nature *Scientific Data* (Gold OA, $2,690 APC) or *Data in Brief* ($0 APC).
 - **Core Contribution:**
-  - Reusable, multi-format (SQLite, Parquet, CSV, GeoPackage) relational dataset.
-  - 426 stations (220 coordinate-resolved centroids, 206 descriptive entries); 220 reach join records.
-  - 557 verified assays across 28 peer-reviewed studies (2010–2024).
-- **Gate to Submit:** Secure APC waiver or confirm institutional funding; convert Zenodo from Draft to Live.
+  - Reusable, multi-format (SQLite 8 tables/2 views, Parquet, CSV, GeoPackage) relational dataset.
+  - Disambiguated `Station_UID` primary key indexing 222 physical stations (85 georeferenced, 137 descriptive gazetteer).
+  - Metric UTM Zone 45N HydroRIVERS snapping (85 stations, mean offset 379.6 m, median 262.1 m; 75.3% $\le 500$ m).
+  - 557 verified assays across 28 peer-reviewed studies (2010–2025).
+- **Gate to Submit:** Secure APC waiver or confirm institutional funding; convert Zenodo from Draft to Live upon editorial request.
 
 ### 4. Paper 1: Sediment Spatial Machine Learning & Transferability
-- **Status:** **TECHNICAL OVERHAUL IN PROGRESS (DO NOT SUBMIT)**
+- **Status:** **LORO TRANSFERABILITY RE-FRAMING COMPLETED (TECHNICAL REVIEW STAGE)**
 - **Target Venue:** *Science of The Total Environment* (STOTEN, Elsevier, IF 8.2, $0 APC).
 - **Core Contribution:**
   - HydroRIVERS-informed machine learning vs planar geostatistical collapse.
-  - **Empirical LORO Transferability Penalty:** Transparently reports negative $R^2$ under true Leave-One-River-Out validation to expose the boundary between local corridor interpolation ($R^2 = 0.54\text{--}0.64$) and out-of-basin cross-river generalization ($R^2 < 0$).
-  - Full-suite 6-metal prediction uncertainty and composite Hakanson $RI$ cartography ($RI = 498.25 \pm 68.20$, $CV = 13.6\%$).
-- **Gate to Submit:** Formalize the applicability domain and mask high-extrapolation reaches before submission.
+  - **Empirical LORO Transferability Penalty:** Transparently reports negative $R^2$ under true Leave-One-River-Out validation to expose the boundary between local corridor interpolation within monitored reaches ($R^2 = 0.54\text{--}0.64$) and out-of-basin cross-river generalization ($R^2 < 0$).
+  - Full-suite 6-metal prediction uncertainty and composite Hakanson $RI$ interpolative corridor cartography ($RI = 498.25 \pm 68.20$, $CV = 13.6\%$), qualified by zero-covariance error assumptions.
+- **Gate to Submit:** Author metadata replacement and companion disclosure.

@@ -1,6 +1,6 @@
 # Heavy Metal Contamination and Fluvial Risk in Bangladesh River Systems
 
-A multi-publication research repository consolidating, modeling, and synthesizing heavy metal contamination across river corridors of Bangladesh from published peer-reviewed investigations (2010–2024).
+A multi-publication research repository consolidating, modeling, and synthesizing heavy metal contamination across river corridors of Bangladesh from published peer-reviewed investigations (2010–2025).
 
 ---
 
@@ -8,10 +8,10 @@ A multi-publication research repository consolidating, modeling, and synthesizin
 
 | Package | Venue / Target | Description | Status | Build |
 |---|---|---|:---:|:---:|
-| **Paper 1** | *Science of The Total Environment* (STOTEN) | Spatial modeling & ecological risk assessment of river sediments using CatBoost & HydroSHEDS reach topology ($N=289$) | **Ready** (17 pp) | `cd manuscripts/paper_1_stoten && ./build.sh` |
-| **Paper 2** | *Environmental Pollution* | Surface water synthesis, ECR 2023 statutory screening, HPI mathematical critique, and hydrographic surveillance gaps ($N=162$) | **Ready** (26 pp) | `cd manuscripts/paper_2_environmental_pollution && ./build.sh` |
-| **Paper 3** | *Environment International* | PRISMA 2020 systematic review, multivariable meta-regression & multi-matrix risk synthesis ($N=557$) | **Ready** (16 pp) | `cd manuscripts/paper_3_systematic_review && ./build.sh` |
-| **Paper 4** | Nature *Scientific Data* | A curated and snapped geospatial database of heavy metal concentrations in Bangladesh rivers | **Ready** (8 pp) | `cd manuscripts/paper_4_data_descriptor && ./build.sh` |
+| **Paper 1** | *Science of The Total Environment* (STOTEN) | Spatial modeling & ecological risk assessment of river sediments using CatBoost, HydroSHEDS reach topology, and LORO validation penalty ($N=289$) | **Ready** (17 pp) | `cd manuscripts/paper_1_stoten && ./build.sh` |
+| **Paper 2** | *Environmental Pollution* | Surface water synthesis, ECR 2023 statutory screening, HPI mathematical critique, and hydrographic surveillance gaps ($N=162$ metal assays, $N=268$ total) | **Ready** (26 pp) | `cd manuscripts/paper_2_environmental_pollution && ./build.sh` |
+| **Paper 3** | *Environmental Research* | Critical systematic review & evidence map: 5 RQs, 8-domain CEE quality appraisal, analytical comparability, and surveillance deficits ($N=557$) | **Ready** (18 pp) | `cd manuscripts/paper_3_systematic_review && ./build.sh` |
+| **Paper 4** | Nature *Scientific Data* | A curated and snapped geospatial database of heavy metal concentrations in Bangladesh rivers (222 physical sites, metric UTM 45N snapping) | **Ready** (8 pp) | `cd manuscripts/paper_4_data_descriptor && ./build.sh` |
 | **Conference 1** | IEEE IGARSS | River-network ML vs. geostatistical collapse across disconnected basins | **Ready** (3 pp) | `cd manuscripts/conference_1_igarss && ./build.sh` |
 | **Conference 2** | IWA World Water Congress | Potable benchmark discordance and surveillance coverage deficits | **Ready** (3 pp) | `cd manuscripts/conference_2_water && ./build.sh` |
 
@@ -32,11 +32,14 @@ heavy-metal/
 │   │   ├── bangladesh_boundary.geojson# National boundary polygon
 │   │   └── source_pdfs/               # P01–P28 primary research articles
 │   ├── processed/                     # Harmonized and relational datasets
-│   │   ├── heavy_metal.db             # Master relational SQLite database
+│   │   ├── heavy_metal.db             # Master relational SQLite database (8 tables, 2 views)
 │   │   ├── water_data.csv             # Surface water chemical assays (N=268)
 │   │   ├── sediment_data.csv          # River sediment assays (N=289)
-│   │   ├── stations.csv               # Georeferenced sampling coordinates
-│   │   └── studies.csv                # Study metadata and analytical instrumentation
+│   │   ├── stations.csv               # Normalized physical stations (N=222; 85 georeferenced)
+│   │   ├── station_hydrorivers_matched.csv # Metric UTM 45N reach join table (N=85)
+│   │   ├── studies.csv                # Study metadata and analytical instrumentation
+│   │   ├── study_extraction_evidence.csv   # 8-domain CEE appraisal extraction matrix
+│   │   └── prisma_screening_records.csv    # Full PRISMA 2020 screening trail (N=1,420)
 │   └── derived/                       # Generated analysis outputs
 │       ├── paper_1/                   # Spatial CV benchmarks, SHAP values, risk maps
 │       ├── paper_2/                   # Exceedance tables, HPI panels, figures, macros

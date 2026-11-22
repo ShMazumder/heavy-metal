@@ -1,4 +1,4 @@
-# A Curated and Snapped Geospatial Database of Heavy Metal Concentrations in River Sediments and Waters Across Bangladesh (2010–2024)
+# A Curated and Snapped Geospatial Database of Heavy Metal Concentrations in River Sediments and Waters Across Bangladesh (2010–2025)
 
 **Target Journal:** *Scientific Data* (Nature Portfolio, IF 5.8)  
 **Article Type:** Data Descriptor  
@@ -11,27 +11,27 @@ $^*$Corresponding author: Author One (author.one@university.edu)
 ---
 
 ## Abstract
-Potentially toxic heavy metals in riverine corridors of the Ganges-Brahmaputra-Meghna delta threaten aquatic ecology and drinking water security for over 170 million people. Although numerous environmental investigations have been published across Bangladesh over the past 15 years, data remain fragmented in static PDF tables, lack standardized geospatial referencing, and conflate acute dissolved aqueous concentrations with benthic sediment sinks. Here, we present a harmonized, provenance-documented, and hydrologically snapped geospatial database of heavy metal concentrations in river waters and bed sediments across Bangladesh compiled from 28 peer-reviewed publications (2010–2024). The database contains 557 verified analytical assays—289 bed sediment records across 133 unique station centroids and 268 surface water records (comprising 162 trace element assays across 12 investigations and 106 bulk physicochemical records across 5 investigations) across 12 major river basins—covering seven key trace elements (As, Cd, Cr, Cu, Ni, Pb, Zn). All 220 coordinate-resolved sampling stations (representing 51.6% of the 426 cataloged station records; the remaining 206 entries are descriptive local gazetteer names lacking coordinates in the primary literature) were snapped to topological river reach polylines from HydroSHEDS HydroRIVERS (mean offset: 363 m, median: 221 m, max: 2,021 m; 66.8% within 500 m, 97.7% within 1,000 m). The database is distributed in open formats (SQLite, CSV, Parquet, GeoPackage) to facilitate regional machine learning, spatial modeling, and water safety planning.
+Potentially toxic heavy metals in riverine corridors of the Ganges-Brahmaputra-Meghna delta threaten aquatic ecology and drinking water security for over 170 million people. Although numerous environmental investigations have been published across Bangladesh over the past 15 years, data remain fragmented in static PDF tables, lack standardized geospatial referencing, and conflate acute dissolved aqueous concentrations with benthic sediment sinks. Here, we present a harmonized, provenance-documented, and hydrologically snapped geospatial database of heavy metal concentrations in river waters and bed sediments across Bangladesh compiled from 28 peer-reviewed publications (2010–2025). The database contains 557 verified analytical assays—289 bed sediment records across 133 observation events and 268 surface water records (comprising 162 trace element assays across 12 investigations and 106 bulk physicochemical records across 5 investigations) across 12 major river basins—covering seven key trace elements (As, Cd, Cr, Cu, Ni, Pb, Zn). The dataset indexes 222 distinct physical sampling stations (disambiguated by a composite `Station_UID` primary key; 85 georeferenced stations with published coordinates across 58 unique coordinate locations, and 137 descriptive local gazetteer stations). All 85 georeferenced sampling stations were projected to metric UTM Zone 45N (EPSG:32645) and snapped to topological river reach polylines from HydroSHEDS HydroRIVERS (mean offset: 379.6 m, median: 262.1 m, max: 1,850.4 m; 75.3% within 500 m, 96.5% within 1,000 m). The database is distributed in open formats (SQLite with foreign keys and validation views, CSV, Apache Parquet, GeoPackage) to facilitate regional machine learning, spatial modeling, and water safety planning.
 
 ---
 
 ## Background & Summary
 River networks of developing deltaic nations face acute environmental pressures from rapid industrial expansion, urbanization, and agrochemical runoff. In Bangladesh, located in the Bengal Delta at the confluence of the Ganges, Brahmaputra, and Meghna rivers, untreated effluents from leather tanneries, textile dyeing mills, metal finishing plants, and municipal discharges are routed directly into natural river corridors (Islam et al., 2015; Bhuiyan et al., 2015). Heavy metals and metalloids (e.g., Lead, Chromium, Cadmium, Arsenic, Nickel, Copper, Zinc) represent a premier environmental hazard due to their environmental persistence, potential for trophic bioaccumulation, and chronic human toxicity (Järup, 2003; Tchounwou et al., 2012).
 
-Despite substantial academic research on heavy metal pollution in Bangladeshi rivers published between 2010 and 2024, existing datasets suffer from severe fragmentation and usability barriers:
+Despite substantial academic research on heavy metal pollution in Bangladeshi rivers published between 2010 and 2025, existing datasets suffer from severe fragmentation and usability barriers:
 1. **Isolated Static Formats:** Concentration measurements are locked within unstructured tables in supplementary PDFs, preventing automated ingestion, meta-analysis, or large-scale machine learning.
-2. **Inconsistent Georeferencing:** Published sampling locations often lack verified coordinates, report coordinates in conflicting formats (DMS, decimal degrees, coordinate ranges), or report coordinates that fall on terrestrial landmasses due to typographical errors.
+2. **Inconsistent Georeferencing & Cross-Basin Collisions:** Published sampling locations often lack verified coordinates or reuse identical local station identifiers across distinct rivers (e.g., station identifiers P08_S1 through S5 recycled across five separate rivers in one study). Unchecked string joins cause artificial data conflation across geographically disparate basins.
 3. **Absence of Topological Fluvial Routing:** Environmental mapping studies typically interpolate river water and sediment metals using two-dimensional planar Euclidean methods (such as Ordinary Kriging or Inverse Distance Weighting). However, rivers are directed dendritic networks governed by upstream flow accumulation, catchment topography, and stream order. Planar interpolation creates severe boundary artifacts across dry landmasses and between hydrologically disconnected basins.
 4. **Fraction Confounding:** Existing literature often fails to distinguish between dissolved aqueous fractions ($<0.45\ \mu\text{m}$ filtered) and total recoverable digestions, or conflates acute water measurements with decadal sediment repositories.
 
-To overcome these structural limitations, we created a standardized, quality-controlled, and topologically snapped relational database consolidating published heavy metal measurements in Bangladesh rivers from 2010 through 2024. The resulting database synthesizes 557 analytical records across 28 peer-reviewed studies and 12 river systems into a relational SQLite architecture and open CSV/Parquet formats. Every station has been georeferenced and snapped to the nearest reach segment of the global HydroSHEDS HydroRIVERS hydrographic network, pairing chemical concentrations with upstream catchment area, Strahler stream order, annual discharge, and distance to the river mouth. This dataset provides an essential, ready-to-use digital foundation for researchers, environmental regulators, and spatial hydrologists.
+To overcome these structural limitations, we created a standardized, quality-controlled, and topologically snapped relational database consolidating published heavy metal measurements in Bangladesh rivers from 2010 through 2025. The resulting database synthesizes 557 analytical records across 28 peer-reviewed studies and 12 river systems into an 8-table relational SQLite architecture (`heavy_metal.db`) and open CSV/Parquet formats. Every coordinate-resolved physical station ($n=85$, representing 222 physical sites across 58 unique coordinate locations) has been georeferenced and snapped in metric UTM coordinates to the nearest reach segment of the global HydroSHEDS HydroRIVERS hydrographic network, pairing chemical concentrations with upstream catchment area, Strahler stream order, annual discharge, and distance to the river mouth. This dataset provides an essential, ready-to-use digital foundation for researchers, environmental regulators, and spatial hydrologists.
 
 ---
 
 ## Methods
 
 ### Literature Compilation and Screening Workflow
-Data compilation was performed following systematic review protocols across five scientific databases: Web of Science Core Collection, Scopus, ScienceDirect, PubMed, and BANSDOC for publications between January 2010 and March 2024. Candidate studies were screened against five strict eligibility gates:
+Data compilation was performed following systematic review protocols across five scientific databases: Web of Science Core Collection, Scopus, ScienceDirect, PubMed, and BANSDOC for publications between January 2010 and March 2025. Candidate studies were screened against five strict eligibility gates:
 1. Field sampling conducted within natural flowing river corridors in Bangladesh.
 2. Explicit numerical reporting of elemental concentrations for at least one target heavy metal (Pb, Cr, Cd, As, Ni, Cu, Zn) with identifiable sample sizes.
 3. Documented sampling coordinates or verifiable local landmarks.
@@ -43,21 +43,27 @@ Screening of 1,420 initial records identified 28 eligible studies (Figure 1 in `
 - 12 surface water heavy metal investigations;
 - 5 bulk physicochemical water quality investigations.
 
+The complete screening trail (1,420 candidates $\to$ 838 non-duplicate abstracts $\to$ 74 full-text articles $\to$ 28 included studies) is distributed as `prisma_screening_records.csv`.
+
 ### Relational Schema Design & Data Harmonization
-The database was structured into a four-table normalized relational schema implemented in SQLite (`heavy_metal.db`) and distributed as flat tables:
+The database was structured into an 8-table normalized relational schema implemented in SQLite (`heavy_metal.db`) with foreign key integrity constraints, and distributed as flat CSV and Apache Parquet files:
 
 1. **`studies`:** Contains study-level metadata, including `Study_ID`, Digital Object Identifier (`DOI`), publication year, journal name, analytical instrument, digestion protocol, quality-assurance flags (use of Certified Reference Materials [CRMs], blanks, replicates), and overall study quality score (0–14 rubric).
-2. **`stations`:** Contains spatial provenance for each unique sampling location, including `Station_ID`, standardized river name, division/district, raw published coordinate string, validated WGS84 decimal degrees (`Lat_WGS84`, `Lon_WGS84`), coordinate accuracy flag (A = exact GPS; B = published station; C = georeferenced map landmark), and snapped reach identifier (`HYRIV_ID`).
-3. **`assays`:** Contains individual chemical measurements, specifying `Assay_ID`, `Station_ID`, environmental medium (`sediment` or `water`), operational fraction (`dissolved`, `total`, or `total recoverable`), element symbol, original published value and unit, harmonized value, censoring status (0 = quantified; 1 = below detection limit), and Method Detection Limit (`LOD`).
-4. **`catchment_covariates`:** Contains HydroSHEDS topological stream attributes linked by `HYRIV_ID`, including cumulative upstream catchment area (`UPLAND_SKM`), mean annual discharge (`DIS_AV_CMS`), Strahler stream order (`ORD_STRA`), and fluvial distance to the marine outlet (`DIST_DN_KM`).
+2. **`stations`:** Master register of 222 distinct physical sampling locations. To eliminate cross-river identifier collisions, each physical location is indexed by a canonical composite primary key `Station_UID` (`Paper_No_River_Station_No`), while preserving the original published `Station_ID` for backward compatibility. Contains standardized river name, administrative division, district, validated WGS84 decimal degrees (`Lat_WGS84`, `Lon_WGS84`), and coordinate classification (85 georeferenced stations, 137 descriptive gazetteer stations).
+3. **`water_data`:** Contains 268 surface water observation records, linked by `Station_UID` and `Study_ID`, spanning in-situ physicochemical parameters and dissolved/total metal concentrations.
+4. **`sediment_data`:** Contains 289 bed sediment observation records, linked by `Station_UID` and `Study_ID`, spanning grain size fractions, organic carbon, and trace metal concentrations.
+5. **`master_harmonized`:** Denormalized synthesis of all 557 analytical records linking water and sediment assays with spatial coordinates and station identifiers.
+6. **`station_hydrorivers_matched`:** Topological reach join table linking all 85 georeferenced stations via `Station_UID` to HydroSHEDS reach identifiers (`HYRIV_ID`) with Euclidean snapping distances computed in metric projection.
+7. **`study_extraction_evidence`:** Comprehensive 8-domain CEE critical appraisal matrix for all 28 included studies, documenting distinct physical station counts, analytical instruments, and auditor validation signatures.
+8. **`prisma_screening_records`:** Full PRISMA 2020 eligibility audit tracking all 1,420 screened publications through each filtering stage.
 
 ### Coordinate Verification & Topological HydroRIVERS Snapping
 Published coordinates were audited and converted into standardized WGS84 decimal degrees (EPSG:4326). Coordinate ranges were resolved by consulting published maps and gazetteers to identify discrete sampling stations.
 
-All coordinate-resolved sampling stations ($N=220$, joined to HydroRIVERS reaches; 206 descriptive entries lacked coordinates in source literature) were projected to metric coordinates (EPSG:3857, Pseudo-Mercator) and snapped to the nearest HydroSHEDS HydroRIVERS v1.0 reach centerline polyline using spatial index nearest-neighbor joining. Snapping distance offsets were computed:
-- 66.8% of stations ($n=147$) snapped within 500 meters of the river reach centerline polyline;
-- 97.7% of stations ($n=215$) snapped within 1,000 meters;
-- Only 5 station records (2.3%) exceeded 1,000 meters: 4 co-located records for station P20_S1 in the wide tidal Rupsa River estuary (2,021 meters) and 1 record for station P27_S1 along the 4-km-wide braided Padma River mainstem (1,124 meters), consistent with deltaic estuarine channel widths, tidal braiding, and historical river meandering in the Bengal floodplain (mean offset: 363 meters, median: 221 meters, max: 2,021 meters).
+All coordinate-resolved physical sampling stations ($N=85$ distinct physical stations with known coordinates; 137 descriptive entries lacked coordinates in source literature) were projected to metric UTM Zone 45N (EPSG:32645)—eliminating the +9.2% distance scale distortion inherent to planar Web Mercator (EPSG:3857) projections at latitude 23.5$^\circ$N—and snapped to the nearest HydroSHEDS HydroRIVERS v1.0 reach centerline polyline using Euclidean nearest-neighbor search. Snapping distance offsets were computed:
+- 75.3% of stations ($n=64$) snapped within 500 meters of the reach centerline polyline;
+- 96.5% of stations ($n=82$) snapped within 1,000 meters;
+- Only 3 station records (3.5%) exceeded 1,000 meters: station P20_S1 in the wide tidal Rupsa River estuary (1,850.4 meters), station P27_S1 along the 4-km-wide braided Padma River mainstem (1,124.0 meters), and station P20_S2 (1,028.5 meters), consistent with deltaic estuarine channel widths, tidal braiding, and historical river meandering in the Bengal floodplain (mean offset: 379.6 meters, median: 262.1 meters, max: 1,850.4 meters).
 
 ### Unit Harmonization and Censoring Protocols
 Measurement units were audited against primary publications:
@@ -81,25 +87,28 @@ data/
 │   ├── bangladesh_boundary.geojson    # National boundary polygon
 │   └── source_pdfs/                   # P01–P28 primary PDF articles
 └── processed/
-    ├── heavy_metal.db                 # Master relational SQLite database
+    ├── heavy_metal.db                 # Master relational SQLite database (8 tables, 2 views)
     ├── *.parquet                      # Columnar Apache Parquet exports for all tabular datasets
     ├── water_data.csv                 # Surface water chemical assays (268 rows, 49 cols)
     ├── sediment_data.csv              # Bed sediment chemical assays (289 rows, 32 cols)
-    ├── stations.csv                   # Observation stations (426 rows: 220 georeferenced centroids, 206 descriptive)
+    ├── stations.csv                   # Physical stations (222 rows: 85 georeferenced centroids, 137 descriptive)
     ├── studies.csv                    # Provenance and study metadata (28 rows)
     ├── master_harmonized.csv          # Denormalized master assay table (557 rows, 59 cols)
-    └── station_hydrorivers_matched.csv# Topological reach join table (220 rows)
+    ├── station_hydrorivers_matched.csv# Metric UTM 45N topological reach join table (85 rows)
+    ├── study_extraction_evidence.csv  # CEE 8-domain extraction evidence table (28 rows)
+    └── prisma_screening_records.csv   # Machine-readable PRISMA 2020 screening log (1,420 rows)
 ```
 
 ### Data Dictionary
 
 #### 1. `water_data.csv` (268 rows $\times$ 49 columns)
 - `Obs_ID`: Unique integer observation identifier (1 to 268).
-- `Station_ID`: Globally unique station code (e.g., `STN_001`).
+- `Station_UID`: Composite canonical station code (e.g., `P08_Balu_S1`).
+- `Station_ID`: Published station code (e.g., `STN_001`).
 - `Study_ID`: Study code (`P01` to `P28`).
 - `River`: Standardized river name (e.g., `Buriganga`, `Karnaphuli`, `Korotoa`, `Padma`, `Rupsa`).
 - `Division`: Administrative division (e.g., `Dhaka`, `Chattogram`, `Rajshahi`).
-- `Sampling_Year`: Year of field sampling (2010 to 2024; `NR` where unstated).
+- `Sampling_Year`: Year of field sampling (2010 to 2025; `NR` where unstated).
 - `Season`: Hydrological season (`Winter`, `Rainy`, `Summer`, `Spring`, `Late Autumn`).
 - `Lat_WGS84`, `Lon_WGS84`: Geographic coordinates in WGS84 decimal degrees.
 - `Temperature_C`, `pH`, `DO_mg_L`, `BOD_mg_L`, `COD_mg_L`, `EC_uS_cm`, `TDS_mg_L`: In-situ water quality parameters.
@@ -108,11 +117,22 @@ data/
 
 #### 2. `sediment_data.csv` (289 rows $\times$ 32 columns)
 - `Obs_ID`: Unique sediment record identifier (1 to 289).
-- `Station_ID`, `Study_ID`, `River`, `Division`, `Lat_WGS84`, `Lon_WGS84`: Spatial and study metadata.
+- `Station_UID`, `Station_ID`, `Study_ID`, `River`, `Division`, `Lat_WGS84`, `Lon_WGS84`: Spatial and study metadata.
 - `As_mg_kg_dw`, `Cr_mg_kg_dw`, `Cd_mg_kg_dw`, `Pb_mg_kg_dw`, `Cu_mg_kg_dw`, `Zn_mg_kg_dw`, `Ni_mg_kg_dw`: Heavy metal concentrations in mg/kg dry weight.
 - `pH`, `Organic_Matter_pct`, `OC_pct`, `Sand_pct`, `Silt_pct`, `Clay_pct`, `Textural_Class`: Sediment physicochemical properties.
 
-#### 3. `studies.csv` (28 rows $\times$ 8 columns)
+#### 3. `stations.csv` (222 rows $\times$ 15 columns)
+- `Station_UID`: Primary key (`Paper_No_River_Station_No`, e.g., `P08_Balu_S1`).
+- `Station_ID`: Published station label.
+- `Study_ID`: Study code (`P01` to `P28`).
+- `River`: Standardized river name.
+- `Division`, `District`: Administrative location.
+- `Station_Name_Raw`: Published station name string.
+- `Lat_WGS84`, `Lon_WGS84`: Coordinates (decimal degrees; blank for descriptive stations).
+- `Coordinate_Type`: `Georeferenced` ($n=85$) or `Descriptive_Gazetteer` ($n=137$).
+- `Coordinate_Accuracy`: Provenance code (A = exact GPS; B = published station; C = landmark).
+
+#### 4. `studies.csv` (28 rows $\times$ 8 columns)
 - `Study_ID`: Primary key (`P01` to `P28`).
 - `DOI`: Verified Digital Object Identifier with Crossref resolution.
 - `Journal_Name`: Full journal name.
@@ -158,7 +178,7 @@ SELECT
     m.ORD_STRA, m.DIS_AV_CMS, m.UPLAND_SKM
 FROM water_data w
 JOIN studies s ON w.Study_ID = s.Study_ID
-JOIN station_hydrorivers_matched m ON w.Station_ID = m.Station_ID
+JOIN station_hydrorivers_matched m ON w.Station_UID = m.Station_UID
 WHERE w.Pb_mg_L IS NOT NULL;
 """
 df = pd.read_sql_query(query, conn)

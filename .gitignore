@@ -10,3 +10,4 @@ catboost_info/
 *.blg
 *.bbl
 .DS_Store
+manuscripts/submissions/zenodo_deposit/

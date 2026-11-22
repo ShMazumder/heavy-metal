@@ -41,9 +41,35 @@
 |---|---|---|---|---|
 | **Primary Matrix** | Water + Sediment (Comparative) | Surface Water Only ($N=268$) | Water + Sediment + Stations | Bed Sediment Only ($N=289$) |
 | **Central Research Question** | *Can published literature support reliable national-scale environmental inference in Bangladesh?* | *How does regulatory modernization (ECR 2023) alter potable water risk and surveillance deficits?* | *How is the multi-matrix Bengal Delta heavy metal corpus structured, snapped, and reused?* | *Can upstream stream-network topology predict sediment metals across disconnected river basins?* |
-| **Exclusive Methods** | • 5 Core Research Questions<br>• 8-domain CEE critical appraisal<br>• PRISMA 2020 / ROSES flow audit<br>• Synthesis of 2000–2026 literature | • ECR 2023 vs ECR 1997 vs WHO audit<br>• Confirmed 0.45 $\mu\text{m}$ dissolved sensitivity<br>• Algebraic HPI $1/S_i^2$ quadratic damping proof<br>• 1,000 Monte Carlo network null model | • 4-table SQLite relational schema<br>• Apache Parquet columnar exports<br>• HydroRIVERS nearest-neighbor snapping<br>• Coordinate provenance audit | • HydroRIVERS stream network covariates<br>• True Leave-One-River-Out (LORO) CV<br>• 6-metal reach uncertainty propagation<br>• Hakanson composite $RI$ cartography |
-| **Exclusive Figures** | • Fig 1: PRISMA / ROSES selection flow<br>• Fig 2: Methodological quality appraisal heatmap<br>• Fig 3: Geographical surveillance gap map | • Fig 1: Multi-benchmark exceedance panel<br>• Fig 2: Seasonal within-study boxplots<br>• Fig 3: National 25 km river surveillance map | • Fig 1: Relational schema & station map<br>• Fig 2: Snapping offset distance distribution | • Fig 1: TreeSHAP feature attribution panel<br>• Fig 2: National reach-level $RI$ risk map |
-| **Prohibited Content (To Prevent Overlap)** | *Must NOT reproduce Paper 2's detailed HPI mathematical derivation or Paper 1's ML reach predictions.* | *Must NOT evaluate sediment contamination, ML algorithms, or PRISMA literature searches.* | *Must NOT present ML prediction models, meta-regressions, or policy conclusions.* | *Must NOT analyze surface water chemistry, ECR 2023 potable limits, or HPI water indices.* |
+| **Exclusive Methods** | • 5 Core Research Questions<br>• 8-domain CEE critical appraisal<br>• PRISMA 2020 screening audit ($N=1,420$)<br>• Review Evidence Atlas (21.8% coverage, 58 sites) | • ECR 2023 vs ECR 1997 vs WHO audit<br>• Confirmed 0.45 $\mu\text{m}$ dissolved sensitivity<br>• Algebraic HPI $1/S_i^2$ quadratic damping proof<br>• 1,000 Monte Carlo network null model (23 sites) | • 8-table, 2-view SQLite schema<br>• Composite `Station_UID` normalization (222 sites)<br>• Metric UTM 45N HydroRIVERS snapping ($N=85$)<br>• Coordinate provenance audit | • HydroRIVERS stream network covariates<br>• Strict Leave-One-River-Out (LORO) CV ($R^2 < 0$)<br>• 6-metal reach uncertainty propagation<br>• Hakanson composite $RI$ corridor cartography |
+| **Exclusive Figures** | • Fig 1: PRISMA flow chart<br>• Fig 2: 8-domain quality appraisal heatmap<br>• Fig 3: Review Evidence Atlas (River breakdown \& Population deficit; SHA256: `5090fdf0...`) | • Fig 1: Multi-benchmark exceedance panel<br>• Fig 2: Seasonal within-study boxplots<br>• Fig 3: National 25 km river surveillance map (23 water sites; SHA256: `6c9a092c...`) | • Fig 1: Relational schema \& station map<br>• Fig 2: Snapping offset distance distribution | • Fig 1: TreeSHAP feature attribution panel<br>• Fig 2: Reach-level $RI$ interpolative corridor map |
+| **Prohibited Content (To Prevent Overlap)** | *Must NOT reproduce Paper 2's algebraic HPI derivation or Paper 1's ML reach predictions.* | *Must NOT evaluate sediment contamination, ML algorithms, or PRISMA literature searches.* | *Must NOT present ML prediction models, meta-regressions, or policy conclusions.* | *Must NOT analyze surface water chemistry, ECR 2023 potable limits, or HPI water indices.* |
+
+---
+
+### Spatial Coverage Population Harmonization
+
+To prevent denominator confusion across manuscripts, spatial coverage statistics are strictly demarcated across three distinct analytical populations:
+
+1. **Surface Water Heavy Metal Surveillance Network (Paper 2):**
+   - Population: $N=23$ unique coordinate stations monitoring dissolved/total water trace metals.
+   - Major River Coverage (Strahler $\ge 4$, $Q \ge 50\text{ m}^3/\text{s}$, total 4,599.1 km):
+     - **16.5% at 25 km radius** (757.2 km; 11.0% strictly along river network via Dijkstra algorithm).
+     - 4.8% at 10 km radius (220.1 km); 40.6% at 50 km radius (1,867.7 km).
+     - Monte Carlo spatial clustering test ($n=1,000$ iterations): $p \le 0.001$ against expected 38.2%.
+
+2. **Bed Sediment Heavy Metal Surveillance Network (Paper 1):**
+   - Population: $N=36$ unique coordinate stations monitoring bed sediment trace metals.
+   - Major River Coverage:
+     - **16.0% at 25 km radius** (735.8 km).
+     - 4.5% at 10 km radius (208.2 km); 49.4% at 50 km radius (2,270.8 km).
+
+3. **Combined National Environmental Literature Footprint (Paper 3 / Review):**
+   - Population: $N=58$ unique coordinate stations spanning all 85 georeferenced physical stations across all 28 published studies.
+   - Major River Coverage:
+     - **21.8% at 25 km radius** (1,000.9 km monitored; **78.2% unmonitored surveillance deficit**).
+     - 6.8% at 10 km radius (314.9 km monitored; **93.2% unmonitored surveillance deficit**).
+     - 58.4% at 50 km radius (2,684.2 km).
 
 ---
 
