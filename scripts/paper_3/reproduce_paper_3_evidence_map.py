@@ -9,10 +9,11 @@ in Bangladesh's Rivers? A Critical Systematic Review of Analytical Comparability
 Spatial Representativeness, and Ecological Risk Assessment"
 
 Computes:
-  1. Spatio-temporal evidence mapping (2000–2026 literature).
-  2. 8-Domain CEE / ROSES Critical Appraisal Matrix across all 28 studies.
+  1. Spatio-temporal evidence mapping (2010–2025 literature).
+  2. 8-Domain CEE / ROSES Critical Appraisal Matrix derived deterministically
+     from independently documented extraction evidence (study_extraction_evidence.csv).
   3. Analytical comparability & spectrometry stratification (Flame-AAS vs GF-AAS vs ICP-MS).
-  4. Coordinate confidence breakdown (Tiers 1–5) and spatial network coverage.
+  4. Coordinate confidence breakdown (Tiers 1–3) and spatial network coverage.
   5. Multi-benchmark risk index sensitivity & mathematical damping analysis.
   6. PRISMA 2020 & ROSES evidence synthesis metrics.
 """
@@ -36,101 +37,98 @@ print("STARTING PAPER 3 CRITICAL SYSTEMATIC EVIDENCE SYNTHESIS PIPELINE")
 print("=" * 75)
 
 # -----------------------------------------------------------------------------
-# 1. LOAD AUDITED DATASETS
+# 1. LOAD AUDITED DATASETS & INDEPENDENT EXTRACTION EVIDENCE
 # -----------------------------------------------------------------------------
+df_evidence = pd.read_csv('data/processed/study_extraction_evidence.csv')
 df_studies = pd.read_csv('data/processed/studies.csv')
 df_water = pd.read_csv('data/processed/water_data.csv')
 df_sediment = pd.read_csv('data/processed/sediment_data.csv')
 df_stations = pd.read_csv('data/processed/stations.csv')
 
-print(f"Loaded {len(df_studies)} studies, {len(df_water)} water records, {len(df_sediment)} sediment records.")
-print(f"Loaded {len(df_stations)} station entries ({df_stations['Lat_WGS84'].notna().sum()} coordinate-resolved).")
+print(f"Loaded {len(df_evidence)} audited evidence profiles across 28 peer-reviewed studies.")
+print(f"Loaded {len(df_water)} water records, {len(df_sediment)} sediment records.")
+print(f"Loaded {len(df_stations)} station entries (Lat non-null: {df_stations['Lat_WGS84'].notna().sum()}, Lon non-null: {df_stations['Lon_WGS84'].notna().sum()}).")
 
 # -----------------------------------------------------------------------------
-# 2. 8-DOMAIN CEE / ROSES CRITICAL APPRAISAL MATRIX
+# 2. 8-DOMAIN CEE / ROSES CRITICAL APPRAISAL MATRIX (DYNAMIC DERIVATION)
 # -----------------------------------------------------------------------------
-print("\n--- Constructing 8-Domain CEE / ROSES Critical Appraisal Matrix ---")
+print("\n--- Deriving 8-Domain CEE / ROSES Appraisal Matrix From Documented Evidence ---")
 
-# Define classification rubrics for 8 domains based on verified extraction metadata
+def eval_sampling_design(records):
+    if records >= 30:
+        return 'High'
+    elif records >= 10:
+        return 'Moderate'
+    else:
+        return 'Low'
+
+def eval_temporal_design(freq_type):
+    if 'Multi-season' in freq_type:
+        return 'High'
+    elif 'Two-season' in freq_type:
+        return 'Moderate'
+    else:
+        return 'Low'
+
+def eval_spatial_provenance(coords_doc):
+    if 'Handheld GPS' in coords_doc:
+        return 'High (GPS)'
+    elif 'Cartographically digitized' in coords_doc:
+        return 'Moderate (Partial)'
+    else:
+        return 'Low (Descriptive Only)'
+
+def eval_sample_handling(handling_doc):
+    if '0.45 um' in handling_doc:
+        return 'High (0.45 um Filtered)'
+    elif 'dry-weight' in handling_doc:
+        return 'High (Dry Weight Standardized)'
+    else:
+        return 'Moderate (Unspecified)'
+
+def eval_analytical_method(inst_class):
+    if 'ICP-MS' in inst_class or 'GF-AAS' in inst_class:
+        return 'High (ICP-MS/GF-AAS)'
+    elif 'Flame-AAS' in inst_class or 'AAS' in inst_class:
+        return 'Moderate (Flame-AAS)'
+    else:
+        return 'Low (Unspecified/Probe)'
+
+def eval_analytical_qa_qc(crm_status):
+    if crm_status.startswith('Yes'):
+        return 'High (CRM Verified)'
+    elif crm_status.startswith('Partial'):
+        return 'Moderate (Blanks/Replicates)'
+    else:
+        return 'Low (Undocumented QA/QC)'
+
+def eval_detection_reporting(lod_status):
+    if lod_status.startswith('Explicit'):
+        return 'High (LOD Stated & Flagged)'
+    elif lod_status.startswith('Global'):
+        return 'Moderate (Global LOD)'
+    else:
+        return 'Low (Unstated / Censored Omitted)'
+
+def eval_statistical_reporting(granularity):
+    if granularity.startswith('Station-by-station'):
+        return 'High (Station Assays Reported)'
+    else:
+        return 'Moderate (Aggregate Means)'
+
 appraisal_rows = []
-
-# High-sensitivity instrument keywords
-HIGH_SENS_KEYS = ['ICP-MS', 'GF-AAS', 'HG-AAS', 'ZEEnit', 'Agilent', 'Spectro']
-
-for idx, row in df_studies.iterrows():
+for idx, row in df_evidence.iterrows():
     s_id = row['Study_ID']
     auth = row['Author_Year']
-    inst = str(row['Detection_Method'])
-    records = row['Total_Records']
-    med = str(row['Sample_Types'])
-    rivers = str(row['River_List'])
-
-    # Domain 1: Sampling Design (spatial coverage and replication)
-    if records >= 30:
-        d1 = 'High'
-    elif records >= 10:
-        d1 = 'Moderate'
-    else:
-        d1 = 'Low'
-
-    # Domain 2: Temporal Design (multi-season or multi-year)
-    if s_id in ['P01', 'P02', 'P04', 'P08', 'P09', 'P14', 'P18']:
-        d2 = 'High'
-    elif s_id in ['P06', 'P10', 'P13', 'P16', 'P17', 'P19', 'P22', 'P23']:
-        d2 = 'Moderate'
-    else:
-        d2 = 'Low'
-
-    # Domain 3: Geographical Provenance (GPS precision)
-    # Check if station coordinates exist for this study in stations.csv
-    st_sub = df_stations[df_stations['Station_ID'].str.startswith(s_id + '_')]
-    if len(st_sub) > 0 and st_sub['Lat_WGS84'].notna().sum() > 0:
-        coord_ratio = st_sub['Lat_WGS84'].notna().sum() / len(st_sub)
-        if coord_ratio >= 0.8:
-            d3 = 'High (GPS)'
-        else:
-            d3 = 'Moderate (Partial)'
-    else:
-        d3 = 'Low (Descriptive Only)'
-
-    # Domain 4: Sample Handling (0.45um filtration for water; dry weight for sediment)
-    if 'Water' in med:
-        if s_id in ['P02', 'P04', 'P08', 'P09', 'P18', 'P20', 'P21', 'P23', 'P27']:
-            d4 = 'High (0.45 um Filtered)'
-        else:
-            d4 = 'Moderate (Unspecified)'
-    else:
-        d4 = 'High (Dry Weight Standardized)'
-
-    # Domain 5: Analytical Method (Spectrometry sensitivity)
-    if any(k in inst for k in HIGH_SENS_KEYS):
-        d5 = 'High (ICP-MS/GF-AAS)'
-    elif 'Flame' in inst or 'AAS' in inst:
-        d5 = 'Moderate (Flame-AAS)'
-    else:
-        d5 = 'Low (Unspecified/Probe)'
-
-    # Domain 6: Analytical QA/QC (CRMs, procedural blanks, recovery)
-    if s_id in ['P01', 'P02', 'P03', 'P05', 'P09', 'P13', 'P14', 'P18', 'P19', 'P20']:
-        d6 = 'High (CRM Verified)'
-    elif s_id in ['P04', 'P06', 'P08', 'P10', 'P12', 'P17', 'P21', 'P26']:
-        d6 = 'Moderate (Blanks/Replicates)'
-    else:
-        d6 = 'Low (Undocumented QA/QC)'
-
-    # Domain 7: Detection Reporting (Explicit LOD/LOQ, non-detect handling)
-    if s_id in ['P01', 'P02', 'P05', 'P08', 'P09', 'P11', 'P18', 'P19', 'P20']:
-        d7 = 'High (LOD Stated & Flagged)'
-    elif s_id in ['P03', 'P04', 'P10', 'P13', 'P14', 'P17']:
-        d7 = 'Moderate (Global LOD)'
-    else:
-        d7 = 'Low (Unstated / Censored Omitted)'
-
-    # Domain 8: Statistical Reporting (Station-level granular assays)
-    if records >= 10:
-        d8 = 'High (Station Assays Reported)'
-    else:
-        d8 = 'Moderate (Aggregate Means)'
+    
+    d1 = eval_sampling_design(row['Total_Records'])
+    d2 = eval_temporal_design(row['Sampling_Frequency_Type'])
+    d3 = eval_spatial_provenance(row['Coordinates_Provided'])
+    d4 = eval_sample_handling(row['Sample_Handling_Documented'])
+    d5 = eval_analytical_method(row['Analytical_Instrument_Class'])
+    d6 = eval_analytical_qa_qc(row['CRM_Verification_Status'])
+    d7 = eval_detection_reporting(row['LOD_Reporting_Status'])
+    d8 = eval_statistical_reporting(row['Assay_Granularity'])
 
     appraisal_rows.append({
         'Study_ID': s_id,
@@ -147,7 +145,7 @@ for idx, row in df_studies.iterrows():
 
 df_appraisal = pd.DataFrame(appraisal_rows)
 df_appraisal.to_csv(f"{OUT_DIR}/study_quality_appraisal_8_domains.csv", index=False)
-print("Saved study_quality_appraisal_8_domains.csv (All 28 Studies)")
+print("Saved study_quality_appraisal_8_domains.csv (All 28 Studies derived from evidence matrix)")
 
 # -----------------------------------------------------------------------------
 # 3. COORDINATE CONFIDENCE & SPATIAL COVERAGE BREAKDOWN (RQ3)
@@ -155,23 +153,29 @@ print("Saved study_quality_appraisal_8_domains.csv (All 28 Studies)")
 print("\n--- Computing Coordinate Precision Tiers & Spatial Denominators ---")
 
 tot_stations = len(df_stations)
-resolved_stations = df_stations['Lat_WGS84'].notna().sum()
+resolved_stations = (df_stations['Lat_WGS84'].notna() & df_stations['Lon_WGS84'].notna()).sum()
 unresolved_stations = df_stations['Lat_WGS84'].isna().sum()
 
+tier1_count = len(df_stations[df_stations['Coord_Precision'] == 'EXACT_POINT_DD'])
+tier2_count = len(df_stations[df_stations['Coord_Precision'].isin(['DISTRICT_CENTROID_APPROX', 'REACH_BOUNDING_BOX'])])
+tier3_count = len(df_stations[df_stations['Coord_Precision'] == 'MISSING_IN_CURATION'])
+
 coord_tiers = pd.DataFrame([
-    {'Tier': 'Tier 1: Explicit Reported GPS Coordinates', 'Count': 176, 'Percentage': round(176/tot_stations*100, 1), 'Description': 'Verified handheld GPS decimal/DMS coordinates from published source tables'},
-    {'Tier': 'Tier 2: Accurately Digitized Station Landmark Centroid', 'Count': 44, 'Percentage': round(44/tot_stations*100, 1), 'Description': 'Digitized from high-resolution published station maps matching river confluences/bridges'},
-    {'Tier': 'Tier 3: Unresolved Descriptive Gazetteer Entry', 'Count': 206, 'Percentage': round(206/tot_stations*100, 1), 'Description': 'Published station names without coordinates or maps (retained for narrative/database inventory)'},
+    {'Tier': 'Tier 1: Explicit Reported GPS Coordinates', 'Count': tier1_count, 'Percentage': round(tier1_count/tot_stations*100, 1), 'Description': 'Verified handheld GPS decimal/DMS coordinates from published source tables'},
+    {'Tier': 'Tier 2: Accurately Digitized Station Landmark Centroid', 'Count': tier2_count, 'Percentage': round(tier2_count/tot_stations*100, 1), 'Description': 'Digitized from high-resolution published station maps matching river confluences/bridges'},
+    {'Tier': 'Tier 3: Unresolved Descriptive Gazetteer Entry', 'Count': tier3_count, 'Percentage': round(tier3_count/tot_stations*100, 1), 'Description': 'Published station names without coordinates or maps (retained for narrative/database inventory)'},
     {'Tier': 'Total Registered Station Inventory', 'Count': tot_stations, 'Percentage': 100.0, 'Description': 'All sampling stations cataloged across 28 peer-reviewed investigations'}
 ])
 coord_tiers.to_csv(f"{OUT_DIR}/coordinate_precision_breakdown.csv", index=False)
 print("Saved coordinate_precision_breakdown.csv")
+print(coord_tiers[['Tier', 'Count', 'Percentage']])
 
 # -----------------------------------------------------------------------------
 # 4. SPECTROMETRY INSTRUMENT STRATIFICATION (RQ2)
 # -----------------------------------------------------------------------------
 print("\n--- Computing Spectrometry Stratification & Detection Limits ---")
 
+HIGH_SENS_KEYS = ['ICP-MS', 'GF-AAS', 'HG-AAS', 'ZEEnit', 'Agilent', 'Spectro']
 high_sens_studies = df_studies[df_studies['Detection_Method'].str.contains('|'.join(HIGH_SENS_KEYS), na=False)]['Study_ID'].tolist()
 flame_aas_studies = [s for s in df_studies['Study_ID'].tolist() if s not in high_sens_studies]
 
@@ -195,19 +199,19 @@ for el in ['Pb', 'Cr', 'Cd', 'As', 'Ni']:
 df_spec = pd.DataFrame(spec_summary)
 df_spec.to_csv(f"{OUT_DIR}/spectrometry_instrument_comparison.csv", index=False)
 print("Saved spectrometry_instrument_comparison.csv")
+print(df_spec)
 
 # -----------------------------------------------------------------------------
-# 5. GENERATE PUBLICATION FIGURES FOR PAPER 3
+# 5. GENERATE PUBLICATION FIGURES FOR PAPER 3 (300 DPI)
 # -----------------------------------------------------------------------------
 print("\n--- Generating Publication Quality Figures (300 DPI) ---")
 
-# Figure 1: PRISMA 2020 Flow Diagram
+# Figure 1: PRISMA 2020 Flow Diagram (Corrected Search Window: 2010–2025)
 fig, ax = plt.subplots(figsize=(10, 8), dpi=300)
 ax.set_xlim(0, 10)
 ax.set_ylim(0, 10)
 ax.axis('off')
 
-# Box styles
 box_blue = dict(boxstyle="round,pad=0.5", fc="#E3F2FD", ec="#1565C0", lw=1.5)
 box_orange = dict(boxstyle="round,pad=0.5", fc="#FFF3E0", ec="#E65100", lw=1.5)
 box_green = dict(boxstyle="round,pad=0.5", fc="#E8F5E9", ec="#2E7D32", lw=1.5)
@@ -215,7 +219,7 @@ box_green = dict(boxstyle="round,pad=0.5", fc="#E8F5E9", ec="#2E7D32", lw=1.5)
 ax.text(5, 9.3, "PRISMA 2020 & ROSES Systematic Evidence Flow", fontsize=14, fontweight='bold', ha='center', va='center')
 
 # Identification
-ax.text(3, 8.0, "Records identified from\ndatabases (2000–2026)\n(n = 1,420)", bbox=box_blue, ha='center', va='center', fontsize=10)
+ax.text(3, 8.0, "Records identified from\ndatabases (2010–2025)\n(n = 1,420)", bbox=box_blue, ha='center', va='center', fontsize=10)
 ax.text(7, 8.0, "Duplicates removed\nprior to screening\n(n = 582)", bbox=box_orange, ha='center', va='center', fontsize=10)
 
 # Screening
@@ -242,7 +246,7 @@ plt.tight_layout()
 fig.savefig(f"{FIG_DIR}/fig1_prisma.png", dpi=300)
 fig.savefig(f"{OUT_DIR}/fig1_prisma_roses.png", dpi=300)
 plt.close()
-print("Saved fig1_prisma.png (PRISMA 2020 / ROSES flow diagram)")
+print("Saved fig1_prisma.png (PRISMA 2020 / ROSES flow diagram with 2010–2025 search window)")
 
 # Figure 2: 8-Domain Quality Appraisal Matrix Heatmap
 fig, ax = plt.subplots(figsize=(12, 10), dpi=300)
@@ -251,7 +255,6 @@ domains = ['Sampling_Design', 'Temporal_Design', 'Geographical_Provenance', 'Sam
 domain_labels = ['Sampling Design', 'Temporal Design', 'Spatial Provenance', 'Sample Handling',
                  'Analytical Instrument', 'Analytical QA/QC', 'LOD / Non-Detects', 'Granular Reporting']
 
-# Numeric score mapping: High = 2, Moderate = 1, Low = 0
 score_matrix = np.zeros((len(df_appraisal), len(domains)))
 for r_i, r_data in df_appraisal.iterrows():
     for c_i, d in enumerate(domains):
@@ -271,17 +274,17 @@ ax.set_xticklabels(domain_labels, rotation=45, ha='left', fontsize=10, fontweigh
 ax.set_yticks(range(len(df_appraisal)))
 ax.set_yticklabels([f"{r['Study_ID']} ({r['Author_Year'].split(',')[0]})" for _, r in df_appraisal.iterrows()], fontsize=8)
 
-# Colorbar legend
 cbar = fig.colorbar(cax, ticks=[0.33, 1.0, 1.66], fraction=0.03, pad=0.04)
 cbar.ax.set_yticklabels(['Low / Unstated', 'Moderate / Partial', 'High / Robust'], fontsize=10, fontweight='bold')
 ax.set_title("8-Domain CEE / ROSES Critical Appraisal Matrix Across All 28 Studies", fontsize=13, fontweight='bold', pad=40)
 
 plt.tight_layout()
-fig.savefig(f"{FIG_DIR}/fig2_forest.png", dpi=300) # Replace placeholder forest plot with the quality heatmap
+fig.savefig(f"{FIG_DIR}/fig2_forest.png", dpi=300)
+fig.savefig(f"{FIG_DIR}/fig2_quality_heatmap.png", dpi=300)
 fig.savefig(f"{OUT_DIR}/fig2_quality_appraisal_heatmap.png", dpi=300)
 plt.close()
-print("Saved fig2_quality_appraisal_heatmap.png (8-Domain Quality Appraisal Heatmap)")
+print("Saved fig2_quality_heatmap.png (8-Domain Quality Appraisal Heatmap)")
 
 print("\n" + "=" * 75)
-print("PAPER 3 CRITICAL EVIDENCE SYNTHESIS EXECUTED SUCCESSFULLY!")
+print("PAPER 3 CRITICAL EVIDENCE SYNTHESIS PIPELINE COMPLETED SUCCESSFULLY!")
 print("=" * 75)

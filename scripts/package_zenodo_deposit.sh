@@ -14,6 +14,7 @@ cp data/processed/stations.csv          "$OUTDIR/"
 cp data/processed/studies.csv           "$OUTDIR/"
 cp data/processed/master_harmonized.csv "$OUTDIR/"
 cp data/processed/station_hydrorivers_matched.csv "$OUTDIR/"
+cp data/processed/study_extraction_evidence.csv "$OUTDIR/"
 cp data/processed/*.parquet             "$OUTDIR/"
 
 # GIS layers
@@ -37,7 +38,8 @@ CONTENTS:
   stations.csv                    Observation stations (426 rows × 14 cols; 220 georeferenced)
   studies.csv                     Study metadata & instrumentation (28 rows)
   master_harmonized.csv           Denormalized master table (557 rows × 59 cols)
-  station_hydrorivers_matched.csv Topological reach join table (218 records)
+  station_hydrorivers_matched.csv Topological reach join table (220 records)
+  study_extraction_evidence.csv   8-domain CEE extraction evidence table (28 studies)
   hydrorivers_bangladesh.gpkg     HydroSHEDS HydroRIVERS clipped network
   bangladesh_boundary.geojson     National boundary polygon (WGS84)
 

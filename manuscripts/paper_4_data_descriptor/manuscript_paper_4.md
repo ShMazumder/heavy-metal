@@ -11,7 +11,7 @@ $^*$Corresponding author: Author One (author.one@university.edu)
 ---
 
 ## Abstract
-Potentially toxic heavy metals in riverine corridors of the Ganges-Brahmaputra-Meghna delta threaten aquatic ecology and drinking water security for over 170 million people. Although numerous environmental investigations have been published across Bangladesh over the past 15 years, data remain fragmented in static PDF tables, lack standardized geospatial referencing, and conflate acute dissolved aqueous concentrations with benthic sediment sinks. Here, we present a harmonized, provenance-documented, and hydrologically snapped geospatial database of heavy metal concentrations in river waters and bed sediments across Bangladesh compiled from 28 peer-reviewed publications (2010–2024). The database contains 557 verified analytical assays—289 bed sediment records across 133 unique station centroids and 268 surface water records (comprising 162 trace element assays across 12 investigations and 106 bulk physicochemical records across 5 investigations) across 12 major river basins—covering seven key trace elements (As, Cd, Cr, Cu, Ni, Pb, Zn). All stations are snapped to topological river reach polylines from HydroSHEDS HydroRIVERS (mean offset: 357 m). The database is distributed in open formats (SQLite, CSV, Parquet, GeoPackage) to facilitate regional machine learning, spatial modeling, and water safety planning.
+Potentially toxic heavy metals in riverine corridors of the Ganges-Brahmaputra-Meghna delta threaten aquatic ecology and drinking water security for over 170 million people. Although numerous environmental investigations have been published across Bangladesh over the past 15 years, data remain fragmented in static PDF tables, lack standardized geospatial referencing, and conflate acute dissolved aqueous concentrations with benthic sediment sinks. Here, we present a harmonized, provenance-documented, and hydrologically snapped geospatial database of heavy metal concentrations in river waters and bed sediments across Bangladesh compiled from 28 peer-reviewed publications (2010–2024). The database contains 557 verified analytical assays—289 bed sediment records across 133 unique station centroids and 268 surface water records (comprising 162 trace element assays across 12 investigations and 106 bulk physicochemical records across 5 investigations) across 12 major river basins—covering seven key trace elements (As, Cd, Cr, Cu, Ni, Pb, Zn). All 220 coordinate-resolved sampling stations (representing 51.6% of the 426 cataloged station records; the remaining 206 entries are descriptive local gazetteer names lacking coordinates in the primary literature) were snapped to topological river reach polylines from HydroSHEDS HydroRIVERS (mean offset: 363 m, median: 221 m, max: 2,021 m; 66.8% within 500 m, 97.7% within 1,000 m). The database is distributed in open formats (SQLite, CSV, Parquet, GeoPackage) to facilitate regional machine learning, spatial modeling, and water safety planning.
 
 ---
 
@@ -54,10 +54,10 @@ The database was structured into a four-table normalized relational schema imple
 ### Coordinate Verification & Topological HydroRIVERS Snapping
 Published coordinates were audited and converted into standardized WGS84 decimal degrees (EPSG:4326). Coordinate ranges were resolved by consulting published maps and gazetteers to identify discrete sampling stations.
 
-All coordinate-resolved sampling stations ($N=220$ across 218 unique reach-join records; 206 descriptive entries lacked coordinates in source literature) were projected to metric coordinates (EPSG:3857, Pseudo-Mercator) and snapped to the nearest HydroSHEDS HydroRIVERS v1.0 reach centerline polyline using spatial index nearest-neighbor joining. Snapping distance offsets were computed:
-- 67.4% of stations snapped within 500 meters of the river polyline centerline;
-- 97.7% of stations snapped within 1,000 meters;
-- Maximum offset was 2,021 meters (mean offset: 357 meters), consistent with deltaic channel widths, braiding, and historical river meandering in the Bengal floodplain.
+All coordinate-resolved sampling stations ($N=220$, joined to HydroRIVERS reaches; 206 descriptive entries lacked coordinates in source literature) were projected to metric coordinates (EPSG:3857, Pseudo-Mercator) and snapped to the nearest HydroSHEDS HydroRIVERS v1.0 reach centerline polyline using spatial index nearest-neighbor joining. Snapping distance offsets were computed:
+- 66.8% of stations ($n=147$) snapped within 500 meters of the river reach centerline polyline;
+- 97.7% of stations ($n=215$) snapped within 1,000 meters;
+- Only 5 station records (2.3%) exceeded 1,000 meters: 4 co-located records for station P20_S1 in the wide tidal Rupsa River estuary (2,021 meters) and 1 record for station P27_S1 along the 4-km-wide braided Padma River mainstem (1,124 meters), consistent with deltaic estuarine channel widths, tidal braiding, and historical river meandering in the Bengal floodplain (mean offset: 363 meters, median: 221 meters, max: 2,021 meters).
 
 ### Unit Harmonization and Censoring Protocols
 Measurement units were audited against primary publications:
@@ -88,7 +88,7 @@ data/
     ├── stations.csv                   # Observation stations (426 rows: 220 georeferenced centroids, 206 descriptive)
     ├── studies.csv                    # Provenance and study metadata (28 rows)
     ├── master_harmonized.csv          # Denormalized master assay table (557 rows, 59 cols)
-    └── station_hydrorivers_matched.csv# Topological reach join table (218 rows)
+    └── station_hydrorivers_matched.csv# Topological reach join table (220 rows)
 ```
 
 ### Data Dictionary

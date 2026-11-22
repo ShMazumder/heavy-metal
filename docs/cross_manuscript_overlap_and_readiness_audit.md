@@ -75,7 +75,7 @@
 - **Target Journal:** Nature *Scientific Data* (Gold OA, standard APC US$2,690) or *Data in Brief* ($0 APC).
 - **Technical Integrity:**
   - Exported all 8 tables to Apache Parquet (`data/processed/*.parquet`).
-  - Reconciled station register denominators: 426 total rows (220 coordinate-resolved centroids, 206 descriptive entries); 218 reach join records.
+  - Reconciled station register denominators: 426 total rows (220 coordinate-resolved centroids, 206 descriptive entries); 220 reach join records.
   - Zenodo deposit package updated to 7.7 MB.
 - **Submission Prerequisite:**
   1. Resolve APC: Apply for institutional Read & Publish waiver for *Scientific Data*, or pivot to *Data in Brief*.

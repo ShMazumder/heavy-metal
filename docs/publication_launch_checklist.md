@@ -75,7 +75,7 @@ Replace placeholder text in all manuscript `.tex`, markdown, and `.zenodo.json` 
 - **Target Venue:** Nature *Scientific Data* (Gold OA, $2,690 APC) or *Data in Brief* ($0 APC).
 - **Core Contribution:**
   - Reusable, multi-format (SQLite, Parquet, CSV, GeoPackage) relational dataset.
-  - 426 stations (220 coordinate-resolved centroids, 206 descriptive entries); 218 reach join records.
+  - 426 stations (220 coordinate-resolved centroids, 206 descriptive entries); 220 reach join records.
   - 557 verified assays across 28 peer-reviewed studies (2010–2024).
 - **Gate to Submit:** Secure APC waiver or confirm institutional funding; convert Zenodo from Draft to Live.
 
